@@ -1,0 +1,25 @@
+.topbody{
+    padding: 0 0.8rem;
+}
+.topbody__content, .topbody__first{
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.075);
+}
+.topbody__content{
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.075);
+}
+.topbody__first{
+    z-index: 0;
+    width: 100%;
+    position: absolute;
+    top: -30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: -70px;  
+    margin: -1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: none;
+}

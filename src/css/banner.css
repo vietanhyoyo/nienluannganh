@@ -1,0 +1,8 @@
+.banner{
+    position: relative;
+}
+.banner__img{
+    width: 100%;
+    z-index: -1;
+}
+
