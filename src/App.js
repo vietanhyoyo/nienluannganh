@@ -5,6 +5,7 @@ import Hearder from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
+import Chat from "./components/Chat";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/cart' element={<Cart />} />
       </Routes>
       <Footer />
+      <Chat />
     </React.Fragment>
   );
 }

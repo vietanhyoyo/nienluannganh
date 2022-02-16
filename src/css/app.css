@@ -42,6 +42,9 @@ html{
   background-color: var(--c1);
   color: var(--c4);
 }
+.input-text{
+  outline: none;
+}
 
 
 
