@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
 import Chat from "./components/Chat";
+import Buy from "./components/buy/Buy";
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
       <div style={{paddingTop: '62px'}}></div>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart/:id' element={<Cart />} />
+        <Route path='/buy/:id' element={<Buy />} />
       </Routes>
       <Footer />
       <Chat />

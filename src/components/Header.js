@@ -7,6 +7,7 @@ function Header() {
     const bar = useRef();
     const ul = useRef();
     const close = useRef();
+    const cartpath = '/cart/id=23';
 
     const showNav = () => {
         bar.current.classList.remove('fa-bars');
@@ -64,7 +65,7 @@ function Header() {
                 </div>
                 <div className='header__box'>
                     <div className='header__icon'>
-                        <Link to='/cart'><i className='fas fa-shopping-basket'></i></Link>
+                        <Link to={cartpath}><i className='fas fa-shopping-basket'></i></Link>
                     </div>
                     <div className='button header__button'>
                         <i className='fas fa-sign-in-alt' style={{ marginRight: "5px" }} ></i>
