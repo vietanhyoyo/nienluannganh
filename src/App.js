@@ -7,6 +7,7 @@ import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
 import Chat from "./components/Chat";
 import Buy from "./components/buy/Buy";
+import Admin from "./components/admin/Admin";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/cart/:id' element={<Cart />} />
         <Route path='/buy/:id' element={<Buy />} />
+        <Route path='/admin/:id' elment={<Admin />} />
       </Routes>
       <Footer />
       <Chat />

@@ -59,6 +59,26 @@
 .merchandise__item p{
     padding: 5px 0px;
 }
+.merchandise__topic{
+    background-color: #fff;
+    padding: 14px;
+    box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.075),
+                5px 5px 10px rgba(0, 0, 0, 0.075);
+    display: flex;
+}
+.merchandise__emphasize{
+    background-color: var(--c3);
+    margin-right: 10px;
+    width: 3px;
+    height: 30px;
+}
+.merchandise__topic--span{
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #777;
+}
 @media only screen and (max-width: 1300px) {
     .merchandise__item{
         flex: 0 0 25%;

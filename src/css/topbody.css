@@ -8,7 +8,7 @@
 }
 .topbody__content{
     position: relative;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.075);
+    border-bottom: 1px solid #eee;
 }
 .topbody__first{
     z-index: 0;
