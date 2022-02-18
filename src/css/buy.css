@@ -1,2 +1,63 @@
-
-
+.buy{
+    background-color: rgb(240, 240, 240);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.buy__title{
+    margin-bottom: 14px;
+    color: var(--c3);
+}
+.buy__box{
+    padding: 10px;
+    background-color: #fff;
+}
+.buy__h3{
+    margin-top: 14px;
+    color: var(--c1);
+    margin-bottom: 20px;
+}
+.buy__row{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    width: 100%;
+}
+.buy__row--left{
+    min-width: 200px;
+    height: 30px;
+    line-height: 30px;
+    color: #777;
+}
+.buy__row--right{
+    flex: 1;
+    height: 30px;
+    border: 1px solid #aaa;
+    padding: 6px;
+}
+.buy__row--right:focus{
+    border-color: var(--c3);
+    outline: none;
+}
+.buy__box--payment{
+    display: flex;
+    justify-content: right;
+}
+.buy__payment{
+    display: flex;
+    flex-direction: column;
+}
+.buy__payment__row{
+    display: flex;
+    padding-bottom: 14px;
+}
+.buy__payment__info{
+    width: 180px;
+    text-align: right;
+}
+.buy__btn{
+    margin-left: 10px;
+    text-align: center;
+}
+.buy__btn--other{
+    background-color: var(--c2);
+}
