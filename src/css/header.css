@@ -81,8 +81,16 @@
     height: 100%;
     line-height: 20px;
 }
+.header__link:hover, .header__link:active{
+    color: var(--c3);
+}
 .header__icon--bar{
     display: block;
+    cursor: pointer;
+}
+.header__icon--bar:hover,
+.header__icon--bar:active{
+    color: var(--c3);
 }
 .header__icon--bar i{
     margin-right: 8px;
@@ -140,6 +148,26 @@
 }
 .header__button{
     margin-left: 14px;
+}
+.header__bardiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+}
+.header__bardiv:hover .header__link{
+    color: var(--c3);
+}
+.header__ul--child{
+    display: none;
+    margin-left: 20px;
+    margin-top: 14px;
+}
+.header__li--child{
+    font-size: 12px;
+}
+.header__ul--child--show{
+    display: block;
 }
 /*--------------------------------------------*/
 @media only screen and (max-width: 700px) {

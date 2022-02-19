@@ -22,9 +22,9 @@ function CartInfo() {
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <div className='cart__adjustbutton'><i class="fa-solid fa-plus"></i></div>
+                    <div className='cart__adjustbutton'><i className='fa-solid fa-plus'></i></div>
                     <input type='text'/>
-                    <div className='cart__adjustbutton'><i class="fa-solid fa-minus"></i></div>
+                    <div className='cart__adjustbutton'><i className='fa-solid fa-minus'></i></div>
                 </div>
             </div>
             <div className='cart__info cart__info--small' >
