@@ -1,8 +1,35 @@
 .banner{
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.banner__box{
+    display: flex;
+    max-width: 1600px;
+    overflow: hidden;
+    color: blue;
 }
 .banner__img{
+    display: inline;
     width: 100%;
     z-index: -1;
+}
+.banner:hover .banner__button{
+    visibility: inherit;
+    transition: all 0.5s;
+}
+.banner__button{
+    position: absolute;
+    display: flex;
+    visibility: hidden;
+    justify-content: space-between;
+    width: 99%;
+    top: 45%;
+}
+.banner__btn__icon{
+    font-size: 30px;
+    color: rgba(221, 221, 221, 0.418);
+    cursor: pointer;
 }
 

@@ -47,7 +47,6 @@ function Header() {
             )}
         </React.Fragment>
     );
-    console.log(list_item);
 
     const showNav = () => {
         bar.current.classList.remove('fa-bars');

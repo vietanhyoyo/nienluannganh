@@ -18,8 +18,6 @@ function Merchandise() {
                 console.log(error);
             });
     },[list]);
-    console.log('In');
-    console.log(list);
     return (
         <div className='merchandise' >
             <div className='merchandise__content row-app'>
