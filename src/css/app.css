@@ -37,8 +37,9 @@ html{
   padding: 8px;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s;
 }
-.button:hover{
+.button:hover, .button:active{
   background-color: var(--c1);
   color: var(--c4);
 }
