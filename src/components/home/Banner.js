@@ -17,22 +17,22 @@ function Banner() {
     const handleNext = () => {
         if(banindex < banList.current.length - 1){
             setBanindex(banindex +1);
-            setBan(banList.current[banindex]);
+            setBan(banList.current[banindex + 1]);
             console.log(banindex);
         }else{
             setBanindex(0);
-            setBan(banList.current[banindex]);
+            setBan(banList.current[0]);
             console.log(banindex + ' - ' + banList.current.length);
         }
     }
     const handlePrev = () => {
         if(banindex > 0){
             setBanindex(banindex -1);
-            setBan(banList.current[banindex]);
+            setBan(banList.current[banindex -1]);
             console.log(banindex);
         }else{
             setBanindex(banList.current.length - 1);
-            setBan(banList.current[banindex]);
+            setBan(banList.current[banList.current.length - 1]);
             console.log(banindex + ' - ' + banList.current.length);
         }
     }

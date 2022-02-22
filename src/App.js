@@ -8,7 +8,7 @@ import Cart from './components/cart/Cart';
 import Chat from "./components/Chat";
 import Buy from "./components/buy/Buy";
 import Admin from "./components/admin/Admin";
-
+import Person from "./components/person/Person";
 
 function App() {
   return (
@@ -19,7 +19,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/cart/:id' element={<Cart />} />
         <Route path='/buy/:id' element={<Buy />} />
-        <Route path='/admin/:id' elment={<Admin />} />
+        <Route path='/admin/:id' element={<Admin />} />
+        <Route path='/person/:id' element={<Person />} />
       </Routes>
       <Footer />
       <Chat />
