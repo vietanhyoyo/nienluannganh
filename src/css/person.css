@@ -1,18 +1,67 @@
+.person{
+    background-color: rgb(243, 243, 243);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
 .person__content{
     display: flex;
 }
 .person__left{
-    width: 300px;
+    width: 280px;
     min-height: 350px;
-    background-color: chocolate;
+    background-color: #fff;
+    color: var(--c1);
 }
 .person__right{
     flex: 1;
     min-height: 300px;
-    background-color: brown;
+    background-color: #fff;
+    border-left: 1px solid rgb(226, 226, 226);
 }
 .person__left__row{
     width: 100%;
     display: flex;
-    padding: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+.person__left__row--top{
+    padding-top: 20px;
+}
+.person__left__image img{
+    width: 100%px;
+}
+.person__hr{
+    height: 1px;
+    background-color: #ddd;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.person__left__row--top .person__left__image{
+    display: flex;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    margin-right: 14px;
+}
+.person__left__row--top .person__left__text{
+    margin-left: 10px;
+    height: 75px;
+    line-height: 75px;
+}
+.person__left__i{
+    width: 50px;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+}
+.person__left__i i{
+    font-size: 26px;
+}
+.person__left__span{
+    height: 30px;
+    line-height: 29px;
+    font-size: 0.9rem;
 }
