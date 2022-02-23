@@ -23,12 +23,12 @@ function App() {
           <Route path='home' element={<Home />} />
           <Route path='cart/:id' element={<Cart />} />
           <Route path='buy/:id' element={<Buy />} />
-          <Route path='admin/:id' element={<Admin />} />
           <Route path='person' element={<Person />} >
             <Route path='pro/:id' element={<PersonProfile />} />
             <Route path='his/:id' element={<PersonHistory />} />
           </Route>
         </Route>
+        <Route path='/admin/:id' element={<Admin />} ></Route>
       </Routes>
       <Footer />
       <Chat />
