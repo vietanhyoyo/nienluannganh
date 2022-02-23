@@ -83,7 +83,7 @@ function Header() {
             <nav className='row-app header__row'>
                 <div className='header__box'>
                     <div className='header__contentlogo'>
-                        <Link to='/'>
+                        <Link to='/home'>
                             <h1 className='header__logo'><b>L</b>ogo</h1>
                         </Link>
                         <div className='header__icon header__icon--bar' onClick={toggleNav}>
