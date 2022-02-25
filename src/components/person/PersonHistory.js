@@ -1,6 +1,6 @@
 import '../../css/personhistory.css';
 import { useState } from 'react';
-import PersonHistoryItem from './PersonHistoryItem';
+import PersonHistoryItem from './personhistory/PersonHistoryItem';
 
 
 export default function PersonHistory() {
