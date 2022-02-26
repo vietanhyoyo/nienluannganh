@@ -1,5 +1,5 @@
 import '../../css/admin.css'
-import AdminAddUser from './AdminAddUser';
+import AdminPromotion from './AdminPromotion';
 
 function Admin(){
     return(
@@ -97,7 +97,7 @@ function Admin(){
 
                 </div>
 
-                <AdminAddUser />
+                <AdminPromotion />
             </div>
         </div>
     );

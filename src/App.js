@@ -16,7 +16,7 @@ function App() {
     <React.Fragment>
       <Routes>
         <Route path='/' element={<Client />} >
-          <Route path='home' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='cart/:id' element={<Cart />} />
           <Route path='buy/:id' element={<Buy />} />
           <Route path='person' element={<Person />} >
