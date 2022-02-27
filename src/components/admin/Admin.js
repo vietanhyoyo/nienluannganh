@@ -1,18 +1,83 @@
 import '../../css/admin.css'
+import StaffAdmin from './StaffAdmin';
+import OrderAdmin from './OrderAdmin';
+import AdminAddUser from './AdminAddUser';
 import AdminPromotion from './AdminPromotion';
-
 function Admin(){
-    return(
+      
+      const Product     = document.getElementsByClassName('admin__li-product');
+      const User        = document.getElementsByClassName('admin__li-user');
+      const Promotion   = document.getElementsByClassName('admin__li-Promotion');
+      const Statistical = document.getElementsByClassName('admin__li-statistical');
+      function setUser(){  
+                if(User[0].style.display !=='none'){
+                      for(let i=0;i<User.length;i++){
+                            User[i].style.display = 'none';
+                      }
+                }else{
+                  for(let i=0;i<User.length;i++){
+                        User[i].style.display = 'inherit';
+                  }
+                }
+      }
+      function setProduct(){
+            if(Product[0].style.display !=='none'){
+                  for(let i=0;i<Product.length;i++){
+                        Product[i].style.display = 'none';
+                  }
+            }else{
+              for(let i=0;i<Product.length;i++){
+                  Product[i].style.display = 'inherit';
+              }
+            }
+      }
+      function setPromotion(){
+            if(Promotion[0].style.display !=='none'){
+                  for(let i=0;i<Promotion.length;i++){
+                        Promotion[i].style.display = 'none';
+                  }
+            }else{
+              for(let i=0;i<Promotion.length;i++){
+                  Promotion[i].style.display = 'inherit';
+              }
+            }
+      }
+      function setStatistical(){
+            if(Statistical[0].style.display !=='none'){
+                  for(let i=0;i<Statistical.length;i++){
+                        Statistical[i].style.display = 'none';
+                  }
+            }else{
+              for(let i=0;i<Statistical.length;i++){
+                  Statistical[i].style.display = 'inherit';
+              }
+            }
+      }  
+
+
+
+      return(
         <div className='admin'>
+          
             {/* Heading */}
             <div className="admin__header">
                       {/* Logo và tên Logo bên trái*/}
                   <div className="admin__header-logo">
-                   <img alt='tt' src='https://png.pngtree.com/png-clipart/20211026/original/pngtree-simple-coffee-elemental-design-free-logo-design-template-png-image_3597680.png' className="admin__img-logo" />
-                   <h1 className='admin__header-logo--text'>Tên logo</h1>
+                
+                   <img className="admin__img-logo" alt="Logo" src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-green-shield-logo-designs-png-image_3660706.jpg"/>
                   </div>
                         {/* DIV bên phải */}
                   <div className="admin__header-infomation">     
+                                        {/* div Thay đổi giao diện sáng tối */}
+                         <div className="change-day">
+                                <p className="icon-change-day"><i className="fa-solid fa-circle-half-stroke"></i></p>    
+                        </div>
+                              {/* DIV nút thay đổi ngôn ngữ */}
+                        <div className="admin__change-language">
+                              <p className="admin__change-language-text">VIE</p>
+                              <div className="admin__change-language-icon"><p className="icon-change-language"><i className="fa-solid fa-angle-down"></i></p></div>
+                        </div>
+                                    
                            {/* Div bell */}
                         <div className="admin__notification">
                                      {/* Div bell icon */}
@@ -25,79 +90,80 @@ function Admin(){
                                     <div className="bell-icon-dot"></div>
                               </div>
                                     {/* Text Bell icon */}
-                              <p className="admin__notification-text">
-                                    Xin chào, THANH ĐIỀN <br></br>QUẢN TRỊ VIÊN
-                              </p>
-                         
+                              <div className="text-bell-icon-div">
+                              <div className="div-textbell-icon-top">
+                                          <p className="admin__notification-text">
+                                          Xin chào, THANH ĐIỀN
+                                          </p>
+                                    </div>
+                                    <div className="div-textbell-icon-bot">
+                                          <p className="admin__notification-text">
+                                          QUẢN TRỊ VIÊN
+                                          </p>
+                                    </div>
+                              </div> 
                         </div>
                             {/* Avatar Admin */}
                         <div className='admin__avatar'>
-                                 <img alt='dd' src="https://mondaycareer.com/wp-content/uploads/2020/11/%E1%BA%A3nh-avatar-%C4%91%E1%BA%B9p-c%C3%B4-g%C3%A1i-%C4%91eo-k%C3%ADnh.jpg" className="admin__avatar-image"/>
+                                 <img src="https://phunugioi.com/wp-content/uploads/2020/10/hinh-anh-avatar-nam-dep.jpg" alt='avatar' className="admin__avatar-image"/>
                         </div>
                               {/* Manage Infomation admin */}
-                        <div className="admin__infomation"><i className="fa-solid fa-angle-down"></i></div>
+                        <div className="admin__infomation"><i className ="fa-solid fa-angle-down"></i></div>
               </div>
-
             </div>
-
+            <div className="admin-app">
             {/* Menu */}
-            <div className='admin__content'>
+            <div className='admin__content'>   
                 <div className="admin__menu">
-                <h1 align="center">Manager</h1> 
                         {/* Tiêu đề */}
-                    <ul className='admin__menu-title'> 
-                    <h2>?</h2>    
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>Danh sách tài khoảng</p>
+             
+                    <ul className='admin__menu-title admin_title-top' > 
+                      <h3 className="admin__menu-title-manage "onClick={setUser}><p className='icon-manager icon-admin'><i className="fa-solid fa-users-gear "></i></p> QUẢN LÝ TÀI KHOẢNG <i className ="fa-solid fa-angle-down admin__title-icon"></i></h3>    
+                        <div className="br-div"></div>
+                        <li className='admin__menu-content admin__li-user'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list"></i></span>Danh sách tài khoảng</p>
                         </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thêm tài khoản</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>duyệt đơn hàng</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thêm hàng hóa</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>xem danh sách hàng hóa</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thống kê doanh thu</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thêm khuyến mãi cho sản phẩm</p>
-                        </li>
-                    </ul>
-                        
-                    <ul className='admin__menu-title'> 
-                         
-                         <li className='admin__menu-content'>
-                              <p className='admin-content'>Danh sách tài khoảng</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thêm tài khoản</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>duyệt đơn hàng</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thêm hàng hóa</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>xem danh sách hàng hóa</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thống kê doanh thu</p>
-                        </li>
-                        <li className='admin__menu-content'>
-                              <p className='admin-content'>thêm khuyến mãi cho sản phẩm</p>
+                        <li className='admin__menu-content admin__li-user'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-user-plus"></i></span>Thêm tài khoản</p>
                         </li>
                     </ul>
 
+             
+                  
+                    <ul className='admin__menu-title admin_title-top'> 
+                      <h3 className="admin__menu-title-manage" onClick={setProduct}><p className='icon-manager icon-admin'><i className="fa-solid fa-box icon-admin"></i></p>ĐƠN HÀNG <p className="droplist-admin droplist-admin-2"><i className ="fa-solid fa-angle-down admin__title-icon"></i></p> </h3>    
+                        <div className="br-div"></div>
+                        <li className='admin__menu-content admin__li-product'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list-check"></i></span>Duyệt đơn hàng</p>
+                        </li>
+                        <li className='admin__menu-content admin__li-product'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-dolly"></i></span>Thêm hàng hóa</p>
+                        </li>
+                        <li className='admin__menu-content admin__li-product'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-table-list"></i></span>Danh sách hàng hóa</p>
+                        </li>
+                    </ul>
+                    <ul className='admin__menu-title admin_title-top'> 
+                      <h3 className="admin__menu-title-manage" onClick={setStatistical} ><p className='icon-manager icon-admin'><i className="fa-solid fa-chart-pie"></i> </p>THỐNG KÊ <p className="droplist-admin droplist-admin-1"><i className ="fa-solid fa-angle-down admin__title-icon"></i></p> </h3>    
+                        <div className="br-div"></div>
+                        <li className='admin__menu-content admin__li-statistical'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-square-poll-vertical"></i></span>Thống kê doanh thu </p>
+                        </li>
+                       
+                    </ul>
+                    <ul className='admin__menu-title admin_title-top'> 
+                      <h3 className="admin__menu-title-manage" onClick={setPromotion}><p className='icon-manager icon-admin'><i className="fa-brands fa-teamspeak"></i> </p>KHUYẾN MÃI <p className="droplist-admin"><i className ="fa-solid fa-angle-down admin__title-icon"></i></p> </h3>    
+                        <div className="br-div"></div>
+                        <li className='admin__menu-content admin__li-Promotion'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list"></i></span>Danh sách khuyến mãi</p>
+                        </li>
+                        <li className='admin__menu-content admin__li-Promotion'>
+                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-pen-to-square"></i></span>Thêm khuyến mãi cho sản phấm</p>
+                        </li>
+                    </ul>
                 </div>
-
-                <AdminPromotion />
+            </div>
+            <AdminPromotion />
             </div>
         </div>
     );
