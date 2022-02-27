@@ -9,7 +9,7 @@ import Person from "./components/person/Person";
 import Client from "./components/Client";
 import PersonProfile from "./components/person/PersonProfile";
 import PersonHistory from "./components/person/PersonHistory";
-import PersonAddress from "./components/person/PersonAddress";
+
 
 function App() {
   return (
@@ -22,7 +22,6 @@ function App() {
           <Route path='person' element={<Person />} >
             <Route path='profile/:id' element={<PersonProfile />} />
             <Route path='history/:id' element={<PersonHistory />} />
-            <Route path='address/:id' element={<PersonAddress />} />
           </Route>
         </Route>
         <Route path='/admin/:id' element={<Admin />} ></Route>
