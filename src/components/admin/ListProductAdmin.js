@@ -1,4 +1,4 @@
-import '../../css/orderadmin.css' 
+import '../../css/listproductadmin.css' 
 
 function OrderAdmin(){
     return(
@@ -54,10 +54,19 @@ function OrderAdmin(){
                    <div className="admin-product-header-item">Số lượng</div>
                    <div className="admin-product-header-item">Giá bán</div>
                    <div className="admin-product-header-item">Quản lý</div>
-                 
                 </div>
                 {/* Div product*/}
-               
+                <div className="admin-product-content">
+                   <div className="admin-product-header-item"><img src="https://thitbohuunghi.com/wp-content/uploads/2021/06/6gt5cdi_-_imgur_grande.png" alt="Alo"className="admin-product-header-item-img"/></div>
+                   <div className="admin-product-header-item">Thịt bò</div>
+                   <div className="admin-product-header-item">Loại sản phẩm</div>
+                   <div className="admin-product-header-item">Số lượng</div>
+                   <div className="admin-product-header-item">Giá bán</div>
+                   <div className="admin-product-header-item">Quản lý</div>
+                </div>
+
+
+
              </div>
           </div>
 

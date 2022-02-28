@@ -1,6 +1,6 @@
 import '../../css/admin.css'
 import StaffAdmin from './StaffAdmin';
-import OrderAdmin from './OrderAdmin';
+import ListProductAdmin from './ListProductAdmin';
 import {Outlet,Link} from 'react-router-dom';
 
 function Admin(){
@@ -133,7 +133,7 @@ function Admin(){
                               <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-dolly"></i></span>Thêm hàng hóa</p>
                         </li>
                         <li className='admin__menu-content admin__li-product'>
-                        <Link to={'order/id=1'} className="admin-content">   <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-table-list"></i></span>Danh sách hàng hóa</p> </Link>
+                        <Link to={'listproduct/id=1'} className="admin-content">   <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-table-list"></i></span>Danh sách hàng hóa</p> </Link>
                         </li>
                     </ul>
                     <ul className='admin__menu-title admin_title-top'> 
