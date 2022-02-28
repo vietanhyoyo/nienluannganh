@@ -133,7 +133,7 @@
 .admin__notification-text{
   margin-left: 8px;
   font-size: var(--font_text-bell);
-  -webkit-user-select: none !important;
+  user-select: none;
 }
 /* Nút chuyển đổi ngôn ngữ */
 .admin__change-language{
@@ -196,7 +196,7 @@
   cursor: pointer;
   padding-left: 15px;
   padding-right: 11px;
-  -webkit-user-select: none !important;
+  user-select: none;
 }
 /* Mũi tên icon */
 .droplist-admin{
@@ -209,7 +209,7 @@
   margin-left: 14px;
 }
 .admin__menu-title-manage:active{
-  background-color: var(--c6-new);
+  background-color: var(--c3-new);
 }
 
 /* dòng ngăn cách  */
@@ -227,7 +227,8 @@
   height: 45px;
   font-size: 14px;
   cursor: pointer;
-  -webkit-user-select: none !important;
+  user-select: none;
+  display: none;
 }
 
 /* hover li */
@@ -256,4 +257,8 @@
 .admin__title-icon{
   margin-top: 2px;
   margin-left : 10px
+}
+
+.admin-content{
+  color: #fdfcfb;
 }

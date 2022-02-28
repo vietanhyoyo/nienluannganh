@@ -1,6 +1,8 @@
 import '../../css/admin.css'
 import StaffAdmin from './StaffAdmin';
 import OrderAdmin from './OrderAdmin';
+import {Outlet,Link} from 'react-router-dom';
+
 function Admin(){
       
       const Product     = document.getElementsByClassName('admin__li-product');
@@ -8,48 +10,40 @@ function Admin(){
       const Promotion   = document.getElementsByClassName('admin__li-Promotion');
       const Statistical = document.getElementsByClassName('admin__li-statistical');
       function setUser(){  
-                if(User[0].style.display !='none'){
-                      for(let i=0;i<User.length;i++){
-                            User[i].style.display = 'none';
-                      }
-                }else{
-                  for(let i=0;i<User.length;i++){
-                        User[i].style.display = 'inherit';
-                  }
-                }
+            for(let i=0;i<User.length;i++){
+                 if(User[i].style.display == 'inherit'){
+                  User[i].style.display = 'none';
+                 } else{
+                  User[i].style.display = 'inherit'
+                 }
+            }       
       }
       function setProduct(){
-            if(Product[0].style.display !='none'){
-                  for(let i=0;i<Product.length;i++){
+            for(let i=0;i<Product.length;i++){
+                  if(Product[i].style.display == 'inherit'){
                         Product[i].style.display = 'none';
+                  } else{
+                        Product[i].style.display = 'inherit'
                   }
-            }else{
-              for(let i=0;i<Product.length;i++){
-                  Product[i].style.display = 'inherit';
-              }
-            }
+             }   
       }
       function setPromotion(){
-            if(Promotion[0].style.display !='none'){
-                  for(let i=0;i<Promotion.length;i++){
+            for(let i=0;i<Promotion.length;i++){
+                  if(Promotion[i].style.display == 'inherit'){
                         Promotion[i].style.display = 'none';
+                  } else{
+                        Promotion[i].style.display = 'inherit'
                   }
-            }else{
-              for(let i=0;i<Promotion.length;i++){
-                  Promotion[i].style.display = 'inherit';
-              }
-            }
+             }
       }
       function setStatistical(){
-            if(Statistical[0].style.display !='none'){
-                  for(let i=0;i<Statistical.length;i++){
+            for(let i=0;i<Statistical.length;i++){
+                  if(Statistical[i].style.display == 'inherit'){
                         Statistical[i].style.display = 'none';
+                  } else{
+                        Statistical[i].style.display = 'inherit'
                   }
-            }else{
-              for(let i=0;i<Statistical.length;i++){
-                  Statistical[i].style.display = 'inherit';
-              }
-            }
+             }
       }  
 
 
@@ -119,7 +113,8 @@ function Admin(){
                       <h3 className="admin__menu-title-manage "onClick={setUser}><p className='icon-manager icon-admin'><i className="fa-solid fa-users-gear "></i></p> QUẢN LÝ TÀI KHOẢNG <i className ="fa-solid fa-angle-down admin__title-icon"></i></h3>    
                         <div className="br-div"></div>
                         <li className='admin__menu-content admin__li-user'>
-                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list"></i></span>Danh sách tài khoảng</p>
+                             
+                              <Link to={'staff/id=1'} className="admin-content">  <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list"></i></span>Danh sách tài khoảng</p></Link>
                         </li>
                         <li className='admin__menu-content admin__li-user'>
                               <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-user-plus"></i></span>Thêm tài khoản</p>
@@ -138,7 +133,7 @@ function Admin(){
                               <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-dolly"></i></span>Thêm hàng hóa</p>
                         </li>
                         <li className='admin__menu-content admin__li-product'>
-                              <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-table-list"></i></span>Danh sách hàng hóa</p>
+                        <Link to={'order/id=1'} className="admin-content">   <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-table-list"></i></span>Danh sách hàng hóa</p> </Link>
                         </li>
                     </ul>
                     <ul className='admin__menu-title admin_title-top'> 
@@ -161,7 +156,7 @@ function Admin(){
                     </ul>
                 </div>
             </div>
-            <OrderAdmin/>
+            <Outlet/>
             </div>
         </div>
     );

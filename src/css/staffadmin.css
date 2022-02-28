@@ -20,7 +20,7 @@
    
 }
 .StaffAdmin__right{
-    width: 850px;
+    width: 840px;
     height: auto;
     display: flex;
     align-items: center;
@@ -55,9 +55,8 @@
 .admin-staff{
     width: 90%;
     height: 60px;
-    background-color: rgb(231, 231, 231);
+    background-color: #f3f2f2;
     margin-top: 10px;
-    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;

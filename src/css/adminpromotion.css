@@ -1,0 +1,132 @@
+.admin-promotion{
+    padding: 30px;
+    flex: 1;
+}
+.admin-promotion__header{
+    display: flex;
+    width: 100%;
+}
+.admin-promotion__header__1{
+    flex: 1;
+}
+.admin-promotion__header--title{
+    display: flex;
+    flex: 1;
+}
+.admin-promotion__header--title i{
+    font-size: 30px;
+    margin-right: 10px;
+}
+.admin-promotion__header--img{
+    width: 300px;
+}
+.admin-promotion__form{
+    padding: 14px;
+    border: 1px dotted #ddd;
+    border-radius: 10px;
+    margin: 0 30px;
+}
+.admin-promotion__minitext{
+    font-size: 0.8rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.admin-promotion__row{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.admin-promotion__col--after{
+    margin-left: 10px;
+}
+.admin-promotion__label{
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+.admin-promotion__input{
+    width: 200px;
+    height: 30px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: 1px solid #ccc;
+}
+.admin-promotion__input:focus{
+    outline: none;
+    border: 1px solid var(--c3);
+}
+.admin-promotion__label b{
+    color: var(--c5);
+}
+.admin-promotion__row--btn{
+    display: flex;
+    justify-content: right;
+}
+.admin-promotion__row--btn .button{
+    padding: 14px;
+    width: 80px;
+    text-align: center;
+    margin-left: 10px;
+}
+.admin-promotion__btn-gray{
+    background-color: var(--c2);
+}
+.admin-promotion__item{
+    cursor: pointer;
+    display: flex;
+    width: 370px;
+    height: 100px;
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.048),
+                5px 5px 5px rgba(0, 0, 0, 0.144);
+    border-radius: 10px;
+    margin: 10px;
+}
+.admin-promotion__item__col{
+    height: 100px;
+}
+.admin-promotion__item__col--after{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.admin-promotion__item__row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.admin-promotion__item__name{
+    width: 50%;
+    font-weight: 700;
+    font-size: 14px;
+}
+.admin-promotion__item__date{
+    font-size: 12px;
+    color: #999;
+}
+.admin-promotion__num{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    background-color: var(--c2);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.admin-promotion__num--green{
+    background-color: var(--c3);
+}
+.admin-promotion__num__content{
+    margin: auto;
+    text-align: center;
+}
+.admin-promotion__num__sp{
+    font-size: 16px;
+}
+.admin-promotion__list{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
