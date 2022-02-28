@@ -1,259 +1,259 @@
 :root{
-  /* Set thuộc tính header */
-   --width_icon : 32px;
-   --width_image: 45px;
-   --margin_icon: 20px;
-   --font_text-bell:13px;
-   --font__bell:30px;
-   /* color  */
-   --c1-new: #2e3026;
-   --c2-new: #869aa6;
-   --c3-new: #64d275;
-   --c4-new: #fdfcfb;
-   --c5-new: #f64129;
-   --c6-new: #FFD369;
-   --admin__background-color: var(--c1-new);
-   --admmin__text-color: var(--c4-new);
-   /* Menu admin */
-   --admin__title-margin : 22px;
- }
- 
- .admin-app{
-   display: flex;
- }
- /* header */
- .admin__header{
-   width: 100%;
-   height: 70px;
-   background-color:  var(--admin__background-color);
-   color: var(--admmin__text-color);
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 6px;
- }
- 
- 
- /* Div logo */
- .admin__header-logo{
-   display: flex;
-   align-items: center;
-   margin-left: 20px;
- }
- /* Logo */
- .admin__img-logo{
-   height: var(--width_image);
-   width: var(--width_image);
-   border-radius: 10px;
-   margin-left: 15px;
- }
- 
- 
- /* Div bên phải */
- .admin__header-infomation{
-   display: flex;
-   align-items: center;
-   margin-right: var(--margin_icon);
- }
- /* DIV Avatar admin */
- .admin__avatar{
-   height: var(--width_icon);
-   width: var(--width_icon);
-   border-radius: 100%;
-   background-color: white;
-   margin-right: 25px;
-   margin-left: 30px;
-  
- }
- /* Avatar admin */
- .admin__avatar-image{
-  height: var(--width_icon) ;
+ /* Set thuộc tính header */
+  --width_icon : 32px;
+  --width_image: 45px;
+  --margin_icon: 20px;
+  --font_text-bell:13px;
+  --font__bell:30px;
+  /* color  */
+  --c1-new: #2e3026;
+  --c2-new: #869aa6;
+  --c3-new: #64d275;
+  --c4-new: #fdfcfb;
+  --c5-new: #f64129;
+  --c6-new: #FFD369;
+  --admin__background-color: var(--c1-new);
+  --admmin__text-color: var(--c4-new);
+  /* Menu admin */
+  --admin__title-margin : 22px;
+}
+
+.admin-app{
+  display: flex;
+}
+/* header */
+.admin__header{
+  width: 100%;
+  height: 70px;
+  background-color:  var(--admin__background-color);
+  color: var(--admmin__text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+}
+
+
+/* Div logo */
+.admin__header-logo{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+/* Logo */
+.admin__img-logo{
+  height: var(--width_image);
+  width: var(--width_image);
+  border-radius: 10px;
+  margin-left: 15px;
+}
+
+
+/* Div bên phải */
+.admin__header-infomation{
+  display: flex;
+  align-items: center;
+  margin-right: var(--margin_icon);
+}
+/* DIV Avatar admin */
+.admin__avatar{
+  height: var(--width_icon);
   width: var(--width_icon);
   border-radius: 100%;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 0 2px var(--admin__background-color));
+  background-color: white;
+  margin-right: 25px;
+  margin-left: 30px;
+ 
+}
+/* Avatar admin */
+.admin__avatar-image{
+ height: var(--width_icon) ;
+ width: var(--width_icon);
+ border-radius: 100%;
+ image-rendering: pixelated;
+ filter: drop-shadow(0 0 2px var(--admin__background-color));
+ cursor: pointer;
+ border: 1px solid rgb(214, 214, 214);
+}
+
+/* Menu thông tin */
+.admin__infomation{
+  height: calc(var(--width_icon)/1.5) ;
+  width : calc(var(--width_icon)/1.5);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
   cursor: pointer;
-  border: 1px solid rgb(214, 214, 214);
- }
  
- /* Menu thông tin */
- .admin__infomation{
-   height: calc(var(--width_icon)/1.5) ;
-   width : calc(var(--width_icon)/1.5);
-   display: flex;
-   justify-content: center;
-   align-items: center; 
-   cursor: pointer;
+}
+/* DIV Chuông thông báo */
+.admin__notification{
+  height: 50px;
+  width: auto;
+  background-color: var(--admin__background-color);
+  margin-right: var(--admmin__text-color);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+/* DIV Bell icon */
+.admin__notification-bell{
+  height: 100% ;
+  width: 40px;
+  border-radius: 8px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+/* Bell size */
+.bell-icon-size{
+  font-size: 25px;
+  margin-right: 9px;
+  margin-top: 6px;
+  font-weight: 1000;
+}
+/* Dot size */
+.bell-icon-dot{
+  width: 7px;
+  height: 7px;
+  background-color: var(--admmin__text-color);
+  position:relative;
+  top: -28px;
+  left:14px;
+  border-radius: 100%;
+  z-index: 1;
+  border: 1.3px solid var(--admin__background-color);
+}
+.div-textbell-icon-top{
+  margin-bottom:8px;
+}
+
+
+/* text for bell */
+.admin__notification-text{
+  margin-left: 8px;
+  font-size: var(--font_text-bell);
+  user-select: none;
+}
+/* Nút chuyển đổi ngôn ngữ */
+.admin__change-language{
+  height: var(--width_icon);
+  width: 77px;
+  background-color: var(--admin__background-color)  ;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
   
- }
- /* DIV Chuông thông báo */
- .admin__notification{
-   height: 50px;
-   width: auto;
-   background-color: var(--admin__background-color);
-   margin-right: var(--admmin__text-color);
-   display: flex;
-   justify-content: left;
-   align-items: center;
- }
+} 
+.icon-change-language{
+  margin-left: 15px;
  
- /* DIV Bell icon */
- .admin__notification-bell{
-   height: 100% ;
-   width: 40px;
-   border-radius: 8px;
-   margin-top: 6px;
-   cursor: pointer;
- }
- /* Bell size */
- .bell-icon-size{
-   font-size: 25px;
-   margin-right: 9px;
-   margin-top: 6px;
-   font-weight: 1000;
- }
- /* Dot size */
- .bell-icon-dot{
-   width: 7px;
-   height: 7px;
-   background-color: var(--admmin__text-color);
-   position:relative;
-   top: -28px;
-   left:14px;
-   border-radius: 100%;
-   z-index: 1;
-   border: 1.3px solid var(--admin__background-color);
- }
- .div-textbell-icon-top{
-   margin-bottom:8px;
- }
- 
- 
- /* text for bell */
- .admin__notification-text{
-   margin-left: 8px;
-   font-size: var(--font_text-bell);
-   user-select: none;
- }
- /* Nút chuyển đổi ngôn ngữ */
- .admin__change-language{
-   height: var(--width_icon);
-   width: 77px;
-   background-color: var(--admin__background-color)  ;
-   display: flex;
-   align-items: center;
-   margin-right: 15px;
-   cursor: pointer;
-   
- } 
- .icon-change-language{
-   margin-left: 15px;
+}
+.icon-change-day{
+  margin-right: 30px;
+  border-radius: 80%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ADMIN - MENU */
+
+/* menu */
+.admin__menu{
+  min-height: 700px;
+  width: 230px;
+  background-color: var(--c1-new);
+  color: var(--c4-new);
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* div lớn bên ngoài menu */
+.admin__menu-title{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* div bao tiêu đề và danh mục */
+.admin-div-menu{
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
   
- }
- .icon-change-day{
-   margin-right: 30px;
-   border-radius: 80%;
-   font-size: 20px;
-   cursor: pointer;
- }
- 
- /* ADMIN - MENU */
- 
- /* menu */
- .admin__menu{
-   min-height: 700px;
-   width: 230px;
-   background-color: var(--c1-new);
-   color: var(--c4-new);
-   display: flex;
-   flex-direction: column;
- }
- 
- 
- /* div lớn bên ngoài menu */
- .admin__menu-title{
-   margin-top: 20px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
- }
- 
- /* div bao tiêu đề và danh mục */
- .admin-div-menu{
-   width: 100%;
-   height: auto;
-   border: 1px solid black;
-   
- }
- /* tiêu đề */
- .admin__menu-title-manage{
-   display: flex;
-   align-items: center;
-   font-size: 15px;
-   width: 100%;
-   height: 30px;
-   cursor: pointer;
-   padding-left: 15px;
-   padding-right: 11px;
-   user-select: none;
- }
- /* Mũi tên icon */
- .droplist-admin{
-   padding-left: 65px;
- }
- .droplist-admin-1{
-   margin-left: 13px;
- }
- .droplist-admin-2{
-   margin-left: 14px;
- }
- .admin__menu-title-manage:active{
-   background-color: var(--c6-new);
- }
- 
- /* dòng ngăn cách  */
- .br-div{
-   width: 100%;
-   height: 1px;
-   background-color: rgba(255, 255, 255, 0.5);
- }
- /* Danh mục con */
- .admin__menu-content{
-   width: 100%;
-   display: flex;
-   align-items: center ;
-   padding-left: 33px;
-   height: 45px;
-   font-size: 14px;
-   cursor: pointer;
-   user-select: none;
- }
- 
- /* hover li */
- .admin__menu-content:hover{
-   background-color: var(--c3-new);
- }
- /* CSS class từng div title riêng */
- 
- .admin_title-mid {
+}
+/* tiêu đề */
+.admin__menu-title-manage{
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 11px;
+  user-select: none;
+}
+/* Mũi tên icon */
+.droplist-admin{
+  padding-left: 65px;
+}
+.droplist-admin-1{
+  margin-left: 13px;
+}
+.droplist-admin-2{
+  margin-left: 14px;
+}
+.admin__menu-title-manage:active{
+  background-color: var(--c6-new);
+}
+
+/* dòng ngăn cách  */
+.br-div{
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+/* Danh mục con */
+.admin__menu-content{
+  width: 100%;
+  display: flex;
+  align-items: center ;
+  padding-left: 33px;
+  height: 45px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* hover li */
+.admin__menu-content:hover{
+  background-color: var(--c3-new);
+}
+/* CSS class từng div title riêng */
+
+.admin_title-mid {
+ margin-top: -1px;
+}
+.admin_title-bot {
   margin-top: -1px;
- }
- .admin_title-bot {
-   margin-top: -1px;
- }
- 
- .icon-manager{
-   margin-right: 7px;
- }
- 
- /* Icon title */
- .icon-admin{
-   font-size: 22px;
-   margin-top: -2px;
- }
- 
- .admin__title-icon{
-   margin-top: 2px;
-   margin-left : 10px
- }
+}
+
+.icon-manager{
+  margin-right: 7px;
+}
+
+/* Icon title */
+.icon-admin{
+  font-size: 22px;
+  margin-top: -2px;
+}
+
+.admin__title-icon{
+  margin-top: 2px;
+  margin-left : 10px
+}

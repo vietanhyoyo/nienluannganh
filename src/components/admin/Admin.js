@@ -1,8 +1,5 @@
 import '../../css/admin.css'
-import StaffAdmin from './StaffAdmin';
-import OrderAdmin from './OrderAdmin';
-import AdminAddUser from './AdminAddUser';
-import AdminPromotion from './AdminPromotion';
+import { Outlet } from 'react-router-dom';
 function Admin(){
       
       const Product     = document.getElementsByClassName('admin__li-product');
@@ -163,7 +160,7 @@ function Admin(){
                     </ul>
                 </div>
             </div>
-            <AdminPromotion />
+            <Outlet/>
             </div>
         </div>
     );
