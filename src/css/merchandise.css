@@ -21,6 +21,10 @@
     padding-right: 4px;
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
+    transition: all 0.2s;
+}
+.merchandise__item:hover{
+    transform: translateY(-4px);
 }
 .merchandise__box{
     background-color: #fff;

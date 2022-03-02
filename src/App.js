@@ -14,13 +14,14 @@ import OrderAdmin from "./components/admin/OrderAdmin";
 import AdminAddUser from "./components/admin/AdminAddUser";
 import AdminPromotion from "./components/admin/AdminPromotion";
 import AdminInvoice from "./components/admin/AdminInvoice";
+import AdminControllProductType from "./components/admin/AdminControllProductType";
 
 function App() {
   return (
     <React.Fragment>
       <Routes>
         <Route path='/' element={<Client />} >
-          <Route path='home' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='cart/:id' element={<Cart />} />
           <Route path='buy/:id' element={<Buy />} />
           <Route path='person' element={<Person />} >
@@ -34,6 +35,7 @@ function App() {
           <Route path='adduser/:id' element={<AdminAddUser />} />
           <Route path='invoice/:id' element={<AdminInvoice />} />
           <Route path='promotion/:id' element={<AdminPromotion />} />
+          <Route path='producttype/:id' element={<AdminControllProductType />} />
         </Route>
       </Routes>
     </React.Fragment>
