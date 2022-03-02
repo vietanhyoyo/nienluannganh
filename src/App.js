@@ -10,6 +10,8 @@ import Client from "./components/Client";
 import PersonProfile from "./components/person/PersonProfile";
 import PersonHistory from "./components/person/PersonHistory";
 import PersonAddress from "./components/person/PersonAddress";
+import Product from './components/product/Product';
+import Signup from './components/signup/Signup'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='cart/:id' element={<Cart />} />
           <Route path='buy/:id' element={<Buy />} />
+          <Route path='product/:id' element={<Product />} />
+          <Route path='signup' element={<Signup />} />
           <Route path='person' element={<Person />} >
             <Route path='profile/:id' element={<PersonProfile />} />
             <Route path='history/:id' element={<PersonHistory />} />
