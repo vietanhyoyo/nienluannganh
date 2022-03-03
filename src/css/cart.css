@@ -13,7 +13,7 @@
     margin-top: 10px;
 }
 .cart__row--boder{
-    border-top: 1px solid #ccc;
+    border-top: 1px dotted #ccc;
 }
 .cart__info{
     height: 100px;
@@ -73,10 +73,10 @@
 .cart__info__content input[type=text]{
     width: 30px;
     text-align: center;
-    border: 1px solid #bbb;
+    border: 1px dotted #bbb;
 }
 .cart__info__content input[type=text]:focus{
-    border: 1px solid #bbb;
+    border: 1px dotted #bbb;
     outline: none;
 }
 .cart__payment .cart__p{

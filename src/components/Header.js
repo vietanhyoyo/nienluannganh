@@ -4,6 +4,7 @@ import '../css/header.css';
 import Search from './Search';
 import { useEffect, useRef } from 'react';
 import MenuItemList from './MenuItemList';
+import logoima from '../images/logotext.png'
 
 function Header() {
     const bar = useRef();
@@ -84,7 +85,7 @@ function Header() {
                 <div className='header__box'>
                     <div className='header__contentlogo'>
                         <Link to='/'>
-                            <h1 className='header__logo'><b>L</b>ogo</h1>
+                            <h1 className='header__logo'><img src={logoima} alt='logoo'/></h1>
                         </Link>
                         <div className='header__icon header__icon--bar' onClick={toggleNav}>
                             <i ref={bar} id='headerBarIcon' className='fas fa-bars' ></i>
