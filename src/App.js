@@ -15,6 +15,9 @@ import AdminAddUser from "./components/admin/AdminAddUser";
 import AdminPromotion from "./components/admin/AdminPromotion";
 import AdminInvoice from "./components/admin/AdminInvoice";
 import AdminControllProductType from "./components/admin/AdminControllProductType";
+import Login from "./components/login/Login";
+import Signup from "./components/signup/Signup";
+import Product from "./components/product/Product";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='cart/:id' element={<Cart />} />
           <Route path='buy/:id' element={<Buy />} />
+          <Route path='product/:id' element={<Product />} />
+          <Route path='signup' element={<Signup />} />
+          <Route path='login' element={<Login />} />
           <Route path='person' element={<Person />} >
             <Route path='profile/:id' element={<PersonProfile />} />
             <Route path='history/:id' element={<PersonHistory />} />
