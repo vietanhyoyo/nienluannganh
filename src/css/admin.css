@@ -161,7 +161,7 @@
 
 /* menu */
 .admin__menu{
-  min-height: 700px;
+  min-height: 1200px;
   width: 230px;
   background-color: var(--c1-new);
   color: var(--c4-new);

@@ -11,10 +11,11 @@ import PersonProfile from "./components/person/PersonProfile";
 import PersonHistory from "./components/person/PersonHistory";
 import StaffAdmin from "./components/admin/StaffAdmin";
 import ListProductAdmin from "./components/admin/ListProductAdmin";
-// import AdminAddUser from "./components/admin/AdminAddUser";
-// import AdminPromotion from "./components/admin/AdminPromotion";
-// import AdminInvoice from "./components/admin/AdminInvoice";
-
+import AdminAddUser from "./components/admin/AdminAddUser";
+import AdminPromotion from "./components/admin/AdminPromotion";
+import AdminInvoice from "./components/admin/AdminInvoice";
+import AdminAddProduct from "./components/admin/AdminAddProduct";
+import AdminStatistical from "./components/admin/AdminStatistical";
 function App() {
   return (
     <React.Fragment>
@@ -31,10 +32,11 @@ function App() {
         <Route path='/admin' element={<Admin />}>
         <Route path='staff/:id' element={<StaffAdmin />}/>
         <Route path='listproduct/:id=1' element={<ListProductAdmin />}/>
-        {/* <Route path='adduser/:id' element={<AdminAddUser />}/>
+        <Route path='adduser/:id' element={<AdminAddUser />}/>
         <Route path='invoice/:id' element={<AdminInvoice />}/>
-        <Route path='promotion/:id' element={<AdminPromotion />}/> */}
-
+        <Route path='promotion/:id' element={<AdminPromotion />}/>
+        <Route path='addproduct/:id' element={<AdminAddProduct />}/>
+        <Route path='Statistical/:id' element={<AdminStatistical />}/>
         </Route>
       </Routes>
     </React.Fragment>

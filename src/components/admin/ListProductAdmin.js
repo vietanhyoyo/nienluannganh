@@ -1,6 +1,30 @@
 import '../../css/listproductadmin.css' 
-
+import AdminProductItem from './listproductadmin/AdminProductItem';
+import {useState} from 'react'
 function OrderAdmin(){
+    
+    const [product] = useState([
+        {
+            id    : '1',
+            name  : 'Thịt bò',
+            type  : 'Thực phẩm',
+            image : 'https://thitbohuunghi.com/wp-content/uploads/2021/06/6gt5cdi_-_imgur_grande.png',
+            price :  50000,
+            amount:  50,
+            unit  :  "kg"
+        },
+        {
+            id    : '2',
+            name  : 'Pepsi',
+            type  : 'Nước uống',
+            image : 'https://satrafoods.com.vn/uploads/Images/san-pham/thuc-pham-cong-nghe/nuoc-giai-khat/8934588013133-5.jpg',
+            price :  15000,
+            amount:  500,
+            unit  :  "chai"
+        }
+    ])
+
+    
     return(
         <div className="OrderAdmin">
             {/* Div tổng */}
@@ -51,19 +75,19 @@ function OrderAdmin(){
                    <div className="admin-product-header-item">Ảnh sản phẩm</div>
                    <div className="admin-product-header-item">Tên sản phẩm</div>
                    <div className="admin-product-header-item">Loại sản phẩm</div>
-                   <div className="admin-product-header-item">Số lượng</div>
+                   <div className="admin-product-header-item">Số lượng còn lại</div>
                    <div className="admin-product-header-item">Giá bán</div>
                    <div className="admin-product-header-item">Quản lý</div>
                 </div>
                 {/* Div product*/}
-                <div className="admin-product-content">
-                   <div className="admin-product-header-item"><img src="https://thitbohuunghi.com/wp-content/uploads/2021/06/6gt5cdi_-_imgur_grande.png" alt="Alo"className="admin-product-header-item-img"/></div>
-                   <div className="admin-product-header-item">Thịt bò</div>
-                   <div className="admin-product-header-item">Loại sản phẩm</div>
-                   <div className="admin-product-header-item">Số lượng</div>
-                   <div className="admin-product-header-item">Giá bán</div>
-                   <div className="admin-product-header-item">Quản lý</div>
-                </div>
+                {product.map((productitem,index)=>{
+                    return(
+                        <AdminProductItem
+                            key= {index}
+                            product = {productitem}
+                        />
+                    )
+                })}
 
 
 

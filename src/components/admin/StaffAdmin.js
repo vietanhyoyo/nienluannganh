@@ -36,12 +36,12 @@ function StaffAdmin(){
                     <p className="admin__heading-staff">Quản Trị Viên</p>
                     <p className="admin__heading-staff">
                        <div className="admin_manager-staff">
-                            <div className="admin__edit-staff">
-                            <i class="fa-solid fa-user-pen"></i>
+                       <div className="admin__edit-staff">
+                           <p className='icon-editstaff-admin'><i class="fa-solid fa-pen"></i></p>
                             </div>
                             <div className="admin__space"></div>
                             <div className="admin__edit-staff">
-                            <i class="fa-solid fa-trash-can"></i>
+                                <p className='icon-deletestaff-admin'><i class="fi fi-rr-user-remove unte"></i>  </p>
                             </div>
                        </div>
                     </p>
@@ -53,12 +53,12 @@ function StaffAdmin(){
                     <p className="admin__heading-staff">Quản Trị Viên</p>
                     <p className="admin__heading-staff">
                        <div className="admin_manager-staff">
-                            <div className="admin__edit-staff">
-                            <i class="fa-solid fa-user-pen"></i>
+                       <div className="admin__edit-staff">
+                           <p className='icon-editstaff-admin'><i class="fa-solid fa-pen"></i></p>
                             </div>
                             <div className="admin__space"></div>
                             <div className="admin__edit-staff">
-                            <i class="fa-solid fa-trash-can"></i>
+                                <p className='icon-deletestaff-admin'><i class="fi fi-rr-user-remove unte"></i>  </p>
                             </div>
                        </div>
                     </p>
@@ -70,12 +70,12 @@ function StaffAdmin(){
                     <p className="admin__heading-staff">Quản Trị Viên</p>
                     <p className="admin__heading-staff">
                        <div className="admin_manager-staff">
-                            <div className="admin__edit-staff">
-                            <i class="fa-solid fa-user-pen"></i>
+                       <div className="admin__edit-staff">
+                           <p className='icon-editstaff-admin'><i class="fa-solid fa-pen"></i></p>
                             </div>
                             <div className="admin__space"></div>
                             <div className="admin__edit-staff">
-                            <i class="fa-solid fa-trash-can"></i>
+                                <p className='icon-deletestaff-admin'><i class="fi fi-rr-user-remove unte"></i>  </p>
                             </div>
                        </div>
                     </p>

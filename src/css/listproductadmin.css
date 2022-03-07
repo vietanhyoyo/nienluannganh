@@ -160,8 +160,29 @@
     border-radius: 5px;
     padding-top: 8px;
     padding-bottom: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
 }
 .admin-product-header-item-img{
     width: 50px;
     height: 50px; 
+}
+
+#admin-kg{
+    padding-left:20px ;
+    text-align: center;
+}
+
+.admin-product-header-item{
+    
+}
+
+.dot-admin-product{
+    font-size: 18px;
+    cursor: pointer;
+    color: rgb(121, 121, 121);
+}
+
+.dot-admin-product:hover{
+color: black;
+
 }

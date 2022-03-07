@@ -1,0 +1,55 @@
+    :root{
+    --c1: #2e3026;
+    --c2: #869aa6;
+    --c3: #64d275;
+    --c4: #fdfcfb;
+    --c5: #f64129;
+    --c6: #FFD369;
+    --background-color:var(--c1);
+    --color-text:var(--c4)
+}
+
+/* DIV tổng */
+.AdminStatistical__app{
+    width: 100%;
+    padding: 30px;
+}
+
+.AdminStatistical__title{
+    display: flex;
+    background-color: var(--background-color);
+    color: var(--color-text);
+    height: 50px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.AdminStatistical__title-icon{
+    margin-left: 6px;
+    font-size: 20px;
+}
+
+.AdminStatistical__chart{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.AdminStatistical__chart--items{
+    width: 22%;
+    height: 150px;
+    background-color: #e8ebec;
+}
+.AdminStatistical__chart--items-chart{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
