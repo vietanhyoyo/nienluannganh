@@ -136,7 +136,7 @@
     margin-right: 15px;
 }
 .product__contain-often-bought{
-    width: 30%;
+    width: 35%;
     margin-top: 20px;
 }
 .product__contain-often-bought-img{
@@ -158,10 +158,14 @@
 .product__customer-comments{
     box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.089),
                 5px 5px 10px rgba(0, 0, 0, 0.089);
+    display: flex;
+    justify-content: space-between;
+}
+.product__customer-comments-box{
+    width: 60%;
 }
 .product__customer-comments-list{
-    width: 50%;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 10px;
 }
 .product__customer-comments-list-item{
@@ -177,9 +181,7 @@
     margin-left: 5px;
 }
 .product__customer-comments-content{
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 50%;
+    margin-left: 28px;
 }
 .product__customer-comments-info1{
     display: flex;
@@ -214,8 +216,7 @@
     margin-bottom: 5px;
 }
 .product__customer-comments-info{
-    width: 50%;
-    margin-left: 10px;
+    margin-left: 28px;
 }
 .product__customer-comments-info3{
     display: flex;
@@ -239,7 +240,17 @@
 .product__image-slide-img{
     position: relative;
     width: 310px;
-    height: auto;
+}
+.product__image-slide-img-box{
+    margin: auto;
+    display: flex;
+    text-align: center;
+    height: 300px;
+}
+.slide__img{
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 .product__image-slides-btn-left{
     position: absolute;
