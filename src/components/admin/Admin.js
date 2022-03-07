@@ -1,7 +1,4 @@
 import '../../css/admin.css'
-import StaffAdmin from './StaffAdmin';
-import OrderAdmin from './OrderAdmin';
-import AdminAddUser from './AdminAddUser';
 import AdminPromotion from './AdminPromotion';
 function Admin(){
       
