@@ -3,86 +3,79 @@ import '../../css/staffadmin.css'
 function StaffAdmin(){
     return(
         <div className="StaffAdmin">
-          <div className="StaffAdmin-app">
-            <div className="StaffAdmin__left">
-                <h3 className="StaffAdmin__title"> <p className="StaffAdmin__title-icon"><i class="fa-solid fa-circle-user"></i></p> Nhân viên</h3>
-                <div className="StaffAdmin__classify-staff">   
-                    <div className="StaffAdmin__level"> 
-                         <div className="StaffAdmin__admin-level">
-                            <p className="StaffAdmin__staff-icon"> <i class="fa-solid fa-id-card"></i> Tất cả nhân viên</p> 
-                        </div>
-                        <div className="StaffAdmin__admin-level">
-                            <p className="StaffAdmin__staff-icon"> <i class="fa-solid fa-user-tie"></i> Quản Trị viên</p> 
-                        </div>
-                        <div className="StaffAdmin__admin-level">
-                            <p className="StaffAdmin__staff-icon"> <i class="fa-solid fa-user-tie"></i> Nhân viên</p> 
-                        </div>
-                    </div>
-                </div>
-              
+            {/* DIV Search staff */}
+           <div className='StaffAdmin__search'>
+                    <label className='StaffAdmin__search-icon' for='StaffAdmin__search-input-fl'> 
+                         <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                   <input type='text' id='StaffAdmin__search-input-fl' className='StaffAdmin__search-input' 
+                     placeholder='Nhập tên nhân viên cần tìm...'/>
             </div>
-            <div className='StaffAdmin__right'>
-                 <div className='admin-header'>
-                    <p className="admin__heading-staff">Ảnh đại diện</p>
-                    <p className="admin__heading-staff">Họ tên</p>
-                    <p className="admin__heading-staff">Giới tính</p>
-                    <p className="admin__heading-staff">Chức vụ</p>
-                    <p className="admin__heading-staff">Quản lý</p>
-                 </div>
-                <div className="admin-staff">
-                    <div className="admin__heading-staff"><img className="admin__img-staff" src="https://phunugioi.com/wp-content/uploads/2020/10/hinh-anh-avatar-nam-dep.jpg" alt="alo"></img></div>  
-                    <p className="admin__heading-staff ">Nguyễn Trần Thanh Điền</p>
-                    <p className="admin__heading-staff">Nam</p>
-                    <p className="admin__heading-staff">Quản Trị Viên</p>
-                    <p className="admin__heading-staff">
-                       <div className="admin_manager-staff">
-                       <div className="admin__edit-staff">
-                           <p className='icon-editstaff-admin'><i class="fa-solid fa-pen"></i></p>
-                            </div>
-                            <div className="admin__space"></div>
-                            <div className="admin__edit-staff">
-                                <p className='icon-deletestaff-admin'><i class="fi fi-rr-user-remove unte"></i>  </p>
-                            </div>
-                       </div>
-                    </p>
+            {/* DIV filter staff*/}
+            <div className='StaffAdmin__filter-title'>Danh sách</div>
+            <div className='StaffAdmin__filter'>
+                <div className='StaffAdmin__filter-items'>Quản trị viên</div>    
+                <div className='StaffAdmin__filter-items'>Nhân viên</div>   
+                <div className='StaffAdmin__filter-items'>Tất cả thành viên</div>   
+            </div>  
+            {/* TITLE */}
+            <div className='StaffAdmin__manager'>
+                <div className='StaffAdmin__manager-title'>
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-image'>Ảnh</div>    
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-name'>Tên</div>    
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-age'>Tuổi</div>    
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-gender'>Giới tính</div>    
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-number'>Số điện thoại</div>    
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-manager'>Quản lý</div>    
                 </div>
-                <div className="admin-staff">
-                    <div className="admin__heading-staff"><img className="admin__img-staff" src="https://thuthuatnhanh.com/wp-content/uploads/2018/07/anh-dai-dien-dep.jpg" alt="alo"></img></div>  
-                    <p className="admin__heading-staff ">Bùi Việt Anh</p>
-                    <p className="admin__heading-staff">Nam</p>
-                    <p className="admin__heading-staff">Quản Trị Viên</p>
-                    <p className="admin__heading-staff">
-                       <div className="admin_manager-staff">
-                       <div className="admin__edit-staff">
-                           <p className='icon-editstaff-admin'><i class="fa-solid fa-pen"></i></p>
-                            </div>
-                            <div className="admin__space"></div>
-                            <div className="admin__edit-staff">
-                                <p className='icon-deletestaff-admin'><i class="fi fi-rr-user-remove unte"></i>  </p>
-                            </div>
-                       </div>
-                    </p>
+                {/* DIV NHÂN VIÊN */}
+                <div className='StaffAdmin__manager-content'>
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-image'>
+                        <img src='https://i2.wp.com/johnothecoder.uk/wp-content/uploads/sites/11/2018/12/Mafia-Online-Avatar-600x600.jpg?ssl=1' alt='alo' className='StaffAdmin__manager-content-items-tagimage'/>
+                        </div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>Nguyễn Trần Thanh Điền</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>22</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>Nam</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>0966631xxx</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
+                        <div className='StaffAdmin__manager-content-items-icon'>
+                            <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-pen-to-square"></i></p>
+                            <p className='StaffAdmin__manager-content-items-icon-text'>Edit</p>
+                        </div>
+                        <div className='StaffAdmin__manager-content-items-space'></div>
+                        <div className='StaffAdmin__manager-content-items-icon-right'>
+                        <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-user-xmark"></i></p>
+                            <p className='StaffAdmin__manager-content-items-icon-text'>Delete</p>
+                        </div>
+                    </div>    
                 </div>
-                <div className="admin-staff">
-                    <div className="admin__heading-staff"><img className="admin__img-staff" src="https://i.pinimg.com/474x/8f/33/30/8f3330d6163782b88b506d396f5d156f.jpg" alt="alo"></img></div>  
-                    <p className="admin__heading-staff ">Võ Trung Kiên</p>
-                    <p className="admin__heading-staff">Nam</p>
-                    <p className="admin__heading-staff">Quản Trị Viên</p>
-                    <p className="admin__heading-staff">
-                       <div className="admin_manager-staff">
-                       <div className="admin__edit-staff">
-                           <p className='icon-editstaff-admin'><i class="fa-solid fa-pen"></i></p>
-                            </div>
-                            <div className="admin__space"></div>
-                            <div className="admin__edit-staff">
-                                <p className='icon-deletestaff-admin'><i class="fi fi-rr-user-remove unte"></i>  </p>
-                            </div>
-                       </div>
-                    </p>
+                {/*  */}
+                 {/* DIV NHÂN VIÊN */}
+                 <div className='StaffAdmin__manager-content'>
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-image'>
+                        <img src='https://avatarfiles.alphacoders.com/703/70382.jpg' alt='alo' className='StaffAdmin__manager-content-items-tagimage'/>
+                        </div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>Bùi Việt Anh</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>22</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>Nam</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>084428+xxx</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
+                        <div className='StaffAdmin__manager-content-items-icon'>
+                            <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-pen-to-square"></i></p>
+                            <p className='StaffAdmin__manager-content-items-icon-text'>Edit</p>
+                        </div>
+                        <div className='StaffAdmin__manager-content-items-space'></div>
+                        <div className='StaffAdmin__manager-content-items-icon-right'>
+                        <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-user-xmark"></i></p>
+                            <p className='StaffAdmin__manager-content-items-icon-text'>Delete</p>
+                        </div>
+                    </div>    
                 </div>
-                   
+                {/*  */}
             </div>
-          </div>  
+            
+
+
         </div>
     )
 }
