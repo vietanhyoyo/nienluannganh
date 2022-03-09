@@ -1,11 +1,14 @@
 .admin-promotion{
     padding: 30px;
     flex: 1;
-    display: flex;
 }
 .admin-promotion__header{
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+.admin-promotion__header__1{
+    flex: 1;
 }
 .admin-promotion__header--title{
     display: flex;
@@ -34,6 +37,25 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.admin-promotion__col{
+    flex: 1;
+}
+.admin-promotion__col--small{
+    padding: 14px;
+}
+.admin-promotion__col--small p{
+    height: 100%;
+    font-weight: 600;
+    font-size: 30px;
+    color: #999;
+}
+.admin-promotion__col--small .button{
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    height: 100%;
+}
 .admin-promotion__col--after{
     margin-left: 10px;
 }
@@ -43,7 +65,7 @@
     margin-bottom: 6px;
 }
 .admin-promotion__input{
-    width: 200px;
+    width: 100%;
     height: 30px;
     padding-left: 6px;
     padding-right: 6px;
@@ -72,20 +94,12 @@
 .admin-promotion__item{
     cursor: pointer;
     display: flex;
-    width: 370px;
+    width: 80%px;
     height: 100px;
     box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.048),
                 5px 5px 5px rgba(0, 0, 0, 0.144);
     border-radius: 10px;
     margin: 10px;
-    transition: all 0.2s;
-}
-.admin-promotion__item:hover, 
-.admin-promotion__item:active{
-    width: 373px;
-    height: 100px;
-    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.13),
-                5px 5px 5px rgba(0, 0, 0, 0.192);
 }
 .admin-promotion__item__col{
     height: 100px;
@@ -133,6 +147,118 @@
 }
 .admin-promotion__list{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     padding-top: 20px;
+}
+.admin-promotion__filter{
+    margin-top: 24px;
+    border-top: 1px dotted #ccc;
+}
+.admin-promotion-list{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.admin-promotion-list__turnoff{
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 1;
+    width: 250vh;
+    height: 100vh;
+}
+.admin-promotion-list__form{
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    width: 430px;
+    left: 50%;
+    padding: 16px;
+    transform: translate(-50%,-50%);
+}
+.admin-promotion-list__body{
+    height: 300px;
+    overflow-y: scroll;
+}
+.admin-promotion-list__body::-webkit-scrollbar {
+    width: 5px;
+}
+.admin-promotion-list__body::-webkit-scrollbar-track {
+    border-radius: 10px;
+} 
+.admin-promotion-list__body::-webkit-scrollbar-thumb {
+    background: var(--c2); 
+    border-radius: 10px;
+}
+.admin-promotion-list__body::-webkit-scrollbar-thumb:hover {
+    background: var(--c3); 
+}
+.admin-promotion-list__header{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+.admin-promotion-list__header::after{
+    position: absolute;
+    top: 60px;
+    content: ' ';
+    width: 80%;
+    height: 1px;
+    background-color: var(--c3);
+}
+.admin-promotion-list__name{
+    font-size: 12px;
+    max-width: 170px;
+}
+.admin-promotion-list__close{
+    cursor: pointer;
+}
+.admin-promotion-list__close:hover{
+    color: var(--c5);
+}
+.admin-promotion-list-item{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.admin-promotion-list-item__img{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+.admin-promotion-list-item__img img{
+    width: 100%;
+}
+.admin-promotion-list-item__col{
+    display: flex;
+}
+.admin-promotion-list-item__col span{
+    font-size: 12px;
+    margin-left: 5px;
+    padding-top: 3px;
+}
+.admin-promotion-list-item__col--button{
+    display: flex;
+    height: 40;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.admin-promotion-list-item__col--button i{
+    cursor: pointer;
+}
+.admin-promotion-list-item__col--button .fi-rr-trash:hover{
+    color: var(--c5);
+}
+.admin-promotion-list-item__button--add{
+    padding-top: 10px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+}
+.admin-promotion-list-item__button--add:hover, 
+.admin-promotion-list-item__button--add:active{
+    color: var(--c3);
 }

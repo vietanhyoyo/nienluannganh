@@ -65,3 +65,8 @@
     line-height: 29px;
     font-size: 0.9rem;
 }
+.person__left__row:hover,
+.person__left__row:active{
+    color: var(--c2);
+    cursor: pointer;
+}

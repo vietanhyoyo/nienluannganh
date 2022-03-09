@@ -37,6 +37,7 @@
     align-items: center;
     padding-left: 15px;
     border-radius: 15px;
+    
 }
 .orderamin-title-icon{
     font-size: 20px;
@@ -76,9 +77,8 @@
 /* search text */
 .orderadmin-content-navbar{
     height: 45px;
-    width: 95%;
+    width: 100%;
     border: 2px solid rgb(212, 212, 212);
-    margin-left: 10px;
     display: flex;
     border-radius: 5px;
 }
@@ -132,65 +132,54 @@
 }
 
 .admin-product-header{
-    width: 90%;
-    height: 45px;
+    width: 100%;
+    height: 40px;
     background-color: #2e3026;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 8px;
-    padding: 5px;
     display: flex;
-    color: var(--c4);
+    color: var(--color);
+    margin-top: 20px;
     align-items: center;
+    border-radius: 5px;
     
 }
-.admin-product-header-content{
-    margin-left: 60px;
+
+.admin-product-header-item{
+   width: 20%;
+   text-align: center;
 }
-.admin-product-header-content-1{
-    margin-left: 70px;
-    display: flex;
-    width:50%;
-    justify-content: space-around;
-}
+
 
 .admin-product-content{
-    width: 90%;
+    width: 100%;
     height: auto;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 8px;
-    padding: 5px;
+    background-color: #ffffff;
     display: flex;
-    background-color: rgb(255, 255, 255);
+   color: #2e3026;
+    margin-top: 20px;
     align-items: center;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+}
+.admin-product-header-item-img{
+    width: 50px;
+    height: 50px; 
 }
 
-.img-product{
-    width: 75px;
-    height: 75px;
-   
-    margin-left: 75px;
- 
-  
-}
-.name-product{
-    margin-left: 73px;
-    width: 200px;
-    height: auto;
-}
-.type-product{
-    margin-left: 43px;
-    width: 150px;
+#admin-kg{
+    padding-left:20px ;
+    text-align: center;
 }
 
-.amount-product{
-    margin-left:48px;
-    width: 130px;
-    height: auto;
+
+.dot-admin-product{
+    font-size: 18px;
+    cursor: pointer;
+    color: rgb(121, 121, 121);
 }
 
-.price-product{
-    margin-left:25px;
+.dot-admin-product:hover{
+color: black;
+
 }

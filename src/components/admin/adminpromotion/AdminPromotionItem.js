@@ -7,7 +7,7 @@ export default function AdminPromotionItem(prop) {
     if(promotion.status === 1) statusClass += ' admin-promotion__num--green'
 
     return (
-        <div className='admin-promotion__item'>
+        <div className='admin-promotion__item' onClick={prop.onToggle}>
             <div className='admin-promotion__item__col'>
                 <div className={statusClass}>
                     <div className='admin-promotion__num__content'>

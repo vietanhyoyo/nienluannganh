@@ -106,7 +106,7 @@ function Header() {
                     </div>
                     <div className='button header__button'>
                         <i className='fas fa-sign-in-alt' style={{ marginRight: "5px" }} ></i>
-                        <span>Đăng nhập</span>
+                        <Link to='/login' style={{color: '#fff'}}>Đăng nhập</Link>
                     </div>
                 </div>
             </nav>

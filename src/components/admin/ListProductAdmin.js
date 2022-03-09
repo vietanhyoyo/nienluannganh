@@ -1,6 +1,30 @@
-import '../../css/orderadmin.css' 
-
+import '../../css/listproductadmin.css' 
+import AdminProductItem from './listproductadmin/AdminProductItem';
+import {useState} from 'react'
 function OrderAdmin(){
+    
+    const [product] = useState([
+        {
+            id    : '1',
+            name  : 'Thịt bò',
+            type  : 'Thực phẩm',
+            image : 'https://thitbohuunghi.com/wp-content/uploads/2021/06/6gt5cdi_-_imgur_grande.png',
+            price :  50000,
+            amount:  50,
+            unit  :  "kg"
+        },
+        {
+            id    : '2',
+            name  : 'Pepsi',
+            type  : 'Nước uống',
+            image : 'https://satrafoods.com.vn/uploads/Images/san-pham/thuc-pham-cong-nghe/nuoc-giai-khat/8934588013133-5.jpg',
+            price :  15000,
+            amount:  500,
+            unit  :  "chai"
+        }
+    ])
+
+    
     return(
         <div className="OrderAdmin">
             {/* Div tổng */}
@@ -48,36 +72,25 @@ function OrderAdmin(){
 
                 {/* Div product header */}
                 <div className="admin-product-header">
-                    <p className="admin-product-header-content">Ảnh sản phẩm</p>
-                    <p className="admin-product-header-content">Tên sản phẩm</p>
-                    <div className="admin-product-header-content-1">
-                        <p className="admin-product-header-content">Loại sản phẩm</p>
-                        <p className="admin-product-header-content">Số lượng</p>
-                        <p className="admin-product-header-content">Giá tiền</p>
-                    </div>      
+                   <div className="admin-product-header-item">Ảnh sản phẩm</div>
+                   <div className="admin-product-header-item">Tên sản phẩm</div>
+                   <div className="admin-product-header-item">Loại sản phẩm</div>
+                   <div className="admin-product-header-item">Số lượng còn lại</div>
+                   <div className="admin-product-header-item">Giá bán</div>
+                   <div className="admin-product-header-item">Quản lý</div>
                 </div>
                 {/* Div product*/}
-                <div className="admin-product-content">
-                    <img className="img-product" src="https://product.hstatic.net/200000423303/product/ca-rot-huu-co_051657cb99144443bac8015f6dd34dae_1024x1024.jpg" alt="alo"/>
-                    <div className="name-product">Cà rốt</div>
-                    <div className="type-product">Rau củ</div>
-                    <div className="amount-product">50kg</div>
-                    <div className="price-product">25.000đ/kg</div>
-                </div>
-                <div className="admin-product-content">
-                    <img className="img-product" src="https://cf.shopee.vn/file/9bd0837f66d70732a31cee2b8e07853b" alt="alo"/>
-                    <div className="name-product">Coca cola lon</div>
-                    <div className="type-product">Thức uống có gas</div>
-                    <div className="amount-product">20 thùng</div>
-                    <div className="price-product">125.000/thùng</div>
-                </div>
-                <div className="admin-product-content">
-                    <img className="img-product" src="http://product.hstatic.net/1000282430/product/tao_xanh_my_grande.jpg" alt="alo"/>
-                    <div className="name-product">Táo xanh</div>
-                    <div className="type-product">Hoa quả</div>
-                    <div className="amount-product">100kg</div>
-                    <div className="price-product">86.000đ/kg</div>
-                </div>
+                {product.map((productitem,index)=>{
+                    return(
+                        <AdminProductItem
+                            key= {index}
+                            product = {productitem}
+                        />
+                    )
+                })}
+
+
+
              </div>
           </div>
 

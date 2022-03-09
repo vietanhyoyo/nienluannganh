@@ -20,13 +20,15 @@
    
 }
 .StaffAdmin__right{
-    width: 850px;
+    width: 840px;
     height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-left: 30px;
 }
+
+
 .admin__img-staff{
     height: 35px;
     width: 35px;
@@ -40,12 +42,11 @@
     background-color: var(--background-color);
     height: 60px;
     width: 90%;
-    border-radius: 15px;
+  
     display: flex;
     color: var(--text-color);
     align-items: center;
     justify-content: space-around;
-    
 }
 .admin__heading-staff{
     width: 200px;
@@ -55,18 +56,20 @@
 .admin-staff{
     width: 90%;
     height: 60px;
-    background-color: rgb(231, 231, 231);
-    margin-top: 10px;
-    border-radius: 15px;
+    background-color: #f3f2f2;
+    margin-top: 7px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.admin-staff:hover{
+    background-color: #e4e4e4;
+    box-shadow: rgba(4, 25, 49, 0.4) 0px 0px 0px 2px, rgba(3, 20, 39, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .admin_manager-staff{
     display: flex;
     align-items: center;
-    
 }
 .admin__edit-staff{
     font-size: 18px;
@@ -97,24 +100,19 @@
 
 .StaffAdmin__title{
     display: flex;
-    height: 50px;
-    width: 130px;
     background-color: var(--background-color);
     color: var(--text-color);
     align-items: center;
     justify-content: space-around;
-    border-radius: 15px;
     font-size: 16px;
     padding-right: 8px;
     border: 1px solid black;
-    height: auto;
-    width: 200px;
-    margin-top: 30px;
+    height: 50px;
+    width: 150px;
     background-color: var(--background-color);
     color: var(--text-color);
-    border-radius: 15px;
-    padding: 15px;
-    
+    border-radius: 3px;
+    padding-left: 5px;
 }
 .StaffAdmin__title-icon{
     font-size: 25px;
@@ -135,7 +133,24 @@
     padding-left: 15px;
     margin-top: 4px;
 }
-
 .StaffAdmin__admin-level:hover{
     background-color: var(--c3);
+}
+.icon-deletestaff-admin{
+    margin-top: 4px;
+    font-size: 20px;
+}
+.icon-deletestaff-admin:hover{
+    color: #f64129 ;
+}
+
+.icon-editstaff-admin:hover{
+    color: var(--c3);
+}
+.StaffAdmin__classify-staff{
+    background-color: #2e3026;
+    color: #f3f2f2;
+    border-radius: 3px;
+    padding: 10px;
+    margin-top:15px ;
 }

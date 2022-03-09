@@ -33,4 +33,24 @@
     color: rgba(221, 221, 221, 0.418);
     cursor: pointer;
 }
-
+.banner__circle{
+    position: absolute;
+    display: flex;
+    bottom: 60px;
+    visibility: hidden;
+    z-index: 1;
+}
+.banner__circle--button{
+    cursor: pointer;
+    margin: 0 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.253);
+}
+.banner__circle--button--select{
+    background-color: rgba(0, 0, 0, 0.459);
+}
+.banner:hover .banner__circle{
+    visibility: visible;
+}

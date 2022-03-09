@@ -1,8 +1,10 @@
 import '../../css/adminpromotion.css'
 import AdminPromotionItem from './adminpromotion/AdminPromotionItem';
-import {useState} from 'react'
+import { useState } from 'react'
+import AdminPromotionList from './adminpromotion/AdminPromotionList';
 
 export default function AdminPromotion() {
+    const [show, setShow] = useState(false);
     const [promotions] = useState([
         {
             id: 'ddd',
@@ -11,8 +13,8 @@ export default function AdminPromotion() {
             startdate: '12:00 8/3/2022',
             enddate: '24:00 20/3/2022',
             products: 0,
-            status: 0  
-        },{
+            status: 0
+        }, {
             id: 'dttt',
             name: 'Khuyến mãi học sinh, sinh viên',
             price: '30',
@@ -31,6 +33,9 @@ export default function AdminPromotion() {
             status: 1
         }
     ])
+    const handleToggleShow = () => {
+        setShow(!show);
+    }
     return (
         <div className='admin-promotion'>
             <div className='admin-promotion__header'>
@@ -39,7 +44,7 @@ export default function AdminPromotion() {
                         <i className='fi fi-rr-megaphone'></i>
                         <h2>Tạo khuyến mãi cho sản phẩm</h2>
                     </div>
-                    <p className='admin-promotion__minitext'>Quản lý các khuyển mãi của cửa hàng!</p>
+                    <p className='admin-promotion__minitext'>Form thêm khuyến mãi!</p>
                 </div>
                 <div>
                     <form method='post' action='' className='admin-promotion__form'>
@@ -71,15 +76,44 @@ export default function AdminPromotion() {
                 </div>
             </div>
             <div className='admin-promotion__body'>
+                <div className='admin-promotion__controll'>
+                    <div className='admin-promotion__row admin-promotion__filter'>
+                        <div className='admin-promotion__col--small'>
+                            <p>Lọc</p>
+                        </div>
+                        <div className='admin-promotion__col'>
+                            <label htmlFor='startdatefilter' className='admin-promotion__label'>Ngày bắt đầu</label>
+                            <input type='date' name='startdatefilter' className='admin-promotion__input' />
+                        </div>
+                        <div className='admin-promotion__col admin-promotion__col'>
+                            <label htmlFor='enddatefilter' className='admin-promotion__label'>Ngày kết thúc</label>
+                            <input type='date' name='enddatefilter' className='admin-promotion__input' />
+                        </div>
+                        <div className='admin-promotion__col'>
+                            <label htmlFor='statefilter' className='admin-promotion__label'>Trạng thái</label>
+                            <select type='date' name='startdate' className='admin-promotion__input' >
+                                <option value='1'>hiệu lực</option>
+                                <option value='2'>hết hiệu lực</option>
+                            </select>
+                        </div>
+                        <div className='admin-promotion__col--small'>
+                            <div className='button'>Liệt kê</div>
+                        </div>
+                    </div>
+                </div>
                 <div className='admin-promotion__list'>
-                    {promotions.map((promotion,index) => {
-                        return <AdminPromotionItem 
-                            key = {index}
-                            promo = {promotion}
+                    {promotions.map((promotion, index) => {
+                        return <AdminPromotionItem
+                            onToggle={handleToggleShow}
+                            key={index}
+                            promo={promotion}
                         />
                     })}
                 </div>
             </div>
+            {show && <AdminPromotionList
+                onToggle={handleToggleShow}
+            />}
         </div>
     );
 }
