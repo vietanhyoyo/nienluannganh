@@ -59,12 +59,13 @@ function AdminStatistical(){
                         </p>    
                     </div>
                     <div className='AdminStatistical__top--product-content'>
-                        <p className='AdminStatistical__top--product-content-name'> Tên sản phẩm </p>
-                        <img src='' className='AdminStatistical__top--product-content-image'/>
-                        <p className='AdminStatistical__top--product-content-type'> Loại sản phẩm </p>
+                        <p className='AdminStatistical__top--product-content-name'> CẢI THÌA ALOHA VIPSILIP TACA</p>
+                        <img src='https://concung.com/img/news/2021/938_cover.png' alt='alo' className='AdminStatistical__top--product-content-image'/>
+                        <p className='AdminStatistical__top--product-content-type'>  Rau củ </p>
+                        <p className='AdminStatistical__top--product-content-price'> Số lượng : 4523 </p>
                         <div className='AdminStatistical__top--product-content-button'>
-                        <button class="snip1583" > <i class="fa-solid fa-left-long"></i></button>    
-                         <button class="snip1583"><i class="fa-solid fa-right-long"></i></button> 
+                        <button class="snip1583" ><i class="fi fi-rr-angle-left"></i></button>    
+                         <button class="snip1583"><i class="fi fi-rr-angle-right"></i></button> 
                         </div>
                        
                     </div>

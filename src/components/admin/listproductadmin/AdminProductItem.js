@@ -6,7 +6,7 @@ function AdminProductItem(props){
                    <div className="admin-product-header-item">{props.product.type}</div>
                    <div className="admin-product-header-item">{props.product.amount} {props.product.unit}</div>
                    <div id="admin-kg" className="admin-product-header-item">{props.product.price}/{props.product.unit}</div>
-                   <div className="admin-product-header-item"><i class="fi fi-rr-apps"></i></div>
+                   <div className="admin-product-header-item admin-product-header-item-icon"><i class="fi fi-rr-apps"></i></div>
         </div>
     )
 

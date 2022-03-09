@@ -115,10 +115,10 @@ function Admin(){
                         {/* Tiêu đề */}
              
                     <ul className='admin__menu-title admin_title-top' > 
-                      <h3 className="admin__menu-title-manage "onClick={setUser}><p className='icon-manager icon-admin'><i className="fa-solid fa-users-gear "></i></p> QUẢN LÝ TÀI KHOẢNG <i className ="fa-solid fa-angle-down admin__title-icon"></i></h3>    
+                      <h3 className="admin__menu-title-manage "onClick={setUser}><p className='icon-manager icon-admin'><i className="fa-solid fa-users-gear "></i></p> QUẢN LÝ TÀI KHOẢN<i className ="fa-solid fa-angle-down admin__title-icon"></i></h3>    
                         <div className="br-div"></div>
                         <li className='admin__menu-content admin__li-user'>
-                              <Link to={'staff/id=1'} className="admin-content">  <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list"></i></span>Danh sách tài khoảng</p></Link>
+                              <Link to={'staff/id=1'} className="admin-content">  <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-list"></i></span>Danh sách tài khoản</p></Link>
                         </li>
                         <li className='admin__menu-content admin__li-user'>
                             <Link to={'adduser/id=1'} className="admin-content">        <p className='admin-content'><span className='icon-manager'><i className="fa-solid fa-user-plus"></i></span>Thêm tài khoản</p></Link>
