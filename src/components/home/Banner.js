@@ -42,7 +42,7 @@ function Banner() {
             handleNext(); console.log(banindex)
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    });
 
     return (
         <div className='banner'>
