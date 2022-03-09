@@ -1,6 +1,26 @@
 import '../../css/staffadmin.css'
-
+import AdminStaff from './adminstaff/AdminStaff.js';
+import {useState} from 'react'
 function StaffAdmin(){
+    const [staff] = useState([
+        {
+            id    : '1',
+            name  : 'Nguyễn Trần Thanh Điền',
+            age  : 22,
+            image : 'https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2020/09/avatar-lolita-4.jpg?fit=656%2C20000&quality=95&ssl=1',
+            gender : 'Nam',
+            number:  '0966631xxx',
+        },
+        {
+            id    : '2',
+            name  : 'Bùi Việt Anh',
+            age  : 22,
+            image : 'https://4.bp.blogspot.com/-IFxe4e4UIkk/WYVoiyGzBVI/AAAAAAAAS4M/IZBttZ_EHz06-smxaX6KX3SVgUcDOi4EwCLcBGAs/s1600/Taianhdep.club__tai-anh-dai-dien-facebook-kute-de-thuong%2B%25281%2529.jpeg',
+            gender : 'Nam',
+            number:  '0944431xxx',
+        }
+    ])
+    
     return(
         <div className="StaffAdmin">
             {/* DIV Search staff */}
@@ -29,49 +49,17 @@ function StaffAdmin(){
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-manager'>Quản lý</div>    
                 </div>
                 {/* DIV NHÂN VIÊN */}
-                <div className='StaffAdmin__manager-content'>
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-image'>
-                        <img src='https://i2.wp.com/johnothecoder.uk/wp-content/uploads/sites/11/2018/12/Mafia-Online-Avatar-600x600.jpg?ssl=1' alt='alo' className='StaffAdmin__manager-content-items-tagimage'/>
-                        </div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>Nguyễn Trần Thanh Điền</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>22</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>Nam</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>0966631xxx</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
-                        <div className='StaffAdmin__manager-content-items-icon'>
-                            <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-pen-to-square"></i></p>
-                            <p className='StaffAdmin__manager-content-items-icon-text'>Edit</p>
-                        </div>
-                        <div className='StaffAdmin__manager-content-items-space'></div>
-                        <div className='StaffAdmin__manager-content-items-icon-right'>
-                        <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-user-xmark"></i></p>
-                            <p className='StaffAdmin__manager-content-items-icon-text'>Delete</p>
-                        </div>
-                    </div>    
-                </div>
+                {staff.map((staffitems,index)=>{
+                    return(
+                        <AdminStaff
+                            key= {index}
+                            staff = {staffitems}
+                        />
+                    )
+                })}
                 {/*  */}
-                 {/* DIV NHÂN VIÊN */}
-                 <div className='StaffAdmin__manager-content'>
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-image'>
-                        <img src='https://avatarfiles.alphacoders.com/703/70382.jpg' alt='alo' className='StaffAdmin__manager-content-items-tagimage'/>
-                        </div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>Bùi Việt Anh</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>22</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>Nam</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>084428+xxx</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
-                        <div className='StaffAdmin__manager-content-items-icon'>
-                            <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-pen-to-square"></i></p>
-                            <p className='StaffAdmin__manager-content-items-icon-text'>Edit</p>
-                        </div>
-                        <div className='StaffAdmin__manager-content-items-space'></div>
-                        <div className='StaffAdmin__manager-content-items-icon-right'>
-                        <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-user-xmark"></i></p>
-                            <p className='StaffAdmin__manager-content-items-icon-text'>Delete</p>
-                        </div>
-                    </div>    
-                </div>
-                {/*  */}
+
+
             </div>
             
 

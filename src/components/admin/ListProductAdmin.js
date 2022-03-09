@@ -9,7 +9,7 @@ function OrderAdmin(){
             name  : 'Thịt bò',
             type  : 'Thực phẩm',
             image : 'https://thitbohuunghi.com/wp-content/uploads/2021/06/6gt5cdi_-_imgur_grande.png',
-            price :  50000,
+            price :  '50.000đ',
             amount:  50,
             unit  :  "kg"
         },
@@ -18,7 +18,7 @@ function OrderAdmin(){
             name  : 'Pepsi',
             type  : 'Nước uống',
             image : 'https://satrafoods.com.vn/uploads/Images/san-pham/thuc-pham-cong-nghe/nuoc-giai-khat/8934588013133-5.jpg',
-            price :  15000,
+            price :  '15.000đ',
             amount:  500,
             unit  :  "chai"
         }
