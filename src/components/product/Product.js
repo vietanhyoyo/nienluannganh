@@ -71,9 +71,9 @@ function Product() {
                     </div>
                     <div className='product__name-type'>
                         <label>Chọn loại:</label>
-                        <button style={ type == 1 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"}: {}} onClick={()=> setType(1)} className='product__name-type-btn'>LON</button>
-                        <button style={ type == 2 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(2)} className='product__name-type-btn'>GÓI</button>
-                        <button style={ type == 3 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(3)} className='product__name-type-btn'>THÙNG</button>
+                        <button style={ type === 1 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"}: {}} onClick={()=> setType(1)} className='product__name-type-btn'>LON</button>
+                        <button style={ type === 2 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(2)} className='product__name-type-btn'>GÓI</button>
+                        <button style={ type === 3 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(3)} className='product__name-type-btn'>THÙNG</button>
                     </div>
                     <div className='product__name-quantity'>
                         <label>Số lượng:</label>
