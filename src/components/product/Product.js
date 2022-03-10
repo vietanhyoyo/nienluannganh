@@ -4,6 +4,15 @@ import ProductStar from './ProductStar';
 
 
 function Product() {
+    const [type, setType] = useState(1);
+    const [quantity, setquantity] = useState(1);
+    const addQuantity = ()=>{
+        setquantity(quantity+1);
+    }
+    const lessQuantity = ()=>{
+        if(quantity>1)
+            setquantity(quantity-1);
+    }
     const slideList = useRef(
         [
             <img className='slide__img' src={'https://vinmec-prod.s3.amazonaws.com/images/20210106_041321_793265_hat-giong-rau-xa-la.max-1800x1800.jpg'} alt='banner' />,
@@ -59,6 +68,18 @@ function Product() {
                     <div className='product__name-title'>
                         <h1 className='product__name-title-lab'>Xà lách</h1>
                         <h1>15.000đ/kg</h1>
+                    </div>
+                    <div className='product__name-type'>
+                        <label>Chọn loại:</label>
+                        <button style={ type == 1 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"}: {}} onClick={()=> setType(1)} className='product__name-type-btn'>LON</button>
+                        <button style={ type == 2 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(2)} className='product__name-type-btn'>GÓI</button>
+                        <button style={ type == 3 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(3)} className='product__name-type-btn'>THÙNG</button>
+                    </div>
+                    <div className='product__name-quantity'>
+                        <label>Số lượng:</label>
+                        <button className='product__name-quantity-btn' onClick={lessQuantity}>-</button>
+                        <input type='text' className='product__name-quantity-input' value={quantity}></input>
+                        <button className='product__name-quantity-btn'  onClick={addQuantity}>+</button>
                     </div>
                     <div className='button login__oder'>
                         Đặt hàng
@@ -202,7 +223,7 @@ function Product() {
                         </div>
                     </div>
                     <div className='login__box product__customer-comments-content'>
-                        <label className='login__label'>Mời bạn bình luận hoặc đặt câu hỏi...</label>
+                        <lable className='login__label'>Mời bạn đánh giá về sản phẩm...</lable>
                         <br />
                         <input className='login__input product__customer-comments-input'></input>
                     </div>
@@ -245,7 +266,55 @@ function Product() {
                                 Gửi đánh giá
                             </div>
                         </div>
+                    </div>   
+                    <div className='product__customer-comments-content-title'>
+                        <h4>Hỏi về sản phẩm:</h4>
                     </div>
+                    <div className='login__box product__customer-comments-content'>
+                        <lable className='login__label'>Mời bạn bình luận hoặc đặt câu hỏi...</lable>
+                        <br />
+                        <input className='login__input product__customer-comments-input product__customer-comments-input-none'></input>
+                    </div> 
+                    <div className='product__customer-comments-info product__customer-comments-info-none'>
+                        <div className='product__customer-comments-info1'>
+                            <div className='product__customer-comments-info2'>
+                                <div className='product__customer-comments-info2-container'>
+                                    <label>Nam</label>
+                                    <input type='radio' name='sex' id='sex1' checked />
+                                </div>
+                                <div className='product__customer-comments-info2-container'>
+                                    <label>Nữ</label>
+                                    <input type='radio' name='sex' id='sex2' />
+                                </div>
+                            </div>
+                            <div className='product__customer-comments-info2-add-picture'>
+                                <i className="fa-solid fa-camera"></i>
+                                <label>Thêm hình ảnh</label>
+                            </div>
+                        </div>
+                        <div className='product__customer-comments-info3'>
+                            <div className='product__customer-comments-info-fill'>
+                                <label className='login__label'>Họ và tên (bắt buộc)</label>
+                                <br />
+                                <input type='text' className='login__input product__customer-comments-info-fill-input'></input>
+                            </div>
+                            <div className='product__customer-comments-info-fill'>
+                                <label className='login__label'>Số điện thoại</label>
+                                <br />
+                                <input type='text' className='login__input product__customer-comments-info-fill-input'></input>
+                            </div>
+                        </div>
+                        <div className='product__customer-comments-info4'>
+                            <div className='product__customer-comments-info-fill'>
+                                <label className='login__label'>Email</label>
+                                <br />
+                                <input type='email' className='login__input product__customer-comments-info-fill-input'></input>
+                            </div>
+                            <div className='button button-send-comment'>
+                                Gửi đánh giá
+                            </div>
+                        </div>
+                    </div>               
                 </div>
                 <div className='product__contain-often-bought'>
                     <div className='namegroup'>

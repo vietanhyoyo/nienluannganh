@@ -30,7 +30,7 @@
 .login__oder{
     text-align: center;
     margin-left: 50px;
-    max-width: 30% ;
+    max-width: 50% ;
     font-size: 1.5rem;
 }
 .product__name-title h1:first-child {
@@ -118,17 +118,12 @@
     background-color: #fac917;
 }
 .product__comment-ratingbox-rating-chose{
-    text-align: center;
     margin-left: 110px;
 }
 .product__comment-ratingbox-rating-chose-list{
     display: flex;
-    margin-top: 30px;
-    margin-bottom: 15px;
-}
-.button-send{
-    width: 200px;   
-    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
 }
 .product__comment-ratingbox-star-chose i{
     font-size: 40px;
@@ -234,9 +229,6 @@
     margin-bottom: 5px;
     text-align: center;
 }
-.product__comment-ratingbox-star-chose--yellow{
-    color: #fac917;
-}
 .product__image-slide-img{
     position: relative;
     width: 310px;
@@ -273,4 +265,61 @@
 }
 .product__image-slides-btn-right:hover{
     color: var(--c3);
+}
+.product__comment-ratingbox-star-chose--yellow{
+    color: #fac917;
+}
+.product__customer-comments-content-title{
+    padding-left: 28px;
+    padding-top: 10px;
+    color: #0f0f0f;
+}
+.product__customer-comments-info-none{
+    display: none;
+}
+.product__customer-comments-input-none:focus ~ product__customer-comments-info-none {
+    display: block;
+}
+.product__name-type{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+.product__name-type label{
+    margin-right: 39px;
+}
+.product__name-type-btn{
+    width: 80px;
+    height: 35px;   
+    margin-left: 10px;
+    font-size: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.089);
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+}
+.product__name-quantity-btn{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 1rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+    border-radius: 3px;
+}
+.product__name-quantity-btn:hover{
+    background-color: rgba(0, 0, 0, 0.089);
+}
+.product__name-quantity-input{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+    border-radius: 3px;
+}
+.product__name-quantity{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+.product__name-quantity label{
+    margin-right: 50px;
 }

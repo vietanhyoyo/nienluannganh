@@ -1,31 +1,26 @@
 import { useState } from 'react';
 
-export default function ProductStar(){
+export default function ProductStar() {
     const [star, setStar] = useState(0);
-    const stargray = 'fa-solid fa-star product__comment-ratingbox-star-chose-icon';
-    const staryellow = 'fa-solid fa-star product__comment-ratingbox-star-chose-icon product__comment-ratingbox-star-chose--yellow'
-    return(
+    return (
         <div className='product__comment-ratingbox-rating-chose'>
-        <div className='product__comment-ratingbox-rating-chose-list'>
-            <div className='product__comment-ratingbox-star-chose'>
-                <i onClick={setStar(1)} className={star  ? staryellow : stargray}></i>
+            <div className='product__comment-ratingbox-rating-chose-list'>
+                <div className='product__comment-ratingbox-star-chose'>
+                    <i style={{ color: star >= 1 ? "#fac917" : '' }} onClick={() => setStar(1)} className="fa-solid fa-star product__comment-ratingbox-star-chose-icon" ></i>
+                </div>
+                <div className='product__comment-ratingbox-star-chose'>
+                    <i style={{ color: star >= 2 ? "#fac917" : '' }} onClick={() => setStar(2)} className="fa-solid fa-star product__comment-ratingbox-star-chose-icon" ></i>
+                </div>
+                <div className='product__comment-ratingbox-star-chose'>
+                    <i style={{ color: star >= 3 ? "#fac917" : '' }} onClick={() => setStar(3)} className="fa-solid fa-star product__comment-ratingbox-star-chose-icon" ></i>
+                </div>
+                <div className='product__comment-ratingbox-star-chose'>
+                    <i style={{ color: star >= 4 ? "#fac917" : '' }} onClick={() => setStar(4)} className="fa-solid fa-star product__comment-ratingbox-star-chose-icon" ></i>
+                </div>
+                <div className='product__comment-ratingbox-star-chose'>
+                    <i style={{ color: star >= 5 ? "#fac917" : '' }} onClick={() => setStar(5)} className="fa-solid fa-star product__comment-ratingbox-star-chose-icon" ></i>
+                </div>
             </div>
-            {/* <div className='product__comment-ratingbox-star-chose'>
-                <i onClick={setStar(2)} className={(star > 2) ? staryellow : stargray}></i>
-            </div>
-            <div className='product__comment-ratingbox-star-chose'>
-                <i onClick={setStar(3)} className={(star > 3) ? staryellow : stargray}></i>
-            </div>
-            <div className='product__comment-ratingbox-star-chose'>
-                <i onClick={setStar(4)} className={(star > 4) ? staryellow : stargray}></i>
-            </div>
-            <div className='product__comment-ratingbox-star-chose'>
-                <i onClick={setStar(5)} className={(star > 5) ? staryellow : stargray}></i>
-            </div> */}
         </div>
-        <div className='button button-send'>
-            Gửi đánh giá
-        </div>
-    </div>
     )
 }
