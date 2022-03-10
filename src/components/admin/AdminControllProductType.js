@@ -1,25 +1,28 @@
 import '../../css/admincontrollproducttype.css'
 import AdminControllProductTypeItem from './admincontrollproducttype/AdminControllProductTypeItem';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from 'axios'
 
 export default function AdminControllProductType() {
-    const [datas] = useState([
+    const [datas,setDatas] = useState([
         {
             _id: 'a',
             tenloaihang: 'Rau, củ, trái cây'
-        },
-        {
-            _id: 'b',
-            tenloaihang: 'Thịt, trứng, hải sản'
-        },
-        {
-            _id: 'c',
-            tenloaihang: 'Thực phẩm chế biến'
         }
     ])
+    useEffect(function () {
+        axios.get('/products/loaihang')
+            .then(response => response.data)
+            .then(function (response) {
+                setDatas(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },[]);
     const handleAdd = () => {
         let str = prompt('Nhập tên nhóm sản phẩm mới');
-        if(str){
+        if (str) {
             alert(str);
         }
     }

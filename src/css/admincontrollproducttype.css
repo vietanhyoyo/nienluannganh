@@ -1,12 +1,16 @@
 .admin-controll-product-type{
     padding: 30px;
-    width: 1300px;
     flex: 1;
     background-color: rgb(241, 241, 241);
 }
 .admin-controll-product-type__topic{
+    color: var(--c3);
     display: flex;
-    height: 40px;
+    padding: 14px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.062),
+                5px 5px 5px rgba(0,0,0,0.1);
 }
 .admin-controll-product-type__topic h2{
     display: inline;
@@ -15,12 +19,12 @@
     margin-top: 0;
 }
 .admin-controll-product-type__topic i{
-    font-size: 40px;
     margin-right: 10px;
+    font-size: 35px;
 }
 .admin-controll-product-type__body{
     padding-top: 30px;
-    width: 1000px;
+    width: 100%;
 }
 .admin-controll-product-type__item{
     width: 100%;

@@ -1,4 +1,4 @@
-export default function AdminControllProductTypeItem(props) {
+export default function AdminControllProductTypeItem({ data }) {
     const handleDelete = () => {
         let yes = window.confirm('Bạn có muốn xoá nó không!');
         if (yes) {
@@ -15,7 +15,7 @@ export default function AdminControllProductTypeItem(props) {
     return (
         <li className='admin-controll-product-type__li'>
             <div className='admin-controll-product-type__col'>
-                <p>Loại sản phẩm: </p><span>Rau củ</span>
+                <p>Loại sản phẩm: </p><span>{data.tenloaisanpham}</span>
             </div>
             <div className='admin-controll-product-type__col'>
                 <i

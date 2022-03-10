@@ -1,7 +1,9 @@
 import AdminControllProductTypeLi from './AdminControllProductTypeLi'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 export default function AdminControllProductTypeItem(props) {
+    const [datatypes, setDatatypes] = useState([]);
     const [expand, setExpand] = useState(false);
     const handleDelete = () => {
         let yes = window.confirm('Bạn có muốn xoá nó không!');
@@ -21,6 +23,17 @@ export default function AdminControllProductTypeItem(props) {
             alert(str);
         }
     }
+    useEffect(function () {
+        axios.get(`/products/timidloaihangsangloaisanpham?id=${props.data._id}`)
+            .then(response => response.data)
+            .then(function (response) {
+                console.log(response);
+                setDatatypes(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },[props.data._id]);
     return (
         <div className='admin-controll-product-type__item'>
             <div className='admin-controll-product-type__item--box'>
@@ -44,8 +57,12 @@ export default function AdminControllProductTypeItem(props) {
             </div>
             {expand &&
                 <ul>
-                    <AdminControllProductTypeLi />
-                    <AdminControllProductTypeLi />
+                    {datatypes.map((data, index) => {
+                        return <AdminControllProductTypeLi
+                            key={index}
+                            data={data}
+                        />
+                    })}
                     <li className='admin-controll-product-type__li admin-controll-product-type__li--bottom'>
                         <div className='admin-controll-product-type__col'>
                             <div className='admin-controll-product-type__angle'>
