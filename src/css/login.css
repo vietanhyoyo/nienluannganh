@@ -16,7 +16,10 @@
 }
 .login__img{
     height: 100%;
-    width: 100%
+    width: 100%;
+    background-image: url('../images/Wellcome.png');
+    background-size: cover;
+    background-position: center;
 }
 .login__content-right{
     display: flex;
@@ -31,7 +34,7 @@
 .login__box{
     top: 35%;
     left: 20%;
-    border: 1px solid black;
+    border: 1px solid var(--c2);
     padding: 14px;
     border-radius: 10px;
     margin-top: 20px;
@@ -39,7 +42,7 @@
 }
 .login__label{
     font-size: 1rem;
-    color: rgb(197, 196, 196);
+    color: var(--c2);
 }
 .login__input:focus{
     outline: none;
@@ -48,6 +51,7 @@
     width: 100%;
     border: none;
     font-size: 1rem;
+    padding: 5px 0px;
 }
 .login__div{
     width: 400px;
@@ -63,10 +67,21 @@
     text-align: center;  
 }
 .login__logo-img{
-    height: 250px;
+    height: 100px;
     width: auto;
 }
 .login__logo{
     width: 100%;
     text-align: center;
+}
+.login__logo h4{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: var(--c2);
+}
+.login__box:hover{
+    border-color: var(--c3);
+}
+.login__button .button{
+    padding: 14px;
 }

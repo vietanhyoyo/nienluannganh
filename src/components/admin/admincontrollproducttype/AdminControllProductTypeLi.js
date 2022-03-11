@@ -1,14 +1,28 @@
-export default function AdminControllProductTypeItem({ data }) {
+import axios from "axios";
+
+export default function AdminControllProductTypeItem({ data, renderAPI }) {
     const handleDelete = () => {
         let yes = window.confirm('Bạn có muốn xoá nó không!');
         if (yes) {
-            alert('Đã xóa một item')
+            axios.post('/products/xoaloaisanpham', data)
+                .then((response) => {
+                    console.log(response.data)
+                    renderAPI()
+                })
         }
     }
     const handleEdit = () => {
         let str = prompt('Nhập tên nhóm loại hàng muốn thay đổi');
         if (str) {
-            alert(str)
+            axios.post('/products/sualoaisanpham', {
+                _id: data._id,
+                tenloaisanpham: str,
+                loaihang: data.loaihang
+            })
+                .then((response) => {
+                    console.log(response.data)
+                    renderAPI()
+                })
         }
     }
 

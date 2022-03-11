@@ -1,29 +1,36 @@
 import '../../css/admincontrollproducttype.css'
 import AdminControllProductTypeItem from './admincontrollproducttype/AdminControllProductTypeItem';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios'
 
 export default function AdminControllProductType() {
-    const [datas,setDatas] = useState([
+    const [datas, setDatas] = useState([
         {
             _id: 'a',
             tenloaihang: 'Rau, củ, trái cây'
         }
     ])
+    const getDataToAPI = () => axios.get('/products/loaihang')
+        .then(response => response.data)
+        .then(function (response) {
+            setDatas(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     useEffect(function () {
-        axios.get('/products/loaihang')
-            .then(response => response.data)
-            .then(function (response) {
-                setDatas(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },[]);
+        getDataToAPI();
+    }, []);
     const handleAdd = () => {
         let str = prompt('Nhập tên nhóm sản phẩm mới');
         if (str) {
-            alert(str);
+            console.log(str + '...???')
+            axios.post('/products/themloaihang', {
+                tenloaihang: str
+            }).then(response => {
+                console.log(response.data);
+                getDataToAPI();
+            });
         }
     }
     return (
@@ -39,6 +46,7 @@ export default function AdminControllProductType() {
                             return <AdminControllProductTypeItem
                                 key={index}
                                 data={data}
+                                renderAPI={getDataToAPI}
                             />
                         })}
                         <div className='admin-controll-product-type__item'>

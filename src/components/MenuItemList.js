@@ -42,7 +42,7 @@ export default function MenuItemList(prop){
             <ul className='header__ul--child' id={prop.index.toString() + '_header__ul'}>
                 {prop.item.map((item,index) =>
                     <li key={index} className='header__li--child'>
-                        <a className='header__link' href='home' >{item.name}</a>
+                        <a className='header__link' href='home' >{item.tenloaisanpham}</a>
                     </li>
                 )}
             </ul>

@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/header.css';
 import Search from './Search';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MenuItemList from './MenuItemList';
 import logoima from '../images/logotext.png'
+import axios from 'axios';
 
 function Header() {
     const bar = useRef();
@@ -12,38 +13,47 @@ function Header() {
     const close = useRef();
     const cartpath = '/cart/id=23';
 
-    const lists = useRef([{
-        name: 'GIA VỊ',
-        item: [
+    const [lists, setLists] = useState([{
+        _id: "62286a59344956318319ce40",
+        tenloaihang: "Rau - củ - trái cây",
+        loaisanpham: [
             {
-                name: 'Nước mắm',
-                link: '#'
-            }, {
-                name: 'Bột ngọt',
-                link: '#'
-            }
-        ]
-    }, {
-        name: 'TƯƠI SỐNG',
-        item: [
+                _id: "62289f268dd8fc963c448db0",
+                tenloaisanpham: "Rau củ quả",
+                loaihang: "62286a59344956318319ce40",
+                createdAt: "2022-03-09T12:35:50.541Z",
+                updatedAt: "2022-03-09T12:35:50.541Z",
+                __v: 0
+            },
             {
-                name: 'Thịt',
-                link: '#'
-            }, {
-                name: 'Cá',
-                link: '#'
+                _id: "6229fa0c668f87e0cdc9bfc4",
+                tenloaisanpham: "Trái cây",
+                loaihang: "62286a59344956318319ce40",
+                createdAt: "2022-03-10T13:15:56.258Z",
+                updatedAt: "2022-03-10T13:15:56.258Z",
+                __v: 0
             }
         ]
     }]);
 
+    const getDataToAPI = () => axios.get('/products/loaihangloaisanpham')
+        .then(response => response.data)
+        .then(function (response) {
+            console.log(response)
+            setLists(response)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
     const list_item = (
         <React.Fragment>
-            {lists.current.map((list, index) =>
-                <MenuItemList 
+            {lists.map((list, index) =>
+                <MenuItemList
                     key={index}
-                    name={list.name}
+                    name={list.tenloaihang}
+                    item={list.loaisanpham}
                     index={index}
-                    item={list.item}
                 />
             )}
         </React.Fragment>
@@ -74,6 +84,10 @@ function Header() {
         }
     }
 
+    useEffect(function () {
+        getDataToAPI();
+    }, []);
+
     useEffect(() => {
         window.addEventListener('resize', checkSize);
         return () => window.removeEventListener('resize', checkSize);
@@ -85,7 +99,7 @@ function Header() {
                 <div className='header__box'>
                     <div className='header__contentlogo'>
                         <Link to='/'>
-                            <h1 className='header__logo'><img src={logoima} alt='logoo'/></h1>
+                            <h1 className='header__logo'><img src={logoima} alt='logoo' /></h1>
                         </Link>
                         <div className='header__icon header__icon--bar' onClick={toggleNav}>
                             <i ref={bar} id='headerBarIcon' className='fas fa-bars' ></i>
@@ -106,7 +120,7 @@ function Header() {
                     </div>
                     <div className='button header__button'>
                         <i className='fas fa-sign-in-alt' style={{ marginRight: "5px" }} ></i>
-                        <Link to='/login' style={{color: '#fff'}}>Đăng nhập</Link>
+                        <Link to='/login' style={{ color: '#fff' }}>Đăng nhập</Link>
                     </div>
                 </div>
             </nav>

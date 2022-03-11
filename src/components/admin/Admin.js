@@ -6,7 +6,6 @@ function Admin(){
       const User        = document.getElementsByClassName('admin__li-user');
       const Promotion   = document.getElementsByClassName('admin__li-Promotion');
       const Statistical = document.getElementsByClassName('admin__li-statistical');
-    
 
   function setUser(){  
 

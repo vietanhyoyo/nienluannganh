@@ -1,28 +1,33 @@
 import '../../css/login.css';
-import imgform from '../../images/BGlogin.png'
-import LogoLG from '../../images/LOGOLG.jpg'
+import LogoLG from '../../images/logotext.png'
+import { useContext } from 'react';
+import { LoginContext } from '../../contexts/LoginContext'
 
 function Login() {
+
+    console.log(useContext(LoginContext))
+
     return (
         <div className='login'>
             <div className='login__content row-app'>
                 <div className='login__content-left'>
-                    <img alt='logo' className='login__img' src={imgform}></img>
+                    <div className='login__img'></div>
                 </div>
                 <div className='login__content-right'>
                     <div className='login__div'>
                         <div className='login__logo'>
                             <img alt='logo' className='login__logo-img' src={LogoLG}></img>
+                            <h4>Nếu bạn đã có tài khoản thì hãy đăng nhập! <br/>
+                                Nếu bạn chưa có tài khoản thì hãy đăng ký!
+                            </h4>
                         </div>
                         <div className='login__box'>
-                            <label className='login__label'>Tài khoản</label>
-                            <br />
-                            <input className='login__input'></input>
+                            <label className='login__label' htmlFor='name'>Tài khoản</label>
+                            <input name='name' className='login__input' type='text'></input>
                         </div>
                         <div className='login__box'>
-                            <label className='login__label'>Mật khẩu</label>
-                            <br />
-                            <input type='password' className='login__input'></input>
+                            <label className='login__label' htmlFor='password'>Mật khẩu</label>
+                            <input name='password' type='password' className='login__input'></input>
                         </div>
                         <div className='login__button'>
                             <div className='button login__submit'>

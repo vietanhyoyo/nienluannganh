@@ -39,7 +39,7 @@ function Banner() {
     }
     useEffect(() => {
         const interval = setInterval(() => {
-            handleNext(); console.log(banindex)
+            handleNext();
         }, 5000);
         return () => clearInterval(interval);
     });
