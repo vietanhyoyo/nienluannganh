@@ -2,12 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/header.css';
 import Search from './Search';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
+import { LoginContext } from '../contexts/LoginContext'
 import MenuItemList from './MenuItemList';
 import logoima from '../images/logotext.png'
 import axios from 'axios';
 
 function Header() {
+
+    /*Lấy giá trị đăng nhập */
+    const loginState = useContext(LoginContext);
+    const username = loginState.loginstate;
+    console.log('contextHeader : ' + username);
+    /*Trang thai dang nhap*/
+    const dadangnhap = username === '' ? false : true;
+
     const bar = useRef();
     const ul = useRef();
     const close = useRef();
@@ -39,7 +48,6 @@ function Header() {
     const getDataToAPI = () => axios.get('/products/loaihangloaisanpham')
         .then(response => response.data)
         .then(function (response) {
-            console.log(response)
             setLists(response)
         })
         .catch(function (error) {
@@ -84,6 +92,11 @@ function Header() {
         }
     }
 
+    const handleSignOut = () => {
+        loginState.handleSetLogin('');
+        localStorage.removeItem('accessToken');
+    }
+
     useEffect(function () {
         getDataToAPI();
     }, []);
@@ -118,10 +131,15 @@ function Header() {
                     <div className='header__icon'>
                         <Link to={cartpath}><i className='fas fa-shopping-basket'></i></Link>
                     </div>
-                    <div className='button header__button'>
-                        <i className='fas fa-sign-in-alt' style={{ marginRight: "5px" }} ></i>
-                        <Link to='/login' style={{ color: '#fff' }}>Đăng nhập</Link>
-                    </div>
+                    {dadangnhap ?
+                        <div className='button header__button' onClick={handleSignOut}>
+                            <i className='fa-solid fa-arrow-right-from-bracket' style={{ marginRight: "5px" }} ></i>
+                            <div style={{ color: '#fff', display: 'inline' }}>Đăng xuất</div>
+                        </div>
+                        : <div className='button header__button'>
+                            <i className='fas fa-sign-in-alt' style={{ marginRight: "5px" }} ></i>
+                            <Link to='/login' style={{ color: '#fff' }}>Đăng nhập</Link>
+                        </div>}
                 </div>
             </nav>
         </div>

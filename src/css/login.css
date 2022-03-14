@@ -85,3 +85,18 @@
 .login__button .button{
     padding: 14px;
 }
+.signup__repassword{
+    border: 1px solid var(--c5);
+}
+.signup__repassword:hover{
+    border-color: var(--c5);
+}
+.signup__error{
+    color: var(--c5);
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 6px;
+}
+.button__signup{
+    margin: 0 auto;
+}

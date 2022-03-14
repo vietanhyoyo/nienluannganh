@@ -1,11 +1,38 @@
 import '../../css/login.css';
-import LogoLG from '../../images/logotext.png'
-import { useContext } from 'react';
-import { LoginContext } from '../../contexts/LoginContext'
+import LogoLG from '../../images/logotext.png';
+import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom'
+
+import { LoginContext } from '../../contexts/LoginContext';
+import axios from 'axios';
 
 function Login() {
 
-    console.log(useContext(LoginContext))
+    /*Lấy dữ liệu đăng nhập**/
+    const loginState = useContext(LoginContext)
+
+    /*Các state dữ liệu form đăng nhập */
+    const [name, setName] = useState();
+    const [password, setPassword] = useState();
+
+    const handleSubmit = () => {
+        /*Đăng nhập vào localStorage */
+        axios.post('/login/dangnhap', { name, password })
+            .then(response => response.data)
+            .then(response => {
+                /*Nếu kết quả là chuỗi thì đăng nhập thất bại */
+                if (typeof response === 'string') {
+                    alert(response);
+                } else {
+                    /**Nếu đúng tài khoản và mật khẩu thì lưu vào localStorage và state trong loginContext */
+                    loginState.handleSetLogin(response._id);
+                    localStorage.setItem('accessToken', response._id);
+                    window.location = '/';
+                }
+            })
+            .catch(err => console.log(err))
+
+    }
 
     return (
         <div className='login'>
@@ -17,25 +44,25 @@ function Login() {
                     <div className='login__div'>
                         <div className='login__logo'>
                             <img alt='logo' className='login__logo-img' src={LogoLG}></img>
-                            <h4>Nếu bạn đã có tài khoản thì hãy đăng nhập! <br/>
+                            <h4>Nếu bạn đã có tài khoản thì hãy đăng nhập! <br />
                                 Nếu bạn chưa có tài khoản thì hãy đăng ký!
                             </h4>
                         </div>
                         <div className='login__box'>
                             <label className='login__label' htmlFor='name'>Tài khoản</label>
-                            <input name='name' className='login__input' type='text'></input>
+                            <input name='name' className='login__input' type='text' onChange={e => setName(e.target.value)} />
                         </div>
                         <div className='login__box'>
                             <label className='login__label' htmlFor='password'>Mật khẩu</label>
-                            <input name='password' type='password' className='login__input'></input>
+                            <input name='password' type='password' className='login__input' onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className='login__button'>
-                            <div className='button login__submit'>
+                            <div className='button login__submit' onClick={handleSubmit}>
                                 Đăng nhập
                             </div>
-                            <div className='button login__submit'>
+                            <Link to='/signup' className='button login__submit'>
                                 Đăng Ký
-                            </div>
+                            </Link>
                         </div>
 
                     </div>
