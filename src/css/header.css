@@ -205,3 +205,15 @@
 .header__logo b{
     color: var(--c3);
 }
+.header__avatar{
+    margin-left: 8px;
+}
+.header__avatar--img{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-size: contain;
+    background-position: center;
+    border-radius: 50%;
+}

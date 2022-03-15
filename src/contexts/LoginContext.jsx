@@ -4,8 +4,7 @@ const LoginContext = createContext()
 
 function LoginProvider({children}){
     
-    const [loginstate, setLoginState] = useState('');
-    console.log('LoginProvider : ' + loginstate)
+    const [loginstate, setLoginState] = useState(null);
 
     const handleSetLogin = (value) => {
         setLoginState(value)
