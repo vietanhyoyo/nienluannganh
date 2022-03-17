@@ -35,8 +35,8 @@ function App() {
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
             <Route path='person' element={<Person />} >
-              <Route path='profile/:id' element={<PersonProfile />} />
-              <Route path='history/:id' element={<PersonHistory />} />
+              <Route path='profile' element={<PersonProfile />} />
+              <Route path='history' element={<PersonHistory />} />
             </Route>
           </Route>
           <Route path='/admin' element={<Admin />}>
