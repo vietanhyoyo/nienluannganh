@@ -12,6 +12,7 @@ function HeaderAvatar() {
     /*Đăng xuất */
     const handleSignOut = () => {
         loginState.handleSetLogin(null);
+        loginState.setRole(null);
         localStorage.removeItem('accessToken');
     }
     /*Hiển thị đăng xuất */
@@ -21,14 +22,14 @@ function HeaderAvatar() {
     }
 
     useEffect(() => {
-        axios.post('/login/layuser', { id: loginState.loginstate })
+        axios.post('/login/layuser', { id: loginState.iduser })
             .then(response => response.data)
             .then(response => {
                 const photo = String(response.hinhanh);
                 setUser(response);
                 setAvatarImg(photo)
             });
-    }, [loginState.loginstate]);
+    }, [loginState.iduser]);
 
     return (
         <div className='header__avatar'>
