@@ -1,0 +1,117 @@
+:root{
+  --c1-new: #2e3026;
+  --c2-new: #869aa6;
+  --c3-new: #64d275;
+  --c4-new: #fdfcfb; 
+  --c5-new: #f64129;
+  --c6-new: #FFD369;
+  --hover-color: rgba(92, 247, 86, 0.1);
+  /* hover title */
+    --background-color-hover: var(--hover-color);
+}
+
+
+
+/* div Logo */
+.Adminmenu__app--logo{
+    height: 65px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/*  logo */
+.Adminmenu__app--logo-img{
+    width: 120px;
+    height:55px;
+}
+.Adminmenu__app--logo-text{
+    width: 90px;
+    height: 40px;
+    margin-left: 15px;
+}
+
+/* DIV Mục manage */
+
+.Adminmenu__app--content{
+    width: 100%;
+    height: 100%;
+    
+}
+/* Chữ page */
+.Adminmenu__app--content-page{
+    margin-left: 32px;
+    margin-top: 32px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgb(212, 212, 212);
+}
+/* Thẻ UL */
+.Adminmenu__app--content-title{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    flex-direction: column;
+    cursor: pointer;
+}
+/* DIV icon quản lý tài khoảng icon */
+.Adminmenu__app--content-title-content{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+   
+}
+/* Hover icon manage icon */
+.Adminmenu__app--content-title-content:hover{
+    background-color: var(--background-color-hover);
+}
+.Adminmenu__app--content-title-left{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-right: 8px;
+    margin-top: 1px;
+}
+
+.Adminmenu__app--content-title-mid{
+    width: 160px;
+    text-align: left;
+}
+/* Thẻ LI */
+.Adminmenu__app--content-title-items{
+    width: 100%;
+    cursor: pointer;
+    padding-left: 65px;
+  
+}
+.Adminmenu__app--content-title-items:hover{
+  background-color: var(--background-color-hover);  
+}
+.Adminmenu__app--content-title-items-content{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.ad-ulchild{
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ad-ulchildactive{
+    min-height: auto;
+    width: 100%;
+}
+
+.Link-Addmenu{
+    color: var(--c4-new);
+}

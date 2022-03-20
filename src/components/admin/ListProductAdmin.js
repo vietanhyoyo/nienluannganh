@@ -38,7 +38,6 @@ function OrderAdmin(){
                         {/* icon và text */}
                         Hàng hóa
                     </h3>
-                  
                 </div>
                 
                 {/* Search */}
@@ -52,26 +51,35 @@ function OrderAdmin(){
                     <div className="orderadmin-search-item">Nước ngọt</div>
                     <div className="orderadmin-search-item">...</div>
                 
-                    
-                        
+     
                 </div>
              </div>
                   {/* Div dưới */}
              <div className="orderadmin-content">
                 {/* Search text */}
                 <div className="orderadmin-content-navbar">
-                    <div className="orderadmin-content-navbar-choose">
-                        <p className="orderadmin-content-navbar-choose-p">Tên sản phẩm</p>
-                        <p className="orderadmin-content-navbar-choose-icon"><i class="fa-solid fa-angle-down"></i> </p>
-                    </div>
-                    <div className="orderadmin-content-navbar-text">
-                        <p className="orderadmin-content-navbar-text-icon"><i class="fa-solid fa-magnifying-glass"></i></p>
-                        <input type="text" className="orderadmin-input-text" tabindex="1" placeholder="Nhập sản phẩm cần tìm"/>
-                    </div>
+                        <div className='orderadmin-content-navbar-choose'>
+                            <p className='orderadmin-content-navbar-choose-text'>
+                                Tên sản phẩm
+                            </p>
+                            <p className='orderadmin-content-navbar-choose-icon'>
+                                <i className="fa-solid fa-sort-down"></i>
+                            </p>
+                            
+                        </div>
+                        <div className='orderadmin-content-navbar-text'>
+                            <label htmlFor='adminorder-inputsearch' className='orderadmin-content-navbar-text-icon'>
+                             <i className="fa-solid fa-magnifying-glass"></i>
+                            </label>
+                            <p className='orderadmin-content-navbar-text-input'>
+                                <input id='adminorder-inputsearch' className='orderadmin-content-navbar-text-input-items' placeholder='Nhập thông tin sản phẩm cần tìm'/>
+                            </p>
+                        </div>
                 </div>
 
                 {/* Div product header */}
                 <div className="admin-product-header">
+       
                    <div className="admin-product-header-item">Ảnh sản phẩm</div>
                    <div className="admin-product-header-item">Tên sản phẩm</div>
                    <div className="admin-product-header-item">Loại sản phẩm</div>

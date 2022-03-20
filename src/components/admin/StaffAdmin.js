@@ -23,7 +23,9 @@ function StaffAdmin(){
     
     return(
         <div className="StaffAdmin">
+            <div className='StaffAdmin__filter-title'>Danh sách</div>
             {/* DIV Search staff */}
+          
            <div className='StaffAdmin__search'>
                     <label className='StaffAdmin__search-icon' htmlFor='StaffAdmin__search-input-fl'> 
                          <i className="fa-solid fa-magnifying-glass"></i>
@@ -32,7 +34,7 @@ function StaffAdmin(){
                      placeholder='Nhập tên nhân viên cần tìm...'/>
             </div>
             {/* DIV filter staff*/}
-            <div className='StaffAdmin__filter-title'>Danh sách</div>
+          
             <div className='StaffAdmin__filter'>
                 <div className='StaffAdmin__filter-items'>Quản trị viên</div>    
                 <div className='StaffAdmin__filter-items'>Nhân viên</div>   
