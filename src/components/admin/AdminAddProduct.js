@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import '../../css/adminaddproduct.css'
 
 
 function AdminAddProduct(){
     
+    const [product,setProduct] = useState([]);
+
+
     return(
         <div className="admin__add-product">
                     {/* Div tổng */}
