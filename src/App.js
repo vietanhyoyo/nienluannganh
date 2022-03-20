@@ -22,6 +22,7 @@ import Product from "./components/product/Product";
 import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminStatistical from "./components/admin/AdminStatistical";
 import Find from "./components/find/Find";
+import FindSearch from "./components/find/FindSearch";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
             <Route path='find/:id' element={<Find />} />
+            <Route path='findsearch/:id' element={<FindSearch />} />
             <Route path='person' element={<Person />} >
               <Route path='profile' element={<PersonProfile />} />
               <Route path='history' element={<PersonHistory />} />

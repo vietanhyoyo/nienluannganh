@@ -4,21 +4,22 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import '../../css/find.css'
 
-function Find() {
+function FindSearch() {
 
     /*Lấy tham số trên url bằng useParams */
     const { id } = useParams();
     console.log(id);
 
-    const [list, setList] = useState({
+    const [list, setList] = useState([{
         _id: 'null',
         tenloaisanpham: 'null'
-    });
+    }]);
     useEffect(function () {
-        axios.post('/products/loaisanphamid', { id: id })
+        axios.post('/products/timtensanpham', { id: id })
             .then(response => response.data)
             .then(response => {
                 setList(response);
+                console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
@@ -42,4 +43,4 @@ function Find() {
     );
 }
 
-export default Find;
+export default FindSearch;
