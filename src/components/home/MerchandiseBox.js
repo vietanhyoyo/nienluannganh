@@ -6,6 +6,7 @@ export default function MerchandiseBox(props) {
 
     const [products, setProducts] = useState([
         {
+            _id: 'sadfsadf',
             tensanpham: 'xa lach',
             hinhanh: ['https://vinmec-prod.s3.amazonaws.com/images/20210106_041321_793265_hat-giong-rau-xa-la.max-1800x1800.jpg'],
             gianiemyet: '50000',
@@ -20,6 +21,7 @@ export default function MerchandiseBox(props) {
         for (let i = 0; i <= n; i++) {
             listProduct.push(<MerchandiseItem
                 key={i}
+                _id = {products[i]._id}
                 name={products[i].tensanpham}
                 image={products[i].hinhanh[0]}
                 cost={products[i].gianiemyet}

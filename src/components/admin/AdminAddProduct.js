@@ -1,164 +1,235 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import '../../css/adminaddproduct.css'
 
 
-function AdminAddProduct(){
-    
-    const [product,setProduct] = useState([]);
 
+function AdminAddProduct() {
 
-    return(
+    const [product, setProduct] = useState({
+        tensanpham: '',
+        gianiemyet: 0,
+        loaisanpham: '',
+        soluong: 0,
+        mota: '',
+        donvitinh: '',
+        hinhanh: []
+    });
+
+    const [file, setFile] = useState([]);
+
+    console.log(product);
+
+    const [dsLoaiSP, setDSLoaiSP] = useState([{
+        _id: 'null',
+        tenloaisanpham: 'null'
+    }]);
+
+    useEffect(() => {
+        axios.get('/products/loaisanpham')
+            .then(response => response.data)
+            .then(response => {
+                setDSLoaiSP(response);
+                setProduct(prev => ({ ...prev, loaisanpham: response[0]._id }));
+            })
+            .catch(() => { setProduct(prev => prev) })
+    }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let formData = new FormData();
+        for (let i = 0; i < file.length; i++) {
+            formData.append(`fileImage`, file[i]);
+        }
+
+        axios.post('/products/themsanphamhinhanh', formData)
+            .then(response => console.log(response.data))
+            .catch(err => console.log(err))
+    }
+
+    return (
         <div className="admin__add-product">
-                    {/* Div tổng */}
-                <div className="admin__addproduct-app">
-                    <h3 className='admin__addproduct-title'> <p className='addproduct__admin-icon'><i class="fa-solid fa-circle-question"></i></p>  Thêm hàng hóa</h3>
-                    <form name="admin__addproduct">
-                        {/* DIV input */}
+            {/* Div tổng */}
+            <div className="admin__addproduct-app">
+                <h3 className='admin__addproduct-title'> <p className='addproduct__admin-icon'><i className="fa-solid fa-circle-question"></i></p>  Thêm hàng hóa</h3>
+                <form name="admin__addproduct" action='#' encType='multipart/form-data'>
+                    {/* DIV input */}
                     <div className='admin__addproduct-form'>
-                           
-                            {/* DIV trái */}
+
+                        {/* DIV trái */}
                         <div className='admin__infomation-addproduct'>
-                        <h3 className='admin__addproduct-formtitle'>Thông tin sản phẩm</h3>
-                        <p className='admin__addproduct-formtext'>Nhập tên, giá sản phẩm</p>
-                        </div> 
-                       
-                            {/* Div phải */}
+                            <h3 className='admin__addproduct-formtitle'>Thông tin sản phẩm</h3>
+                            <p className='admin__addproduct-formtext'>Nhập tên, giá sản phẩm</p>
+                        </div>
+
+                        {/* Div phải */}
                         <div className='admin__form-addproduct'>
-                                {/* form */}
-                       
-                                {/* DIV phải items */}
+                            {/* form */}
+
+                            {/* DIV phải items */}
                             <div className='admin__addproduct-divinputtext'>
-                                <label for='name-inputext'>Tên sản phẩm</label> 
-                                <input type='text' id='name-inputext' className='admin__addproduct-inputtext' name='admin__product--name-product'/>
+                                <label htmlFor='name-inputext'>Tên sản phẩm</label>
+                                <input
+                                    type='text' id='name-inputext'
+                                    className='admin__addproduct-inputtext'
+                                    name='admin__product--name-product'
+                                    onChange={e => setProduct({ ...product, tensanpham: e.target.value })}
+                                />
                             </div>
-                                {/* DIV phải items */}
+                            {/* DIV phải items */}
                             <div className='admin__addproduct-divinputtext'>
-                                <label for='price-inputext'>Giá</label> 
-                                <input type='text' id='price-inputext' className='admin__addproduct-inputtext' name='admin__input--price-product' />
-                                
-                            </div>    
+                                <label htmlFor='price-inputext'>Giá</label>
+                                <input
+                                    type='text' id='price-inputext'
+                                    className='admin__addproduct-inputtext'
+                                    name='admin__input--price-product'
+                                    onChange={e => setProduct({ ...product, gianiemyet: Number(e.target.value) })}
+                                />
+
+                            </div>
                         </div>
 
                     </div>
-                      {/* DIV input */}
+                    {/* DIV input */}
                     <div className='admin__addproduct-form'>
-                           
-                            {/* DIV trái */}
+
+                        {/* DIV trái */}
                         <div className='admin__infomation-addproduct'>
-                        <h3 className='admin__addproduct-formtitle'>Hình ảnh</h3>
-                        <p className='admin__addproduct-formtext'>Upload hình của sản phẩm</p>
-                        <input type='file' id='file-inputfile' name="admin__product-file"/>
-                        </div> 
-                       
-                            {/* Div phải */}
+                            <h3 className='admin__addproduct-formtitle'>Hình ảnh</h3>
+                            <p className='admin__addproduct-formtext'>Upload hình của sản phẩm</p>
+                            <input type='file'
+                                id='file-inputfile'
+                                name="admin__product-file"
+                                multiple
+                                onChange={event => {
+                                    const file_data = event.target.files;
+                                    setFile(file_data);
+                                    const imgArray = [];
+                                    for (let i = 0; i < file_data.length; i++) {
+                                        imgArray.push(file_data[i].name);
+                                    }
+                                    setProduct({ ...product, hinhanh: imgArray });
+                                }}
+                            />
+                        </div>
+
+                        {/* Div phải */}
                         <div className='admin__form-addproduct'>
-                                {/* form */}
-                                {/* DIV phải items */}
+                            {/* form */}
+                            {/* DIV phải items */}
                             <div className='admin__addproduct-divinputtext'>
-                           
-                            <div className='admin-addproduct--text-file'>
-                             <p className='admin-addproduct--text-fileicon'> <i class="fa-solid fa-reply"></i>  </p> <p className='admin-addproduct--text-filetext'> Sử dụng nút chọn hình để tải hình ảnh lên </p></div>     
+
+                                <div className='admin-addproduct--text-file'>
+                                    <p className='admin-addproduct--text-fileicon'> <i className="fa-solid fa-reply"></i>  </p> <p className='admin-addproduct--text-filetext'> Sử dụng nút chọn hình để tải hình ảnh lên </p></div>
                             </div>
-                                {/* DIV phải items */}
+                            {/* DIV phải items */}
                         </div>
 
                     </div>
-                      {/* DIV input */}
-                      <div className='admin__addproduct-form'>
-                           
-                           {/* DIV trái */}
-                       <div className='admin__infomation-addproduct'>
-                       <h3 className='admin__addproduct-formtitle'>Loại sản phẩm</h3>
-                       <p className='admin__addproduct-formtext'>Chọn loại cho sản phẩm</p>
-                       <select className='admin__addproduct--select-type' tabindex="1" name='admin__product-select'>
-                            <option> Chọn loại </option>
-                            <option> Rau củ </option>
-                            <option> Nước ngọt </option>
-                            <option> Thực phẩm </option>
-                            <option> Hoa quả </option>
-                       </select>
-                       </div> 
-                      
-                           {/* Div phải */}
-                       <div className='admin__form-addproduct'>
-                               {/* form */}
-                               {/* DIV phải items */}
-                           <div className='admin__addproduct-divinputtext'>
-                          
-                           <div className='admin-addproduct--text-file'>
-                                 <p className='admin-addproduct--text-fileicon'> <i class="fa-solid fa-reply"></i> </p>
-                                 <p className='admin-addproduct--text-filetext'> Chọn loại sản phẩm ở bên cạnh để phân loại sản phẩm </p>
-                            </div>     
-                           </div>
-                       </div>
-                   </div>
-                            {/* DIV input */}
-                      <div className='admin__addproduct-form'>
-                           
-                            {/* DIV trái */}
+                    {/* DIV input */}
+                    <div className='admin__addproduct-form'>
+
+                        {/* DIV trái */}
                         <div className='admin__infomation-addproduct'>
-                        <h3 className='admin__addproduct-formtitle'>Mô tả</h3>
-                        <p className='admin__addproduct-formtext'>Nhập mô tả cho sản phẩm</p>
-                        </div> 
-                       
-                            {/* Div phải */}
+                            <h3 className='admin__addproduct-formtitle'>Loại sản phẩm</h3>
+                            <p className='admin__addproduct-formtext'>Chọn loại cho sản phẩm</p>
+                            <select className='admin__addproduct--select-type'
+                                tabIndex="1" name='admin__product-select'
+                                onChange={e => setProduct({ ...product, loaisanpham: e.target.value })}
+                            >
+                                {dsLoaiSP.map((ele, index) => {
+                                    return <option key={index} value={ele._id}>{ele.tenloaisanpham}</option>
+                                })}
+                            </select>
+                        </div>
+
+                        {/* Div phải */}
                         <div className='admin__form-addproduct'>
-                                {/* form */}
-                       
-                                {/* DIV phải items */}
-                                {/* DIV phải items */}
+                            {/* form */}
+                            {/* DIV phải items */}
                             <div className='admin__addproduct-divinputtext'>
-                                <label for='textare-inputext'>Mô tả sản phẩm</label> 
-                                <textarea id='admin__product-textare' name='admin__product-textare' rows="4" cols="50" placeholder="Ví dụ ..."  ></textarea>
-                            </div>    
+
+                                <div className='admin-addproduct--text-file'>
+                                    <p className='admin-addproduct--text-fileicon'> <i className="fa-solid fa-reply"></i> </p>
+                                    <p className='admin-addproduct--text-filetext'> Chọn loại sản phẩm ở bên cạnh để phân loại sản phẩm </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* DIV input */}
+                    <div className='admin__addproduct-form'>
+
+                        {/* DIV trái */}
+                        <div className='admin__infomation-addproduct'>
+                            <h3 className='admin__addproduct-formtitle'>Mô tả</h3>
+                            <p className='admin__addproduct-formtext'>Nhập mô tả cho sản phẩm</p>
+                        </div>
+
+                        {/* Div phải */}
+                        <div className='admin__form-addproduct'>
+                            {/* form */}
+
+                            {/* DIV phải items */}
+                            {/* DIV phải items */}
+                            <div className='admin__addproduct-divinputtext'>
+                                <label htmlFor='textare-inputext'>Mô tả sản phẩm</label>
+                                <textarea id='admin__product-textare' name='admin__product-textare'
+                                    rows="4" cols="50" placeholder="Ví dụ ..."
+                                    onChange={e => setProduct({ ...product, mota: e.target.value })}></textarea>
+                            </div>
                         </div>
 
                     </div>
-                        {/* DIV input */}
-                        <div className='admin__addproduct-form'>
-                                                
-                           {/* DIV trái */}
-                       <div className='admin__infomation-addproduct'>
-                       <h3 className='admin__addproduct-formtitle'>Số lượng và đơn vị tính</h3>
-                       <p className='admin__addproduct-formtext'>Nhập số lượng hàng bán và đơn vị bán của mặt hàng</p>
-                       
-                       </div> 
-                      
-                           {/* Div phải */}
-                       <div className='admin__form-addproduct'>
-                               {/* form */}
-                               {/* DIV phải items */}
-                       
-                           <div className='admin__addproduct-divinputtext'>
-                                <label for='admin__product-amount'>Số lượng</label> 
-                                <input type='text' id='amount-inputext' className='admin__addproduct-inputtext' name='admin__product-amount'/>
-                            </div>
-                                {/* DIV phải items */}
+                    {/* DIV input */}
+                    <div className='admin__addproduct-form'>
+
+                        {/* DIV trái */}
+                        <div className='admin__infomation-addproduct'>
+                            <h3 className='admin__addproduct-formtitle'>Số lượng và đơn vị tính</h3>
+                            <p className='admin__addproduct-formtext'>Nhập số lượng hàng bán và đơn vị bán của mặt hàng</p>
+
+                        </div>
+
+                        {/* Div phải */}
+                        <div className='admin__form-addproduct'>
+                            {/* form */}
+                            {/* DIV phải items */}
+
                             <div className='admin__addproduct-divinputtext'>
-                                <label for='admin__input-unit'>Đơn vị</label> 
-                                <input type='text' id='unit-inputext' className='admin__addproduct-inputtext' name='admin__product-unit'/>               
-                            </div>     
-                       </div>
-                   </div>
-                
+                                <label htmlFor='admin__product-amount'>Số lượng</label>
+                                <input type='text' id='amount-inputext'
+                                    className='admin__addproduct-inputtext' name='admin__product-amount'
+                                    onChange={e => setProduct({ ...product, soluong: Number(e.target.value) })} />
+                            </div>
+                            {/* DIV phải items */}
+                            <div className='admin__addproduct-divinputtext'>
+                                <label htmlFor='admin__input-unit'>Đơn vị</label>
+                                <input type='text' id='unit-inputext'
+                                    className='admin__addproduct-inputtext' name='admin__product-unit'
+                                    onChange={e => setProduct({ ...product, donvitinh: e.target.value })} />
+                            </div>
+                        </div>
+                    </div>
+
                     <div className='admin__addproduct--button-app'>
                         <div className='admin__addproduct--button-left'>
-                        <button class="snip1582">THÊM</button> 
-                        <button class="snip1582">HỦY BỎ</button>
+                            <button className="snip1582" onClick={(e) => handleSubmit(e)} >THÊM</button>
+                            <button className="snip1582">HỦY BỎ</button>
                         </div>
-                    
+
                         <div className='admin__addproduct--button-right'>
 
-                       
+
                         </div>
 
                     </div>
-                
-                </form>
-                <button class="snip1582 addtype-product">THÊM LOẠI SẢN PHẨM</button>
 
-                </div>
-            
+                </form>
+                <button className="snip1582 addtype-product">THÊM LOẠI SẢN PHẨM</button>
+
+            </div>
+
         </div>
     )
 }

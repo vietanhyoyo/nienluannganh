@@ -26,7 +26,7 @@ function Find() {
     }, [id]);
 
     return (
-        <>
+        <div className='find__parent'>
             <div className='find'>
                 <div className='row-app'><p>Danh mục loại sản phẩm mà bạn đang tìm kiếm</p></div>
             </div>
@@ -38,7 +38,7 @@ function Find() {
                     />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

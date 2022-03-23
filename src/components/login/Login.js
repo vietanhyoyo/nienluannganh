@@ -33,6 +33,15 @@ function Login() {
             .catch(err => console.log(err))
 
     }
+    /*Bắt sự kiện enter */
+    const handlEnter = (e) => {
+        if (e.key === 'Enter') {
+            const input = name + password;
+            if (input !== '') {
+                handleSubmit();
+            }
+        }
+    }
 
     return (
         <div className='login'>
@@ -40,7 +49,7 @@ function Login() {
                 <div className='login__content-left'>
                     <div className='login__img'></div>
                 </div>
-                <div className='login__content-right'>
+                <div className='login__content-right' onKeyPress={(e) => handlEnter(e)}>
                     <div className='login__div'>
                         <div className='login__logo'>
                             <img alt='logo' className='login__logo-img' src={LogoLG}></img>
@@ -54,7 +63,7 @@ function Login() {
                         </div>
                         <div className='login__box'>
                             <label className='login__label' htmlFor='password'>Mật khẩu</label>
-                            <input name='password' type='password' className='login__input' onChange={e => setPassword(e.target.value)} />
+                            <input name='password' type='password' className='login__input' onChange={e => setPassword(e.target.value)}/>
                         </div>
                         <div className='login__button'>
                             <div className='button login__submit' onClick={handleSubmit}>

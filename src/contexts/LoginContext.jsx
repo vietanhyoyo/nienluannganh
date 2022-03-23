@@ -14,8 +14,6 @@ function LoginProvider({ children }) {
      */
     const [role, setRole] = useState(null);
 
-    console.log('Context: ' + role)
-
     /**Hàm set lại id user */
     const handleSetLogin = (value) => {
         setIDUser(value)
