@@ -18,8 +18,6 @@ function AdminAddProduct() {
 
     const [file, setFile] = useState([]);
 
-    console.log(product);
-
     const [dsLoaiSP, setDSLoaiSP] = useState([{
         _id: 'null',
         tenloaisanpham: 'null'
@@ -44,8 +42,15 @@ function AdminAddProduct() {
         }
 
         axios.post('/products/themsanphamhinhanh', formData)
-            .then(response => console.log(response.data))
-            .catch(err => console.log(err))
+            .then(response => {
+                console.log(response.data)
+                axios.post('/products/themsanpham', { product })
+                    .then(response => console.log(response.data))
+                    .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err));
+
+
     }
 
     return (

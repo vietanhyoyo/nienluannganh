@@ -1,13 +1,15 @@
 import '../../css/login.css';
 import LogoLG from '../../images/logotext.png';
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { LoginContext } from '../../contexts/LoginContext';
 import axios from 'axios';
 
 function Login() {
 
+    /**navigate dùng để chuyển trang */
+    let navigate = useNavigate();
     /*Lấy dữ liệu đăng nhập**/
     const loginState = useContext(LoginContext)
 
@@ -27,7 +29,11 @@ function Login() {
                     /**Nếu đúng tài khoản và mật khẩu thì lưu vào localStorage và state trong loginContext */
                     loginState.handleSetLogin(response._id);
                     localStorage.setItem('accessToken', response._id);
-                    window.location = '/';
+                    if (response.chucvu !== undefined) {
+                        loginState.setRole(response.chucvu)
+                    } else loginState.setRole(null);
+
+                    navigate('/');
                 }
             })
             .catch(err => console.log(err))
@@ -42,6 +48,7 @@ function Login() {
             }
         }
     }
+
 
     return (
         <div className='login'>
@@ -63,7 +70,7 @@ function Login() {
                         </div>
                         <div className='login__box'>
                             <label className='login__label' htmlFor='password'>Mật khẩu</label>
-                            <input name='password' type='password' className='login__input' onChange={e => setPassword(e.target.value)}/>
+                            <input name='password' type='password' className='login__input' onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className='login__button'>
                             <div className='button login__submit' onClick={handleSubmit}>

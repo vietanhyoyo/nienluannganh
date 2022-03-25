@@ -1,7 +1,9 @@
 import '../css/chat.css'
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import io from 'socket.io-client'
 
 export default function Chat() {
+
     const turnon = useRef();
     const form = useRef();
 
@@ -9,6 +11,10 @@ export default function Chat() {
         turnon.current.classList.toggle('chat--hidden');
         form.current.classList.toggle('chat--hidden');
     };
+
+    useEffect(() => {
+        const socket = io('http://localhost:5000', { transports : ['websocket'] });
+    },[])
 
     return (
         <div className='chat'>
