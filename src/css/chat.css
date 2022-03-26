@@ -37,6 +37,22 @@
     font-size: 13px;
     overflow-y: scroll;
 }
+.chat__show::-webkit-scrollbar {
+    width: 7px;
+    
+}
+.chat__show::-webkit-scrollbar-track {
+    border-radius: 10px;
+} 
+.chat__show::-webkit-scrollbar-thumb {
+    background: #ddd; 
+    border-radius: 10px;
+    cursor: pointer;
+}
+.chat__show::-webkit-scrollbar-thumb:hover {
+    background: var(--c3); 
+}
+
 .chat__message{
     border-radius: 6px;
     background-color: white;

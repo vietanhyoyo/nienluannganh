@@ -1,9 +1,14 @@
 import '../../css/product.css';
 import { useState, useRef } from 'react';
 import ProductStar from './ProductStar';
+import { useParams } from 'react-router-dom';
 
 
 function Product() {
+    /**Lấy id trên url về */
+    const { id } = useParams();
+    console.log(id);
+
     const [type, setType] = useState(1);
     const [quantity, setquantity] = useState(1);
     const addQuantity = ()=>{
@@ -57,7 +62,7 @@ function Product() {
                                     <i className="fa-solid fa-angle-left"></i>
                                 </div>
                                 <div onClick={handleNext} className='product__image-slides-btn-right'>
-                                    <i class="fa-solid fa-angle-right"></i>
+                                    <i className="fa-solid fa-angle-right"></i>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +83,8 @@ function Product() {
                     <div className='product__name-quantity'>
                         <label>Số lượng:</label>
                         <button className='product__name-quantity-btn' onClick={lessQuantity}>-</button>
-                        <input type='text' className='product__name-quantity-input' value={quantity}></input>
+                        <input type='text' className='product__name-quantity-input' 
+                        onChange={e => setquantity(e.target.value)}></input>
                         <button className='product__name-quantity-btn'  onClick={addQuantity}>+</button>
                     </div>
                     <div className='button login__oder'>
@@ -129,42 +135,42 @@ function Product() {
                                     <li className='product__comment-average-rating-star-reviews-li'>
                                         <span>5 sao</span>
                                         <div className='evaluate evaluateting'></div>
-                                        <lable>
+                                        <label>
                                             4
                                             <span> đánh giá</span>
-                                        </lable>
+                                        </label>
                                     </li>
                                     <li className='product__comment-average-rating-star-reviews-li'>
                                         <span>4 sao</span>
                                         <div className='evaluate'></div>
-                                        <lable>
+                                        <label>
                                             0
                                             <span> đánh giá</span>
-                                        </lable>
+                                        </label>
                                     </li>
                                     <li className='product__comment-average-rating-star-reviews-li'>
                                         <span>3 sao</span>
                                         <div className='evaluate'></div>
-                                        <lable>
+                                        <label>
                                             0
                                             <span> đánh giá</span>
-                                        </lable>
+                                        </label>
                                     </li>
                                     <li className='product__comment-average-rating-star-reviews-li'>
                                         <span>2 sao</span>
                                         <div className='evaluate'></div>
-                                        <lable>
+                                        <label>
                                             0
                                             <span> đánh giá</span>
-                                        </lable>
+                                        </label>
                                     </li>
                                     <li className='product__comment-average-rating-star-reviews-li'>
                                         <span>1 sao</span>
                                         <div className='evaluate'></div>
-                                        <lable>
+                                        <label>
                                             0
                                             <span> đánh giá</span>
-                                        </lable>
+                                        </label>
                                     </li>
                                 </ul>
                             </div>
@@ -223,7 +229,7 @@ function Product() {
                         </div>
                     </div>
                     <div className='login__box product__customer-comments-content'>
-                        <lable className='login__label'>Mời bạn đánh giá về sản phẩm...</lable>
+                        <label className='login__label'>Mời bạn đánh giá về sản phẩm...</label>
                         <br />
                         <input className='login__input product__customer-comments-input'></input>
                     </div>
@@ -232,7 +238,7 @@ function Product() {
                             <div className='product__customer-comments-info2'>
                                 <div className='product__customer-comments-info2-container'>
                                     <label>Nam</label>
-                                    <input type='radio' name='sex' id='sex1' checked />
+                                    <input type='radio' name='sex' id='sex1' />
                                 </div>
                                 <div className='product__customer-comments-info2-container'>
                                     <label>Nữ</label>
@@ -271,7 +277,7 @@ function Product() {
                         <h4>Hỏi về sản phẩm:</h4>
                     </div>
                     <div className='login__box product__customer-comments-content'>
-                        <lable className='login__label'>Mời bạn bình luận hoặc đặt câu hỏi...</lable>
+                        <label className='login__label'>Mời bạn bình luận hoặc đặt câu hỏi...</label>
                         <br />
                         <input className='login__input product__customer-comments-input product__customer-comments-input-none'></input>
                     </div> 
@@ -280,7 +286,7 @@ function Product() {
                             <div className='product__customer-comments-info2'>
                                 <div className='product__customer-comments-info2-container'>
                                     <label>Nam</label>
-                                    <input type='radio' name='sex' id='sex1' checked />
+                                    <input type='radio' name='sex' id='sex1' />
                                 </div>
                                 <div className='product__customer-comments-info2-container'>
                                     <label>Nữ</label>

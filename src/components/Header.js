@@ -11,9 +11,9 @@ import axios from 'axios';
 
 function Header() {
 
-    /*Lấy giá trị đăng nhập */
+    /*Lấy giá trị đăng nhập từ context login */
     const loginState = useContext(LoginContext);
-    const userid = loginState.loginstate;
+    const userid = loginState.iduser;
     /*Kiểm tra xem đã đăng nhập hay chưa thai dang nhap*/
     const dadangnhap = userid === null ? false : true;
 
@@ -34,33 +34,35 @@ function Header() {
             console.log(error);
         });
 
+        
+        const showNav = () => {
+            bar.current.classList.remove('fa-bars');
+            bar.current.classList.add('fa-times');
+            ul.current.classList.add('header__ul--show');
+            close.current.classList.add('header__closebar--show');
+        }
+        
+        const unshowNav = () => {
+            bar.current.classList.add('fa-bars');
+            bar.current.classList.remove('fa-times');
+            ul.current.classList.remove('header__ul--show');
+            close.current.classList.remove('header__closebar--show');
+        }
+
         /*Hàm in danh sách menu list */
-    const list_item = (
-        <React.Fragment>
-            {lists.map((list, index) =>
-                <MenuItemList
-                    key={index}
-                    name={list.tenloaihang}
-                    item={list.loaisanpham}
-                    index={index}
-                />
-            )}
-        </React.Fragment>
-    );
-
-    const showNav = () => {
-        bar.current.classList.remove('fa-bars');
-        bar.current.classList.add('fa-times');
-        ul.current.classList.add('header__ul--show');
-        close.current.classList.add('header__closebar--show');
-    }
-
-    const unshowNav = () => {
-        bar.current.classList.add('fa-bars');
-        bar.current.classList.remove('fa-times');
-        ul.current.classList.remove('header__ul--show');
-        close.current.classList.remove('header__closebar--show');
-    }
+        const list_item = (
+            <React.Fragment>
+                {lists.map((list, index) =>
+                    <MenuItemList
+                        key={index}
+                        name={list.tenloaihang}
+                        item={list.loaisanpham}
+                        index={index}
+                        unshow = {unshowNav}
+                    />
+                )}
+            </React.Fragment>
+        );
 
     /*Đóng mở menu */
     const toggleNav = () => {
@@ -106,7 +108,11 @@ function Header() {
                 </div>
                 <div className='header__box'>
                     <div className='header__icon'>
-                        <Link to={cartpath}><i className='fas fa-shopping-basket'></i></Link>
+                        {loginState.role === null ?
+                            <Link to={cartpath}><i className='fas fa-shopping-basket'></i></Link> :
+                            <Link to='/admin/Statistical'>
+                                <span>Trang quản lý</span>
+                            </Link>}
                     </div>
                     {dadangnhap ?
                         <HeaderAvatar />

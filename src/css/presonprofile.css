@@ -1,0 +1,50 @@
+.body{
+    font: 14px/18px Helvetica,Arial,sans-serif;
+    color: #333;
+}
+.person__profile{
+    max-width: 1100px;
+    padding-left: 30px;
+}
+.person__profile-title{
+    margin-top: 40px;
+}
+.person__profile__row{
+    display: flex;
+    padding-left: 15px;
+    margin-top: 30px;
+    justify-content: space-between ;
+    max-width: 80%;
+}
+.person-profile__row-label{
+    padding-top: 10px;
+    width: 20%;
+}
+.person__profile__row-input-wrapper-input{
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 14px;
+    width: 80%;
+}
+.person__profile__row-radio{
+    justify-content: flex-start;
+}
+.person__profile__row-span{
+    display: flex;
+    margin-right: 20px;
+}
+.person__profile__row-span-radio{
+   width: 25px;
+   height: 25px;
+}
+.person__profile__row-span-sex{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.button_update{
+    width: 120px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}

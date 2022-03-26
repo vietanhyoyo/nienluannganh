@@ -217,3 +217,34 @@
     background-position: center;
     border-radius: 50%;
 }
+.header__avatar__ul{
+    border-top: 1px dotted var(--c2);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    position: absolute;
+    display: none;
+    top:60px;
+    background-color: #fff;
+    transform: translateX(-60px);
+    box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.295);
+}
+.header__avatar__ul--show{
+    display: block;
+}
+.header__avatar__ul li{
+    width: 120px;
+    padding: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.header__avatar__ul__element:hover{
+    color: var(--c3);
+}
+.header__icon span{
+    font-size: 14px;
+}
+.header__icon span:hover{
+    color: var(--c3);
+}

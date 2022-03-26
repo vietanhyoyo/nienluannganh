@@ -31,7 +31,7 @@
     padding: 14px;
     box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.075),
                 5px 5px 10px rgba(0, 0, 0, 0.075);
-    height: 340px;
+    height: 270px;
 }
 .merchandise__element{
     height: 100%;
@@ -41,7 +41,7 @@
 }
 .merchandise__img{
     margin: auto;
-    height: 180px;
+    height: 140px;
     display: flex;
     text-align: center;
 }
@@ -55,13 +55,15 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    font-weight: 350;
+    font-weight: 400;
+    font-size: 14px;
 }
 .merchandise__item .button{
     text-align: center;
 }
 .merchandise__item p{
     padding: 5px 0px;
+    font-size: 14px;
 }
 .merchandise__topic{
     background-color: #fff;

@@ -19,8 +19,11 @@ import Product from "./components/product/Product";
 import StaffAdmin from "./components/admin/StaffAdmin"
 import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminStatistical from "./components/admin/AdminStatistical";
+import Find from "./components/find/Find";
+import FindSearch from "./components/find/FindSearch";
 import AdminAddUser from "./components/admin/AdminAddUser";
-import ListProductAdmin from "./components/admin/ListProductAdmin"
+import ListProductAdmin from "./components/admin/ListProductAdmin";
+import AdminChat from "./components/admin/AdminChat";
 
 function App() {
   return (
@@ -34,24 +37,26 @@ function App() {
             <Route path='product/:id' element={<Product />} />
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
+            <Route path='find/:id' element={<Find />} />
+            <Route path='findsearch/:id' element={<FindSearch />} />
             <Route path='person' element={<Person />} >
-              <Route path='profile/:id' element={<PersonProfile />} />
-              <Route path='history/:id' element={<PersonHistory />} />
+              <Route path='profile' element={<PersonProfile />} />
+              <Route path='history' element={<PersonHistory />} />
             </Route>
           </Route>
           <Route path='/admin' element={<Admin />}>
-            
-            <Route path='AdminAddUser' element={<AdminAddUser />} />
             <Route path='staff' element={<StaffAdmin />} />
+            <Route path='adduser' element={<AdminAddUser />} />
             <Route path='invoice' element={<AdminInvoice />} />
             <Route path='promotion' element={<AdminPromotion />} />
             <Route path='producttype' element={<AdminControllProductType />} />
             <Route path='addproduct' element={<AdminAddProduct />} />
+            <Route path='Statistical' element={<AdminStatistical />} />
+            <Route path='AdminAddUser' element={<AdminAddUser />} />
+            <Route path='addproduct' element={<AdminAddProduct />} />
             <Route path='Statistical' element={<AdminStatistical/>} />
             <Route path='product' element={<ListProductAdmin/>} />
-            <Route path='invoice' element={<AdminInvoice />} />
-            <Route path='promotion' element={<AdminPromotion />} />
-   
+            <Route path='adminchat' element={<AdminChat />} />
           </Route>
         </Routes>
       </React.Fragment>
