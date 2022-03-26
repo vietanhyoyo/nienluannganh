@@ -14,6 +14,7 @@
 .admin__add-product{
     width: 100%;
     padding : 20px;
+    font-size:14px ;
 }
 /* DIV chữ thêm hàng hóa */
 .admin__addproduct-title{

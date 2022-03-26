@@ -1,30 +1,39 @@
 import '../../css/listproductadmin.css' 
 import AdminProductItem from './listproductadmin/AdminProductItem';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 function OrderAdmin(){
     
-    const [product] = useState([
-        {
-            id    : '1',
-            name  : 'Thịt bò',
-            type  : 'Thực phẩm',
-            image : 'https://thitbohuunghi.com/wp-content/uploads/2021/06/6gt5cdi_-_imgur_grande.png',
-            price :  '50.000đ',
-            amount:  50,
-            unit  :  "kg"
-        },
-        {
-            id    : '2',
-            name  : 'Pepsi',
-            type  : 'Nước uống',
-            image : 'https://satrafoods.com.vn/uploads/Images/san-pham/thuc-pham-cong-nghe/nuoc-giai-khat/8934588013133-5.jpg',
-            price :  '15.000đ',
-            amount:  500,
-            unit  :  "chai"
-        }
-    ])
+   
 
-    
+    const [product,setProduct] = useState([{
+            id    : '',
+            tensanpham  : '',
+            loaihang  : '',
+            hinhanh : '',
+            gianiemyet : 0,
+            soluong: 0,
+            donvitinh  :  '',
+            loaisanpham : {
+                tenloaisanpham : ''
+            }
+    }]);
+
+   const a = () => axios.get("/products/sanpham")
+            .then(res => res.data)
+            .then(res => {
+                setProduct(res);
+                console.log(res);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+            useEffect(()=>{
+                a()
+            },[])
+   
+         
     return(
         <div className="OrderAdmin">
             {/* Div tổng */}
@@ -33,7 +42,7 @@ function OrderAdmin(){
              <div className="orderadmin-header">
                     {/* Div chữ sản phẩm */}
                 <div className="orderadmin-title">
-                <p className="orderamin-title-icon"><i class="fa-solid fa-boxes-stacked"></i></p>
+                <p className="orderamin-title-icon"><i className="fa-solid fa-boxes-stacked"></i></p>
                     <h3 className="orderamin-title-text">
                         {/* icon và text */}
                         Hàng hóa
@@ -43,8 +52,8 @@ function OrderAdmin(){
                 {/* Search */}
                 <div className="orderadmin-search">
                     <div className="orderadmin-search-item"><b>Tất cả sản phẩm</b></div>
-                    <div className="orderadmin-search-item">Rau củ</div>
-                    <div className="orderadmin-search-item">Hoa quả</div>
+                    <div className="orderadmin-search-item">Rau củ quả</div>
+                    <div className="orderadmin-search-item">Trái cây</div>
                     <div className="orderadmin-search-item">Mì</div>
                     <div className="orderadmin-search-item">Sữa</div>
                     <div className="orderadmin-search-item">Trứng</div>

@@ -1,0 +1,149 @@
+.lopphu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}   
+
+.loptrong{
+    width: 1000px;
+    height: 550px;
+    background-color: #fdfcfb;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.content-top{
+    width: 100%;
+    height: 84%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-top-items{
+    width: 33%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.content-top-left-img{
+    min-width: 230px;
+    min-height: 325px;
+    max-width: 230px;
+    max-height: 325px;
+}
+.content-top-left{
+    width:260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  
+}
+#file-staff{
+    display: none;
+}
+
+
+/* CSS nút */
+.square_btn35{
+    display: inline-block;
+    position: relative;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #000;
+    transition: .4s;
+    width: 160px;
+   
+}
+.square_btn35:hover {
+    color: var(--c5);
+}
+.square_btn35:active{
+    background-color: var(--c5);
+}
+.square_btn35:before,.square_btn35:after{
+  position: absolute;
+  top: 0;
+  content:'';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+.square_btn35:before{
+  border-left: solid 1px var(--c5);
+  border-top: solid 1px var(--c5);
+  border-bottom: solid 1px var(--c5);
+  left: 0;
+}
+.square_btn35:after{
+  content: '';
+  border-top: solid 1px var(--c5);
+  border-right: solid 1px var(--c5);
+  border-bottom: solid 1px var(--c5);
+  right: 0;
+}
+
+.content-top-mid{
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    max-width: 33%;
+}
+.content-top-mid-ten{
+    margin-top: 80px;
+    margin-bottom: 15px;
+}
+.content-top-right{
+    width: 38%;
+    display: flex;
+    align-items: center;
+}
+.content-top-right-left{
+    width: 20%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+        border-radius: 100px;
+    background-color: var(--c1);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: var(--c4);
+}
+.content-top-right-left-items{
+    font-size: 18px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+.content-top-right-right{
+    width: 80%;
+    height: 100%;
+    background-color: rgb(136, 102, 102);
+
+}
+
+.content-bottom{
+    width: 100%;
+    height: 13%;
+    border: 1px solid black;
+}
+

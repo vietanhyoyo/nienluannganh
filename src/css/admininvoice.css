@@ -1,6 +1,8 @@
 .admin-invoice{
     padding-top: 24px;
-    width: 70%;
+    width: 100%; 
+    padding-left: 70px;
+    padding-right: 70px;
 }
 .admin-invoice__top{
     width: 100%;
