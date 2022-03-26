@@ -12,7 +12,7 @@ function Search() {
         navigate(`/findsearch/${input}`);
     }
 
-    const handlEnter = (e) => {
+    const handleEnter = (e) => {
         if (e.key === 'Enter') {
             const input = inputSearch.current.value;
             if (input !== '') {
@@ -27,7 +27,7 @@ function Search() {
                 type='text'
                 placeholder="Tìm sản phẩm"
                 ref={inputSearch}
-                onKeyPress={(e) => handlEnter(e)}
+                onKeyPress={(e) => handleEnter(e)}
             />
             <div
                 className='header__icon header__icon--search'

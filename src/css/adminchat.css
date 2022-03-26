@@ -1,0 +1,42 @@
+
+.adminchat{
+    width: 100%;
+    flex: 1;
+    padding: 40px;
+    color: var(--c1);
+}
+.adminchat__content{
+    max-width: 1250px;
+    background-color: #fff;
+    padding: 20px;
+}
+.adminchat__header{margin-bottom: 20px;}
+
+.adminchat__border{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px dotted #ccc;
+}
+.adminchat__body{
+    display: flex;
+}
+.adminchat__left{
+    width: 260px;
+}
+.adminchat__search{
+    width: 100%;
+    padding: 10px;
+}
+.adminchat__search input{
+    width: 100%;
+    padding: 7px;
+    border: 1px solid var(--c2);
+}
+.adminchat__search input:focus{
+    border-color: var(--c3);
+    outline: none;
+}
+.adminchat__right{
+    border: 1px dotted #ccc;
+}
