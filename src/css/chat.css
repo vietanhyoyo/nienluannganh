@@ -39,7 +39,6 @@
 }
 .chat__show::-webkit-scrollbar {
     width: 7px;
-    
 }
 .chat__show::-webkit-scrollbar-track {
     border-radius: 10px;

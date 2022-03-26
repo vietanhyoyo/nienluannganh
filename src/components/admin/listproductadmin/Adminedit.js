@@ -29,9 +29,9 @@ function Adminedit() {
                             <div className='content-top'>
                                 <div className='content-top-items content-top-left'>
                                       <h3>Thông tin nhân viên</h3>
-                                     {image &&  
+                                     {image ?  
                                      <img src={image.preview} alt='Ảnh đại diện' className='content-top-left-img'/> 
-                                      ||  <img src='' alt='Chưa có ảnh đại diện' className='content-top-left-img'/>} 
+                                      :  <img src='' alt='Chưa có ảnh đại diện' className='content-top-left-img'/>} 
                                         <label htmlFor='file-staff' className='square_btn35'>Chọn ảnh đại diện</label>
                                         <input 
                                         type={'file'}
