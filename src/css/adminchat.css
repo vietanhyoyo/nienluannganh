@@ -47,6 +47,7 @@
     padding-left: 14px;
     padding-right: 14px;
     overflow-y: scroll;
+    padding-bottom: 10px;
 }
 .adminchat__inputform{
     display: flex;
@@ -88,6 +89,13 @@
 }
 .adminchatuser__name{
     font-weight: 600;
+}
+.adminchatuser__message{
+    overflow: hidden;
+    max-width: 180px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 

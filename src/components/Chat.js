@@ -51,7 +51,7 @@ function Chat() {
         const socketIO = io('http://localhost:5000', { transports: ['websocket'] })
         socket.current = socketIO;
         socket.current.on('user-chat', data => {
-            console.log(data);
+            console.log('lang nghe user chat');
             setChatMessage(prev => ([...prev, {
                 className: 'chat__message chat__message--right',
                 message: data.message
@@ -61,15 +61,24 @@ function Chat() {
             element.scrollTop = element.scrollHeight;
         });
         return () => {
-            socket.current.on("disconnect", (reason) => {
-                console.log(reason);
-            });
+            socket.current.removeAllListeners('user-chat');
         }
     }, []);
 
     /**Gửi dữ liệu message */
-    const handleSendMessage = () => {
+    const handleSendMessage = async () => {
+        if (role !== null)
+            return;
+        /**Thêm vào cơ sở dữ liệu */
+        await axios.post('/message/themtinnhankhachhang', { nguoigui: iduser, noidung: inputText, trangthai: 'Chưa đọc' })
+            .then(res => res.data)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => console.log(err));
+        /**Gửi lên socket */
         socket.current.emit('on-chat', { id: iduser, name: nameUser, message: inputText, role: role });
+        /**Xóa input */
         setInputText('');
     }
 
