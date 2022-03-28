@@ -37,6 +37,7 @@ function FindSearch() {
         for (let i = 0; i <= n; i++) {
             listProduct.push(<MerchandiseItem
                 key={i}
+                _id={list[i]._id}
                 name={list[i].tensanpham}
                 image={list[i].hinhanh[0]}
                 cost={list[i].gianiemyet}

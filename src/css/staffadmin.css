@@ -152,7 +152,14 @@
     padding-bottom: 8px;
     border-radius: 5px;
     background-color: white;
+    user-select: none;
 }
+.StaffAdmin__manager-content:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: var(--c1);
+    color: var(--c3);
+}
+
 .StaffAdmin__manager-content-items{
     width: 16%;
     height: auto;
@@ -163,7 +170,7 @@
     
 }
 .StaffAdmin__manager-content-items-name{
-    width: 20%;
+    width: 20%; 
 }
 .StaffAdmin__manager-content-items-age{
     width: 8%;
@@ -202,7 +209,7 @@
 .StaffAdmin__manager-content-items-space{
     width: 1px;
     height: 30px;
-    background-color: #2e3026;
+    background-color: #aaaaaa;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -216,7 +223,7 @@
     color:  #64d275;
     border-radius: 5px;
     border: none;
-   
+   width: 50%;
     cursor: pointer;
 }
 .StaffAdmin__manager-content-items-icon:hover{
@@ -227,7 +234,7 @@
 
 .StaffAdmin__manager-content-items-icon-right{
     display: flex;
-    width: 70%;
+    width: 50%;
     justify-content: space-around;
     align-items: center;
     padding-left: 5px;
@@ -242,3 +249,13 @@
     background-color: var(--c5);
     color: var(--c4) ;
 }
+
+.StaffAdmin__manager-content-items-icon:active{
+    background-color: #2e3026;
+    color: #64d275;
+}
+.StaffAdmin__manager-content-items-icon-right:active{
+    background-color: var(--c4);
+    color: #f64129;
+}
+

@@ -176,12 +176,13 @@
 .admin-product-header-item{
    width: 19%;
    text-align: center;
+   position: relative;
 }
 
 
 .admin-product-content{
     width: 100%;
-    height: auto;
+    min-height: 50px;
     background-color: #ffffff;
     display: flex;
    color: #2e3026;
@@ -210,16 +211,50 @@
 }
 
 .dot-admin-product:hover{
-color: black;
+ color: black;
 }
 .admin-product-header-item-icon{
     cursor: pointer;
 
 }
-.admin-product-header-item-icon:hover{
-    color: var(--c3);
-}
+
 .admin-product-header-item-icon:active{
     color: var(--c1);
 }
 
+
+.admin-product-header-item-icon-absolute{
+    min-width: 175px;
+    min-height: 120px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+    padding-left: 12px;
+}
+.admin-product-header-item-icon-absolute{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 15px;
+    right: 110px;
+    user-select: none;
+}
+
+.admin-product-header-item-icon-absolute:hover{
+   color: #2e3026;
+}
+.admin-product-header-item-icon-absolute-text:hover{
+    color: var(--c3);
+    
+}
+.admin-product-header-item-icon:hover{
+    color: var(--c3);
+}
+.admin-product-header-item-icon:active{
+    color: var(--c3);
+}
+.admin-product-content{
+    user-select: none;
+}

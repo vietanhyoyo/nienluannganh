@@ -53,7 +53,7 @@ export default function AdminPromotionList(prop) {
                     <div className='admin-promotion-list-item'>
                         <div className='admin-promotion-list-item__col'>
                             <div className='admin-promotion-list-item__button admin-promotion-list-item__button--add'>
-                                <i class="fi fi-rr-plus"></i> Thêm
+                                <i className="fi fi-rr-plus"></i> Thêm
                             </div>
                         </div>
                         <div className='admin-promotion-list-item__col'></div>

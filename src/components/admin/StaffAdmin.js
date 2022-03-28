@@ -1,6 +1,7 @@
 import '../../css/staffadmin.css'
 import AdminStaff from './adminstaff/AdminStaff.js';
 import {useState} from 'react'
+import Adminedit from './listproductadmin/Adminedit';
 function StaffAdmin(){
     const [staff] = useState([
         {
@@ -64,7 +65,7 @@ function StaffAdmin(){
 
             </div>
             
-
+                <Adminedit/>
 
         </div>
     )

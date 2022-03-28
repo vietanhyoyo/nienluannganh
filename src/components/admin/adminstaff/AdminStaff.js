@@ -11,12 +11,12 @@ function AdminStaff(props){
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
                         <div className='StaffAdmin__manager-content-items-icon'>
                             <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-pen-to-square"></i></p>
-                            <p className='StaffAdmin__manager-content-items-icon-text'>Edit</p>
+                            <p className='StaffAdmin__manager-content-items-icon-text'>Sửa</p>
                         </div>
                         <div className='StaffAdmin__manager-content-items-space'></div>
                         <div className='StaffAdmin__manager-content-items-icon-right'>
                         <p className='StaffAdmin__manager-content-items-icon-icon'><i class="fa-solid fa-user-xmark"></i></p>
-                            <p className='StaffAdmin__manager-content-items-icon-text'>Delete</p>
+                            <p className='StaffAdmin__manager-content-items-icon-text'>Xóa</p>
                         </div>
                     </div>    
                 </div>

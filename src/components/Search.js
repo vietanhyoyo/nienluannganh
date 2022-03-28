@@ -1,18 +1,22 @@
-import { useRef } from 'react'
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
+    /**Navigate để chuyển trang tim kiếm */
+    const navigate = useNavigate(); 
+    /**input đầu vào tên sản phẩm tìm kiếm */
     const inputSearch = useRef();
 
     const handleSearch = () => {
         const input = inputSearch.current.value;
-        window.location = `/findsearch/${input}`;
+        navigate(`/findsearch/${input}`);
     }
 
-    const handlEnter = (e) => {
+    const handleEnter = (e) => {
         if (e.key === 'Enter') {
             const input = inputSearch.current.value;
             if (input !== '') {
-                window.location = `/findsearch/${input}`;
+                navigate(`/findsearch/${input}`);
             }
         }
     }
@@ -23,7 +27,7 @@ function Search() {
                 type='text'
                 placeholder="Tìm sản phẩm"
                 ref={inputSearch}
-                onKeyPress={(e) => handlEnter(e)}
+                onKeyPress={(e) => handleEnter(e)}
             />
             <div
                 className='header__icon header__icon--search'
