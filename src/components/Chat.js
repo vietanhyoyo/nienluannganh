@@ -18,12 +18,10 @@ function Chat() {
     const socket = useRef();
 
     /**useState lưu thông tin chat message */
-    const [chatMessage, setChatMessage] = useState([{
-        className: 'chat__message chat__message--left',
-        message: 'Xin chào',
-    }, {
-        className: 'chat__message chat__message--right',
-        message: 'Tôi có thể giúp gì cho bạn.',
+    const [tinnhan, setTinNhan] = useState([{
+        nguoigui: 'Lalisa Manoban',
+        noidung: 'Hello Guy, where are you from! asdadasdasda asdas asd asdasd asda dasd sdasda ',
+        thoigian: '20:20 tháng 3'
     }]);
 
     /**Dữ liệu trong ô input */
@@ -44,40 +42,56 @@ function Chat() {
             .then(response => {
                 setNameUser(response.hoten);
             });
+            /**Lấy dữ liệu tin nhắn khách hàng */
+        if (iduser !== null)
+            axios.post('/message/laytinnhankhachhang', { _id: iduser })
+                .then(res => res.data)
+                .then(res => {
+                    setTinNhan(res);
+                })
     }, [iduser]);
 
     /**Kết nối với socket */
     useEffect(() => {
         const socketIO = io('http://localhost:5000', { transports: ['websocket'] })
         socket.current = socketIO;
-        socket.current.on('user-chat', data => {
-            console.log('lang nghe user chat');
-            setChatMessage(prev => ([...prev, {
-                className: 'chat__message chat__message--right',
-                message: data.message
-            }]));
-
-            const element = document.getElementById('chat-show');
-            element.scrollTop = element.scrollHeight;
+        /**Lắng nghe socket */
+        socket.current.on(iduser, data => {
+            setTinNhan(prev => ([...prev, {
+                nguoigui: data.nguoigui,
+                nguoinhan: data.nguoinhan,
+                noidung: data.message
+            }
+            ]));
         });
         return () => {
-            socket.current.removeAllListeners('user-chat');
+            socket.current.removeAllListeners(iduser);
         }
-    }, []);
+    }, [iduser]);
 
     /**Gửi dữ liệu message */
     const handleSendMessage = async () => {
         if (role !== null)
             return;
         /**Thêm vào cơ sở dữ liệu */
-        await axios.post('/message/themtinnhankhachhang', { nguoigui: iduser, noidung: inputText, trangthai: 'Chưa đọc' })
+        await axios.post('/message/themtinnhankhachhang', {
+            nguoigui: iduser,
+            noidung: inputText,
+            trangthai: 'Chưa đọc'
+        })
             .then(res => res.data)
             .then(res => {
                 console.log(res);
             })
             .catch(err => console.log(err));
         /**Gửi lên socket */
-        socket.current.emit('on-chat', { id: iduser, name: nameUser, message: inputText, role: role });
+        socket.current.emit('on-chat', {
+            id: iduser,
+            nguoigui: iduser,
+            nguoinhan: 'admin',
+            message: inputText,
+            role: role
+        });
         /**Xóa input */
         setInputText('');
     }
@@ -89,8 +103,13 @@ function Chat() {
         }
     }
 
+    /**Lăng form chat xuống mỗi khi có tin nhắn */
+    useEffect(() => {
+        const element = document.getElementById('chat-show');
+        element.scrollTop = element.scrollHeight;
+    }, [tinnhan]);
     return (
-        <div className='chat'>
+        <div className='chat' id={nameUser}>
             <div className='chat__turn-on' ref={turnon} onClick={handleToggle}>
                 <i className='fa-solid fa-comment chat__icon'></i>
                 <span style={{ marginLeft: '10px' }}>Chat</span>
@@ -101,10 +120,19 @@ function Chat() {
                     <i className='fa-solid fa-square-xmark chat__icon--close' onClick={handleToggle}></i>
                 </div>
                 <div className='chat__show' id='chat-show'>
-                    {chatMessage.map((ele, index) => {
-                        return <div className={ele.className} key={index}>
-                            <p>{ele.message}</p>
-                        </div>
+                    {tinnhan.map((ele, index) => {
+                        if (ele.nguoigui !== undefined && ele.nguoigui === iduser)
+                            return <div className='chat__message chat__message--right' key={index}>
+                                <p className='chat__username'>bạn</p>
+                                <p className='chat__messagetext'>{ele.noidung}</p>
+                            </div>
+
+                        else if (ele.nguoinhan !== undefined && ele.nguoinhan === iduser)
+                            return <div className='chat__message chat__message--left' key={index}>
+                                <p className='chat__username'>shop</p>
+                                <p className='chat__messagetext'>{ele.noidung}</p>
+                            </div>
+                        else return < div key={index} ></div>
                     })}
                 </div>
                 <div className='chat__write' onKeyPress={e => handleEnter(e)}>

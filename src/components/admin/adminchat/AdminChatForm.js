@@ -47,11 +47,20 @@ function AdminChatForm({ nguoinhan }) {
             .then(res => {
                 console.log(res);
             })
+        /**Gửi lên socket */
+        socket.current.emit('on-chat', {
+            id: nguoinhan._id,
+            nguoigui: 'admin',
+            nguoinhan: nguoinhan._id,
+            message: inputText,
+            role: 'admin'
+        });
+
         getTinNhan();
         setInputText('');
     }
 
-    /**Lấy dữ liệu tin nhan của nguòi nhận */
+    /**Lăng form chat xuống mỗi khi có tin nhắn */
     useEffect(() => {
         const element = document.getElementById('adminchat__outputform');
         element.scrollTop = element.scrollHeight;
@@ -76,6 +85,14 @@ function AdminChatForm({ nguoinhan }) {
         }
     }
 
+    const convertTime = (time) => {
+        const date = new Date(time)
+    
+        const ngaythangnam = `${date.getHours()} h ${date.getMinutes()} m`;
+        let result;
+        result = ngaythangnam;
+        return result;
+    }
 
     return (<div className='adminchat__right'>
         <div className='adminchat__outputform' id='adminchat__outputform'>
@@ -86,14 +103,14 @@ function AdminChatForm({ nguoinhan }) {
                         name={nguoinhan.hoten}
                         message={ele.noidung}
                         image={nguoinhan.hinhanh}
-                        time={ele.thoigian}
+                        time={convertTime(ele.thoigian)}
                     />
                 else if (ele.nguoinhan !== undefined && ele.nguoinhan === nguoinhan._id) return <AdminChatMyMessage
                     key={index}
                     name='You'
                     message={ele.noidung}
                     image={'https://i.pinimg.com/550x/85/db/2a/85db2a30e0a25c21cce1bf50563afcc3.jpg'}
-                    time={ele.thoigian}
+                    time={convertTime(ele.thoigian)}
                 />
                 else return < div key={index}></div>
             })}

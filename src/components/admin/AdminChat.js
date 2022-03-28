@@ -17,7 +17,6 @@ function AdminChat() {
         }
     }]);
 
-
     /**Socket để kết nối đến server */
     const socket = useRef();
 
