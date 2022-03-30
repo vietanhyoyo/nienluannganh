@@ -8,13 +8,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }   
 
 .loptrong{
-    width: 1000px;
+    width: 900px;
     height: 550px;
+    padding-top: 20px;
     background-color: #fdfcfb;
+    border-radius: 15px;
 }
 
 .content{
@@ -28,15 +29,16 @@
 
 .content-top{
     width: 100%;
-    height: 84%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
+  
 }
 
 .content-top-items{
     width: 33%;
     height: 100%;
-    border: 1px solid black;
+ 
 }
 
 .content-top-left-img{
@@ -44,6 +46,8 @@
     min-height: 325px;
     max-width: 230px;
     max-height: 325px;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 .content-top-left{
     width:260px;
@@ -95,25 +99,29 @@
   border-bottom: solid 1px var(--c5);
   right: 0;
 }
-
+/*  NÚT END ------------ */
 .content-top-mid{
-    font-size: 22px;
+    font-size: 19px;
     display: flex;
     flex-direction: column;
     text-align: left;
-    max-width: 33%;
+    min-width: 40%;
+    padding-left: 30px;
 }
+
 .content-top-mid-ten{
     margin-top: 80px;
     margin-bottom: 15px;
 }
 .content-top-right{
-    width: 38%;
+    width: 36%;
     display: flex;
     align-items: center;
 }
+
+/* Thẻ trái */
 .content-top-right-left{
-    width: 20%;
+    width: 15%;
     height: 85%;
     display: flex;
     flex-direction: column;
@@ -125,6 +133,7 @@
     padding-bottom: 5px;
     color: var(--c4);
 }
+/* Thẻ phải - trái item */
 .content-top-right-left-items{
     font-size: 18px;
     height: 50px;
@@ -134,16 +143,204 @@
     justify-content: center;
   
 }
+/* Thẻ  phải - phải */
 .content-top-right-right{
-    width: 80%;
-    height: 100%;
-    background-color: rgb(136, 102, 102);
+    width: 85%;
+    height: 85%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
 }
+
+.content-top-right-right-items{
+    width: 100%;
+    height: 50px;
+    padding-left: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .content-bottom{
     width: 100%;
     height: 13%;
-    border: 1px solid black;
+    display: flex;
+    justify-content: right;
 }
 
+
+.div-checked{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.div-checked-items{
+    display: flex;
+    align-items: center;
+}
+
+.Admin__staff-input{
+    width: 180px;
+    height: 30px;
+    padding: 5px;
+}
+
+.content{
+    margin: auto;
+    padding: 15px;
+    max-width: 800px;
+    text-align: center;
+  }
+  .dpx{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+  }
+  h1{
+    font-size:28px;
+    line-height:28px;
+    margin-bottom:15px;
+  }
+  label{
+    display:block;
+    line-height:40px;
+  }
+  .option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    transition: all 0.15s ease-out 0s;
+    background: rgb(0, 0, 0);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+   
+  }
+  .option-input:hover {
+    background: #9faab7;
+  }
+  .option-input:checked {
+    background: var(--c1);
+  }
+  .option-input:checked::before {
+    width: 20px;
+    height: 20px;
+    display:flex;
+    content: '\f00c';
+    font-size: 15px;
+    font-weight:bold;
+    position: absolute;
+    align-items:center;
+    justify-content:center;
+    font-family:'Font Awesome 5 Free';
+  }
+  .option-input:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: var(--c5);
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+  }
+  .option-input.radio {
+    border-radius: 50%;
+  }
+  .option-input.radio::after {
+    border-radius: 50%;
+  }
+  
+  @keyframes click-wave {
+    0% {
+      height: 30px;
+      width: 30px;
+      opacity: 0.35;
+      position: relative;
+    }
+    100% {
+      height: 200px;
+      width: 200px;
+      margin-left: -80px;
+      margin-top: -80px;
+      opacity: 0;
+    }
+  }
+
+  .text-are-staff{
+    padding: 4px;
+  }
+
+
+ 
+
+/* CSS */
+.button-6 {
+  align-items: center;
+  background-color: var(--c1);
+  color: var(--c4);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: 10px;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 90px;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: var(--c3);
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}

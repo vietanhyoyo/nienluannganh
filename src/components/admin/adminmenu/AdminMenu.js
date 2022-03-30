@@ -41,7 +41,7 @@ export default function AdminMenu() {
                     <ul className={ focus === index  ? 'ad-ulchildactive' : 'ad-ulchild'}>
                             {/* Thẻ con */}
                          {menu.child.map((menuchild,index)=> (
-                          <Link to={menuchild.path} className='Link-Addmenu'>  <li className='Adminmenu__app--content-title-items' key={index} >
+                          <Link to={menuchild.path} className='Link-Addmenu'  key={index}>  <li className='Adminmenu__app--content-title-items' >
                               <p className='Adminmenu__app--content-title-items-content'>
                                     { menuchild.title}
                               </p> 
