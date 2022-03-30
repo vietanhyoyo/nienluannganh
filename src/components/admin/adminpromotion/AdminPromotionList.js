@@ -59,6 +59,7 @@ export default function AdminPromotionList(prop) {
                         <div className='admin-promotion-list-item__col'></div>
                     </div>
                 </div>
+                <div className='admin-promotion-list-item__delete'><span onClick={prop.onDelete}>Xóa khuyến mãi này</span></div>
             </div>
         </div>
     );

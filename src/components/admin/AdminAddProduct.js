@@ -17,14 +17,6 @@ function AdminAddProduct() {
         hinhanh: []
     });
 
-    /**Them đơn vị tính */
-    const [price, setPrice] = useState([{
-        gianiemyet: 0,
-        soluong: 0,
-        donvitinh: ''
-    }])
-    console.log(price);
-
     const [file, setFile] = useState([]);
 
     const [dsLoaiSP, setDSLoaiSP] = useState([{
@@ -73,7 +65,7 @@ function AdminAddProduct() {
                         {/* DIV trái */}
                         <div className='admin__infomation-addproduct'>
                             <h3 className='admin__addproduct-formtitle'>Thông tin sản phẩm</h3>
-                            <p className='admin__addproduct-formtext'>Nhập tên, giá sản phẩm</p>
+                            <p className='admin__addproduct-formtext'>Nhập tên phẩm</p>
                         </div>
 
                         {/* Div phải */}
@@ -191,41 +183,34 @@ function AdminAddProduct() {
                         <div className='admin__infomation-addproduct'>
                             <h3 className='admin__addproduct-formtitle'>Số lượng và đơn vị tính</h3>
                             <p className='admin__addproduct-formtext'>Nhập số lượng hàng bán và đơn vị bán của mặt hàng</p>
-                            <div className='admin__addproduct__buttonAddCost'>Thêm đơn vị tính</div>
+                            {/*<div className='admin__addproduct__buttonAddCost'>Thêm đơn vị tính</div>*/}
+                        </div>
+                        <div className='admin__form-addproduct admin__form-addproduct--group'>
+                            <div className='admin__addproduct-divinputtext'>
+                                <label htmlFor='admin__product-amount'>Số lượng</label>
+                                <input type='text' id='amount-inputext'
+                                    className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
+                                    name='admin__product-amount'
+                                    onChange={e => setProduct({ ...product, soluong: Number(e.target.value) })} />
+                            </div>
+                            <div className='admin__addproduct-divinputtext'>
+                                <label htmlFor='admin__input-unit'>Đơn vị</label>
+                                <input type='text'
+                                    className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
+                                    name='admin__product-unit'
+                                    onChange={e => setProduct({ ...product, donvitinh: e.target.value })} />
+                            </div>
+                            <div className='admin__addproduct-divinputtext'>
+                                <label htmlFor='price-inputext'>Giá</label>
+                                <input
+                                    type='text' id='price-inputext'
+                                    className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
+                                    name='admin__input--price-product'
+                                    onChange={e => setProduct({ ...product, gianiemyet: Number(e.target.value) })}
+                                />
+                            </div>
                         </div>
 
-                        {price.map((ele, index) => {
-
-                            return <div className='admin__form-addproduct admin__form-addproduct--group' key={index}>
-                                <div className='admin__addproduct-divinputtext'>
-                                    <label htmlFor='admin__product-amount'>Số lượng</label>
-                                    <input type='text' id='amount-inputext'
-                                        className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
-                                        name='admin__product-amount'
-                                        onChange={e => setPrice(prev => {
-                                            let array = prev;
-                                            array[index].soluong = Number(e.target.value);
-                                            return array
-                                        })} />
-                                </div>
-                                <div className='admin__addproduct-divinputtext'>
-                                    <label htmlFor='admin__input-unit'>Đơn vị</label>
-                                    <input type='text'
-                                        className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
-                                        name='admin__product-unit'
-                                        onChange={e => setPrice({ ...product, donvitinh: e.target.value })} />
-                                </div>
-                                <div className='admin__addproduct-divinputtext'>
-                                    <label htmlFor='price-inputext'>Giá</label>
-                                    <input
-                                        type='text' id='price-inputext'
-                                        className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
-                                        name='admin__input--price-product'
-                                        onChange={e => setPrice({ ...product, gianiemyet: Number(e.target.value) })}
-                                    />
-                                </div>
-                            </div>
-                        })}
                     </div>
 
                     <div className='admin__addproduct--button-app'>

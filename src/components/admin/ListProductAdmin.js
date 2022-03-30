@@ -1,10 +1,12 @@
 import '../../css/listproductadmin.css' 
 import AdminProductItem from './listproductadmin/AdminProductItem';
+import AdminAddPromotion from './adminpromotion/AdminAddPromotion'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 function OrderAdmin(){
     
-   
+    /**Ẩn hiện form thêm khuyến mãi */
+    const [promotionDisplay, setPromotionDisplay] = useState(false);
 
     const [product,setProduct] = useState([{
             id    : '',

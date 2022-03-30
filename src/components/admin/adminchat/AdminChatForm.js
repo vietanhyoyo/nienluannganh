@@ -107,12 +107,12 @@ function AdminChatForm({ nguoinhan }) {
                     />
                 else if (ele.nguoinhan !== undefined && ele.nguoinhan === nguoinhan._id) return <AdminChatMyMessage
                     key={index}
-                    name='You'
+                    name='Admin'
                     message={ele.noidung}
-                    image={'https://i.pinimg.com/550x/85/db/2a/85db2a30e0a25c21cce1bf50563afcc3.jpg'}
+                    image={'https://cdn4.vectorstock.com/i/thumb-large/93/48/customer-support-or-service-agent-vector-26289348.jpg'}
                     time={convertTime(ele.thoigian)}
                 />
-                else return < div key={index}></div>
+                else return <div key={index}></div>
             })}
 
         </div>

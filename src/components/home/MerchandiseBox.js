@@ -1,8 +1,8 @@
 import MerchandiseItem from "./MerchandiseItem";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import axios from "axios";
 
-export default function MerchandiseBox(props) {
+function MerchandiseBox(props) {
 
     const [products, setProducts] = useState([
         {
@@ -54,3 +54,5 @@ export default function MerchandiseBox(props) {
         </>
     );
 } 
+
+export default memo(MerchandiseBox);
