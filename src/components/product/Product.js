@@ -1,50 +1,83 @@
 import '../../css/product.css';
-import { useState, useRef } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+
 import ProductStar from './ProductStar';
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { LoginContext } from '../../contexts/LoginContext';
 
 
+const arraySexs = [
+    {
+        id: 1,
+        name: 'nam'
+    },
+    {
+        id: 2,
+        name: 'nữ'
+    }
+]
 function Product() {
+    const loginState = useContext(LoginContext);
+    const userid = loginState.iduser;
+    const [load, setLoad] = useState({
+        _id: null,
+        tensanpham: null,
+        mota: null,
+        hinhanh: [''],
+        loaisanpham: {
+            tenloaisanpham: ''
+        },
+        nhacungcap: ''
+    });
     /**Lấy id trên url về */
     const { id } = useParams();
-    console.log(id);
+    console.log(load);
+
+
+    useEffect(() => {
+        axios.post('/products/hienthisanpham', { _id: id })
+            .then(response => response.data)
+            .then(response => {
+                setLoad(response);
+            });
+    }, [id]);
+    const submitOrder = ()=>{
+        axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id})
+        .then(response => response.data)
+        .then(response => {
+            console.log(response)
+        });
+    }
+    //const slideList = document.querySelectorAll(".slide__img")
 
     const [type, setType] = useState(1);
     const [quantity, setquantity] = useState(1);
-    const addQuantity = ()=>{
-        setquantity(quantity+1);
+    const [checked, setChecked] = useState();
+    //console.log(checked);
+    const addQuantity = () => {
+        setquantity(quantity + 1);
     }
-    const lessQuantity = ()=>{
-        if(quantity>1)
-            setquantity(quantity-1);
+    const lessQuantity = () => {
+        if (quantity > 1)
+            setquantity(quantity - 1);
     }
-    const slideList = useRef(
-        [
-            <img className='slide__img' src={'https://vinmec-prod.s3.amazonaws.com/images/20210106_041321_793265_hat-giong-rau-xa-la.max-1800x1800.jpg'} alt='banner' />,
-            <img className='slide__img' src={'https://nuoitrong.vn/wp-content/uploads/2020/10/b12-768x1024.jpg'} alt='banner' />,
-            <img className='slide__img' src={'https://cdn1.tuoitre.vn/zoom/600_315/2017/photo1513309842425-1513309842425.jpg'} alt='banner' />
-        ]
-    );
+
     const [slideindex, setSlideindex] = useState(0);
-    const [slide, setSlide] = useState(slideList.current[0]);
     const handleNext = () => {
-        if (slideindex < slideList.current.length - 1) {
+        if (slideindex < load.hinhanh.length - 1) {
             setSlideindex(slideindex + 1);
-            setSlide(slideList.current[slideindex + 1]);
         }
         else {
             setSlideindex(0);
-            setSlide(slideList.current[0]);
         }
     }
     const handPrev = () => {
         if (slideindex > 0) {
             setSlideindex(slideindex - 1);
-            setSlide(slideList.current[slideindex - 1]);
         }
         else {
-            setSlideindex(slideList.current.length - 1);
-            setSlide(slideList.current[slideList.current.length - 1]);
+            setSlideindex(load.hinhanh.length - 1);
         }
     }
 
@@ -56,7 +89,7 @@ function Product() {
                         <div className='product__image-slide'>
                             <div className='product__image-slide-img'>
                                 <div className='product__image-slide-img-box'>
-                                    {slide}
+                                    <img className='slide__img' src={load.hinhanh[slideindex]} alt={load.tensanpham}></img>
                                 </div>
                                 <div onClick={handPrev} className='product__image-slides-btn-left'>
                                     <i className="fa-solid fa-angle-left"></i>
@@ -71,30 +104,32 @@ function Product() {
                 </div>
                 <div className='product__name'>
                     <div className='product__name-title'>
-                        <h1 className='product__name-title-lab'>Xà lách</h1>
+                        <h1 className='product__name-title-lab'>{load.tensanpham}</h1>
                         <h1>15.000đ/kg</h1>
                     </div>
                     <div className='product__name-type'>
                         <label>Chọn loại:</label>
-                        <button style={ type === 1 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"}: {}} onClick={()=> setType(1)} className='product__name-type-btn'>LON</button>
-                        <button style={ type === 2 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(2)} className='product__name-type-btn'>GÓI</button>
-                        <button style={ type === 3 ? { border: "1px solid rgb(215 41 32)", backgroundColor:"rgb(254 244 243)"} : {}} onClick={()=> setType(3)} className='product__name-type-btn'>THÙNG</button>
+                        <button style={type === 1 ? { border: "1px solid rgb(215 41 32)", backgroundColor: "rgb(254 244 243)" } : {}} onClick={() => setType(1)} className='product__name-type-btn'>LON</button>
+                        <button style={type === 2 ? { border: "1px solid rgb(215 41 32)", backgroundColor: "rgb(254 244 243)" } : {}} onClick={() => setType(2)} className='product__name-type-btn'>GÓI</button>
+                        <button style={type === 3 ? { border: "1px solid rgb(215 41 32)", backgroundColor: "rgb(254 244 243)" } : {}} onClick={() => setType(3)} className='product__name-type-btn'>THÙNG</button>
                     </div>
                     <div className='product__name-quantity'>
                         <label>Số lượng:</label>
                         <button className='product__name-quantity-btn' onClick={lessQuantity}>-</button>
-                        <input type='text' className='product__name-quantity-input' 
-                        onChange={e => setquantity(e.target.value)}></input>
-                        <button className='product__name-quantity-btn'  onClick={addQuantity}>+</button>
+                        <input type='text' className='product__name-quantity-input'
+                            onChange={e => setquantity(e.target.value)} value={quantity}></input>
+                        <button className='product__name-quantity-btn' onClick={addQuantity}>+</button>
                     </div>
-                    <div className='button login__oder'>
-                        Đặt hàng
-                    </div>
+                    <Link to={`/cart`} className='merchandise__item'>
+                        <div onClick={submitOrder} className='button login__oder'>
+                            Đặt hàng
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className='product__detail'>
                 <h2>Thông tin sản phẩm</h2>
-                <p>Ức gà tươi phi lê CP đạt các tiêu chuẩn về an toàn thực phẩm, đảm bảo về chất lượng, độ tươi và ngon, xuất xứ rõ ràng, được dùng nhiều trong chế độ ăn uống khoa học như giảm cân, tăng cơ bắp. Sản phẩm có 2 mã QR để khách hàng có thể truy xuất nguồn gốc thịt, vô cùng an tâm.</p>
+                <p>{load.mota}</p>
                 <ul className='product__infoproduct-nospeci'>
                     <li>
                         <span>Thương hiệu:</span>
@@ -102,11 +137,11 @@ function Product() {
                     </li>
                     <li>
                         <span>Loại sản phẩm:</span>
-                        <div>Rau lá</div>
+                        <div>{load.loaisanpham.tenloaisanpham}</div>
                     </li>
                     <li>
                         <span>Nơi sản xuất:</span>
-                        <div>Việt nam</div>
+                        <div>{load.nhacungcap}</div>
                     </li>
                     <li>
                         <span>Hướng dẫn sử dụng:</span>
@@ -236,14 +271,16 @@ function Product() {
                     <div className='product__customer-comments-info'>
                         <div className='product__customer-comments-info1'>
                             <div className='product__customer-comments-info2'>
-                                <div className='product__customer-comments-info2-container'>
-                                    <label>Nam</label>
-                                    <input type='radio' name='sex' id='sex1' />
-                                </div>
-                                <div className='product__customer-comments-info2-container'>
-                                    <label>Nữ</label>
-                                    <input type='radio' name='sex' id='sex2' />
-                                </div>
+                                {arraySexs.map(arraySex => (
+                                    <div key={arraySex.id} className='product__customer-comments-info2-container'>
+                                        <label>{arraySex.name}</label>
+                                        <input 
+                                        type='radio' 
+                                        checked={checked===arraySex.id}
+                                        onChange={()=>setChecked(arraySex.id)}
+                                        />
+                                    </div>
+                                ))}
                             </div>
                             <div className='product__customer-comments-info2-add-picture'>
                                 <i className="fa-solid fa-camera"></i>
@@ -272,7 +309,7 @@ function Product() {
                                 Gửi đánh giá
                             </div>
                         </div>
-                    </div>   
+                    </div>
                     <div className='product__customer-comments-content-title'>
                         <h4>Hỏi về sản phẩm:</h4>
                     </div>
@@ -280,7 +317,7 @@ function Product() {
                         <label className='login__label'>Mời bạn bình luận hoặc đặt câu hỏi...</label>
                         <br />
                         <input className='login__input product__customer-comments-input product__customer-comments-input-none'></input>
-                    </div> 
+                    </div>
                     <div className='product__customer-comments-info product__customer-comments-info-none'>
                         <div className='product__customer-comments-info1'>
                             <div className='product__customer-comments-info2'>
@@ -320,7 +357,7 @@ function Product() {
                                 Gửi đánh giá
                             </div>
                         </div>
-                    </div>               
+                    </div>
                 </div>
                 <div className='product__contain-often-bought'>
                     <div className='namegroup'>
