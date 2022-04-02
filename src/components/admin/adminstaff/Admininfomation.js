@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Admininfomation(props) {
 
+<<<<<<< HEAD
 
+=======
+    if(props.staff.chucvu === 'nhanvien'){
+        props.staff.chucvu = 'Nhân viên'
+    }
+    if(props.staff.chucvu === 'admin'){
+        props.staff.chucvu = 'Quản trị viên'
+    }
+
+
+  
+    
+>>>>>>> 3b2a3224f097a4db0f94c4d315c11873f22e4261
     return (
         <div>
             <div className='lopphu'>
@@ -19,6 +32,7 @@ function Admininfomation(props) {
 
 
                                 </div>
+<<<<<<< HEAD
                                 <div className='content-top-items content-top-mid'>
                                     <h3 className='content-top-mid-ten'>{props.staff.hoten}</h3>
                                     <p className='content-top-mid-chucvu'>{props.staff.chucvu}</p>
@@ -69,6 +83,13 @@ function Admininfomation(props) {
                                 <button className='button-6'>Hủy bỏ</button>
                                 <button className='button-6' onClick={props.onClick}>Quay lại</button>
                             </div>
+=======
+                              
+                                <div className='content-bottom'>
+                                        <button className='button-6' onClick={props.onClick}>Quay lại</button>
+                                </div>                      
+                           </div>
+>>>>>>> 3b2a3224f097a4db0f94c4d315c11873f22e4261
                         </div>
                     </div>
                 </form>
