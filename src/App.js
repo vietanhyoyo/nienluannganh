@@ -24,6 +24,7 @@ import FindSearch from "./components/find/FindSearch";
 import AdminAddUser from "./components/admin/AdminAddUser";
 import ListProductAdmin from "./components/admin/ListProductAdmin";
 import AdminChat from "./components/admin/AdminChat";
+import AdminStaffAdd from "./components/admin/AdminStaffAdd";
 
 function App() {
   return (
@@ -50,13 +51,12 @@ function App() {
             <Route path='invoice' element={<AdminInvoice />} />
             <Route path='promotion' element={<AdminPromotion />} />
             <Route path='producttype' element={<AdminControllProductType />} />
-            <Route path='addproduct' element={<AdminAddProduct />} />
-            <Route path='Statistical' element={<AdminStatistical />} />
             <Route path='AdminAddUser' element={<AdminAddUser />} />
             <Route path='addproduct' element={<AdminAddProduct />} />
-            <Route path='Statistical' element={<AdminStatistical/>} />
-            <Route path='product' element={<ListProductAdmin/>} />
+            <Route path='Statistical' element={<AdminStatistical />} />
+            <Route path='product' element={<ListProductAdmin />} />
             <Route path='adminchat' element={<AdminChat />} />
+            <Route path='AddUser' element={<AdminStaffAdd />} />
           </Route>
         </Routes>
       </React.Fragment>

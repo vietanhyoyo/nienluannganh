@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Admininfomation(props) {
 
+    if(props.staff.chucvu === 'nhanvien'){
+        props.staff.chucvu = 'Nhân viên'
+    }
+    if(props.staff.chucvu === 'admin'){
+        props.staff.chucvu = 'Quản trị viên'
+    }
 
+
+  
+    
     return (
         <div>
             <div className='lopphu'>
@@ -19,56 +28,11 @@ function Admininfomation(props) {
 
 
                                 </div>
-                                <div className='content-top-items content-top-mid'>
-                                    <h3 className='content-top-mid-ten'>{props.staff.hoten}</h3>
-                                    <p className='content-top-mid-chucvu'>{props.staff.chucvu}</p>
-                                </div>
-                                <div className='content-top-items content-top-right'>
-                                    <div className='content-top-right-left'>
-                                        <p className='content-top-right-left-items'>
-                                            <i className="fa-solid fa-phone"></i>
-                                        </p>
-                                        <p className='content-top-right-left-items'>
-                                            <i className="fa-solid fa-house-user"></i>
-                                        </p>
-                                        <p className='content-top-right-left-items'>
-                                            <i className="fa-solid fa-calendar"></i>
-                                        </p>
-                                        <p className='content-top-right-left-items'>
-                                            <i className="fa-solid fa-venus-mars"></i>
-                                        </p>
-                                        <p className='content-top-right-left-items'>
-                                            <i className="fa-solid fa-envelope"></i>
-                                        </p>
-                                    </div>
-                                    <div className='content-top-right-right'>
-                                        <p className='content-top-right-right-items'>
-                                            {props.staff.sdt}
-                                        </p>
-                                        <p className='content-top-right-right-items'>
-                                            {props.staff.diachi}
-                                        </p>
-                                        <p className='content-top-right-right-items'>
-                                            {props.staff.ngaysinh}
-                                        </p>
-                                        <p className='content-top-right-right-items'>
-                                            <div className='div-checked'>
-                                                {props.staff.gioitinh}
-                                            </div>
-                                        </p>
-                                        <p className='content-top-right-right-items'>
-                                            {props.staff.email}
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div className='content-bottom'>
-                                <button className='button-6' type='submit' >Cập nhật</button>
-                                <button className='button-6'>Hủy bỏ</button>
-                                <button className='button-6' onClick={props.onClick}>Quay lại</button>
-                            </div>
+                              
+                                <div className='content-bottom'>
+                                        <button className='button-6' onClick={props.onClick}>Quay lại</button>
+                                </div>                      
+                           </div>
                         </div>
                     </div>
                 </form>
