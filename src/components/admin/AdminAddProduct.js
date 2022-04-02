@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import '../../css/adminaddproduct.css'
 
 
@@ -232,4 +232,4 @@ function AdminAddProduct() {
     )
 }
 
-export default AdminAddProduct;
+export default memo(AdminAddProduct);

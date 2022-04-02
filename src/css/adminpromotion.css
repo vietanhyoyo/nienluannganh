@@ -94,7 +94,7 @@
 .admin-promotion__item{
     cursor: pointer;
     display: flex;
-    width: 80%px;
+    width: 96%;
     height: 100px;
     box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.048),
                 5px 5px 5px rgba(0, 0, 0, 0.144);

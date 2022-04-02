@@ -1,0 +1,44 @@
+.adminaddpromotion{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+}
+.adminaddpromotion__turnoff{
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 1;
+    width: 250vh;
+    height: 100vh;
+}
+.adminaddpromotion__box{
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 16px;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    
+    
+}
+.adminaddpromotion__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #999;
+}
+.adminaddpromotion__close:hover{
+    cursor: pointer;
+    color: var(--c6);
+}
+.adminaddpromotion__body{
+    overflow-y: scroll;
+    height: 300px;
+}

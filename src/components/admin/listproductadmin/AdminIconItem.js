@@ -1,10 +1,10 @@
 import React from 'react'
 import { memo } from 'react';
-function AdminIconItem() {
+function AdminIconItem(props) {
   return (
     <div>
       <div className="admin-product-header-item-icon-absolute">
-        <p className="admin-product-header-item-icon-absolute-text">
+        <p className="admin-product-header-item-icon-absolute-text" onClick={props.onShowPromotion}>
           <i className="fa-solid fa-calendar-plus"></i> Thêm khuyến mãi
         </p>
         <p className="admin-product-header-item-icon-absolute-text">

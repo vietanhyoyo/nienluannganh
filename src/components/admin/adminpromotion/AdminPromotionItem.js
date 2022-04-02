@@ -2,19 +2,31 @@
 
 export default function AdminPromotionItem(prop) {
 
+    const dathem = prop.dathem !== undefined && prop.dathem;
+
     const promotion = prop.promo;
     /**Trang thai cua khuyen mai */
     let statusClass = 'admin-promotion__num';
-    if(prop.trangthai === 1) statusClass += ' admin-promotion__num--green';
+    if (prop.trangthai === 1) statusClass += ' admin-promotion__num--green';
     else if (prop.trangthai === 0) statusClass += ' admin-promotion__num--yellow';
     /**Chuyen chuoi thanh ngay */
-    const convertDate = function(string){
+    const convertDate = function (string) {
         const date = new Date(string);
-        return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
     }
 
     return (
-        <div className='admin-promotion__item' onClick={prop.onToggle}>
+        <div className='admin-promotion__item' onClick={() => {
+            if (prop.onToggle !== undefined) {
+                prop.onToggle();
+            }
+            if (prop.onAddProduct !== undefined) {
+                prop.onAddProduct();
+            }
+            if (prop.onSelectPromotion !== undefined) {
+                prop.onSelectPromotion();
+            }
+        }}>
             <div className='admin-promotion__item__col'>
                 <div className={statusClass}>
                     <div className='admin-promotion__num__content'>
@@ -30,6 +42,7 @@ export default function AdminPromotionItem(prop) {
                 </div>
                 <div className='admin-promotion__item__row'>
                     <div className='admin-promotion__item__date'>{convertDate(promotion.ngaybd)} đến {convertDate(promotion.ngaykt)}</div>
+                    {dathem !== undefined && (dathem === true && <div className='admin-promotion__item__date'>Đã thêm</div>)}
                 </div>
             </div>
         </div>

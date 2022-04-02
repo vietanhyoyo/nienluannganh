@@ -8,7 +8,13 @@ export default function AdminPromotion() {
     /**Dong mo form edit khuyen mai */
     const [show, setShow] = useState(false);
     /**useState them khuyen mai */
-    const [newPromotion, setNewPromotion] = useState({ danhsachsanpham: [] });
+    const [newPromotion, setNewPromotion] = useState({
+        tenkhuyenmai: '',
+        ngaybd: '',
+        ngaykt: '',
+        phantram: '',
+        danhsachsanpham: []
+    });
     /**Danh sach khuyen mai */
     const [promotions, setPromotions] = useState([{
         _id: 'ddd',
@@ -19,6 +25,17 @@ export default function AdminPromotion() {
         danhsachsanpham: [],
         trangthai: 0
     }]);
+    /**Khuyen mai duoc chon de chinh sua */
+    const [selectPromotion, setSelectPromotion] = useState({
+        _id: 'ddd',
+        tenkhuyenmai: 'null',
+        phantram: '10',
+        ngaybd: '12:00 8/3/2022',
+        ngaykt: '24:00 20/3/2022',
+        danhsachsanpham: [],
+        trangthai: 0
+    });
+
     /**Danh sach khuyen mai duoc hien thi */
     const [displaypromotions, setDisplayPromotions] = useState(promotions);
     /**bo loc cac khuyen mai*/
@@ -76,21 +93,35 @@ export default function AdminPromotion() {
         axios.post('/promotion/themkhuyenmai', { promotion: data })
             .then(res => res.data)
             .then(res => {
-                setPromotions(prev => ([...prev, res]));
-                setNewPromotion({ danhsachsanpham: [] })
+                getPromotionsAPI();
+                setNewPromotion({ danhsachsanpham: [] });
+                resetInput();
             })
     }
-    /**Lay du lieu */
-    useEffect(() => {
+    /**Hàm lấy dữ liệu khuyến mãi */
+    const getPromotionsAPI = () => {
         axios.get('/promotion/danhsachkhuyenmai')
             .then(res => res.data)
             .then(res => {
                 setPromotions(res);
             });
+    }
+    /**Lay du lieu */
+    useEffect(() => {
+        getPromotionsAPI();
     }, [])
     /**Xoa khuyen mai */
-    const handleDeletePromotion = value => {
+    const handleDeletePromotion = () => {
         const bool = window.confirm('Bạn có muốn xóa khuyến mãi này');
+        if (bool) {
+            axios.post('/promotion/xoakhuyenmai', { promotion: selectPromotion })
+                .then(res => res.data)
+                .then(res => {
+                    console.log(res);
+                    getPromotionsAPI();
+                    handleToggleShow();
+                })
+        }
     }
     /**Loc cac hien thi */
     useEffect(() => {
@@ -102,7 +133,6 @@ export default function AdminPromotion() {
                 ||
                 ((new Date(ele.ngaybd) <= new Date(filter.ngaykt)) &&
                     (new Date(ele.ngaykt) >= new Date(filter.ngaykt)))
-
             ));
         } else {
             if (filter.ngaybd !== '') {
@@ -118,6 +148,14 @@ export default function AdminPromotion() {
 
         setDisplayPromotions(data);
     }, [promotions, filter])
+
+    /**Xóa ô input */
+    const resetInput = () => {
+        const inputs = document.querySelectorAll('.admin-promotion__input');
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].value = '';
+        }
+    }
 
     return (
         <div className='admin-promotion'>
@@ -157,7 +195,7 @@ export default function AdminPromotion() {
                         </div>
                         <div className='admin-promotion__row admin-promotion__row--btn'>
                             <div className='button' onClick={handleAddPromotion} >Thêm</div>
-                            <div className='button admin-promotion__btn-gray' >Hủy</div>
+                            <div className='button admin-promotion__btn-gray' onClick={resetInput}>Hủy</div>
                         </div>
                     </form>
                 </div>
@@ -188,7 +226,7 @@ export default function AdminPromotion() {
                         <div className='admin-promotion__col--small'>
                             <div className='button' onClick={handleFilter}>Liệt kê</div>
                         </div>
-                        <div className='admin-promotion__col--small' style={{paddingLeft: '0px'}}>
+                        <div className='admin-promotion__col--small' style={{ paddingLeft: '0px' }}>
                             <div className='button admin-promotion__btn-gray' onClick={handleResetFilter}>Bỏ lọc</div>
                         </div>
                     </div>
@@ -200,6 +238,7 @@ export default function AdminPromotion() {
                             key={index}
                             promo={promotion}
                             trangthai={promotion.trangthai}
+                            onSelectPromotion={() => setSelectPromotion(promotion)}
                         />
                     })}
                 </div>
@@ -207,6 +246,8 @@ export default function AdminPromotion() {
             {show && <AdminPromotionList
                 onToggle={handleToggleShow}
                 onDelete={handleDeletePromotion}
+                selectPromotion={selectPromotion}
+                resetSelectPromotion={getPromotionsAPI}
             />}
         </div>
     );
