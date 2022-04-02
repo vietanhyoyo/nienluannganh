@@ -22,13 +22,8 @@ import AdminStatistical from "./components/admin/AdminStatistical";
 import Find from "./components/find/Find";
 import FindSearch from "./components/find/FindSearch";
 import AdminAddUser from "./components/admin/AdminAddUser";
-<<<<<<< HEAD
-import ListProductAdmin from "./components/admin/ListProductAdmin";
-import AdminChat from "./components/admin/AdminChat";
-=======
 import ListProductAdmin from "./components/admin/ListProductAdmin"
 import AdminStaffAdd from "./components/admin/AdminStaffAdd";
->>>>>>> 3b2a3224f097a4db0f94c4d315c11873f22e4261
 
 function App() {
   return (
@@ -51,23 +46,14 @@ function App() {
           </Route>
           <Route path='/admin' element={<Admin />}>
             <Route path='staff' element={<StaffAdmin />} />
-            <Route path='adduser' element={<AdminAddUser />} />
             <Route path='invoice' element={<AdminInvoice />} />
-            <Route path='promotion' element={<AdminPromotion />} />
             <Route path='producttype' element={<AdminControllProductType />} />
-            <Route path='addproduct' element={<AdminAddProduct />} />
-            <Route path='Statistical' element={<AdminStatistical />} />
             <Route path='AdminAddUser' element={<AdminAddUser />} />
             <Route path='addproduct' element={<AdminAddProduct />} />
             <Route path='Statistical' element={<AdminStatistical/>} />
             <Route path='product' element={<ListProductAdmin/>} />
-<<<<<<< HEAD
-            <Route path='adminchat' element={<AdminChat />} />
-=======
-            <Route path='invoice' element={<AdminInvoice />} />
             <Route path='promotion' element={<AdminPromotion />} />
             <Route path='AddUser' element={<AdminStaffAdd />} />
->>>>>>> 3b2a3224f097a4db0f94c4d315c11873f22e4261
           </Route>
         </Routes>
       </React.Fragment>
