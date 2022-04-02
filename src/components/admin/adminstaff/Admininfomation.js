@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Admininfomation(props) {
-    
+
+    if(props.staff.chucvu === 'nhanvien'){
+        props.staff.chucvu = 'Nhân viên'
+    }
+    if(props.staff.chucvu === 'admin'){
+        props.staff.chucvu = 'Quản trị viên'
+    }
+
+
+  
     
     return (
         <div>
@@ -66,8 +75,6 @@ function Admininfomation(props) {
                                 </div>
                               
                                 <div className='content-bottom'>
-                                        <button className='button-6'type='submit' >Cập nhật</button>
-                                        <button className='button-6'>Hủy bỏ</button>
                                         <button className='button-6' onClick={props.onClick}>Quay lại</button>
                                 </div>                      
                            </div>

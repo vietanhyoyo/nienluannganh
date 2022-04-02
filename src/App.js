@@ -21,6 +21,7 @@ import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminStatistical from "./components/admin/AdminStatistical";
 import AdminAddUser from "./components/admin/AdminAddUser";
 import ListProductAdmin from "./components/admin/ListProductAdmin"
+import AdminStaffAdd from "./components/admin/AdminStaffAdd";
 
 function App() {
   return (
@@ -51,7 +52,7 @@ function App() {
             <Route path='product' element={<ListProductAdmin/>} />
             <Route path='invoice' element={<AdminInvoice />} />
             <Route path='promotion' element={<AdminPromotion />} />
-   
+            <Route path='AddUser' element={<AdminStaffAdd />} />
           </Route>
         </Routes>
       </React.Fragment>
