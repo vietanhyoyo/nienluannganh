@@ -191,6 +191,8 @@
 /*Them*/
 .admin__addproduct-inputtext--short{
     width: 300px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .admin__form-addproduct--group{
@@ -213,4 +215,12 @@
 .admin__addproduct__buttonAddCost:hover{
     border-color: var(--c3);
     color: var(--c3);
+}
+.admin__addproduct-image{
+    width: 100px;
+    display: inline-block
+}
+.admin__infomation-addproduct--image{
+    display: flex;
+    flex-direction: row;
 }

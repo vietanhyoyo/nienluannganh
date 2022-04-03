@@ -17,7 +17,10 @@ function AdminProductItem(props) {
                 }}
             >
                 <i className="fi fi-rr-apps"></i>
-                {mount && <AdminIconItem onShowPromotion={props.onShowPromotion} />}
+                {mount && <AdminIconItem
+                    onShowPromotion={props.onShowPromotion}
+                    onShowEdit={props.onShowEdit}
+                />}
 
             </div>
         </div>

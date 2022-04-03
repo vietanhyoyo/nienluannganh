@@ -7,7 +7,7 @@ function AdminIconItem(props) {
         <p className="admin-product-header-item-icon-absolute-text" onClick={props.onShowPromotion}>
           <i className="fa-solid fa-calendar-plus"></i> Thêm khuyến mãi
         </p>
-        <p className="admin-product-header-item-icon-absolute-text">
+        <p className="admin-product-header-item-icon-absolute-text" onClick={props.onShowEdit}>
           <i className="fa-solid fa-pen-to-square"></i> Chỉnh sửa
         </p>
         <p className="admin-product-header-item-icon-absolute-text">

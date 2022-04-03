@@ -36,13 +36,14 @@ function AdminAddProduct() {
 
     /**Submit san phan len server */
     const handleSubmit = (e) => {
+        /**Ngăn hành vi mặc định */
         e.preventDefault();
-
+        /**Ép kiểu thành formData */
         let formData = new FormData();
         for (let i = 0; i < file.length; i++) {
             formData.append(`fileImage`, file[i]);
         }
-
+        /**Gửi API */
         axios.post('/products/themsanphamhinhanh', formData)
             .then(response => {
                 console.log(response.data)

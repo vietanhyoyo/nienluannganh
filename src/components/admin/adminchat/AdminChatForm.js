@@ -88,9 +88,9 @@ function AdminChatForm({ nguoinhan }) {
     const convertTime = (time) => {
         const date = new Date(time)
     
-        const ngaythangnam = `${date.getHours()} h ${date.getMinutes()} m`;
+        const thoigian = `${date.getHours()} h ${date.getMinutes()} m`;
         let result;
-        result = ngaythangnam;
+        result = thoigian;
         return result;
     }
 

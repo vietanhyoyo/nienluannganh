@@ -264,3 +264,6 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+.admin-product-header-item-icon-absolute{
+    z-index: 1;
+}

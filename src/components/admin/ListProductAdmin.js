@@ -1,12 +1,15 @@
 import '../../css/listproductadmin.css'
 import AdminProductItem from './listproductadmin/AdminProductItem';
-import AdminAddPromotion from './adminpromotion/AdminAddPromotion'
+import AdminAddPromotion from './adminpromotion/AdminAddPromotion';
+import AdminProductEdit from './listproductadmin/AdminProductEdit';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 function OrderAdmin() {
 
     /**Ẩn hiện form thêm khuyến mãi */
     const [promotionDisplay, setPromotionDisplay] = useState(false);
+    /**Ẩn hiện form sua san pham */
+    const [editDisplay, setEditDisplay] = useState(false);
 
     /**Sản phẩm đang được chọn */
     const [idProductSelect, setIDProductSelect] = useState('');
@@ -106,6 +109,7 @@ function OrderAdmin() {
                                 key={index}
                                 product={productitem}
                                 onShowPromotion={() => setPromotionDisplay(true)}
+                                onShowEdit={() => setEditDisplay(true)}
                                 onSelectID={() => setIDProductSelect(productitem._id)}
                             />
                         )
@@ -116,6 +120,12 @@ function OrderAdmin() {
                 onUnShow={() => setPromotionDisplay(false)}
                 idProductSelect={idProductSelect}
             />}
+            {editDisplay &&
+                <AdminProductEdit
+                    onUnShow={() => setEditDisplay(false)}
+                    idProductSelect={idProductSelect}
+                />
+            }
         </div>
     )
 }
