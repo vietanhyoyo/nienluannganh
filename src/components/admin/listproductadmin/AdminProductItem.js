@@ -20,6 +20,8 @@ function AdminProductItem(props) {
                 {mount && <AdminIconItem
                     onShowPromotion={props.onShowPromotion}
                     onShowEdit={props.onShowEdit}
+                    IDProduct={props.product._id}
+                    reRender={props.reRender}
                 />}
 
             </div>

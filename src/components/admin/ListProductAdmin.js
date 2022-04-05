@@ -44,20 +44,14 @@ function OrderAdmin() {
 
     return (
         <div className="OrderAdmin">
-            {/* Div tổng */}
             <div className="orderadmin-app">
-                {/* Div trên */}
                 <div className="orderadmin-header">
-                    {/* Div chữ sản phẩm */}
                     <div className="orderadmin-title">
                         <p className="orderamin-title-icon"><i className="fa-solid fa-boxes-stacked"></i></p>
                         <h3 className="orderamin-title-text">
-                            {/* icon và text */}
                             Hàng hóa
                         </h3>
                     </div>
-
-                    {/* Search */}
                     <div className="orderadmin-search">
                         <div className="orderadmin-search-item"><b>Tất cả sản phẩm</b></div>
                         <div className="orderadmin-search-item">Rau củ quả</div>
@@ -69,9 +63,7 @@ function OrderAdmin() {
                         <div className="orderadmin-search-item">...</div>
                     </div>
                 </div>
-                {/* Div dưới */}
                 <div className="orderadmin-content">
-                    {/* Search text */}
                     <div className="orderadmin-content-navbar">
                         <div className='orderadmin-content-navbar-choose'>
                             <p className='orderadmin-content-navbar-choose-text'>
@@ -80,7 +72,6 @@ function OrderAdmin() {
                             <p className='orderadmin-content-navbar-choose-icon'>
                                 <i className="fa-solid fa-sort-down"></i>
                             </p>
-
                         </div>
                         <div className='orderadmin-content-navbar-text'>
                             <label htmlFor='adminorder-inputsearch' className='orderadmin-content-navbar-text-icon'>
@@ -91,10 +82,7 @@ function OrderAdmin() {
                             </p>
                         </div>
                     </div>
-
-                    {/* Div product header */}
                     <div className="admin-product-header">
-
                         <div className="admin-product-header-item">Ảnh sản phẩm</div>
                         <div className="admin-product-header-item">Tên sản phẩm</div>
                         <div className="admin-product-header-item">Loại sản phẩm</div>
@@ -102,7 +90,6 @@ function OrderAdmin() {
                         <div className="admin-product-header-item">Giá bán</div>
                         <div className="admin-product-header-item">Quản lý</div>
                     </div>
-                    {/* Div product*/}
                     {product.map((productitem, index) => {
                         return (
                             <AdminProductItem
@@ -111,6 +98,7 @@ function OrderAdmin() {
                                 onShowPromotion={() => setPromotionDisplay(true)}
                                 onShowEdit={() => setEditDisplay(true)}
                                 onSelectID={() => setIDProductSelect(productitem._id)}
+                                reRender={a}
                             />
                         )
                     })}
@@ -124,6 +112,7 @@ function OrderAdmin() {
                 <AdminProductEdit
                     onUnShow={() => setEditDisplay(false)}
                     idProductSelect={idProductSelect}
+                    reRender={a}
                 />
             }
         </div>

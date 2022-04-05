@@ -40,3 +40,6 @@
     overflow-y: scroll;
     height: 500px;
 }
+.admin__form-addproduct__imageType{
+    display: flex;
+}

@@ -1,22 +1,21 @@
 import '../../../css/adminproductedit.css'
 import axios from 'axios';
-import { useState, useEffect, memo } from 'react';
-import AdminProductAddType from './AdminProductAddType';
-import AdminProductTypeImage from './AdminProductTypeImage';
+import { useState, memo } from 'react';
 
-function AdminProductEdit(props) {
+function AdminProductAddType(props) {
     /**id của san pham */
-    const idProduct = props.idProductSelect;
+    const idProduct = props.ProductSelect._id;
 
     /**UseState san pham */
     const [product, setProduct] = useState({
         tensanpham: '',
         gianiemyet: 0,
-        loaisanpham: '',
+        loaisanpham: props.ProductSelect.loaisanpham,
         soluong: 0,
-        mota: '',
+        mota: props.ProductSelect.mota,
         donvitinh: '',
         hinhanh: [],
+        trangthai: 'Ẩn',
         sanphamcungloai: []
     });
 
@@ -25,52 +24,17 @@ function AdminProductEdit(props) {
     /**File hình nếu có thay đổi */
     const [file, setFile] = useState(null);
 
-    /**Danh sach loai san pham */
-    const [dsLoaiSP, setDSLoaiSP] = useState([{
-        _id: 'null',
-        tenloaisanpham: 'null'
-    }]);
-
-    const getAPI = () => {
-        axios.get('/products/loaisanpham')
-            .then(response => response.data)
-            .then(response => {
-                setDSLoaiSP(response);
-            })
-        axios.post('/products/timsanphamtheoid', { _id: idProduct })
-            .then(response => response.data)
-            .then(response => {
-                setProduct(response);
-                setImages(response.hinhanh);
-            });
-    }
-
-    /**Lay loai san pham và san pham*/
-    useEffect(() => {
-        axios.get('/products/loaisanpham')
-            .then(response => response.data)
-            .then(response => {
-                setDSLoaiSP(response);
-            })
-        axios.post('/products/timsanphamtheoid', { _id: idProduct })
-            .then(response => response.data)
-            .then(response => {
-                setProduct(response);
-                setImages(response.hinhanh);
-            });
-    }, [idProduct])
-
     /**Update san pham */
     const handleUpdate = e => {
         e.preventDefault();
-
         if (file === null) {
             console.log('them san pham')
-            axios.post('/products/suasanpham', { product: product })
-                .then(response => response.data)
+            axios.post('/products/themsanphamcungloai', { product, idProduct })
                 .then(response => {
-                    alert('Đã cập nhật sản phẩm!');
-                });
+                    console.log(response.data);
+                    props.reRender();
+                    props.onUnShow();
+                })
         }
         else {
             let formData = new FormData();
@@ -78,34 +42,23 @@ function AdminProductEdit(props) {
                 formData.append(`fileImage`, file[i]);
             }
             axios.post('/products/themsanphamhinhanh', formData)
-                .then(response => {
-                    console.log(response.data)
-                    axios.post('/products/suasanpham', { product: product })
-                        .then(response => response.data)
+                .then(() => {
+                    axios.post('/products/themsanphamcungloai', { product, idProduct })
                         .then(response => {
-                            alert('Đã cập nhật sản phẩm!');
-                        });
+                            console.log(response.data);
+                            props.reRender();
+                            props.onUnShow();
+                        })
                 })
                 .catch(err => console.log(err));
         }
-    }
 
-    const xoaSanPhamCungLoai = id => {
-        const bool = window.confirm('Bạn muốn xóa id: ' + id);
-        if (bool)
-            axios.post('/products/xoasanphamcungloai', { id: id })
-                .then(res => {
-                    console.log(res.data);
-                    props.reRender();
-                    getAPI();
-                })
     }
-    const [showThemSanPhamCungLoai, setShowThemSanPhamCungLoai] = useState(false);
 
     return (
         <div className='adminproductedit'>
-            {!showThemSanPhamCungLoai && <div className='adminproductedit__turnoff' onClick={props.onUnShow}></div>}
-            {!showThemSanPhamCungLoai && <div className='adminproductedit__box'>
+            <div className='adminproductedit__turnoff' onClick={props.onUnShow}></div>
+            <div className='adminproductedit__box' style={{ width: '900px' }}>
                 <div className='adminproductedit__header'>
                     <span>Chỉnh sửa sản phẩm</span>
                     <span className='adminproductedit__close' onClick={props.onUnShow}>Đóng</span>
@@ -113,8 +66,7 @@ function AdminProductEdit(props) {
                 <div className='adminproductedit__body'>
                     <div className="admin__add-product">
                         <div className="admin__addproduct-app">
-                            <h3 className='admin__addproduct-title'>
-                                <p className='addproduct__admin-icon'></p>Thay đổi thông tin sản phẩm</h3>
+                            <h3 className='admin__addproduct-title'>Thêm lựa chọn cho sản phẩm</h3>
                             <form name="admin__addproduct" action='#' encType='multipart/form-data'>
                                 <div className='admin__addproduct-form'>
                                     <div className='admin__form-addproduct'>
@@ -127,23 +79,8 @@ function AdminProductEdit(props) {
                                                 value={product.tensanpham}
                                                 onChange={e => setProduct(prev => ({ ...prev, tensanpham: e.target.value }))}
                                             />
-
-                                            <h3 className='admin__addproduct-formtitle'>Loại sản phẩm</h3>
-                                            <select
-                                                className='admin__addproduct--select-type'
-                                                name='admin__product-select'
-                                                value={product.loaisanpham}
-                                                onChange={e => setProduct(prev => ({ ...prev, loaisanpham: e.target.value }))}
-                                            >
-                                                {dsLoaiSP.map((ele, index) => {
-                                                    return <option key={index} value={ele._id}>{ele.tenloaisanpham}</option>
-                                                })}
-                                            </select>
                                         </div>
                                     </div>
-
-
-
                                     <div className='admin__form-addproduct admin__form-addproduct--group'>
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='admin__product-amount'>Số lượng</label>
@@ -209,33 +146,9 @@ function AdminProductEdit(props) {
                                             />
                                         })}
                                     </div>
-
-
                                 </div>
                                 <div className='admin__addproduct-form'>
-                                    <div className='admin__form-addproduct'>
-                                        <div className='admin__addproduct-divinputtext'>
-                                            <label htmlFor='textare-inputext'>Mô tả sản phẩm</label>
-                                            <textarea id='admin__product-textare' name='admin__product-textare'
-                                                rows="4" cols="50" placeholder="Ví dụ ..."
-                                                value={product.mota}
-                                                onChange={e => setProduct(prev => ({ ...prev, mota: e.target.value }))}
-                                            ></textarea>
-                                        </div>
-                                    </div>
-                                    <div className='admin__form-addproduct  admin__infomation-addproduct--image'>
-                                        <div className='admin__form-addproduct__imageType'>
-                                            {product.sanphamcungloai.map((ele, index) => {
-                                                if (ele !== idProduct)
-                                                    return <AdminProductTypeImage
-                                                        key={index}
-                                                        idProduct={ele}
-                                                        onDelete={() => xoaSanPhamCungLoai(ele)}
-                                                    />
-                                                else return <div key={index}></div>
-                                            })}
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div className='admin__addproduct--button-app'>
                                     <div className='admin__addproduct--button-left'>
@@ -249,22 +162,13 @@ function AdminProductEdit(props) {
                                     </div>
                                 </div>
                             </form>
-                            <button className="snip1582 addtype-product"
-                                onClick={() => setShowThemSanPhamCungLoai(true)}>THÊM LOẠI SẢN PHẨM</button>
                         </div>
                     </div>
                 </div>
                 <div className='adminproductedit__footer'></div>
-            </div>}
-            {showThemSanPhamCungLoai &&
-                <AdminProductAddType
-                    onUnShow={() => setShowThemSanPhamCungLoai(false)}
-                    ProductSelect={product}
-                    reRender={getAPI}
-                />
-            }
+            </div>
         </div>
     )
 }
 
-export default memo(AdminProductEdit);
+export default memo(AdminProductAddType);
