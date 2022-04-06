@@ -34,35 +34,35 @@ function Header() {
             console.log(error);
         });
 
-        
-        const showNav = () => {
-            bar.current.classList.remove('fa-bars');
-            bar.current.classList.add('fa-times');
-            ul.current.classList.add('header__ul--show');
-            close.current.classList.add('header__closebar--show');
-        }
-        
-        const unshowNav = () => {
-            bar.current.classList.add('fa-bars');
-            bar.current.classList.remove('fa-times');
-            ul.current.classList.remove('header__ul--show');
-            close.current.classList.remove('header__closebar--show');
-        }
 
-        /*Hàm in danh sách menu list */
-        const list_item = (
-            <React.Fragment>
-                {lists.map((list, index) =>
-                    <MenuItemList
-                        key={index}
-                        name={list.tenloaihang}
-                        item={list.loaisanpham}
-                        index={index}
-                        unshow = {unshowNav}
-                    />
-                )}
-            </React.Fragment>
-        );
+    const showNav = () => {
+        bar.current.classList.remove('fa-bars');
+        bar.current.classList.add('fa-times');
+        ul.current.classList.add('header__ul--show');
+        close.current.classList.add('header__closebar--show');
+    }
+
+    const unshowNav = () => {
+        bar.current.classList.add('fa-bars');
+        bar.current.classList.remove('fa-times');
+        ul.current.classList.remove('header__ul--show');
+        close.current.classList.remove('header__closebar--show');
+    }
+
+    /*Hàm in danh sách menu list */
+    const list_item = (
+        <React.Fragment>
+            {lists.map((list, index) =>
+                <MenuItemList
+                    key={index}
+                    name={list.tenloaihang}
+                    item={list.loaisanpham}
+                    index={index}
+                    unshow={unshowNav}
+                />
+            )}
+        </React.Fragment>
+    );
 
     /*Đóng mở menu */
     const toggleNav = () => {

@@ -49,16 +49,16 @@
     width: auto;
     height: 45px;
     display: flex;
-    flex-wrap: wrap;
     margin-top: 20px;
+    overflow: hidden;
 }
 /* item */
 .orderadmin-search-item{
-    margin: 15px;
+    padding: 15px 8px;
     user-select: none;
     width: auto;
-   
-    height: 30px;
+    font-size: 14px;
+    border-left: 1px solid #ddd;
 }
 .orderadmin-search-item:hover{
     border-bottom: 2px solid var(--c3);
@@ -266,4 +266,12 @@
 }
 .admin-product-header-item-icon-absolute{
     z-index: 1;
+}
+.orderadmin-search--select{
+    font-size: 14px;
+    margin-top: -6px;
+    border: none;
+}
+.orderadmin-search--select:focus{
+    outline: none;
 }

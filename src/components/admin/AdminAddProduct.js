@@ -38,6 +38,13 @@ function AdminAddProduct() {
     const handleSubmit = (e) => {
         /**Ngăn hành vi mặc định */
         e.preventDefault();
+        /**Xóa ô trắng */
+        document.getElementById('name-inputext').value = '';
+        document.getElementById('file-inputfile').value = '';
+        document.getElementById('admin__product-textare').value = '';
+        document.getElementById('amount-inputext').value = '';
+        document.getElementById('unit-inputext').value = '';
+        document.getElementById('price-inputext').value = '';
         /**Ép kiểu thành formData */
         let formData = new FormData();
         for (let i = 0; i < file.length; i++) {
@@ -48,7 +55,10 @@ function AdminAddProduct() {
             .then(response => {
                 console.log(response.data)
                 axios.post('/products/themsanpham', { product })
-                    .then(response => console.log(response.data))
+                    .then(response => {
+                        console.log(response.data);
+                        alert('Đã thêm sản phẩm!')
+                    })
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
@@ -196,7 +206,7 @@ function AdminAddProduct() {
                             </div>
                             <div className='admin__addproduct-divinputtext'>
                                 <label htmlFor='admin__input-unit'>Đơn vị</label>
-                                <input type='text'
+                                <input type='text' id='unit-inputext'
                                     className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
                                     name='admin__product-unit'
                                     onChange={e => setProduct({ ...product, donvitinh: e.target.value })} />

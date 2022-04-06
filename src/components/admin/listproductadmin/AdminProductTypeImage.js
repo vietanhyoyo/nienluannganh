@@ -37,9 +37,14 @@ const deletebuttonStyle = {
     cursor: 'pointer'
 }
 
+const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
+
 export default function AdminProductTypeImage(props) {
     const [product, setProduct] = useState({
         _id: 'dd',
+        gianiemyet: 0,
         donvitinh: 'donvi',
         hinhanh: ['']
     })
@@ -55,6 +60,7 @@ export default function AdminProductTypeImage(props) {
             <div style={boxStyle}>
                 {props.idProduct && <img src={product.hinhanh[0]} alt='hh' style={imgStyle} />}
             </div>
+            <p style={pStyle}>{formatNumber(product.gianiemyet)}đ</p>
             <p style={pStyle}>{product.donvitinh}</p>
             <p style={deleteStyle}>
                 <span style={deletebuttonStyle} onClick={props.onDelete}>xóa</span>
