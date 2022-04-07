@@ -1,25 +1,16 @@
 import '../../css/product.css';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-
-import ProductStar from './ProductStar';
+import ProductEvaluate from './ProductEvaluate';
 import axios from 'axios';
 import { LoginContext } from '../../contexts/LoginContext';
 import ProductUnit from './ProductUnit';
+import ProductComment from './ProductComments';
 
 const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 }
-const arraySexs = [
-    {
-        id: 1,
-        name: 'nam'
-    },
-    {
-        id: 2,
-        name: 'nữ'
-    }
-]
+
 function Product() {
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
@@ -46,14 +37,11 @@ function Product() {
     });
     /**Lấy id trên url về */
     const { id } = useParams();
-    console.log(load);
-
 
     useEffect(() => {
         axios.post('/products/hienthisanpham', { _id: id })
             .then(response => response.data)
             .then(response => {
-                console.log(response);
                 setLoad(response);
             });
     }, [id]);
@@ -67,7 +55,7 @@ function Product() {
     //const slideList = document.querySelectorAll(".slide__img")
 
     const [quantity, setquantity] = useState(1);
-    const [checked, setChecked] = useState();
+
     //console.log(checked);
     const addQuantity = () => {
         setquantity(quantity + 1);
@@ -121,10 +109,12 @@ function Product() {
                             <h2 className='product__name-title-lab'>{load.tensanpham}</h2>
                             <p>Loại sản phẩm: {load.loaisanpham.tenloaisanpham}</p>
                             <h2 className='product__name-title-price'>
-                                {formatNumber(load.giasanpham.giaban)}đ/{load.donvitinh}
+                                {formatNumber(load.giasanpham.giaban)}<i>đ/{load.donvitinh}</i>
                                 {load.giasanpham.giaban !== load.gianiemyet &&
                                     <span>{formatNumber(load.gianiemyet)}đ/{load.donvitinh}</span>}
                             </h2>
+                            {load.giasanpham.khuyenmai &&
+                                <i style={{color: 'var(--c2)'}}>{load.giasanpham.khuyenmai.tenkhuyenmai}</i>}
                         </div>
                         <div className='product__name-type'>
                             <span>Đơn vị:</span>
@@ -179,212 +169,10 @@ function Product() {
                 <div className='product__detail'>
                     <h2>Thông tin sản phẩm</h2>
                     <p>{load.mota}</p>
-                    <div className='product__comment'>
-                        <div className='product__comment-raitng'>
-                            <div className='product__comment-title'>
-                                <h2>Đánh giá sản phẩm</h2>
-                            </div>
-                            <div className='product__comment-ratingbox'>
-                                <div className='product__comment-average-rating'>
-                                    <div>5.0</div>
-                                    <div className='product__comment-average-rating-star'>
-                                        <i className="fa-solid fa-star"></i>
-                                    </div>
-                                </div>
-                                <div className='product__comment-average-rating-star-reviews'>
-                                    <ul className="product__comment-average-rating-star-reviews-ul">
-                                        <li className='product__comment-average-rating-star-reviews-li'>
-                                            <span>5 sao</span>
-                                            <div className='evaluate evaluateting'></div>
-                                            <label>
-                                                4
-                                                <span> đánh giá</span>
-                                            </label>
-                                        </li>
-                                        <li className='product__comment-average-rating-star-reviews-li'>
-                                            <span>4 sao</span>
-                                            <div className='evaluate'></div>
-                                            <label>
-                                                0
-                                                <span> đánh giá</span>
-                                            </label>
-                                        </li>
-                                        <li className='product__comment-average-rating-star-reviews-li'>
-                                            <span>3 sao</span>
-                                            <div className='evaluate'></div>
-                                            <label>
-                                                0
-                                                <span> đánh giá</span>
-                                            </label>
-                                        </li>
-                                        <li className='product__comment-average-rating-star-reviews-li'>
-                                            <span>2 sao</span>
-                                            <div className='evaluate'></div>
-                                            <label>
-                                                0
-                                                <span> đánh giá</span>
-                                            </label>
-                                        </li>
-                                        <li className='product__comment-average-rating-star-reviews-li'>
-                                            <span>1 sao</span>
-                                            <div className='evaluate'></div>
-                                            <label>
-                                                0
-                                                <span> đánh giá</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <ProductStar />
-                            </div>
-                        </div>
-                    </div>
+                    <ProductEvaluate idProduct={id} />
                 </div>
                 <div className='product__customer-comments'>
-                    <div className='product__customer-comments-box'>
-                        <div className='product__customer-comments-list'>
-                            <div className='product__customer-comments-list-item'>
-                                <b className='product__customer-comments-list-item-heading'>
-                                    Kiên
-                                    <span className='list-star'>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                    </span>
-                                </b>
-                                <div className='product__customer-comments-list-item-p'>
-                                    Rau tươi. Để tủ lạnh nhìu ngày vẫn k bị hư. Giao hàng luôn đầy đủ và đúng giờ
-                                </div>
-                            </div>
-                            <div className='product__customer-comments-list-item'>
-                                <b className='product__customer-comments-list-item-heading'>
-                                    Vanh
-                                    <span className='list-star'>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                    </span>
-                                </b>
-                                <div className='product__customer-comments-list-item-p'>
-                                    Rau tươi ngon, giao hàng nhanh., good
-                                </div>
-                            </div>
-                            <div className='product__customer-comments-list-item'>
-                                <b className='product__customer-comments-list-item-heading'>
-                                    Điền
-                                    <span className='list-star'>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                    </span>
-                                </b>
-                                <div className='product__customer-comments-list-item-p'>
-                                    Rau rất tươi xanh, nhiều. Giao hàng đúng giờ :)))) giá cả phù hợp giảm giá nhiều. Có thể đồng hành lâu dài
-                                </div>
-                            </div>
-                        </div>
-                        <div className='login__box product__customer-comments-content'>
-                            <label className='login__label'>Mời bạn đánh giá về sản phẩm...</label>
-                            <br />
-                            <input className='login__input product__customer-comments-input'></input>
-                        </div>
-                        <div className='product__customer-comments-info'>
-                            <div className='product__customer-comments-info1'>
-                                <div className='product__customer-comments-info2'>
-                                    {arraySexs.map(arraySex => (
-                                        <div key={arraySex.id} className='product__customer-comments-info2-container'>
-                                            <label>{arraySex.name}</label>
-                                            <input
-                                                type='radio'
-                                                checked={checked === arraySex.id}
-                                                onChange={() => setChecked(arraySex.id)}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className='product__customer-comments-info2-add-picture'>
-                                    <i className="fa-solid fa-camera"></i>
-                                    <label>Thêm hình ảnh</label>
-                                </div>
-                            </div>
-                            <div className='product__customer-comments-info3'>
-                                <div className='product__customer-comments-info-fill'>
-                                    <label className='login__label'>Họ và tên (bắt buộc)</label>
-                                    <br />
-                                    <input type='text' className='login__input product__customer-comments-info-fill-input'></input>
-                                </div>
-                                <div className='product__customer-comments-info-fill'>
-                                    <label className='login__label'>Số điện thoại</label>
-                                    <br />
-                                    <input type='text' className='login__input product__customer-comments-info-fill-input'></input>
-                                </div>
-                            </div>
-                            <div className='product__customer-comments-info4'>
-                                <div className='product__customer-comments-info-fill'>
-                                    <label className='login__label'>Email</label>
-                                    <br />
-                                    <input type='email' className='login__input product__customer-comments-info-fill-input'></input>
-                                </div>
-                                <div className='button button-send-comment'>
-                                    Gửi đánh giá
-                                </div>
-                            </div>
-                        </div>
-                        <div className='product__customer-comments-content-title'>
-                            <h4>Hỏi về sản phẩm:</h4>
-                        </div>
-                        <div className='login__box product__customer-comments-content'>
-                            <label className='login__label'>Mời bạn bình luận hoặc đặt câu hỏi...</label>
-                            <br />
-                            <input className='login__input product__customer-comments-input product__customer-comments-input-none'></input>
-                        </div>
-                        <div className='product__customer-comments-info product__customer-comments-info-none'>
-                            <div className='product__customer-comments-info1'>
-                                <div className='product__customer-comments-info2'>
-                                    <div className='product__customer-comments-info2-container'>
-                                        <label>Nam</label>
-                                        <input type='radio' name='sex' id='sex1' />
-                                    </div>
-                                    <div className='product__customer-comments-info2-container'>
-                                        <label>Nữ</label>
-                                        <input type='radio' name='sex' id='sex2' />
-                                    </div>
-                                </div>
-                                <div className='product__customer-comments-info2-add-picture'>
-                                    <i className="fa-solid fa-camera"></i>
-                                    <label>Thêm hình ảnh</label>
-                                </div>
-                            </div>
-                            <div className='product__customer-comments-info3'>
-                                <div className='product__customer-comments-info-fill'>
-                                    <label className='login__label'>Họ và tên (bắt buộc)</label>
-                                    <br />
-                                    <input type='text' className='login__input product__customer-comments-info-fill-input'></input>
-                                </div>
-                                <div className='product__customer-comments-info-fill'>
-                                    <label className='login__label'>Số điện thoại</label>
-                                    <br />
-                                    <input type='text' className='login__input product__customer-comments-info-fill-input'></input>
-                                </div>
-                            </div>
-                            <div className='product__customer-comments-info4'>
-                                <div className='product__customer-comments-info-fill'>
-                                    <label className='login__label'>Email</label>
-                                    <br />
-                                    <input type='email' className='login__input product__customer-comments-info-fill-input'></input>
-                                </div>
-                                <div className='button button-send-comment'>
-                                    Gửi đánh giá
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ProductComment idProduct={id} />
                     <div className='product__contain-often-bought'>
                         <div className='namegroup'>
                             Nhóm hàng thường mua
