@@ -13,7 +13,7 @@ const TheUl = [
             },
             {
                 title: 'Thêm nhân viên',
-                path: '/admin/AdminAddUser'
+                path: '/admin/AddUser'
             },
           
         ]

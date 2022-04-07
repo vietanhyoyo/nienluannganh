@@ -8,10 +8,21 @@ function Admininfomation(props) {
     if(props.staff.chucvu === 'admin'){
         props.staff.chucvu = 'Quản trị viên'
     }
-
-
-  
     
+    const d = new Date(props.staff.ngaysinh)
+    const nam  =   d.getFullYear();
+    const thang  =   d.getMonth()+1;
+    const ngay  =   d.getDate()-1;
+    const ngaysinh = ngay + '/' + thang + '/' + nam
+    const t = new Date(props.staff.createdAt)
+    const nam1  =   t.getFullYear();
+    const thang1  =   t.getMonth()+1;
+    const ngay1  =   t.getDate()-1;
+    const ngayvao= ngay1 + '/' + thang1 + '/' + nam1
+    
+
+
+
     return (
         <div>
 
@@ -32,6 +43,7 @@ function Admininfomation(props) {
                                     <div className='content-top-items content-top-mid'>
                                           <h3 className='content-top-mid-ten'>{props.staff.hoten}</h3>
                                           <p className='content-top-mid-chucvu'>{props.staff.chucvu}</p>
+                                          <p className='content-top-mid-ngayvao'>Ngày vào công ty : {ngayvao}</p>
                                     </div>      
                                     <div className='content-top-items content-top-right'>
                                           <div className='content-top-right-left'>
@@ -59,7 +71,7 @@ function Admininfomation(props) {
                                               {props.staff.diachi}
                                               </p>
                                               <p className='content-top-right-right-items'>
-                                              {props.staff.ngaysinh}
+                                              {ngaysinh}
                                               </p>
                                               <p className='content-top-right-right-items'>
                                                   <div className='div-checked'>

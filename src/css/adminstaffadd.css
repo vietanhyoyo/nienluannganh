@@ -42,19 +42,24 @@
 
 .Admin__addstaff--content-left-div{
     width: 230px;
-    height: 280px;
-   
+    height: 230px;
+    background-color: var(--c4);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Admin__addstaff--content-left-div-img{
-    width: 93%;
-    height: 93%;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
 }
 
 
 .Admin__addstaff--content-right{
     width: 750px;
-    height: 350px;
+    height: 390px;
     justify-content: space-around;
     display: flex;
 }
@@ -123,7 +128,8 @@
     color: var(--c2);
     transition: .4s;
     width: 160px;
-    
+    margin-top: 15px;
+    margin-left: 38px;
 }
 .square_btn36:hover {
     color: var(--c5);
@@ -189,9 +195,8 @@
   -o-appearance: none;
   appearance: none;
   position: relative;
-  top: 13.33333px;
   right: 0;
-  bottom: 0;
+  top: 10px;
   left: 0;
   height: 30px;
   width: 30px;
@@ -201,6 +206,7 @@
   color: var(--c4);
   cursor: pointer;
   display: inline-block;
+
   margin-right: 0.5rem;
   outline: none;
   position: relative;
@@ -238,6 +244,7 @@
     padding-left: 25px;
     padding-right: 25px;
     justify-content: space-around;
+    
 }
 
 
@@ -255,12 +262,12 @@
 .Admin__addstaff--content-right-right-select{
     text-align: center;
     font-size: 18px;
-    width: 150px;
+    width: 287px;
     height: 50px;
     border: none;
     border-radius: 3px;
-    margin-bottom: 50px;
-    margin-left: 60px;
+    margin-bottom: 45px;
+    margin-left: 20px;
 }
 
 .Admin__addstaff--content-bottom{
@@ -331,4 +338,65 @@
 
 .button-900:not(:disabled):active {
   transform: translateY(.125rem);
+}
+
+
+
+
+/* SELECT TAG */
+
+.selectdiv {
+  position: relative;
+  /*Don't really need this just for demo styling*/
+  float: left;
+  min-width: 285px;
+  right: 22px;
+  margin-bottom: 45px;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+
+.selectdiv:after {
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+  /*Adjust for position however you want*/
+  
+  top: 15px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  /*left line */
+  
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  display: block;
+  width: 280px;
+  max-width: 280px;
+  height: 50px;
+  float: right;
+ 
+  padding: 0px 24px;
+  font-size: 16px;
+  
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
 }

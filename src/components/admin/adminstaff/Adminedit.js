@@ -5,6 +5,13 @@ function Adminedit(props) {
     const [image,setImage] = useState();
     const gender = props.staff.gioitinh;
    
+    const d = new Date(props.staff.ngaysinh)
+    const nam  =   d.getFullYear();
+    const thang  =   d.getMonth()+1;
+    const ngay  =   d.getDate()-1;
+    const ngaysinh = ngay + '/' + thang + '/' + nam
+   
+
     const [info,setInfo] = useState({
         id : props.staff.id,
         hoten  : props.staff.hoten,
@@ -21,7 +28,7 @@ function Adminedit(props) {
     useEffect(()=>{  
         const nam = document.getElementById('Gender-checked-male')
         const nu = document.getElementById('Gender-checked-female')
-        if(gender === 'Nam'){
+        if(gender === 'Nam' || gender === 'nam' ){
             nam.checked = true
         }else{
             nu.checked = true;
@@ -119,7 +126,7 @@ function Adminedit(props) {
                                           ></textarea>
                                           </p>
                                           <p className='content-top-right-right-items'>
-                                          <input name='date-input-staffadmin'  className='Admin__staff-input' defaultValue={props.staff.ngaysinh}
+                                          <input name='date-input-staffadmin'  className='Admin__staff-input' defaultValue={ngaysinh}
                                            onChange={(e)=>{
                                             setInfo({...info, ngaysinh : e.target.value})
                                             }}

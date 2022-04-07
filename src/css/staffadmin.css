@@ -158,7 +158,7 @@
 .StaffAdmin__manager-content:hover{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: var(--c1);
-    color: var(--c3);
+    color: var(--c4);
 }
 
 .StaffAdmin__manager-content-items{
@@ -278,3 +278,6 @@
     color: #f64129;
 }
 
+.content-top-mid-ngayvao{
+    margin-top: 18px;
+}

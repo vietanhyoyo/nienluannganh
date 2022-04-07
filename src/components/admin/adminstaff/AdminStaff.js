@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 function AdminStaff(props){
-        
-
+    
+   
+    
+        const d = new Date(props.staffdate.ngaysinh)
+        const nam  =   d.getFullYear();
+        const thang  =   d.getMonth()+1;
+        const ngay  =   d.getDate()-1;
+        const ngaysinh = ngay + '/' + thang + '/' + nam
+   
+    
+    
     return(
                 <div className='StaffAdmin__manager-content' >
                    
@@ -12,7 +22,7 @@ function AdminStaff(props){
                         </div>    
                          
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>{props.staff.hoten}</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>{props.staff.ngaysinh}</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>{ngaysinh}</div>    
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{props.staff.gioitinh}</div>    
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>{props.staff.sdt}</div>    
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>

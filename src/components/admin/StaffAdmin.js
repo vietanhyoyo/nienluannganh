@@ -3,7 +3,8 @@ import AdminStaff from './adminstaff/AdminStaff.js';
 import {useState} from 'react'
 import Adminedit from './adminstaff/Adminedit';
 import Admininfomation from './adminstaff/Admininfomation';
-import staff from './adminstaff/AdminDataStaff'
+import { useEffect } from 'react';
+import axios from 'axios';
 function StaffAdmin(){
     
     // Mở form edit 
@@ -13,7 +14,33 @@ function StaffAdmin(){
     // Giữ giá trị để hiển thị các thông tin nhân viên cụ thể [ID]
     const [index,setIndex] = useState(-1);
     
-
+    const [staff,setStaff] = useState([
+        {
+            hoten  : 'Nguyễn Trần Thanh Điền',
+            chucvu    : 'admin',
+            diachi  : '3/2 Ninh Kieu Can Tho',
+            hinhanh : 'https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2020/09/avatar-lolita-4.jpg?fit=656%2C20000&quality=95&ssl=1',
+            gioitinh : 'Nam',
+            sdt:  '0966631453',
+            ngaysinh:  '13/06/2000',
+            email : 'dienB1805751@gmail.com'
+        }
+    ])
+    
+    const a = () => axios.get("/employee/danhsachNhanVien")
+            .then(res => res.data)
+            .then(res => {
+                setStaff(res);
+               
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            
+            useEffect(()=>{
+                a()
+               
+            },[])
 
 
     const OpenFormEditStaff = () => {
@@ -70,6 +97,7 @@ function StaffAdmin(){
                             onClick2 = {OpenForminfoStaff} 
                             onClick3 = {setIndexArray}
                             index = {index}
+                            staffdate = {staff[index]}
                         />
                     )
                 })}

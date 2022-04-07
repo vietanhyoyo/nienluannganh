@@ -1,7 +1,20 @@
+import { useState } from 'react';
 import '../../css/adminadduser.css'
 import img from '../../images/sammy-25.png'
 
 export default function AdminAddUser() {
+
+    const [Infostaff , setInfostaff] = useState({
+        hoten  : '',
+        chucvu    : '',
+        diachi  : '',
+        hinhanh : '',
+        gioitinh : '',
+        sdt:  '',
+        ngaysinh:  '',
+        email : ''
+    });
+
     return (
         <div className='admin-add-user'>
             <div className='admin-add-user__body' >
@@ -37,6 +50,11 @@ export default function AdminAddUser() {
                                 <option value='1'>Quản lý</option>
                                 <option value='2'>Nhân viên</option>
                             </select>
+                            
+                        </div>
+                        <div className='admin-add-user__row'>
+                            <label htmlFor='username' className='admin-add-user__label'>Tên đăng nhập<b>*</b></label>
+                            <input type='text' name='username' className='admin-add-user__input' />
                         </div>
                         <div className='admin-add-user__row admin-add-user__row--btn'>
                             <div className='button' >Thêm</div>
