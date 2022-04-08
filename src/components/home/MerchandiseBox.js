@@ -47,6 +47,9 @@ function MerchandiseBox(props) {
                 .then(response => {
                     setProducts(response);
                 })
+        return (() => {
+            console.log();
+        })
     }, [props.idloaisanpham])
 
     return (

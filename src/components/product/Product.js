@@ -1,5 +1,5 @@
 import '../../css/product.css';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import ProductEvaluate from './ProductEvaluate';
 import axios from 'axios';
@@ -12,8 +12,12 @@ const formatNumber = (num) => {
 }
 
 function Product() {
+    /**Dùng để chuyển trang */
+    const navigate = useNavigate();
+
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
+    const [reRender, setReRender] = useState(0);
     const [load, setLoad] = useState({
         _id: null,
         tensanpham: null,
@@ -46,11 +50,14 @@ function Product() {
             });
     }, [id]);
     const submitOrder = () => {
-        axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id })
-            .then(response => response.data)
-            .then(response => {
-                console.log(response)
-            });
+        if (userid !== null)
+            axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id })
+                .then(response => response.data)
+                .then(response => {
+                    console.log(response)
+                    navigate(`/cart`);
+                });
+        else alert('Bạn vui lòng đăng nhập!');
     }
     //const slideList = document.querySelectorAll(".slide__img")
 
@@ -114,7 +121,7 @@ function Product() {
                                     <span>{formatNumber(load.gianiemyet)}đ/{load.donvitinh}</span>}
                             </h2>
                             {load.giasanpham.khuyenmai &&
-                                <i style={{color: 'var(--c2)'}}>{load.giasanpham.khuyenmai.tenkhuyenmai}</i>}
+                                <i style={{ color: 'var(--c2)' }}>{load.giasanpham.khuyenmai.tenkhuyenmai}</i>}
                         </div>
                         <div className='product__name-type'>
                             <span>Đơn vị:</span>
@@ -129,11 +136,9 @@ function Product() {
                                 onChange={e => setquantity(e.target.value)} value={quantity}></input>
                             <button className='product__name-quantity-btn' onClick={addQuantity}>+</button>
                         </div>
-                        <Link to={`/cart`} className='merchandise__item'>
-                            <div onClick={submitOrder} className='button login__oder'>
-                                Đặt hàng
-                            </div>
-                        </Link>
+                        <div onClick={submitOrder} className='button login__oder'>
+                            Đặt hàng
+                        </div>
                     </div>
                     <ul className='product__infoproduct-nospeci product__col'>
                         <li>
@@ -169,10 +174,11 @@ function Product() {
                 <div className='product__detail'>
                     <h2>Thông tin sản phẩm</h2>
                     <p>{load.mota}</p>
-                    <ProductEvaluate idProduct={id} />
+                    <ProductEvaluate idProduct={id} reRender={() => setReRender(reRender + 1)} />
                 </div>
                 <div className='product__customer-comments'>
-                    <ProductComment idProduct={id} />
+                    <ProductComment idProduct={id} reRender={reRender} />
+                    {/*
                     <div className='product__contain-often-bought'>
                         <div className='namegroup'>
                             Nhóm hàng thường mua
@@ -243,6 +249,7 @@ function Product() {
                             </div>
                         </div>
                     </div>
+                            */}
                 </div>
             </div>
         </div>
