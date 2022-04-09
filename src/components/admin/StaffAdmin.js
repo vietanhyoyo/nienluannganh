@@ -1,6 +1,6 @@
 import '../../css/staffadmin.css'
 import AdminStaff from './adminstaff/AdminStaff.js';
-import {useState} from 'react'
+import { useState} from 'react'
 import Adminedit from './adminstaff/Adminedit';
 import Admininfomation from './adminstaff/Admininfomation';
 import { useEffect } from 'react';
@@ -13,10 +13,10 @@ function StaffAdmin(){
     const [infomation,setInfomation] = useState(false);
     // Giữ giá trị để hiển thị các thông tin nhân viên cụ thể [ID]
     const [index,setIndex] = useState(-1);
-    
+   
     const [staff,setStaff] = useState([
         {
-            hoten  : 'Nguyễn Trần Thanh Điền',
+            hoten  : 'server chưa chạy',
             chucvu    : 'admin',
             diachi  : '3/2 Ninh Kieu Can Tho',
             hinhanh : 'https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2020/09/avatar-lolita-4.jpg?fit=656%2C20000&quality=95&ssl=1',
@@ -31,18 +31,15 @@ function StaffAdmin(){
             .then(res => res.data)
             .then(res => {
                 setStaff(res);
-               
             })
             .catch(function (error) {
                 console.log(error);
             });
-            
             useEffect(()=>{
                 a()
-               
             },[])
 
-
+            
     const OpenFormEditStaff = () => {
         setEditstaff(!editstaff);
     }
@@ -51,9 +48,7 @@ function StaffAdmin(){
     }
     const setIndexArray = (value) => {
         setIndex(value)
-        console.log(value)
     }
-
     
 
     

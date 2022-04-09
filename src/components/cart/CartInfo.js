@@ -1,29 +1,31 @@
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-
-function CartInfo() {
+function CartInfo(props) {
     return (
         <div className='cart__row cart__row--boder'>
             <div className='cart__info cart__info--big cart__info--image' >
                     <img
                         className='cart__img'
-                        src='https://cdn.tgdd.vn/Products/Images/2443/205993/bhx/-202201150926543269.jpg'
+                        src={props.hinhanh}
                         alt='product'
                     />
                     <div className='cart__name--product'>
-                        <p style={{color: '#444'}}>Tên sản phẩm</p>
+                        <p style={{color: '#444'}}>{props.tensanpham}</p>
                         <p className='cart__delete'>Xóa</p>
                     </div>
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <span>10000</span>
-                    <span>đ/lon</span>
+                    <span>{props.gia}</span>
+                    <span>đ{props.donvitinh}</span>
                 </div>
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
                     <div className='cart__adjustbutton'><i className='fa-solid fa-plus'></i></div>
-                    <input type='text'/>
+                    <input type='text' value={props.soluong.toString()}/>
                     <div className='cart__adjustbutton'><i className='fa-solid fa-minus'></i></div>
                 </div>
             </div>

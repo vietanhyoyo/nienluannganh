@@ -1,6 +1,7 @@
 import axios from "axios";
+import { memo } from "react";
 
-export default function AdminControllProductTypeItem({ data, renderAPI }) {
+function AdminControllProductTypeItemLi({ data, renderAPI }) {
     const handleDelete = () => {
         let yes = window.confirm('Bạn có muốn xoá nó không!');
         if (yes) {
@@ -45,3 +46,5 @@ export default function AdminControllProductTypeItem({ data, renderAPI }) {
 
     );
 }
+
+export default memo(AdminControllProductTypeItemLi);

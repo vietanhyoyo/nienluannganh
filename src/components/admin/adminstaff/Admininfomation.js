@@ -19,15 +19,27 @@ function Admininfomation(props) {
     const thang1  =   t.getMonth()+1;
     const ngay1  =   t.getDate()-1;
     const ngayvao= ngay1 + '/' + thang1 + '/' + nam1
-    
-
+  
+ 
 
 
     return (
         <div>
+            <div className='lopphu'>
+                
+                    <div className='loptrong' >
+                        <div className='content'>
+
+                            <div className='content-top'>
+                                <div className='content-top-items content-top-left'>
+                                    <h3>Thông tin nhân viên</h3>
+
+                                    {<img src={props.staff.hinhanh} alt='Ảnh đại diện' className='content-top-left-img' />
+                                        || <img src={''} alt='Chưa có ảnh đại diện' className='content-top-left-img' />}
+
 
                     <div className='lopphu'>
-                    <form>
+                   
                         <div className='loptrong' >
                            <div className='content'>
                               
@@ -91,12 +103,20 @@ function Admininfomation(props) {
                                 </div>                      
                            </div>
                         </div>
-                     </form> 
                     </div>
-    
-    
+                
+            </div>
+
+
         </div>
-      )
+        </div> 
+        </div> 
+        
+        </div>
+        </div>
+         
+
+    )
 }
 
-export default Admininfomation
+export default Admininfomation;

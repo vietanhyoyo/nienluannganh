@@ -59,8 +59,8 @@ const TheUl = [
     ]
     },
     {
-        // Hàng hóa
-    icon : 'fa-brands fa-teamspeak',
+        // Khuyen mai
+    icon : 'fa-solid fa-percent',
     title : 'Khuyến mãi',
     icon2 : 'fa-solid fa-angle-down',
     path : '/',
@@ -71,7 +71,20 @@ const TheUl = [
         },
         
     ]
-    },
+    },{
+        // Chat Admin voi khach hang
+    icon : 'fa-brands fa-teamspeak',
+    title : 'Chat với khách hàng',
+    icon2 : 'fa-solid fa-angle-down',
+    path : '/',
+    child: [
+        {
+            title: 'Chat',
+            path: '/admin/adminchat'
+        },
+        
+    ]
+    }
 
 ]
 

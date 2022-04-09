@@ -37,17 +37,42 @@
     font-size: 13px;
     overflow-y: scroll;
 }
+.chat__show::-webkit-scrollbar {
+    width: 7px;
+}
+.chat__show::-webkit-scrollbar-track {
+    border-radius: 10px;
+} 
+.chat__show::-webkit-scrollbar-thumb {
+    background: #ddd; 
+    border-radius: 10px;
+    cursor: pointer;
+}
+.chat__show::-webkit-scrollbar-thumb:hover {
+    background: var(--c3); 
+}
 .chat__message{
     border-radius: 6px;
-    background-color: white;
     padding: 6px;
-    margin-top: 10px;
+}
+.chat__username{
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 .chat__message--left{
     margin-right: 20px;
 }
 .chat__message--right{
     margin-left: 20px;
+}
+.chat__messagetext{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 16px;
+}
+.chat__message--right .chat__username{
+    width: 100%;
+    text-align: right;
 }
 .chat__write{
     display: flex;

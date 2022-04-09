@@ -2,34 +2,16 @@ import { useState } from 'react'
 import AdminPromotionListItem from './AdminPromotionListItem';
 
 export default function AdminPromotionList(prop) {
-    const [product] = useState([{
-        hinhanh: 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/dua-nu-hoang.jpg',
-        name: 'Khóm cầu đúc loại 1'
-    }, {
-        hinhanh: 'https://product.hstatic.net/200000287323/product/ca-chua-bee-cherry-huu-co-500x500_022d78c38d90452894d50e4b8a393e65.jpg',
-        name: 'Cà chua bi trái ngọt ngây 5 quả'
-    }, {
-        hinhanh: 'https://product.hstatic.net/200000287323/product/ca-chua-bee-cherry-huu-co-500x500_022d78c38d90452894d50e4b8a393e65.jpg',
-        name: 'Cà chua bi trái ngọt ngây 5 quả'
-    }, {
-        hinhanh: 'https://product.hstatic.net/200000287323/product/ca-chua-bee-cherry-huu-co-500x500_022d78c38d90452894d50e4b8a393e65.jpg',
-        name: 'Cà chua bi trái ngọt ngây 5 quả'
-    }, {
-        hinhanh: 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/dua-nu-hoang.jpg',
-        name: 'Khóm cầu đúc loại 1'
-    }, {
-        hinhanh: 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/dua-nu-hoang.jpg',
-        name: 'Khóm cầu đúc loại 1'
-    }, {
-        hinhanh: 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/dua-nu-hoang.jpg',
-        name: 'Khóm cầu đúc loại 1'
-    }, {
-        hinhanh: 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/dua-nu-hoang.jpg',
-        name: 'Khóm cầu đúc loại 1'
-    }, {
-        hinhanh: 'https://thucphamdongxanh.com/wp-content/uploads/2019/09/dua-nu-hoang.jpg',
-        name: 'Khóm cầu đúc loại 1'
-    }])
+    const [products, setProducts] = useState(prop.selectPromotion.danhsachsanpham)
+
+    const deleteSanPham = (id) => {
+        setProducts(prev => {
+            const arr = prev.filter(item => {
+                return item._id !== id;
+            })
+            return arr;
+        })
+    }
 
     return (
         <div className='admin-promotion-list'>
@@ -44,21 +26,18 @@ export default function AdminPromotionList(prop) {
                     </div>
                 </div>
                 <div className='admin-promotion-list__body'>
-                    {product.map((pro, index) => {
+                    {products.map((pro, index) => {
                         return <AdminPromotionListItem
+                            resetSelectPromotion={prop.resetSelectPromotion}
                             key={index}
+                            promotion={prop.selectPromotion}
                             data={pro}
+                            onDelete={deleteSanPham}
                         />
                     })}
-                    <div className='admin-promotion-list-item'>
-                        <div className='admin-promotion-list-item__col'>
-                            <div className='admin-promotion-list-item__button admin-promotion-list-item__button--add'>
-                                <i class="fi fi-rr-plus"></i> Thêm
-                            </div>
-                        </div>
-                        <div className='admin-promotion-list-item__col'></div>
-                    </div>
+
                 </div>
+                <div className='admin-promotion-list-item__delete'><span onClick={prop.onDelete}>Xóa khuyến mãi này</span></div>
             </div>
         </div>
     );

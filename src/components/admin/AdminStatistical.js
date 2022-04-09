@@ -17,7 +17,7 @@ export default function AdminStatistical() {
                      <i className="fa-solid fa-arrows-rotate"></i>   
                  </p>
                 
-                <div class="button-80">Hôm nay : 18/03</div>
+                <div className="button-80">Hôm nay : 18/03</div>
             </div>    
         </div>
         {/* Div tổng content */}
@@ -160,11 +160,11 @@ export default function AdminStatistical() {
                                      </div>
                                 </div>
                                 <div className='AdminStatistical__app--content-chart-product-button'>
-                                <button class="snip1585">
-                                <i class="fa-solid fa-angle-left"></i>
+                                <button className="snip1585">
+                                <i className="fa-solid fa-angle-left"></i>
                                 </button>
-                                <button class="snip1585">
-                                <i class="fa-solid fa-angle-right"></i>
+                                <button className="snip1585">
+                                <i className="fa-solid fa-angle-right"></i>
                                 </button>
 
                                 </div>

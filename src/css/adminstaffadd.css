@@ -400,3 +400,10 @@ display: none;
   -ms-word-break: normal;
   word-break: normal;
 }
+
+
+.Admin__addstaff--content-left-div-img1{
+  border-radius: 0px;
+  height: 20px;
+  text-align: center;
+}

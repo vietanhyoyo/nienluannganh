@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 
 
 function AdminStaff(props){
-    
-   
     
         const d = new Date(props.staffdate.ngaysinh)
         const nam  =   d.getFullYear();
         const thang  =   d.getMonth()+1;
         const ngay  =   d.getDate()-1;
         const ngaysinh = ngay + '/' + thang + '/' + nam
-   
+ 
+        
     
     
     return(

@@ -1,77 +1,105 @@
-import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import React, {  forwardRef, useEffect, useState } from 'react'
 import '../../../css/adminedit.css'
 function Adminedit(props) {
  
     const [image,setImage] = useState();
     const gender = props.staff.gioitinh;
-   
+    
     const d = new Date(props.staff.ngaysinh)
     const nam  =   d.getFullYear();
     const thang  =   d.getMonth()+1;
     const ngay  =   d.getDate()-1;
-    const ngaysinh = ngay + '/' + thang + '/' + nam
+    const ngaysinh =  nam + '-' +  thang + '-' + ngay
    
-
     const [info,setInfo] = useState({
-        id : props.staff.id,
+        _id : props.staff._id,
         hoten  : props.staff.hoten,
         chucvu    : props.staff.chucvu,
         diachi  : props.staff.diachi,
         hinhanh : props.staff.hinhanh,
         gioitinh : props.staff.gioitinh,
         sdt:  props.staff.sdt,
-        ngaysinh:  props.staff.ngaysinh,
+        ngaysinh:  ngaysinh,
         email : props.staff.email
-        
     });
-    console.log(info)
+    
+    // Checked mặc định của giới tính
     useEffect(()=>{  
         const nam = document.getElementById('Gender-checked-male')
         const nu = document.getElementById('Gender-checked-female')
-        if(gender === 'Nam' || gender === 'nam' ){
+        if (gender === 'Nam') {
             nam.checked = true
-        }else{
+        } else {
             nu.checked = true;
         }
-    },[gender])
+    }, [gender])
+
+    // Checked mặc định của chức vụ
+   
 
 
-    useEffect(()=>{
-      return () => {
-        image && URL.revokeObjectURL(image.preview);
-      }
-    },[image])
+    
     const changefile = (e) => {
-        const file  = e.target.files[0];
+        const file = e.target.files[0];
         file.preview = URL.createObjectURL(file);
         setImage(file); 
-        setInfo({...info, hinhanh : e.target.files[0]})
+        setInfo({...info, hinhanh : file.name})
     }
-    console.log('Ảnh');
-    console.log(info.hinhanh);
-    
-      
-  return (
-    <div>
+    useEffect(() => {
+        return () => {
+            image && URL.revokeObjectURL(image.preview);
+        }
+    }, [image])
+   
+    // Cập nhật lại dữ liệu
+    const UpdateInfo = () =>{
+        let formData = new FormData();
+        formData.append(`fileImage`, info.hinhanh);
+         /**Gửi API */
 
-                <div className='lopphu'>
-               
-                    <div className='loptrong' >
-                       <div className='content'>
-                       <form>
+       axios.post('/products/themsanphamhinhanh', formData)
+       .then(response => {
+       console.log(response.data)
+        //    post lên
+       axios.post('/employee/suathongtinnhanvien', info)
+        //  lấy dữ liệu trả về
+       .then(response => { 
+               console.log(response.data)
+           })
+           .catch(err => console.log(err))
+   })
+   .catch(err => console.log(err)); 
+    }
+    
+            
+
+    console.log(info._id);
+
+
+
+
+    return (
+        <div>
+
+            <div className='lopphu'>
+
+                <div className='loptrong' >
+                    <div className='content'>
+                        
                             <div className='content-top'>
                                 <div className='content-top-items content-top-left'>
-                                      <h3>Thông tin nhân viên</h3>
-                                     {image ?    
-                                     <img src={image.preview} alt='Ảnh đại diện' className='content-top-left-img'/> 
-                                      :  <img src={props.staff.hinhanh} alt='Chưa có ảnh đại diện' className='content-top-left-img'/>} 
-                                        <label htmlFor='file-staff' className='square_btn35'>Chọn ảnh đại diện</label>
-                                        <input 
+                                    <h3>Thông tin nhân viên</h3>
+                                    {image ?
+                                        <img src={image.preview} alt='Ảnh đại diện' className='content-top-left-img' />
+                                        : <img src={props.staff.hinhanh} alt='Chưa có ảnh đại diện' className='content-top-left-img' />}
+                                    <label htmlFor='file-staff' className='square_btn35'>Chọn ảnh đại diện</label>
+                                    <input
                                         type={'file'}
                                         onChange={changefile}
-                                        id = 'file-staff'
-                                        />
-                                </div>   
+                                        id='file-staff'
+                                    />
+                                </div>
                                 <div className='content-top-items content-top-mid'>
                                       <h3 className='content-top-mid-ten'>
                                           <input  className='Admin__staff-input' defaultValue={props.staff.hoten} onChange={(e)=>{
@@ -83,8 +111,8 @@ function Adminedit(props) {
                                           onChange={(e)=> setInfo({...info, chucvu : e.target.value})}
                                           defaultValue= {props.staff.chucvu}
                                           >        
-                                            <option value="admin">Quản trị viên</option>  
-                                            <option value="nhanvien"> Nhân viên</option>
+                                            <option className='option-editstaff'  value="admin">Quản trị viên</option>  
+                                            <option className='option-editstaff'  value="nhanvien"> Nhân viên</option>
                                           </select>
                                         
                                       
@@ -110,7 +138,7 @@ function Adminedit(props) {
                                       </div>
                                       <div className='content-top-right-right'>
                                           <p className='content-top-right-right-items'>
-                                              <input name='' className='Admin__staff-input' defaultValue={props.staff.sdt}
+                                              <input  className='Admin__staff-input' defaultValue={props.staff.sdt}
                                               
                                               onChange={(e)=>{
                                                 setInfo({...info, sdt : e.target.value})
@@ -126,7 +154,7 @@ function Adminedit(props) {
                                           ></textarea>
                                           </p>
                                           <p className='content-top-right-right-items'>
-                                          <input name='date-input-staffadmin'  className='Admin__staff-input' defaultValue={ngaysinh}
+                                          <input name='date-input-staffadmin' type={'date'}  className='Admin__staff-input Admin__staff-input-date'
                                            onChange={(e)=>{
                                             setInfo({...info, ngaysinh : e.target.value})
                                             }}
@@ -161,20 +189,22 @@ function Adminedit(props) {
                                       
                                 </div>                               
                             </div>
-                            </form> 
-                            <div className='content-bottom'>
-                                    <button className='button-6'type='submit' >Cập nhật</button>
-                                    <button className='button-6'>Hủy bỏ</button>
-                                    <button className='button-6' onClick={props.onClick}>Quay lại</button>
-                            </div>                      
-                       </div>
+                       
+                        <div className='content-bottom'>
+                            <button className='button-6' 
+                            onClick={UpdateInfo}
+                            >Cập nhật</button>
+                            <button className='button-6'>Hủy bỏ</button>
+                            <button className='button-6' onClick={props.onClick}>Quay lại</button>
+                        </div>
                     </div>
-               
                 </div>
 
+            </div>
 
-    </div>
-  )
+
+        </div>
+    )
 }
 
 export default Adminedit
