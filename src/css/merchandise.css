@@ -31,7 +31,7 @@
     padding: 14px;
     box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.075),
                 5px 5px 10px rgba(0, 0, 0, 0.075);
-    height: 270px;
+    height: 280px;
 }
 .merchandise__element{
     height: 100%;
@@ -57,6 +57,7 @@
     overflow: hidden;
     font-weight: 400;
     font-size: 14px;
+    height: 40px;
 }
 .merchandise__item .button{
     text-align: center;
@@ -84,6 +85,21 @@
     flex-direction: column;
     justify-content: center;
     color: #777;
+}
+.merchandise__price{
+    display: flex;
+    justify-content: space-between;
+}
+.merchandise__price span{
+    font-size: 12px;
+}
+.merchandise__price span b{
+    font-size: 14px;
+}
+.merchandise__price--undone{
+    text-decoration-line: line-through;
+    color: #999;
+    font-size: 12px;
 }
 @media only screen and (max-width: 1300px) {
     .merchandise__item{

@@ -94,7 +94,7 @@
 .admin-promotion__item{
     cursor: pointer;
     display: flex;
-    width: 80%px;
+    width: 96%;
     height: 100px;
     box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.048),
                 5px 5px 5px rgba(0, 0, 0, 0.144);
@@ -137,6 +137,8 @@
 }
 .admin-promotion__num--green{
     background-color: var(--c3);
+}.admin-promotion__num--yellow{
+    background-color: var(--c6);
 }
 .admin-promotion__num__content{
     margin: auto;
@@ -261,4 +263,16 @@
 .admin-promotion-list-item__button--add:hover, 
 .admin-promotion-list-item__button--add:active{
     color: var(--c3);
+}
+.admin-promotion-list-item__delete{
+    padding-top: 16px;
+    text-align: right;
+}
+.admin-promotion-list-item__delete span{
+    font-size: 12px;
+    cursor: pointer;
+    color: #999;
+}
+.admin-promotion-list-item__delete span:hover{
+    color: var(--c5);
 }

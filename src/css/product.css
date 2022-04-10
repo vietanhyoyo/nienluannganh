@@ -3,13 +3,21 @@
     color: #333;
 }
 .product{
-    max-width: 1100px;
-    margin-bottom: 10px;
+    background-color: rgb(245, 245, 245);
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
-.product__image-slide{
+.product__bottle{
+    background-color: #fff;
+    padding-top: 40px;
     box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.089),
                 5px 5px 10px rgba(0, 0, 0, 0.089);
-    margin-top: 20px;
+}
+.product__col{
+    width: 33.33%;
+}
+.product__image-slide{
+    margin-left: 20px;
 }
 .product__img{
     max-width: 100%;
@@ -21,15 +29,32 @@
 }
 .product__name{
     width: 40%;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+.product__name-title-lab{
+    color: var(--c1);
+}
+.product__name-title-price{
+    color: var(--c5);
+    margin-top: 20px;
+}
+.product__name-title-price i{
+    font-style: normal;
+    font-size: 16px;
+}
+.product__name-title-price span{
+    margin-left: 20px;
+    text-decoration-line: line-through;
+    color: #999;
+    font-size: 16px;
 }
 .product__name-title{
     margin-top: 20px;
-    margin-left: 50px;
     margin-bottom: 20px;
 }
 .login__oder{
     text-align: center;
-    margin-left: 50px;
     max-width: 50% ;
     font-size: 1.5rem;
 }
@@ -58,13 +83,17 @@
 .product__detail p{
     margin-bottom: 20px;
 }
+.product__infoproduct-nospeci{
+    padding-top: 20px;
+    padding-right: 40px;
+}
 .product__infoproduct-nospeci li span{
     margin-right: 20px;
-    font-size: 13px;
+    font-size: 16px;
     color: #999999;
 }
 .product__infoproduct-nospeci div{
-    font-size: 13px;
+    font-size: 16px;
     color: #4a4a4a;
 }
 .product__infoproduct-nospeci li{
@@ -74,6 +103,7 @@
 }   
 .product__comment-ratingbox{
     display: flex;
+    justify-content: space-around;
     border: 1px solid #ecf0f1;  
     border-radius: 10px;
 }
@@ -115,10 +145,17 @@
     margin: 7px 8px 2px 8px;
 }
 .evaluateting{
+    height: 8px;
+    width: 0%;
     background-color: #fac917;
+    border-radius: 2px;
 }
 .product__comment-ratingbox-rating-chose{
-    margin-left: 110px;
+    margin-left: 0px;
+}
+.product__comment-ratingbox-rating-chose p{
+    font-size: 12px;
+    color: #999;
 }
 .product__comment-ratingbox-rating-chose-list{
     display: flex;
@@ -127,8 +164,9 @@
 }
 .product__comment-ratingbox-star-chose i{
     font-size: 40px;
-    color: #9999;
+    color: #999;
     margin-right: 15px;
+    cursor: pointer;
 }
 .product__contain-often-bought{
     width: 35%;
@@ -164,13 +202,12 @@
     padding-top: 10px;
 }
 .product__customer-comments-list-item{
-    margin-bottom: 15px;
     padding: 10px;
 }
 .list-star i{
     font-size: 15px;
     margin-right: 5px;
-    color: #fac917;
+    color: #999;
 }
 .list-star:first-child{
     margin-left: 5px;
@@ -231,13 +268,13 @@
 }
 .product__image-slide-img{
     position: relative;
-    width: 310px;
 }
 .product__image-slide-img-box{
     margin: auto;
     display: flex;
     text-align: center;
-    height: 300px;
+    width: 350px;
+    height: 350px;
 }
 .slide__img{
     margin: auto;
@@ -281,20 +318,26 @@
     display: block;
 }
 .product__name-type{
-    margin-left: 50px;
     margin-bottom: 20px;
+    display: flex;
 }
-.product__name-type label{
-    margin-right: 39px;
+.product__name-type span{
+    margin-right: 18px;
 }
 .product__name-type-btn{
+    cursor: pointer;
     width: 80px;
     height: 35px;   
-    margin-left: 10px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 10px;
     font-size: 1.2rem;
-    background-color: rgba(0, 0, 0, 0.089);
+    background-color: #f1f1f1;
     border-radius: 3px;
     border: 1px solid rgba(0, 0, 0, 0.089);
+}
+.product__name-type-btn:hover{
+    border: 1px solid var(--c3);
 }
 .product__name-quantity-btn{
     width: 35px;
@@ -317,9 +360,12 @@
     border-radius: 3px;
 }
 .product__name-quantity{
-    margin-left: 50px;
     margin-bottom: 20px;
 }
 .product__name-quantity label{
     margin-right: 50px;
+}
+.product__customer-comments-list-item p{
+    font-size: 14px;
+    color: #999;
 }

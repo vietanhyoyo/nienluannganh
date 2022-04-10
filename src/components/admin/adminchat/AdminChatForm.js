@@ -88,9 +88,9 @@ function AdminChatForm({ nguoinhan }) {
     const convertTime = (time) => {
         const date = new Date(time)
     
-        const ngaythangnam = `${date.getHours()} h ${date.getMinutes()} m`;
+        const thoigian = `${date.getHours()} h ${date.getMinutes()} m`;
         let result;
-        result = ngaythangnam;
+        result = thoigian;
         return result;
     }
 
@@ -107,12 +107,12 @@ function AdminChatForm({ nguoinhan }) {
                     />
                 else if (ele.nguoinhan !== undefined && ele.nguoinhan === nguoinhan._id) return <AdminChatMyMessage
                     key={index}
-                    name='You'
+                    name='Admin'
                     message={ele.noidung}
-                    image={'https://i.pinimg.com/550x/85/db/2a/85db2a30e0a25c21cce1bf50563afcc3.jpg'}
+                    image={'https://cdn4.vectorstock.com/i/thumb-large/93/48/customer-support-or-service-agent-vector-26289348.jpg'}
                     time={convertTime(ele.thoigian)}
                 />
-                else return < div key={index}></div>
+                else return <div key={index}></div>
             })}
 
         </div>

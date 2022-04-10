@@ -1,26 +1,34 @@
 import '../../css/staffadmin.css'
 import AdminStaff from './adminstaff/AdminStaff.js';
 import {useState} from 'react'
-import Adminedit from './listproductadmin/Adminedit';
+import Adminedit from './adminstaff/Adminedit';
+import Admininfomation from './adminstaff/Admininfomation';
+import staff from './adminstaff/AdminDataStaff'
 function StaffAdmin(){
-    const [staff] = useState([
-        {
-            id    : '1',
-            name  : 'Nguyễn Trần Thanh Điền',
-            age  : 22,
-            image : 'https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2020/09/avatar-lolita-4.jpg?fit=656%2C20000&quality=95&ssl=1',
-            gender : 'Nam',
-            number:  '0966631453',
-        },
-        {
-            id    : '2',
-            name  : 'Bùi Việt Anh',
-            age  : 22,
-            image : 'https://4.bp.blogspot.com/-IFxe4e4UIkk/WYVoiyGzBVI/AAAAAAAAS4M/IZBttZ_EHz06-smxaX6KX3SVgUcDOi4EwCLcBGAs/s1600/Taianhdep.club__tai-anh-dai-dien-facebook-kute-de-thuong%2B%25281%2529.jpeg',
-            gender : 'Nam',
-            number:  '0944431123',
-        }
-    ])
+    
+    // Mở form edit 
+    const [editstaff,setEditstaff] = useState(false);
+    // Mở form infomation
+    const [infomation,setInfomation] = useState(false);
+    // Giữ giá trị để hiển thị các thông tin nhân viên cụ thể [ID]
+    const [index,setIndex] = useState(-1);
+    
+
+
+
+    const OpenFormEditStaff = () => {
+        setEditstaff(!editstaff);
+    }
+    const OpenForminfoStaff = () => {
+        setInfomation(!infomation);   
+    }
+    const setIndexArray = (value) => {
+        setIndex(value)
+        console.log(value)
+    }
+
+    
+
     
     return(
         <div className="StaffAdmin">
@@ -44,6 +52,7 @@ function StaffAdmin(){
             {/* TITLE */}
             <div className='StaffAdmin__manager'>
                 <div className='StaffAdmin__manager-title'>
+                    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-image'>Ảnh</div>    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-name'>Tên</div>    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-age'>Tuổi</div>    
@@ -57,6 +66,10 @@ function StaffAdmin(){
                         <AdminStaff
                             key= {index}
                             staff = {staffitems}
+                            onClick = {OpenFormEditStaff}
+                            onClick2 = {OpenForminfoStaff} 
+                            onClick3 = {setIndexArray}
+                            index = {index}
                         />
                     )
                 })}
@@ -64,8 +77,19 @@ function StaffAdmin(){
 
 
             </div>
-            
-                <Adminedit/>
+                
+             {editstaff &&  
+             <Adminedit
+               onClick = {OpenFormEditStaff}
+               staff = {staff[index]}
+             />}  
+             {infomation &&   
+             <Admininfomation
+              onClick = {OpenForminfoStaff}
+              staff = {staff[index]}
+             />}
+          
+
 
         </div>
     )

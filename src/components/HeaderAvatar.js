@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom';
 function HeaderAvatar() {
     /**Lấy login Context */
     const loginState = useContext(LoginContext);
-    const [user, setUser] = useState({});
     const [avatarimg, setAvatarImg] = useState('/images/Wellcome.png');
 
     /*Đăng xuất */
@@ -26,7 +25,6 @@ function HeaderAvatar() {
             .then(response => response.data)
             .then(response => {
                 const photo = String(response.hinhanh);
-                setUser(response);
                 setAvatarImg(photo)
             });
     }, [loginState.iduser]);

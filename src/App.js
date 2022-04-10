@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import { LoginProvider } from "./contexts/LoginContext";
+import { CartProvider } from "./contexts/CartContext";
 import './css/app.css';
 import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
@@ -22,44 +23,45 @@ import AdminStatistical from "./components/admin/AdminStatistical";
 import Find from "./components/find/Find";
 import FindSearch from "./components/find/FindSearch";
 import AdminAddUser from "./components/admin/AdminAddUser";
-import ListProductAdmin from "./components/admin/ListProductAdmin";
 import AdminChat from "./components/admin/AdminChat";
+import ListProductAdmin from "./components/admin/ListProductAdmin"
+import AdminStaffAdd from "./components/admin/AdminStaffAdd";
 
 function App() {
   return (
     <LoginProvider>
-      <React.Fragment>
-        <Routes>
-          <Route path='/' element={<Client />} >
-            <Route path='/' element={<Home />} />
-            <Route path='cart' element={<Cart />} />
-            <Route path='buy' element={<Buy />} />
-            <Route path='product/:id' element={<Product />} />
-            <Route path='signup' element={<Signup />} />
-            <Route path='login' element={<Login />} />
-            <Route path='find/:id' element={<Find />} />
-            <Route path='findsearch/:id' element={<FindSearch />} />
-            <Route path='person' element={<Person />} >
-              <Route path='profile' element={<PersonProfile />} />
-              <Route path='history' element={<PersonHistory />} />
+      <CartProvider>
+        <React.Fragment>
+          <Routes>
+            <Route path='/' element={<Client />} >
+              <Route path='/' element={<Home />} />
+              <Route path='cart' element={<Cart />} />
+              <Route path='buy' element={<Buy />} />
+              <Route path='product/:id' element={<Product />} />
+              <Route path='signup' element={<Signup />} />
+              <Route path='login' element={<Login />} />
+              <Route path='find/:id' element={<Find />} />
+              <Route path='findsearch/:id' element={<FindSearch />} />
+              <Route path='person' element={<Person />} >
+                <Route path='profile' element={<PersonProfile />} />
+                <Route path='history' element={<PersonHistory />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path='/admin' element={<Admin />}>
-            <Route path='staff' element={<StaffAdmin />} />
-            <Route path='adduser' element={<AdminAddUser />} />
-            <Route path='invoice' element={<AdminInvoice />} />
-            <Route path='promotion' element={<AdminPromotion />} />
-            <Route path='producttype' element={<AdminControllProductType />} />
-            <Route path='addproduct' element={<AdminAddProduct />} />
-            <Route path='Statistical' element={<AdminStatistical />} />
-            <Route path='AdminAddUser' element={<AdminAddUser />} />
-            <Route path='addproduct' element={<AdminAddProduct />} />
-            <Route path='Statistical' element={<AdminStatistical/>} />
-            <Route path='product' element={<ListProductAdmin/>} />
-            <Route path='adminchat' element={<AdminChat />} />
-          </Route>
-        </Routes>
-      </React.Fragment>
+            <Route path='/admin' element={<Admin />}>
+              <Route path='adminchat' element={<AdminChat />} />
+              <Route path='staff' element={<StaffAdmin />} />
+              <Route path='invoice' element={<AdminInvoice />} />
+              <Route path='producttype' element={<AdminControllProductType />} />
+              <Route path='AdminAddUser' element={<AdminAddUser />} />
+              <Route path='addproduct' element={<AdminAddProduct />} />
+              <Route path='Statistical' element={<AdminStatistical />} />
+              <Route path='product' element={<ListProductAdmin />} />
+              <Route path='promotion' element={<AdminPromotion />} />
+              <Route path='AddUser' element={<AdminStaffAdd />} />
+            </Route>
+          </Routes>
+        </React.Fragment>
+      </CartProvider>
     </LoginProvider>
   );
 }

@@ -1,0 +1,91 @@
+.adminproductedit{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+}
+.adminproductedit__turnoff{
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 1;
+    width: 250vh;
+    height: 100vh;
+}
+.adminproductedit__box{
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 16px;
+    transform: translate(-50%,-50%);
+    width: 1000px;
+}
+.adminproductedit__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #999;
+}
+.adminproductedit__close:hover{
+    cursor: pointer;
+    color: var(--c6);
+}
+.adminproductedit__body{
+    overflow-y: scroll;
+    height: 500px;
+}
+.admin__form-addproduct__imageType{
+    display: flex;
+}
+.adminproductedit__content{
+    width: 100%;
+}
+.adminproductedit__topic{
+    padding: 10px 0px;
+}
+.adminproductedit__row{
+    display: flex;
+    width: 100%;
+}
+.adminproductedit__col{
+    padding-left: 3%;
+}
+.adminproductedit__col label{
+    display: block;
+    font-size: 14px;
+    color: var(--c1);
+    padding: 5px 0px;
+}
+.adminproductedit__input{
+    padding: 6px;
+    width: 94%;
+    border: 1px solid #666;
+}
+.adminproductedit__input:focus{
+    outline: none;
+    border: 1px solid var(--c3);
+}
+.adminproductedit__textarea{
+    padding: 6px;
+    width: 94%;
+    border: 1px solid #666;
+    height: 90%;
+}
+.adminproductedit__btn--small{
+    margin-top: 10px;
+    padding: 6px;
+    cursor: pointer;
+    width: max-content;
+    border: 1px solid #999;
+}
+.adminproductedit__btn--small:hover{
+    border: 1px solid var(--c3);
+    background-color: var(--c3);
+    color: #fff;
+}

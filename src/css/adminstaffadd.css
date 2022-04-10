@@ -1,0 +1,334 @@
+
+/* Tổng */
+.Admin__addstaff{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+/* Title Thêm nhân viên */
+.Admin__addstaff--title{
+    display: flex;
+    max-width: 190px;
+    font-size: 20px;
+    color: var(--c1);
+    height: 50px;
+    justify-content: space-around;
+    align-items: center ;
+    margin-left: 35px;
+    
+}
+/* icon */
+.Admin__addstaff--title-icon{
+    font-size: 21px;
+}
+
+
+
+.Admin__addstaff--content{
+    width: 900px;
+    height: 350px;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left :45px;
+    display:flex;
+    
+}
+
+.Admin__addstaff--content-left{
+    width: 250px;
+    height: 350px;
+ 
+}
+
+.Admin__addstaff--content-left-div{
+    width: 230px;
+    height: 280px;
+   
+}
+
+.Admin__addstaff--content-left-div-img{
+    width: 93%;
+    height: 93%;
+}
+
+
+.Admin__addstaff--content-right{
+    width: 750px;
+    height: 350px;
+    justify-content: space-around;
+    display: flex;
+}
+
+.Admin__addstaff--content-right-left{
+    width: 48%;
+    height: 100%;
+}
+
+
+.Admin__addstaff--content-top{
+  display: flex;
+}
+
+
+
+
+
+/* CSS INPUT */
+.form__label {
+        
+    font-size: 14px;
+    margin-left: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 5px;
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(0rem);
+    color: var(--c2);
+  }
+  
+  .form__input {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 16px;
+    margin: 0 auto;
+    padding : 12px;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+  }
+  
+  .form__input:placeholder-shown + .form__label {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-4rem);
+    transform: translateY(-4rem);
+  }
+
+
+/* Button chosse file */
+#Admin__addstaff--label{
+    display: none;
+}
+
+.square_btn36{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--c2);
+    transition: .4s;
+    width: 160px;
+    
+}
+.square_btn36:hover {
+    color: var(--c5);
+}
+.square_btn36:active{
+    background-color: var(--c2);
+}
+.square_btn36:before,.square_btn36:after{
+  position: absolute;
+  top: 0;
+  content:'';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+.square_btn36:before{
+  border-left: solid 1px var(--c2);
+  border-top: solid 1px var(--c2);
+  border-bottom: solid 1px var(--c2);
+  left: 0;
+}
+.square_btn36:after{
+  content: '';
+  border-top: solid 1px var(--c2);
+  border-right: solid 1px var(--c2);
+  border-bottom: solid 1px var(--c2);
+  right: 0;
+}
+
+
+/* Radio button */
+
+
+.option-input1:checked {
+    background: var(--c1);
+  }
+  .option-input1:checked::before {
+    width: 30px;
+    height: 30px;
+    display:flex;
+    content: '\f00c';
+    font-size: 17px;
+    font-weight:bold;
+    position: absolute;
+    align-items:center;
+    justify-content:center;
+    font-family:'Font Awesome 5 Free';
+  }
+  .option-input1:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: var(--c3);
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+  }
+.option-input1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  transition: all 0.15s ease-out 0s;
+  background-color: var(--c1);
+  border: none;
+  color: var(--c4);
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input1:hover {
+  background: var(--c2);
+}
+
+.option-input1.radio1 {
+  border-radius: 50%;
+}
+.option-input1.radio1::after {
+  border-radius: 50%;
+}
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+
+.form__group-radion-staffadmin{
+    display: flex;  
+    padding-left: 25px;
+    padding-right: 25px;
+    justify-content: space-around;
+}
+
+
+/* thẻ phải */
+.Admin__addstaff--content-right-right{
+    width: 48%;
+    height: 100%;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.Admin__addstaff--content-right-right-select{
+    text-align: center;
+    font-size: 18px;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 50px;
+    margin-left: 60px;
+}
+
+.Admin__addstaff--content-bottom{
+  display: flex;
+  justify-content: right;
+}
+
+
+/* CSS */
+.button-900 {
+  background: #fff;
+  backface-visibility: hidden;
+  border-radius: .375rem;
+  border-style: solid;
+  border-width: .190rem;
+  box-sizing: border-box;
+  color: #212121;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  padding: 11px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 20px;
+}
+
+.button-900:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-900:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(.125rem);
+}
+
+.button-900:focus {
+  outline: 0 solid transparent;
+}
+
+.button-900:focus:before {
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-900:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-900:focus:not(:focus-visible):before {
+  border-width: 0;
+}
+
+.button-900:not(:disabled):active {
+  transform: translateY(.125rem);
+}

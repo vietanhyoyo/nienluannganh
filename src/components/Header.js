@@ -8,6 +8,7 @@ import HeaderAvatar from './HeaderAvatar';
 import MenuItemList from './MenuItemList';
 import logoima from '../images/logotext.png'
 import axios from 'axios';
+import CartIcon from './CartIcon';
 
 function Header() {
 
@@ -20,7 +21,7 @@ function Header() {
     const bar = useRef();
     const ul = useRef();
     const close = useRef();
-    const cartpath = '/cart/id=23';
+    const cartpath = '/cart';
 
     /*Các dữ liệu của menu bar */
     const [lists, setLists] = useState([]);
@@ -34,35 +35,35 @@ function Header() {
             console.log(error);
         });
 
-        
-        const showNav = () => {
-            bar.current.classList.remove('fa-bars');
-            bar.current.classList.add('fa-times');
-            ul.current.classList.add('header__ul--show');
-            close.current.classList.add('header__closebar--show');
-        }
-        
-        const unshowNav = () => {
-            bar.current.classList.add('fa-bars');
-            bar.current.classList.remove('fa-times');
-            ul.current.classList.remove('header__ul--show');
-            close.current.classList.remove('header__closebar--show');
-        }
 
-        /*Hàm in danh sách menu list */
-        const list_item = (
-            <React.Fragment>
-                {lists.map((list, index) =>
-                    <MenuItemList
-                        key={index}
-                        name={list.tenloaihang}
-                        item={list.loaisanpham}
-                        index={index}
-                        unshow = {unshowNav}
-                    />
-                )}
-            </React.Fragment>
-        );
+    const showNav = () => {
+        bar.current.classList.remove('fa-bars');
+        bar.current.classList.add('fa-times');
+        ul.current.classList.add('header__ul--show');
+        close.current.classList.add('header__closebar--show');
+    }
+
+    const unshowNav = () => {
+        bar.current.classList.add('fa-bars');
+        bar.current.classList.remove('fa-times');
+        ul.current.classList.remove('header__ul--show');
+        close.current.classList.remove('header__closebar--show');
+    }
+
+    /*Hàm in danh sách menu list */
+    const list_item = (
+        <React.Fragment>
+            {lists.map((list, index) =>
+                <MenuItemList
+                    key={index}
+                    name={list.tenloaihang}
+                    item={list.loaisanpham}
+                    index={index}
+                    unshow={unshowNav}
+                />
+            )}
+        </React.Fragment>
+    );
 
     /*Đóng mở menu */
     const toggleNav = () => {
@@ -109,7 +110,7 @@ function Header() {
                 <div className='header__box'>
                     <div className='header__icon'>
                         {loginState.role === null ?
-                            <Link to='/cart'><i className='fas fa-shopping-basket'></i></Link> :
+                            <Link to={cartpath}><CartIcon /></Link> :
                             <Link to='/admin/Statistical'>
                                 <span>Trang quản lý</span>
                             </Link>}
