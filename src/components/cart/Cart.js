@@ -1,4 +1,5 @@
 import '../../css/cart.css';
+import { Link } from 'react-router-dom';
 import CartInfo from './CartInfo';
 import { useState, useEffect, useContext } from 'react';
 import { LoginContext } from '../../contexts/LoginContext';
@@ -21,7 +22,7 @@ export default function Cart() {
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
     useEffect(() => {
-        axios.post('/order/hienthigiohang', { khachhang: userid})
+        axios.post('/order/hienthigiohang', { khachhang: userid })
             .then(response => response.data)
             .then(response => {
                 setLoad(response);
@@ -45,24 +46,25 @@ export default function Cart() {
                         <p className='cart__info__p'>Tổng tiền</p>
                     </div>
                 </div>
-                    {load.map((ele, index)=> {
-                        return <CartInfo 
-                            hinhanh = {ele.sanpham.hinhanh[0]}
-                            tensanpham = {ele.sanpham.tensanpham}
-                            soluong = {ele.soluong}
-                            gia = {ele.sanpham.gianiemyet}
-                            donvitinh = {ele.sanpham.donvitinh}
-                        />
-                    })}
+                {load.map((ele, index) => {
+                    return <CartInfo key={index}
+                        hinhanh={ele.sanpham.hinhanh[0]}
+                        tensanpham={ele.sanpham.tensanpham}
+                        soluong={ele.soluong}
+                        gia={ele.sanpham.gianiemyet}
+                        donvitinh={ele.sanpham.donvitinh}
+                        tongtien={ele.soluong*ele.sanpham.gianiemyet}
+                    />
+                })}
                 <div className='cart__payment'>
                     <div className='cart__row cart__row--top'>
                         <div className='cart__info--top cart__info--big' ></div>
                         <div className='cart__info--top cart__info--small' ></div>
                         <div className='cart__info--top cart__info--small' >
                             <div className='cart__cost'>
-                                <p className='cart__p' style={{textAlign: 'end'}}>Tổng tiền hàng:</p>
-                                <p className='cart__p' style={{textAlign: 'end'}}>Phí vận chuyển:</p>
-                                <p className='cart__p' style={{textAlign: 'end'}}>Tổng cộng:</p>
+                                <p className='cart__p' style={{ textAlign: 'end' }}>Tổng tiền hàng:</p>
+                                <p className='cart__p' style={{ textAlign: 'end' }}>Phí vận chuyển:</p>
+                                <p className='cart__p' style={{ textAlign: 'end' }}>Tổng cộng:</p>
                             </div>
                         </div>
                         <div className='cart__info--top cart__info--small' >
@@ -70,7 +72,9 @@ export default function Cart() {
                                 <p className='cart__p'>50000đ</p>
                                 <p className='cart__p'>10000đ</p>
                                 <p className='cart__p cart__info__p--red'>600000đ</p>
-                                <div className='button'>Đặt hàng</div>
+                                <Link to={`/buy`} className='merchandise__item'>
+                                    <div className='button'>Đặt hàng</div>
+                                </Link>
                                 <div className='button cart--gray'>Xóa giỏ hàng</div>
                             </div>
                         </div>

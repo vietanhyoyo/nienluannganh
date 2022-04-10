@@ -1,9 +1,10 @@
 import '../../css/product.css';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 
 import ProductStar from './ProductStar';
-import axios from 'axios';
+ 
 import { LoginContext } from '../../contexts/LoginContext';
 
 
@@ -120,11 +121,9 @@ function Product() {
                             onChange={e => setquantity(e.target.value)} value={quantity}></input>
                         <button className='product__name-quantity-btn' onClick={addQuantity}>+</button>
                     </div>
-                    <Link to={`/cart`} className='merchandise__item'>
                         <div onClick={submitOrder} className='button login__oder'>
                             Đặt hàng
                         </div>
-                    </Link>
                 </div>
             </div>
             <div className='product__detail'>

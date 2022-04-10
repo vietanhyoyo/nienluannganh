@@ -109,7 +109,7 @@ function Header() {
                 <div className='header__box'>
                     <div className='header__icon'>
                         {loginState.role === null ?
-                            <Link to={cartpath}><i className='fas fa-shopping-basket'></i></Link> :
+                            <Link to='/cart'><i className='fas fa-shopping-basket'></i></Link> :
                             <Link to='/admin/Statistical'>
                                 <span>Trang quản lý</span>
                             </Link>}

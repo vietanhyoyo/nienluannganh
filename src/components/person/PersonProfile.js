@@ -1,17 +1,31 @@
 import '../../css/presonprofile.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function PersonProfile() {
+    const [load, setLoad] = useState({
+        _id: null,
+        hoten: null,
+        sdt: null,
+    });
+    useEffect(() => {
+        axios.post('/customer/infokhachhang')
+            .then(response => response.data)
+            .then(response => {
+                setLoad(response);
+            });
+    },[]);
     return (
         <>
             <div className='person__profile'>
                 <h2 className='person__profile-title'>Thông tin tài khoản</h2>
                 <div className="person__profile__row">
                     <label className="person-profile__row-label">Họ Tên:</label>
-                    <input className="person__profile__row-input-wrapper-input"></input>
+                    <input className="person__profile__row-input-wrapper-input" value={load.hoten}></input>
                 </div>
                 <div className="person__profile__row">
                     <label className="person-profile__row-label">Số điện thoại:</label>
-                    <input className="person__profile__row-input-wrapper-input"></input>
+                    <input className="person__profile__row-input-wrapper-input" value={load.sdt}></input>
                 </div>
                 <div className="person__profile__row">
                     <label className="person-profile__row-label">Email:</label>

@@ -1,6 +1,4 @@
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+
 
 function CartInfo(props) {
     return (
@@ -31,7 +29,7 @@ function CartInfo(props) {
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <span>10000</span><span>đ</span>
+                    <span>{props.tongtien}</span><span>đ</span>
                 </div>
             </div>
         </div>
