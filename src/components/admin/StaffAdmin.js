@@ -23,7 +23,8 @@ function StaffAdmin(){
             gioitinh : 'Nam',
             sdt:  '0966631453',
             ngaysinh:  '13/06/2000',
-            email : 'dienB1805751@gmail.com'
+            email : 'dienB1805751@gmail.com',
+            matkhau :'aloha123'
         }
     ])
     
@@ -31,6 +32,7 @@ function StaffAdmin(){
             .then(res => res.data)
             .then(res => {
                 setStaff(res);
+                
             })
             .catch(function (error) {
                 console.log(error);
@@ -38,8 +40,8 @@ function StaffAdmin(){
             useEffect(()=>{
                 a()
             },[])
-
             
+    
     const OpenFormEditStaff = () => {
         setEditstaff(!editstaff);
     }
@@ -50,7 +52,7 @@ function StaffAdmin(){
         setIndex(value)
     }
     
-
+   
     
     return(
         <div className="StaffAdmin">
@@ -91,7 +93,9 @@ function StaffAdmin(){
                             onClick = {OpenFormEditStaff}
                             onClick2 = {OpenForminfoStaff} 
                             onClick3 = {setIndexArray}
+                            rerender ={a}
                             index = {index}
+                            id ={staff[index]._id}
                             staffdate = {staff[index]}
                         />
                     )
@@ -105,6 +109,7 @@ function StaffAdmin(){
              <Adminedit
                onClick = {OpenFormEditStaff}
                staff = {staff[index]}
+               rerender={a}
              />}  
              {infomation &&   
              <Admininfomation

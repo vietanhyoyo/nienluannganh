@@ -12,7 +12,7 @@ function Admininfomation(props) {
     const d = new Date(props.staff.ngaysinh)
     const nam  =   d.getFullYear();
     const thang  =   d.getMonth()+1;
-    const ngay  =   d.getDate()-1;
+    const ngay  =   d.getDate();
     const ngaysinh = ngay + '/' + thang + '/' + nam
     const t = new Date(props.staff.createdAt)
     const nam1  =   t.getFullYear();

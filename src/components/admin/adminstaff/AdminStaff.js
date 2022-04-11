@@ -1,3 +1,4 @@
+import axios from "axios";
 import {  useEffect, useState } from "react";
 
 
@@ -40,13 +41,23 @@ function AdminStaff(props){
                                      props.onClick3(props.index)
                                      props.onClick()}}>
                                 <p className='StaffAdmin__manager-content-items-icon-icon'><i className="fa-solid fa-pen-to-square"></i></p>
-                                <p className='StaffAdmin__manager-content-items-icon-text' >Sửa</p>
+                                <p className='StaffAdmin__manager-content-items-icon-text'>Sửa</p>
                             </div>
                          {/* Div ngăn cách */}
                         
                         {/* Div ngăn cách */}
                        
-                            <div className='StaffAdmin__manager-content-items-icon-right'>
+                            <div className='StaffAdmin__manager-content-items-icon-right' onClick={()=> {
+                                 axios.post('/employee/xoanhanvien',{
+                                    id : props.staff._id})
+                                 .then(response => {
+                                     if(response.data ==='finishdelete'){
+                                         alert('Xóa thành công');
+                                         props.rerender()
+                                     }
+                                 })
+                                 .catch(err => console.log(err));
+                            }}>
                                 <p className='StaffAdmin__manager-content-items-icon-icon'><i className="fa-solid fa-user-xmark"></i></p>
                                 <p className='StaffAdmin__manager-content-items-icon-text'>Xóa</p>
                             </div>

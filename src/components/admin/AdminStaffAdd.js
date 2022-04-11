@@ -4,8 +4,6 @@ import StaffAdmin from './StaffAdmin'
 import axios from 'axios'
 function AdminStaffAdd() {
     
-    
-
     const [postinfo,setPosinfo] = useState({
         hoten  : '',
         chucvu    : 'admin',
@@ -134,7 +132,7 @@ function AdminStaffAdd() {
         file.preview = URL.createObjectURL(file);
         setImage1(file); 
         setPosinfo({...postinfo,hinhanh : file.name})
-        console.log(file.name);
+        
     }
     useEffect(() => {
         return () => {

@@ -1,17 +1,17 @@
 import axios from 'axios';
-import React, {  forwardRef, useEffect, useState } from 'react'
+import React, {   useEffect, useState } from 'react'
 import '../../../css/adminedit.css'
 function Adminedit(props) {
  
-    const [image,setImage] = useState();
+    
     const gender = props.staff.gioitinh;
     
     const d = new Date(props.staff.ngaysinh)
     const nam  =   d.getFullYear();
     const thang  =   d.getMonth()+1;
     const ngay  =   d.getDate()-1;
-    const ngaysinh =  nam + '-' +  thang + '-' + ngay
-   
+    const ngaysinh =  nam+'-'+thang+'-'+ngay
+    
     const [info,setInfo] = useState({
         _id : props.staff._id,
         hoten  : props.staff.hoten,
@@ -21,6 +21,7 @@ function Adminedit(props) {
         gioitinh : props.staff.gioitinh,
         sdt:  props.staff.sdt,
         ngaysinh:  ngaysinh,
+        matkhau : props.staff.matkhau,
         email : props.staff.email
     });
     
@@ -39,7 +40,8 @@ function Adminedit(props) {
    
 
 
-    
+    const [image,setImage] = useState();
+
     const changefile = (e) => {
         const file = e.target.files[0];
         file.preview = URL.createObjectURL(file);
@@ -51,30 +53,91 @@ function Adminedit(props) {
             image && URL.revokeObjectURL(image.preview);
         }
     }, [image])
-   
+    
+
+    // Check email
+    function IsInvalidEmail(the_email) {
+        var at = the_email.indexOf("@");
+        var dot = the_email.lastIndexOf(".");
+        var space = the_email.indexOf(" ");
+        
+       if ((at !== -1) && //có ký tự @
+        (at !== 0) && //ký tự @ không nằm ở vị trí đầu
+        (dot !== -1) && //có ký tự .
+        (dot > at + 1) && (dot < the_email.length - 1) //phải có ký tự nằm giữa @ và . cuối cùng
+        &&
+        (space === -1)) //không có khoẳng trắng 
+        {
+        return true;
+        } else {
+          alert("Địa chỉ không hợp lệ : định dạng (<tên>@gmail.com)");
+        return false;
+        }
+    }
+
+    var name = true;
+    var address = true;
+    var picture = true;
+    var gendertrue =true;
+    var password = true;
+    var phonenumber = true;
+    var email = true;
+
+    
     // Cập nhật lại dữ liệu
     const UpdateInfo = () =>{
-        let formData = new FormData();
-        formData.append(`fileImage`, info.hinhanh);
-         /**Gửi API */
+        if(info.hinhanh === undefined || info.hinhanh === ''){
+            picture=false;
+            alert('Chưa có ảnh đại diện');
+        }
+        if(info.hoten === '' || /[0-9]/.test(info.hoten) === true){
+            name=false
+            alert('Tên không được rỗng và không có được có ký tự số')
+        }
+        if(info.diachi === ''){
+            address=false
+            alert('Địa chỉ không được rỗng')
+        }
+        if(info.gioitinh === ''){
+            gendertrue=false
+            alert('Chưa chọn giới tính')
+        }
+        if(info.matkhau === '' || info.matkhau.length < 5){
+            password=false
+            alert('Mật khẩu không được rỗng hoặc mật khẩu phải có độ dài trên 5 kí tự ')
+        }
+        
+        if(IsInvalidEmail(info.email) === false){
+                email = false;
+        }
+        
+        
+       
+        if(picture ===true && phonenumber ===true && email ===true && name === true 
+            && gendertrue === true && address ===true && password ===true)
+            {
+            let formData = new FormData();
+            formData.append(`fileImage`, image);
+                    /**Gửi API */
+                axios.post('/products/themsanphamhinhanh', formData)
+                .then(response => {
+                console.log(response.data)
+                    //    post lên
+                axios.post('/employee/suathongtinnhanvien', info)
+                    //  lấy dữ liệu trả về
+                    .then(response => { 
+                        console.log(response.data)
 
-       axios.post('/products/themsanphamhinhanh', formData)
-       .then(response => {
-       console.log(response.data)
-        //    post lên
-       axios.post('/employee/suathongtinnhanvien', info)
-        //  lấy dữ liệu trả về
-       .then(response => { 
-               console.log(response.data)
-           })
-           .catch(err => console.log(err))
-   })
-   .catch(err => console.log(err)); 
+                    })
+                    .catch(err => console.log(err))
+                     })
+                     .catch(err => console.log(err)); 
+            }
     }
     
             
-
-    console.log(info._id);
+   
+    console.log(info);
 
 
 
@@ -106,7 +169,7 @@ function Adminedit(props) {
                                         setInfo({...info, hoten : e.target.value})
                                         }}/>
                                         </h3>
-                                      <p className='content-top-mid-chucvu'>
+                                    <p className='content-top-mid-chucvu'>
                                           <select className='Admin__staff-input' 
                                           onChange={(e)=> setInfo({...info, chucvu : e.target.value})}
                                           defaultValue= {props.staff.chucvu}
@@ -114,9 +177,10 @@ function Adminedit(props) {
                                             <option className='option-editstaff'  value="admin">Quản trị viên</option>  
                                             <option className='option-editstaff'  value="nhanvien"> Nhân viên</option>
                                           </select>
-                                        
+                                    </p>
+                                 
                                       
-                                      </p>
+
                                 </div>      
                                 <div className='content-top-items content-top-right'>
                                       <div className='content-top-right-left'>
@@ -155,7 +219,8 @@ function Adminedit(props) {
                                           </p>
                                           <p className='content-top-right-right-items'>
                                           <input name='date-input-staffadmin' type={'date'}  className='Admin__staff-input Admin__staff-input-date'
-                                           onChange={(e)=>{
+                                            defaultValue={ngaysinh}
+                                            onChange={(e)=>{
                                             setInfo({...info, ngaysinh : e.target.value})
                                             }}
                                           
@@ -176,6 +241,7 @@ function Adminedit(props) {
                                                      <input type={'radio'} name='checkrender' id='Gender-checked-female' className='option-input radio' defaultValue={'Nữ'}
                                                       onClick={(e)=>{
                                                         setInfo({...info, gioitinh : 'Nữ'})
+                                                        
                                                         }}
                                                      /> 
                                                       <label htmlFor='Gender-checked-female'>Nữ</label>
@@ -183,7 +249,12 @@ function Adminedit(props) {
                                               </div>                    
                                           </p>
                                           <p className='content-top-right-right-items'>
-                                          <input name='' className='Admin__staff-input' defaultValue={props.staff.email}/>
+                                          <input  className='Admin__staff-input' defaultValue={props.staff.email}
+                                              
+                                              onChange={(e)=>{
+                                                setInfo({...info, email : e.target.value})
+                                                }}
+                                              />
                                           </p>
                                       </div>
                                       
@@ -191,11 +262,31 @@ function Adminedit(props) {
                             </div>
                        
                         <div className='content-bottom'>
+                            <button className='button-6 button-6-repass'
+                            onClick={()=> {
+                                axios.post('/employee/laylaimatkhau',{
+                                   id : info._id})
+                                .then(response => {
+                                    props.rerender();
+                                    alert('Đặt mật khẩu thành công : (cuahangong7)  ')
+                                })
+                                .catch(err => console.log(err));
+                             }
+                             }
+                            >Đặt lại mật khẩu</button>
+                           
                             <button className='button-6' 
-                            onClick={UpdateInfo}
+                            onClick={()=> 
+                            {
+                                UpdateInfo()
+                                alert('Cập nhật thành công')
+                            }}
                             >Cập nhật</button>
-                            <button className='button-6'>Hủy bỏ</button>
-                            <button className='button-6' onClick={props.onClick}>Quay lại</button>
+                            <button className='button-6' onClick={()=>{
+                                props.onClick()
+                                props.rerender()
+                                }}>Quay lại</button>
+                            
                         </div>
                     </div>
                 </div>
