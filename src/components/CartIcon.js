@@ -1,18 +1,29 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../contexts/LoginContext';
 import { CartContext } from '../contexts/CartContext';
 
 function CartIcon() {
+    /**Các context */
     const loginState = useContext(LoginContext);
     const cartState = useContext(CartContext);
+
+    /**UseState lưu số liệu */
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         if (loginState.role === null && loginState.role !== 'admin' && loginState.role !== 'nhanvien')
             cartState.getAPI(loginState.iduser);
-    }, [loginState.iduser])
+    }, [loginState.iduser, loginState.role])
+
+    useEffect(() => {
+        setIndex(cartState.list.length)
+        return (() => {
+
+        })
+    }, [cartState.list])
 
     return (
-        <div>{cartState.list.length > 0 &&
+        <div>{index > 0 &&
             <div style={{
                 position: 'absolute',
                 zIndex: '1',
@@ -25,7 +36,7 @@ function CartIcon() {
                 transform: 'translate(-10px,-10px)',
                 textAlign: 'center',
                 borderRadius: '50%'
-            }}>{cartState.list.length}</div>}
+            }}>{index}</div>}
             <i className='fas fa-shopping-basket'></i>
         </div>
     )

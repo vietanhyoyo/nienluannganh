@@ -13,7 +13,6 @@ function CartProvider({ children }) {
             .then(response => response.data)
             .then(response => {
                 setList(response);
-                console.log(response)
             });
 
     const value = {

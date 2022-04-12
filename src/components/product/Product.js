@@ -1,9 +1,10 @@
 import '../../css/product.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import ProductEvaluate from './ProductEvaluate';
 import axios from 'axios';
 import { LoginContext } from '../../contexts/LoginContext';
+import { CartContext } from '../../contexts/CartContext';
 import ProductUnit from './ProductUnit';
 import ProductComment from './ProductComments';
 
@@ -12,11 +13,12 @@ const formatNumber = (num) => {
 }
 
 function Product() {
-    /**Dùng để chuyển trang */
-    const navigate = useNavigate();
 
+    /*Dữ liệu đăng nhập */
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
+    /**Dữ liệu giỏ hàng trên header */
+    const cartState = useContext(CartContext);
     const [reRender, setReRender] = useState(0);
     const [load, setLoad] = useState({
         _id: null,
@@ -54,8 +56,9 @@ function Product() {
             axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id })
                 .then(response => response.data)
                 .then(response => {
-                    console.log(response)
-                    navigate(`/cart`);
+                    console.log(response);
+                    cartState.getAPI(userid);
+                    alert('Đã thêm vào giở hàng')
                 });
         else alert('Bạn vui lòng đăng nhập!');
     }
