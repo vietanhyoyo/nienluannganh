@@ -1,6 +1,14 @@
+import axios from "axios";
 
 
 function CartInfo(props) {
+    const deleteSP = ()=>{
+        axios.post('/order/xoachitietdathang', {id: props.id})
+            .then(response => response.data)
+            .then(response => {
+                props.reRender();
+        });
+    }
     return (
         <div className='cart__row cart__row--boder'>
             <div className='cart__info cart__info--big cart__info--image' >
@@ -11,7 +19,7 @@ function CartInfo(props) {
                     />
                     <div className='cart__name--product'>
                         <p style={{color: '#444'}}>{props.tensanpham}</p>
-                        <p className='cart__delete'>Xóa</p>
+                        <p className='cart__delete' onClick={deleteSP}>Xóa</p>
                     </div>
             </div>
             <div className='cart__info cart__info--small' >

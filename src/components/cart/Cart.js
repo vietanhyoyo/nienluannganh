@@ -8,6 +8,7 @@ import axios from 'axios';
 export default function Cart() {
     const [load, setLoad] = useState([{
         dathang: '',
+        _id:'',
         sanpham: {
             tensanpham: '',
             hinhanh: [''],
@@ -21,13 +22,20 @@ export default function Cart() {
 
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
+    const reRender = function(){
+        axios.post('/order/hienthigiohang', { khachhang: userid })
+            .then(response => response.data)
+            .then(response => {
+                setLoad(response);
+            });
+    }
     useEffect(() => {
         axios.post('/order/hienthigiohang', { khachhang: userid })
             .then(response => response.data)
             .then(response => {
                 setLoad(response);
             });
-    }, []);
+    }, [userid]);
     return (
         <div className='cart'>
             <div className='cart__body row-app'>
@@ -48,6 +56,8 @@ export default function Cart() {
                 </div>
                 {load.map((ele, index) => {
                     return <CartInfo key={index}
+                        reRender={reRender}
+                        id={ele._id}
                         hinhanh={ele.sanpham.hinhanh[0]}
                         tensanpham={ele.sanpham.tensanpham}
                         soluong={ele.soluong}
