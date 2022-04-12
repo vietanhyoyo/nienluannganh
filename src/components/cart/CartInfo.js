@@ -1,8 +1,14 @@
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import axios from "axios";
+
 
 function CartInfo(props) {
+    const deleteSP = ()=>{
+        axios.post('/order/xoachitietdathang', {id: props.id})
+            .then(response => response.data)
+            .then(response => {
+                props.reRender();
+        });
+    }
     return (
         <div className='cart__row cart__row--boder'>
             <div className='cart__info cart__info--big cart__info--image' >
@@ -13,7 +19,7 @@ function CartInfo(props) {
                     />
                     <div className='cart__name--product'>
                         <p style={{color: '#444'}}>{props.tensanpham}</p>
-                        <p className='cart__delete'>Xóa</p>
+                        <p className='cart__delete' onClick={deleteSP}>Xóa</p>
                     </div>
             </div>
             <div className='cart__info cart__info--small' >
@@ -31,7 +37,7 @@ function CartInfo(props) {
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <span>10000</span><span>đ</span>
+                    <span>{props.tongtien}</span><span>đ</span>
                 </div>
             </div>
         </div>
