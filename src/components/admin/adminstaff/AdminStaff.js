@@ -1,8 +1,22 @@
-import { useState } from "react";
+import axios from "axios";
+import {  useEffect, useState } from "react";
+
 
 function AdminStaff(props){
+    
+        const d = new Date(props.staffdate.ngaysinh)
+        const nam  =   d.getFullYear();
+        const thang  =   d.getMonth()+1;
+        const ngay  =   d.getDate();
+        const ngaysinh = ngay + '/' + thang + '/' + nam
+        var k = '';
+        if(props.staff.chucvu === 'admin'){
+           k = 'Quản trị viên'
+        }else{
+            k = 'Nhân viên'
+        }
         
-
+        
     return(
                 <div className='StaffAdmin__manager-content' >
                    
@@ -12,8 +26,9 @@ function AdminStaff(props){
                         </div>    
                          
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>{props.staff.hoten}</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>{props.staff.ngaysinh}</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{props.staff.gioitinh}</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>{ngaysinh}</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{props.staff.gioitinh}</div>   
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{k}</div>     
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>{props.staff.sdt}</div>    
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
                             
@@ -31,13 +46,23 @@ function AdminStaff(props){
                                      props.onClick3(props.index)
                                      props.onClick()}}>
                                 <p className='StaffAdmin__manager-content-items-icon-icon'><i className="fa-solid fa-pen-to-square"></i></p>
-                                <p className='StaffAdmin__manager-content-items-icon-text' >Sửa</p>
+                                <p className='StaffAdmin__manager-content-items-icon-text'>Sửa</p>
                             </div>
                          {/* Div ngăn cách */}
                         
                         {/* Div ngăn cách */}
                        
-                            <div className='StaffAdmin__manager-content-items-icon-right'>
+                            <div className='StaffAdmin__manager-content-items-icon-right' onClick={()=> {
+                                 axios.post('/employee/xoanhanvien',{
+                                    id : props.staff._id})
+                                 .then(response => {
+                                     if(response.data ==='finishdelete'){
+                                         alert('Xóa thành công');
+                                         props.rerender()
+                                     }
+                                 })
+                                 .catch(err => console.log(err));
+                            }}>
                                 <p className='StaffAdmin__manager-content-items-icon-icon'><i className="fa-solid fa-user-xmark"></i></p>
                                 <p className='StaffAdmin__manager-content-items-icon-text'>Xóa</p>
                             </div>

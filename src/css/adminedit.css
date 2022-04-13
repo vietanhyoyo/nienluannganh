@@ -13,10 +13,10 @@
 .loptrong{
     width: 900px;
     height: 550px;
-    padding-top: 20px;
     background-color: #fdfcfb;
     border-radius: 15px;
 }
+
 
 .content{
     width: 100%;
@@ -48,6 +48,8 @@
     max-height: 325px;
     margin-bottom: 30px;
     margin-top: 10px;
+    border: 1px solid black;
+    border-radius:15px ;
 }
 .content-top-left{
     width:260px;
@@ -73,10 +75,10 @@
    
 }
 .square_btn35:hover {
-    color: var(--c5);
+    color: var(--c2);
 }
 .square_btn35:active{
-    background-color: var(--c5);
+    background-color: var(--c3);
 }
 .square_btn35:before,.square_btn35:after{
   position: absolute;
@@ -87,16 +89,16 @@
   display: inline-block;
 }
 .square_btn35:before{
-  border-left: solid 1px var(--c5);
-  border-top: solid 1px var(--c5);
-  border-bottom: solid 1px var(--c5);
+  border-left: solid 1px var(--c2);
+  border-top: solid 1px var(--c2);
+  border-bottom: solid 1px var(--c2);
   left: 0;
 }
 .square_btn35:after{
   content: '';
-  border-top: solid 1px var(--c5);
-  border-right: solid 1px var(--c5);
-  border-bottom: solid 1px var(--c5);
+  border-top: solid 1px var(--c2);
+  border-right: solid 1px var(--c2);
+  border-bottom: solid 1px var(--c2);
   right: 0;
 }
 /*  NÚT END ------------ */
@@ -105,13 +107,14 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    min-width: 40%;
+    min-width: 38%;
     padding-left: 30px;
 }
 
 .content-top-mid-ten{
     margin-top: 80px;
     margin-bottom: 15px;
+ 
 }
 .content-top-right{
     width: 36%;
@@ -188,7 +191,7 @@
 }
 
 .Admin__staff-input{
-    width: 180px;
+    width: 220px;
     height: 30px;
     padding: 5px;
 }
@@ -343,4 +346,18 @@
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+}
+.adminedit-inputpass{
+  height: 30px;
+  width: 82.5%;
+  margin-bottom: 10px;
+}
+
+.adminedit-inputpasslabel{
+  font-size: 16px;
+ 
+  height: 35px;
+}
+.button-6-repass{
+  width: 130px;
 }

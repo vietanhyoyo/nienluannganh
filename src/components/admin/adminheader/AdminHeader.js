@@ -2,6 +2,8 @@ import React from 'react'
 import '../../../css/adminheader.css'
 
 export default function AdminHeader() {
+  
+  
   return (
     <div className='AdminHeader__app'>
         {/* Div bên trái */}
@@ -17,7 +19,9 @@ export default function AdminHeader() {
         {/* Div bên phải */}
         <div className='AdminHeader__app--right'>
 
-                <div className='AdminHeader__app--right-items AdminHeader__app--right-change'>
+                <div className='AdminHeader__app--right-items AdminHeader__app--right-change'
+             
+                >
                 <i className="fa-solid fa-circle-half-stroke"></i>
                 </div>
                 

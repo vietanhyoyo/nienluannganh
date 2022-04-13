@@ -23,7 +23,7 @@ import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminStatistical from "./components/admin/AdminStatistical";
 import Find from "./components/find/Find";
 import FindSearch from "./components/find/FindSearch";
-import AdminAddUser from "./components/admin/AdminAddUser";
+
 import AdminChat from "./components/admin/AdminChat";
 import ListProductAdmin from "./components/admin/ListProductAdmin"
 import AdminStaffAdd from "./components/admin/AdminStaffAdd";
@@ -49,12 +49,12 @@ function App() {
                 <Route path='history' element={<PersonHistory />} />
               </Route>
             </Route>
+
             <Route path='/admin' element={<Admin />}>
               <Route path='adminchat' element={<AdminChat />} />
               <Route path='staff' element={<StaffAdmin />} />
               <Route path='invoice' element={<AdminInvoice />} />
               <Route path='producttype' element={<AdminControllProductType />} />
-              <Route path='AdminAddUser' element={<AdminAddUser />} />
               <Route path='addproduct' element={<AdminAddProduct />} />
               <Route path='Statistical' element={<AdminStatistical />} />
               <Route path='product' element={<ListProductAdmin />} />

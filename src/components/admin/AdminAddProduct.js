@@ -45,7 +45,7 @@ function AdminAddProduct() {
         document.getElementById('amount-inputext').value = '';
         document.getElementById('unit-inputext').value = '';
         document.getElementById('price-inputext').value = '';
-        /**Ép kiểu thành formData */
+        /**Ép kiểu th   ành formData */
         let formData = new FormData();
         for (let i = 0; i < file.length; i++) {
             formData.append(`fileImage`, file[i]);
@@ -55,7 +55,7 @@ function AdminAddProduct() {
             .then(response => {
                 console.log(response.data)
                 axios.post('/products/themsanpham', { product })
-                    .then(response => {
+                    .then(response => { 
                         console.log(response.data);
                         alert('Đã thêm sản phẩm!')
                     })
