@@ -38,6 +38,9 @@
     border-color: var(--c3);
     outline: none;
 }
+.buy__payment__row--right{
+    justify-content: right;
+}
 .buy__box--payment{
     display: flex;
     justify-content: right;
@@ -60,4 +63,18 @@
 }
 .buy__btn--other{
     background-color: var(--c2);
+}
+.buy__row--right--radio{
+    display: flex;
+    padding: 6px;
+    color: #777;
+}
+.buy__row--right--radio__col{
+    display: flex;
+}
+.buy__row--right--radio__col input{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
 }

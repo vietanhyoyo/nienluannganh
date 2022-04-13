@@ -6,6 +6,7 @@ import './css/app.css';
 import Home from './components/home/Home';
 import Cart from './components/cart/Cart';
 import Buy from "./components/buy/Buy";
+import PaySuccess from "./components/buy/PaySuccess";
 import Admin from "./components/admin/Admin";
 import Person from "./components/person/Person";
 import Client from "./components/Client";
@@ -37,6 +38,7 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='cart' element={<Cart />} />
               <Route path='buy' element={<Buy />} />
+              <Route path='paysuccess' element={<PaySuccess />} />
               <Route path='product/:id' element={<Product />} />
               <Route path='signup' element={<Signup />} />
               <Route path='login' element={<Login />} />

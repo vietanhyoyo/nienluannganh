@@ -56,7 +56,6 @@ function Product() {
             axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id })
                 .then(response => response.data)
                 .then(response => {
-                    console.log(response);
                     cartState.getAPI(userid);
                     alert('Đã thêm vào giở hàng')
                 });
