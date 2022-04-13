@@ -49,28 +49,11 @@ function App() {
                 <Route path='history' element={<PersonHistory />} />
               </Route>
             </Route>
-<<<<<<< HEAD
-          </Route>
-          <Route path='/admin' element={<Admin />}>
-            <Route path='adminchat' element={<AdminChat />} />
-            <Route path='staff' element={<StaffAdmin />} />
-            <Route path='invoice' element={<AdminInvoice />} />
-            <Route path='producttype' element={<AdminControllProductType />} />
-            <Route path='addproduct' element={<AdminAddProduct />} />
-            <Route path='Statistical' element={<AdminStatistical />} />
-            <Route path='product' element={<ListProductAdmin />} />
-            <Route path='promotion' element={<AdminPromotion />} />
-            <Route path='AddUser' element={<AdminStaffAdd />} />
-          </Route>
-        </Routes>
-      </React.Fragment>
-=======
             <Route path='/admin' element={<Admin />}>
               <Route path='adminchat' element={<AdminChat />} />
               <Route path='staff' element={<StaffAdmin />} />
               <Route path='invoice' element={<AdminInvoice />} />
               <Route path='producttype' element={<AdminControllProductType />} />
-              <Route path='AdminAddUser' element={<AdminAddUser />} />
               <Route path='addproduct' element={<AdminAddProduct />} />
               <Route path='Statistical' element={<AdminStatistical />} />
               <Route path='product' element={<ListProductAdmin />} />
@@ -80,7 +63,6 @@ function App() {
           </Routes>
         </React.Fragment>
       </CartProvider>
->>>>>>> main
     </LoginProvider>
   );
 }

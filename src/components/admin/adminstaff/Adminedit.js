@@ -8,7 +8,7 @@ function Adminedit(props) {
     const d = new Date(props.staff.ngaysinh)
     const nam  =   d.getFullYear();
     const thang  =   d.getMonth()+1;
-    const ngay  =   d.getDate()-1;
+    const ngay  =   d.getDate();
     const ngaysinh =  nam+'-'+thang+'-'+ngay
     
     const [info,setInfo] = useState({
@@ -273,13 +273,18 @@ function Adminedit(props) {
                             <button className='button-6' 
                             onClick={()=> 
                             {
-                                UpdateInfo()
+                                UpdateInfo()    
                                 alert('Cập nhật thành công')
+                                
                             }}
                             >Cập nhật</button>
                             <button className='button-6' onClick={()=>{
                                 props.onClick()
-                                props.rerender()
+                                if(props.propsrender ==='all'){
+                                    props.rerender()
+                                }else{
+                                    props.rerender1();
+                                }
                                 }}>Quay lại</button>
                             
                         </div>

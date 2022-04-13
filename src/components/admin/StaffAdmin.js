@@ -33,8 +33,7 @@ function StaffAdmin(){
     const a = () => axios.get("/employee/danhsachNhanVien")
             .then(res => res.data)
             .then(res => {
-                setStaff(res);
-                
+                setStaff(res);               
             })
             .catch(function (error) {
                 console.log(error);
@@ -98,7 +97,6 @@ function StaffAdmin(){
            }
         },[valuefilter])
 
-console.log(staff)
     
     return(
         <div className="StaffAdmin">
@@ -173,6 +171,8 @@ console.log(staff)
                onClick = {OpenFormEditStaff}
                staff = {staff[index]}
                rerender={a}
+               rerender1={b}
+               propsrender = {valuefilter}
              />}  
              {infomation &&   
              <Admininfomation
