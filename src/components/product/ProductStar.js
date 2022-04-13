@@ -31,6 +31,7 @@ export default function ProductStar(props) {
     }
     return (
         <div className='product__comment-ratingbox-rating-chose'>
+            <p>Bạn hãy chọn vào ngôi sao để dánh giá sản phẩm</p>
             <div className='product__comment-ratingbox-rating-chose-list'>
                 <div className='product__comment-ratingbox-star-chose'>
                     <i style={{ color: star >= 1 ? "#fac917" : '' }}

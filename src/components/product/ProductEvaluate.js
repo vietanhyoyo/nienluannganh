@@ -16,7 +16,10 @@ function ProductEvaluate(props) {
     /**Hàm lấy dữ liệu đáng giá */
     const getAPI = () => {
         axios.post('/evaluate/laydanhgia', { id: props.idProduct })
-            .then(res => setDanhGia(res.data));
+            .then(res => {
+                props.reRender();
+                setDanhGia(res.data)
+            });
     }
 
     /**Lay du lieu danh gia */
@@ -66,65 +69,67 @@ function ProductEvaluate(props) {
                     <h2>Đánh giá sản phẩm</h2>
                 </div>
                 <div className='product__comment-ratingbox'>
-                    <div className='product__comment-average-rating'>
-                        {diemtb !== 0 ? <div>{diemtb}</div> : <div>not</div>}
-                        <div className='product__comment-average-rating-star'>
-                            <i className="fa-solid fa-star"></i>
+                    <div style={{ display: 'flex' }}>
+                        <div className='product__comment-average-rating'>
+                            {diemtb !== 0 ? <div>{diemtb}</div> : <div>not</div>}
+                            <div className='product__comment-average-rating-star'>
+                                <i className="fa-solid fa-star"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div className='product__comment-average-rating-star-reviews'>
-                        <ul className="product__comment-average-rating-star-reviews-ul">
-                            <li className='product__comment-average-rating-star-reviews-li'>
-                                <span>5 sao</span>
-                                <div className='evaluate'>
-                                    <div className='evaluateting' style={{ width: `${percentEvaluate(5)}%` }}></div>
-                                </div>
-                                <label>
-                                    {countEvaluate(5)}
-                                    <span> đánh giá</span>
-                                </label>
-                            </li>
-                            <li className='product__comment-average-rating-star-reviews-li'>
-                                <span>4 sao</span>
-                                <div className='evaluate'>
-                                    <div className='evaluateting' style={{ width: `${percentEvaluate(4)}%` }}></div>
-                                </div>
-                                <label>
-                                    {countEvaluate(4)}
-                                    <span> đánh giá</span>
-                                </label>
-                            </li>
-                            <li className='product__comment-average-rating-star-reviews-li'>
-                                <span>3 sao</span>
-                                <div className='evaluate'>
-                                    <div className='evaluateting' style={{ width: `${percentEvaluate(3)}%` }}></div>
-                                </div>
-                                <label>
-                                    {countEvaluate(3)}
-                                    <span> đánh giá</span>
-                                </label>
-                            </li>
-                            <li className='product__comment-average-rating-star-reviews-li'>
-                                <span>2 sao</span>
-                                <div className='evaluate'>
-                                    <div className='evaluateting' style={{ width: `${percentEvaluate(2)}%` }}></div>
-                                </div>
-                                <label>
-                                    {countEvaluate(2)}
-                                    <span> đánh giá</span>
-                                </label>
-                            </li>
-                            <li className='product__comment-average-rating-star-reviews-li'>
-                                <span>1 sao</span>
-                                <div className='evaluate'>
-                                    <div className='evaluateting' style={{ width: `${percentEvaluate(1)}%` }}></div>
-                                </div>
-                                <label>
-                                    {countEvaluate(1)}
-                                    <span> đánh giá</span>
-                                </label>
-                            </li>
-                        </ul>
+                        <div className='product__comment-average-rating-star-reviews'>
+                            <ul className="product__comment-average-rating-star-reviews-ul">
+                                <li className='product__comment-average-rating-star-reviews-li'>
+                                    <span>5 sao</span>
+                                    <div className='evaluate'>
+                                        <div className='evaluateting' style={{ width: `${percentEvaluate(5)}%` }}></div>
+                                    </div>
+                                    <label>
+                                        {countEvaluate(5)}
+                                        <span> đánh giá</span>
+                                    </label>
+                                </li>
+                                <li className='product__comment-average-rating-star-reviews-li'>
+                                    <span>4 sao</span>
+                                    <div className='evaluate'>
+                                        <div className='evaluateting' style={{ width: `${percentEvaluate(4)}%` }}></div>
+                                    </div>
+                                    <label>
+                                        {countEvaluate(4)}
+                                        <span> đánh giá</span>
+                                    </label>
+                                </li>
+                                <li className='product__comment-average-rating-star-reviews-li'>
+                                    <span>3 sao</span>
+                                    <div className='evaluate'>
+                                        <div className='evaluateting' style={{ width: `${percentEvaluate(3)}%` }}></div>
+                                    </div>
+                                    <label>
+                                        {countEvaluate(3)}
+                                        <span> đánh giá</span>
+                                    </label>
+                                </li>
+                                <li className='product__comment-average-rating-star-reviews-li'>
+                                    <span>2 sao</span>
+                                    <div className='evaluate'>
+                                        <div className='evaluateting' style={{ width: `${percentEvaluate(2)}%` }}></div>
+                                    </div>
+                                    <label>
+                                        {countEvaluate(2)}
+                                        <span> đánh giá</span>
+                                    </label>
+                                </li>
+                                <li className='product__comment-average-rating-star-reviews-li'>
+                                    <span>1 sao</span>
+                                    <div className='evaluate'>
+                                        <div className='evaluateting' style={{ width: `${percentEvaluate(1)}%` }}></div>
+                                    </div>
+                                    <label>
+                                        {countEvaluate(1)}
+                                        <span> đánh giá</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <ProductStar
                         idProduct={props.idProduct}

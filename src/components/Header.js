@@ -8,6 +8,7 @@ import HeaderAvatar from './HeaderAvatar';
 import MenuItemList from './MenuItemList';
 import logoima from '../images/logotext.png'
 import axios from 'axios';
+import CartIcon from './CartIcon';
 
 function Header() {
 
@@ -20,7 +21,7 @@ function Header() {
     const bar = useRef();
     const ul = useRef();
     const close = useRef();
-    const cartpath = '/cart/id=23';
+    const cartpath = '/cart';
 
     /*Các dữ liệu của menu bar */
     const [lists, setLists] = useState([]);
@@ -109,7 +110,7 @@ function Header() {
                 <div className='header__box'>
                     <div className='header__icon'>
                         {loginState.role === null ?
-                            <Link to={cartpath}><i className='fas fa-shopping-basket'></i></Link> :
+                            <Link to={cartpath}><CartIcon /></Link> :
                             <Link to='/admin/Statistical'>
                                 <span>Trang quản lý</span>
                             </Link>}

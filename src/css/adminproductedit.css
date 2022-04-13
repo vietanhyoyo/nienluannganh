@@ -20,7 +20,7 @@
     left: 50%;
     padding: 16px;
     transform: translate(-50%,-50%);
-    width: 1200px;
+    width: 1000px;
 }
 .adminproductedit__header{
     width: 100%;
@@ -42,4 +42,50 @@
 }
 .admin__form-addproduct__imageType{
     display: flex;
+}
+.adminproductedit__content{
+    width: 100%;
+}
+.adminproductedit__topic{
+    padding: 10px 0px;
+}
+.adminproductedit__row{
+    display: flex;
+    width: 100%;
+}
+.adminproductedit__col{
+    padding-left: 3%;
+}
+.adminproductedit__col label{
+    display: block;
+    font-size: 14px;
+    color: var(--c1);
+    padding: 5px 0px;
+}
+.adminproductedit__input{
+    padding: 6px;
+    width: 94%;
+    border: 1px solid #666;
+}
+.adminproductedit__input:focus{
+    outline: none;
+    border: 1px solid var(--c3);
+}
+.adminproductedit__textarea{
+    padding: 6px;
+    width: 94%;
+    border: 1px solid #666;
+    height: 90%;
+}
+.adminproductedit__btn--small{
+    margin-top: 10px;
+    padding: 6px;
+    cursor: pointer;
+    width: max-content;
+    border: 1px solid #999;
+}
+.adminproductedit__btn--small:hover{
+    border: 1px solid var(--c3);
+    background-color: var(--c3);
+    color: #fff;
 }

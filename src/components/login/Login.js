@@ -65,7 +65,7 @@ function Login() {
                             </h4>
                         </div>
                         <div className='login__box'>
-                            <label className='login__label' htmlFor='name'>Tài khoản</label>
+                            <label className='login__label' htmlFor='name'>Số điện thoại đăng nhập</label>
                             <input name='name' className='login__input' type='text' onChange={e => setName(e.target.value)} />
                         </div>
                         <div className='login__box'>

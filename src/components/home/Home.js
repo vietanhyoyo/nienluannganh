@@ -12,7 +12,6 @@ export default function Home() {
     useEffect(() => {
         axios.get('/capnhatthoigian')
             .then(res => {
-                console.log(res.data)
                 setReRender(true);
             });
     }, [])

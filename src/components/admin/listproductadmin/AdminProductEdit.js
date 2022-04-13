@@ -111,44 +111,35 @@ function AdminProductEdit(props) {
                     <span className='adminproductedit__close' onClick={props.onUnShow}>Đóng</span>
                 </div>
                 <div className='adminproductedit__body'>
-                    <div className="admin__add-product">
-                        <div className="admin__addproduct-app">
-                            <h3 className='admin__addproduct-title'>
-                                <p className='addproduct__admin-icon'></p>Thay đổi thông tin sản phẩm</h3>
-                            <form name="admin__addproduct" action='#' encType='multipart/form-data'>
-                                <div className='admin__addproduct-form'>
-                                    <div className='admin__form-addproduct'>
-                                        <div className='admin__addproduct-divinputtext'>
-                                            <label htmlFor='name-inputext'>Tên sản phẩm</label>
-                                            <input
-                                                type='text' id='name-inputext'
-                                                className='admin__addproduct-inputtext'
-                                                name='admin__product--name-product'
-                                                value={product.tensanpham}
-                                                onChange={e => setProduct(prev => ({ ...prev, tensanpham: e.target.value }))}
-                                            />
-
-                                            <h3 className='admin__addproduct-formtitle'>Loại sản phẩm</h3>
-                                            <select
-                                                className='admin__addproduct--select-type'
-                                                name='admin__product-select'
-                                                value={product.loaisanpham}
-                                                onChange={e => setProduct(prev => ({ ...prev, loaisanpham: e.target.value }))}
-                                            >
-                                                {dsLoaiSP.map((ele, index) => {
-                                                    return <option key={index} value={ele._id}>{ele.tenloaisanpham}</option>
-                                                })}
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div className='admin__form-addproduct admin__form-addproduct--group'>
+                    <div className="adminproductedit__content">
+                        <h3 className='adminproductedit__topic'>Thay đổi thông tin sản phẩm</h3>
+                        <form name="admin__addproduct" action='#' encType='multipart/form-data'>
+                            <div className='admin__addproduct-form'>
+                                <div className='adminproductedit__row'>
+                                    <div className='adminproductedit__col' style={{ width: '33.33%' }}>
+                                        <label forHTMl='admin__product--name-product'>Tên sản phẩm</label>
+                                        <input
+                                            type='text' id='name-inputext'
+                                            className='adminproductedit__input'
+                                            name='admin__product--name-product'
+                                            value={product.tensanpham}
+                                            onChange={e => setProduct(prev => ({ ...prev, tensanpham: e.target.value }))}
+                                        />
+                                        <label forHTMl='admin__product-select'>Loại sản phẩm</label>
+                                        <select
+                                            className='adminproductedit__input'
+                                            name='admin__product-select'
+                                            value={product.loaisanpham}
+                                            onChange={e => setProduct(prev => ({ ...prev, loaisanpham: e.target.value }))}
+                                        >
+                                            {dsLoaiSP.map((ele, index) => {
+                                                return <option key={index} value={ele._id}>{ele.tenloaisanpham}</option>
+                                            })}
+                                        </select>
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='admin__product-amount'>Số lượng</label>
                                             <input type='text' id='amount-inputext'
-                                                className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
+                                                className='adminproductedit__input'
                                                 name='admin__product-amount'
                                                 value={product.soluong}
                                                 onChange={e => setProduct(prev => ({ ...prev, soluong: Number(e.target.value) }))} />
@@ -156,7 +147,7 @@ function AdminProductEdit(props) {
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='admin__input-unit'>Đơn vị</label>
                                             <input type='text'
-                                                className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
+                                                className='adminproductedit__input'
                                                 name='admin__product-unit' value={product.donvitinh}
                                                 onChange={e => setProduct(prev => ({ ...prev, donvitinh: e.target.value }))} />
                                         </div>
@@ -164,15 +155,27 @@ function AdminProductEdit(props) {
                                             <label htmlFor='price-inputext'>Giá</label>
                                             <input
                                                 type='text' id='price-inputext'
-                                                className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
+                                                className='adminproductedit__input'
                                                 name='admin__input--price-product'
                                                 value={product.gianiemyet}
                                                 onChange={e => setProduct(prev => ({ ...prev, gianiemyet: Number(e.target.value) }))} />
                                         </div>
                                     </div>
+                                    <div className='adminproductedit__col' style={{ width: '66.66%' }}>
+                                        <label htmlFor='admin__product-textarea'>Mô tả sản phẩm</label>
+                                        <textarea
+                                            className='adminproductedit__textarea'
+                                            name='admin__product-textarea'
+                                            placeholder="Ví dụ ..."
+                                            value={product.mota}
+                                            onChange={e => setProduct(prev => ({ ...prev, mota: e.target.value }))}
+                                        ></textarea>
+                                    </div>
                                 </div>
-                                <div className='admin__addproduct-form'>
-                                    <div className='admin__infomation-addproduct'>
+                            </div>
+                            <div className='admin__addproduct-form'>
+                                <div className='adminproductedit__row'>
+                                    <div className='adminproductedit__col' style={{ width: '33.33%' }}>
                                         <h3 className='admin__addproduct-formtitle'>Hình ảnh</h3>
                                         <p className='admin__addproduct-formtext'>Upload hình của sản phẩm</p>
                                         <input type='file'
@@ -200,58 +203,59 @@ function AdminProductEdit(props) {
 
                                         />
                                     </div>
-                                    <div className='admin__infomation-addproduct admin__infomation-addproduct--image'>
-                                        {images.map((ele, index) => {
-                                            return <img
-                                                key={index}
-                                                className='admin__addproduct-image'
-                                                src={ele} alt='phot'
-                                            />
-                                        })}
-                                    </div>
-
-
-                                </div>
-                                <div className='admin__addproduct-form'>
-                                    <div className='admin__form-addproduct'>
-                                        <div className='admin__addproduct-divinputtext'>
-                                            <label htmlFor='textare-inputext'>Mô tả sản phẩm</label>
-                                            <textarea id='admin__product-textare' name='admin__product-textare'
-                                                rows="4" cols="50" placeholder="Ví dụ ..."
-                                                value={product.mota}
-                                                onChange={e => setProduct(prev => ({ ...prev, mota: e.target.value }))}
-                                            ></textarea>
-                                        </div>
-                                    </div>
-                                    <div className='admin__form-addproduct  admin__infomation-addproduct--image'>
-                                        <div className='admin__form-addproduct__imageType'>
-                                            {product.sanphamcungloai.map((ele, index) => {
-                                                if (ele !== idProduct)
-                                                    return <AdminProductTypeImage
-                                                        key={index}
-                                                        idProduct={ele}
-                                                        onDelete={() => xoaSanPhamCungLoai(ele)}
-                                                    />
-                                                else return <div key={index}></div>
+                                    <div className='adminproductedit__col'>
+                                        <div className='admin__infomation-addproduct admin__infomation-addproduct--image'>
+                                            {images.map((ele, index) => {
+                                                return <img
+                                                    key={index}
+                                                    className='admin__addproduct-image'
+                                                    src={ele} alt='phot'
+                                                />
                                             })}
                                         </div>
                                     </div>
                                 </div>
-                                <div className='admin__addproduct--button-app'>
-                                    <div className='admin__addproduct--button-left'>
-                                        <button className="snip1582" onClick={e => handleUpdate(e)}>LƯU THAY ĐỔI</button>
-                                        <button className="snip1582" onClick={e => {
-                                            e.preventDefault();
-                                            props.onUnShow();
-                                        }}>HỦY BỎ</button>
+                            </div>
+                            <div className='admin__addproduct-form'>
+                                <div className='adminproductedit__row'>
+                                    <div className='adminproductedit__col' style={{ width: '33.33%' }}>
+                                        <h3 className='admin__addproduct-formtitle'>Thêm đơn vị mua</h3>
+                                        <p className='admin__addproduct-formtext'>Thêm lựa chọn cho khách hàng</p>
+                                        <div className="adminproductedit__btn--small"
+                                            onClick={e => {
+                                                e.preventDefault();
+                                                setShowThemSanPhamCungLoai(true);
+                                            }}>THÊM LOẠI SẢN PHẨM</div>
                                     </div>
-                                    <div className='admin__addproduct--button-right'>
+                                    <div className='adminproductedit__col'>
+                                        <div className='admin__form-addproduct  admin__infomation-addproduct--image'>
+                                            <div className='admin__form-addproduct__imageType'>
+                                                {product.sanphamcungloai.map((ele, index) => {
+                                                    if (ele !== idProduct)
+                                                        return <AdminProductTypeImage
+                                                            key={index}
+                                                            idProduct={ele}
+                                                            onDelete={() => xoaSanPhamCungLoai(ele)}
+                                                        />
+                                                    else return <div key={index}></div>
+                                                })}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                            <button className="snip1582 addtype-product"
-                                onClick={() => setShowThemSanPhamCungLoai(true)}>THÊM LOẠI SẢN PHẨM</button>
-                        </div>
+                            </div>
+                            <div className='admin__addproduct--button-app'>
+                                <div className='admin__addproduct--button-left'>
+                                    <button className="snip1582" onClick={e => handleUpdate(e)}>LƯU THAY ĐỔI</button>
+                                    <button className="snip1582" onClick={e => {
+                                        e.preventDefault();
+                                        props.onUnShow();
+                                    }}>HỦY BỎ</button>
+                                </div>
+                                <div className='admin__addproduct--button-right'>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div className='adminproductedit__footer'></div>
