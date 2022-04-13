@@ -17,11 +17,11 @@ function Admininfomation(props) {
     const t = new Date(props.staff.createdAt)
     const nam1  =   t.getFullYear();
     const thang1  =   t.getMonth()+1;
-    const ngay1  =   t.getDate()-1;
+    const ngay1  =   t.getDate();
     const ngayvao= ngay1 + '/' + thang1 + '/' + nam1
   
  
-
+    
 
     return (
         <div>
@@ -32,7 +32,7 @@ function Admininfomation(props) {
 
                             <div className='content-top'>
                                 <div className='content-top-items content-top-left'>
-                                    <h3>Thông tin nhân viên</h3>
+                                    <h2>Thông tin nhân viên</h2>
 
                                     {<img src={props.staff.hinhanh} alt='Ảnh đại diện' className='content-top-left-img' />
                                         || <img src={''} alt='Chưa có ảnh đại diện' className='content-top-left-img' />}

@@ -27,6 +27,8 @@ function StaffAdmin(){
             matkhau :'aloha123'
         }
     ])
+
+   
     
     const a = () => axios.get("/employee/danhsachNhanVien")
             .then(res => res.data)
@@ -40,19 +42,63 @@ function StaffAdmin(){
             useEffect(()=>{
                 a()
             },[])
-            
-    
+            // Bật tắt form edit và infomation
     const OpenFormEditStaff = () => {
         setEditstaff(!editstaff);
     }
     const OpenForminfoStaff = () => {
         setInfomation(!infomation);   
     }
+    // send index staff cho edit và infomation render
     const setIndexArray = (value) => {
         setIndex(value)
     }
     
+    const filterstaff =[
+    {
+        id:1,
+        name: 'Tất cả nhân viên',
+        value : 'all'
+    },
+    {
+        id:2,
+        name: 'Quản trị viên',
+        value:'admin'
+    },
+    {
+        id:3,
+        name: 'Nhân viên',
+        value: 'nhanvien'
+    },
+    ]
+    // set value và css cho filter lọc nhân viên
+    const [idfilter,setIdfilter] = useState(0);
+    const [valuefilter,setValuefilter] = useState('all')
+    const setmountfilter = (index) => {
+        setIdfilter(filterstaff[index].id-1);
+        setValuefilter(filterstaff[index].value)
+    }
    
+        const b= () => axios.get(`/employee/locnhanvien?id=${valuefilter}`)
+        .then(response => response.data)
+        .then(function (response) {
+            setStaff(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+
+
+        useEffect(()=>{
+           if(valuefilter === 'all'){
+               a()
+           }else{
+            b()
+           }
+        },[valuefilter])
+
+console.log(staff)
     
     return(
         <div className="StaffAdmin">
@@ -69,9 +115,25 @@ function StaffAdmin(){
             {/* DIV filter staff*/}
           
             <div className='StaffAdmin__filter'>
-                <div className='StaffAdmin__filter-items'>Quản trị viên</div>    
-                <div className='StaffAdmin__filter-items'>Nhân viên</div>   
-                <div className='StaffAdmin__filter-items'>Tất cả thành viên</div>   
+                    
+                {filterstaff.map((title,index) =>  (
+                    <div className={idfilter === index  ? 'StaffAdmin__filter-items StaffAdmin__filter-items-css' : 'StaffAdmin__filter-items'}    
+                    key={index}
+                    onClick={()=> {
+                        
+                        if(filterstaff.value==='all'){
+                            
+                        }
+                        else
+                        {
+                            setmountfilter(index)
+                        }
+
+                        }
+                    }
+                    >{title.name}</div>
+                ))}
+                   
             </div>  
             {/* TITLE */}
             <div className='StaffAdmin__manager'>
@@ -81,6 +143,7 @@ function StaffAdmin(){
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-name'>Tên</div>    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-age'>Tuổi</div>    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-gender'>Giới tính</div>    
+                    <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-gender'>chức vụ</div>    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-number'>Số điện thoại</div>    
                     <div className='StaffAdmin__manager-title-items StaffAdmin__manager-title-items-manager'>Quản lý</div>    
                 </div>

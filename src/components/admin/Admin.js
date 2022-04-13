@@ -3,7 +3,11 @@ import AdminMenu from './adminmenu/AdminMenu';
 import {Outlet} from 'react-router-dom';
 import AdminHeader from './adminheader/AdminHeader';
 
+
 function Admin(){  
+
+      
+      
      return(
             // Div tổng
             <div className='Admin__app'>

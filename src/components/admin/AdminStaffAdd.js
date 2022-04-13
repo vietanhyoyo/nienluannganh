@@ -106,6 +106,7 @@ function AdminStaffAdd() {
                         if(response.data === 'cahaiduocsudung'){
                             alert('Số điện thoại và email đã được sử dụng')
                         }
+                        console.log(response);
                     })
                     .catch(err => console.log(err))
             })
@@ -120,7 +121,7 @@ function AdminStaffAdd() {
         
         
     }
-
+    
     
    
 

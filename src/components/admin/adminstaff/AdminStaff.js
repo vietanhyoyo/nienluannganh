@@ -7,12 +7,16 @@ function AdminStaff(props){
         const d = new Date(props.staffdate.ngaysinh)
         const nam  =   d.getFullYear();
         const thang  =   d.getMonth()+1;
-        const ngay  =   d.getDate()-1;
+        const ngay  =   d.getDate();
         const ngaysinh = ngay + '/' + thang + '/' + nam
- 
+        var k = '';
+        if(props.staff.chucvu === 'admin'){
+           k = 'Quản trị viên'
+        }else{
+            k = 'Nhân viên'
+        }
         
-    
-    
+        
     return(
                 <div className='StaffAdmin__manager-content' >
                    
@@ -23,7 +27,8 @@ function AdminStaff(props){
                          
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-name'>{props.staff.hoten}</div>    
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-age'>{ngaysinh}</div>    
-                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{props.staff.gioitinh}</div>    
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{props.staff.gioitinh}</div>   
+                    <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-gender'>{k}</div>     
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-number'>{props.staff.sdt}</div>    
                     <div className='StaffAdmin__manager-content-items StaffAdmin__manager-content-items-manager'>
                             

@@ -5,7 +5,6 @@ function Adminedit(props) {
  
     
     const gender = props.staff.gioitinh;
-    
     const d = new Date(props.staff.ngaysinh)
     const nam  =   d.getFullYear();
     const thang  =   d.getMonth()+1;
@@ -117,6 +116,7 @@ function Adminedit(props) {
             && gendertrue === true && address ===true && password ===true)
             {
             let formData = new FormData();
+           
             formData.append(`fileImage`, image);
                     /**Gửi API */
                 axios.post('/products/themsanphamhinhanh', formData)
@@ -127,7 +127,6 @@ function Adminedit(props) {
                     //  lấy dữ liệu trả về
                     .then(response => { 
                         console.log(response.data)
-
                     })
                     .catch(err => console.log(err))
                      })
@@ -135,10 +134,6 @@ function Adminedit(props) {
             }
     }
     
-            
-   
-    console.log(info);
-
 
 
 
@@ -172,10 +167,10 @@ function Adminedit(props) {
                                     <p className='content-top-mid-chucvu'>
                                           <select className='Admin__staff-input' 
                                           onChange={(e)=> setInfo({...info, chucvu : e.target.value})}
-                                          defaultValue= {props.staff.chucvu}
+                                          defaultValue= {info.chucvu}
                                           >        
                                             <option className='option-editstaff'  value="admin">Quản trị viên</option>  
-                                            <option className='option-editstaff'  value="nhanvien"> Nhân viên</option>
+                                            <option className='option-editstaff'  value="nhanvien">Nhân viên</option>
                                           </select>
                                     </p>
                                  
@@ -210,7 +205,7 @@ function Adminedit(props) {
                                               />
                                           </p>
                                           <p className='content-top-right-right-items'>
-                                          <textarea name="comment" form="usrform" cols="23" className='text-are-staff' placeholder='Nhập địa chỉ' 
+                                          <textarea name="comment" form="usrform" cols="35" className='text-are-staff' placeholder='Nhập địa chỉ' 
                                           defaultValue={props.staff.diachi}
                                           onChange={(e)=>{
                                             setInfo({...info, diachi : e.target.value})

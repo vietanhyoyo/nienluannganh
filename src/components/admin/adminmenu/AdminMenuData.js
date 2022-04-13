@@ -2,6 +2,7 @@
 const TheUl = [
     {
         // Tài khoản
+        id:1,
         icon : 'fa-solid fa-user-gear',
         title : 'Quản lý tài khoản',
         icon2 : 'fa-solid fa-angle-down',
@@ -20,6 +21,7 @@ const TheUl = [
     },
     {
             // Hàng hóa
+        id:2,
         icon : 'fa-solid fa-truck-ramp-box',
         title : 'Hàng hóa',
         icon2 : 'fa-solid fa-angle-down',
@@ -46,6 +48,7 @@ const TheUl = [
     },
     {
         // Thống kê
+    id:3,
     icon : 'fa-solid fa-chart-pie',
     title : 'Thống kê',
     icon2 : 'fa-solid fa-angle-down',
@@ -60,6 +63,7 @@ const TheUl = [
     },
     {
         // Khuyen mai
+    id:4,
     icon : 'fa-solid fa-percent',
     title : 'Khuyến mãi',
     icon2 : 'fa-solid fa-angle-down',
