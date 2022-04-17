@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-export default function PersonProfileQH(props) {
+export default function BuyProfile(props) {
     // const [id, setId] = useState('');    
     const [QH, setQH] = useState([{
         _id: '',
@@ -32,14 +32,14 @@ export default function PersonProfileQH(props) {
     }
     
     return (
-        <div className="person__profile__row">
-            <label className="person-profile__row-label">Quận/Huyện:</label>
+        <div className="buy__row">
+            <label className='buy__row--left'>Quận/Huyện:</label>
             <select value={selectQH}
                 onChange={(e) => {
                     props.setQH(QH[e.target.value]);
                     
                 }}
-                className="person__profile__row-input-wrapper-input">
+                className='buy__row--right'>
                 {check().filter((ele,index) =>{
                     return(QH[index].tinhtp===props.id)
                 })}</select>

@@ -6,6 +6,7 @@ import { CartContext } from '../../contexts/CartContext';
 import '../../css/buy.css';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import PaypalButton from './PaypalButton';
+import BuyProfile from './buyProfile/BuyProfile';
 
 const formatNumber = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -14,11 +15,70 @@ const formatNumber = (num) => {
 const PAYPAL_APP_REACT_ID = 'AaL54LXl9M2BUpwvP9MYYeD46AF4uj3NGYhBWg-q5FCzdJ4TsIlyE0KUp3auPPXf36AJQVxMjdfi4vab'
 
 export default function Buy() {
+    const [check, setcheck] = useState('');
+    const idKH = useContext(LoginContext)
+    const [load, setLoad] = useState({
+        _id: '',
+        hoten: '',
+        sdt: '',
+        gioitinh: '',
+        quanhuyen: '',
+        diachi: ''
+    });
+    const [TP, setTP] = useState([{
+        _id: '',
+        ten: ''
+    }]);
+    const [selectTP, setSelectTP] = useState(0);
+    const [QH, setQH] = useState({
+        _id: '',
+        ten: '',
+        tinhtp: ''
+    });
+    useEffect(() => {
+        axios.get('/address/tinh')
+            .then(response => response.data)
+            .then(response => {
+                setTP(response);
+            });
+    }, []);
+    useEffect(() => {
+        axios.post('/customer/infokhachhang', { id: idKH.iduser })
+            .then(response => response.data)
+            .then(response => {
+                setLoad(response);
+                if (response.quanhuyen !== undefined) {
+                    setQH(response.quanhuyen)
+                }
+                console.log(response)
+            });
 
+    }, [idKH.iduser]);
+
+    useEffect(() => {
+        if (TP.length > 0 && load.quanhuyen !== undefined && QH._id !== '')
+            setSelectTP(TP.indexOf(TP.filter(element => {
+                return element._id === QH.tinhtp
+            })[0]))
+        if (load.diachi === undefined) {
+            setLoad(prev => ({ ...prev, diachi: '' }))
+        }
+    }, [load, TP, QH])
+    // const handleSubmit = () => {
+    //     load.quanhuyen = QH._id
+    //     load.gioitinh = check;
+    //     axios.post('/customer/updateinfo', { load })
+    //         .then(response => response.data)
+    //         .then(response => {
+    //             alert('Cập nhật thành công')
+    //         })
+    // }
+    //
     const [donhang, setDonHang] = useState({
         _id: '',
         tongtien: 0
     })
+
 
     /**Các phương thức thanh toán */
     const DirectPay = 0;
@@ -41,7 +101,7 @@ export default function Buy() {
     useEffect(() => {
         axios.post('/order/laygiohangthanhtoan', { khachhang: userid })
             .then(res => setDonHang(res.data));
-    },[])
+    }, [])
 
     /**Phương thức thanh toán tới paypal */
     const handleSubmit = () => {
@@ -50,6 +110,13 @@ export default function Buy() {
                 console.log(res.data);
                 cartState.getAPI(userid);
                 navigator('/paysuccess');
+            })
+        load.quanhuyen = QH._id
+        load.gioitinh = check;
+        axios.post('/customer/updateinfo', { load })
+            .then(response => response.data)
+            .then(response => {
+                alert('Cập nhật thành công')
             })
     }
     /**Phương thức thanh toán tới paypal */
@@ -61,6 +128,7 @@ export default function Buy() {
                 navigator('/paysuccess');
             })
     }
+    console.log(load.hoten);
 
     return (
         <div className='buy'>
@@ -70,31 +138,48 @@ export default function Buy() {
                     <h3 className='buy__h3'>Thông tin người mua hàng</h3>
                     <div className='buy__row'>
                         <span className='buy__row--left'>Tên người nhận</span>
-                        <input className='buy__row--right' type='text' />
+                        <input
+                            onChange={(e) => {
+                                setLoad(prev => ({ ...prev, hoten: e.target.value }))
+                            }}
+                            className='buy__row--right' defaultValue={load.hoten}></input>
+                        {/* <input className='buy__row--right' type='text' /> */}
                     </div>
                     <div className='buy__row'>
                         <span className='buy__row--left'>Điện thoại</span>
-                        <input className='buy__row--right' type='text' />
+                        <input
+                            onChange={(e) => {
+                                setLoad(prev => ({ ...prev, sdt: e.target.value }))
+                            }}
+                            className='buy__row--right' defaultValue={load.sdt}></input>
+                        {/* <input className='buy__row--right' type='text' /> */}
                     </div>
                     <div className='buy__row'>
                         <span className='buy__row--left'>Tỉnh/Thành phố</span>
-                        <input className='buy__row--right' type='text' />
+                        <select name='dsTinh' onChange={(e) => {
+                            setSelectTP(e.target.value);
+                        }}
+                            value={selectTP} className='buy__row--right'>
+                            {TP.map((ele, index) => {
+                                return <option key={index} value={index}>{ele.ten}</option>
+                            })}
+                        </select>
+                        {/* <input className='buy__row--right' type='text' /> */}
                     </div>
-                    <div className='buy__row'>
-                        <span className='buy__row--left'>Quận/Huyện</span>
-                        <input className='buy__row--right' type='text' />
-                    </div>
-                    <div className='buy__row'>
-                        <span className='buy__row--left'>Phường/Xã</span>
-                        <input className='buy__row--right' type='text' />
-                    </div>
+                    {TP.length !== 0 && <BuyProfile
+                        id={TP[selectTP]._id}
+                        ten={TP[selectTP].ten}
+                        setQH={(value) => { setQH(value) }}
+                        QH={QH}
+                    />}
                     <div className='buy__row'>
                         <span className='buy__row--left'>Số nhà, tên đường</span>
-                        <input className='buy__row--right' type='text' />
-                    </div>
-                    <div className='buy__row'>
-                        <span className='buy__row--left'>Địa chỉ email</span>
-                        <input className='buy__row--right' type='text' />
+                        <input type={'text'}
+                            onChange={(e) => {
+                                setLoad(prev => ({ ...prev, diachi: e.target.value }))
+                            }}
+                            className="buy__row--right" defaultValue={load.diachi}></input>
+                        {/* <input className='buy__row--right' type='text' /> */}
                     </div>
                 </div>
                 <div className='buy__box'>
