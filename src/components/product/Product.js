@@ -51,17 +51,7 @@ function Product() {
                 setLoad(response);
             });
     }, [id]);
-    const submitOrder = () => {
-        if (userid !== null)
-            axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id })
-                .then(response => response.data)
-                .then(response => {
-                    cartState.getAPI(userid);
-                    alert('Đã thêm vào giở hàng')
-                });
-        else alert('Bạn vui lòng đăng nhập!');
-    }
-    //const slideList = document.querySelectorAll(".slide__img")
+
 
     const [quantity, setquantity] = useState(1);
 
@@ -91,6 +81,22 @@ function Product() {
             setSlideindex(load.hinhanh.length - 1);
         }
     }
+
+    const submitOrder = () => {
+        const giatri = quantity * load.giasanpham.giaban;
+        console.log(quantity)
+        console.log(load.giasanpham.giaban)
+        console.log(giatri);
+        if (userid !== null)
+            axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id, gia: giatri })
+                .then(response => response.data)
+                .then(response => {
+                    cartState.getAPI(userid);
+                    alert('Đã thêm vào giở hàng')
+                });
+        else alert('Bạn vui lòng đăng nhập!');
+    }
+    //const slideList = document.querySelectorAll(".slide__img")
 
     return (
         <div className='product'>

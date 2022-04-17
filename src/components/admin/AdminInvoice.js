@@ -1,46 +1,42 @@
 import '../../css/admininvoice.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdminInvoiceItem from './admininvoice/AdminInvoiceItem';
+import axios from 'axios';
 
 
 export default function AdminInvoice() {
-    const [items] = useState([{
-        status: 'Chưa duyệt',
-        address: 'Đ 3/2, Ninh Kiều, Cần Thơ',
-        date: '12:32 12/2/2022',
-        products: [{
-            name: 'Sữa tắm bảo vệ Lifebuoy 833ml',
-            image: 'https://cdn.tgdd.vn/Products/Images/2444/76820/bhx/-202110231003194441.jpg',
-            cost: 141000,
-            amount: 1,
-            unit: 'chai'
-        }, {
-            name: 'Bột giặt nhiệt sạch tinh tương',
-            image: 'https://cdn.tgdd.vn/Products/Images/2463/88314/bhx/bot-giat-nhiet-aba-sach-tinh-tuom-400g-201912031037171175.jpg',
-            cost: 34100,
-            amount: 1,
-            unit: 'bịt'
-        }],
-        total: 132900
-    }, {
-        status: 'Chưa duyệt',
-        address: 'Đ 3/2, Ninh Kiều, Cần Thơ',
-        date: '12:32 12/2/2022',
-        products: [{
-            name: 'Sữa tắm bảo vệ Lifebuoy 833ml',
-            image: 'https://cdn.tgdd.vn/Products/Images/2444/76820/bhx/-202110231003194441.jpg',
-            cost: 141000,
-            amount: 1,
-            unit: 'chai'
-        }, {
-            name: 'Bột giặt nhiệt sạch tinh tương',
-            image: 'https://cdn.tgdd.vn/Products/Images/2463/88314/bhx/bot-giat-nhiet-aba-sach-tinh-tuom-400g-201912031037171175.jpg',
-            cost: 34100,
-            amount: 1,
-            unit: 'bịt'
-        }],
-        total: 132900
-    }]);
+    /**State đơn hàng chờ duyệt */
+    const [donhang, setDonHang] = useState([{
+        _id: '',
+        khachhang: {
+            _id: '',
+            hoten: '',
+            sdt: '0000000000'
+        },
+        trangthai: '',
+        dathanhtoan: false,
+        tongtien: 0,
+        ngaydat: '2022-04-13T14:54:55.504+00:00'
+    }])
+
+    /**Lấy dữ liệu */
+    useEffect(() => {
+        axios.get('/order/laydonhangcanduyet')
+            .then(res => {
+                setDonHang(res.data);
+            })
+    }, []);
+    /**Hàm xác nhận xóa khỏi danh sách đơn hàng */
+    const deleteDonHang = id => {
+        console.log('delete')
+        setDonHang(prev => {
+            let data = prev.filter(ele => {
+                return ele._id !== id;
+            })
+            return data;
+        })
+    }
+
     return (
         <div className='admin-invoice'>
             <div className='admin-invoice__top'>
@@ -50,10 +46,12 @@ export default function AdminInvoice() {
                 </ul>
             </div>
             <div className='admin-invoice__body'>
-                {items.map((item, index) => {
+                {donhang.map((item, index) => {
                     return <AdminInvoiceItem
                         key={index}
                         prop={item}
+                        tongtien={item.tongtien}
+                        deleteDonHang={() => deleteDonHang(item._id)}
                     />
                 })}
             </div>

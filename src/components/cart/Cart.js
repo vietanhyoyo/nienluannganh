@@ -23,7 +23,10 @@ export default function Cart() {
             donvitinh: ''
         },
         soluong: 0,
+        giasanpham: 0
     }]);
+    /**Tổng số tiền */
+    const [tongsotien, setTongSoTien] = useState(0);
 
     /**Phí vận chuyển */
     const shipfee = 10000;
@@ -31,6 +34,19 @@ export default function Cart() {
     /**Các context */
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
+
+    /**Tính tổng tiền của các chi tiết đặt hàng */
+    const tinhTongTien = () => {
+        if (load.length === 0) return 0;
+        else {
+            let sum = 0;
+            for (let i = 0; i < load.length; i++) {
+                sum += load[i].soluong * load[i].giasanpham;
+            }
+            return sum;
+        }
+    }
+
     /**Ham goi api load lai gio hang */
     const reRender = function () {
         axios.post('/order/hienthigiohang', { khachhang: userid })
@@ -40,45 +56,32 @@ export default function Cart() {
             });
     }
 
-    /**Tính tổng tiền của các chi tiết đặt hàng */
-    const tinhTongTien = () => {
-        if (load.length === 0) return 0;
-        else {
-            let sum = 0;
-            for (let i = 0; i < load.length; i++) {
-                sum += load[i].soluong * load[i].sanpham.gianiemyet;
-            }
-            return sum;
-        }
-    }
-    /**Tính tổng tiền của giỏ hàng bao gồm phí ship */
-    const tinhTongTienDatHang = () => {
-        const sum = tinhTongTien() + shipfee;
-        return sum;
-    }
-
     /**Lấy dữ liệu */
     useEffect(() => {
         axios.post('/order/hienthigiohang', { khachhang: userid })
             .then(response => response.data)
             .then(response => {
+                // console.log(response)
                 setLoad(response);
             });
     }, [userid]);
 
     /**Cập nhật tổng tiền lên server */
     useEffect(() => {
-        if (load.length > 0)
+        if (load.length > 0) {
             axios.post('/order/tinhtongtiendathang', {
                 id: load[0].dathang,
                 tongtien: tinhTongTien() + shipfee
-            })
-                .then(res => console.log(res.data))
+            }).then(res => console.log(res.data))
+        }
+
         else axios.post('/order/tinhtongtiendathang', {
             khachhang: userid
         })
             .then(res => console.log(res.data))
     })
+
+    console.log(load);
 
     /**Nút đặt hàng */
     const handleOrderSubmit = () => {
@@ -87,6 +90,19 @@ export default function Cart() {
             navigate('/buy');
         }
     }
+    /**Tính tổng tiền */
+    const sum = tinhTongTien();
+    useEffect(() => {
+        console.log('Tính tổng tiền')
+        setTongSoTien(sum);
+        if (load.length > 0)
+            axios.post('/order/tinhtongtiendathang', {
+                id: load[0].dathang,
+                tongtien: tongsotien + shipfee
+            }).then(res => console.log(res.data))
+
+    }, [sum, load, tongsotien])
+
     return (
         <div className='cart'>
             <div className='cart__body row-app'>
@@ -114,8 +130,21 @@ export default function Cart() {
                         hinhanh={ele.sanpham.hinhanh[0]}
                         tensanpham={ele.sanpham.tensanpham}
                         soluong={ele.soluong}
-                        gia={ele.sanpham.gianiemyet}
+                        gia={ele.giasanpham}
                         donvitinh={ele.sanpham.donvitinh}
+                        tangTongTien={() => setLoad(load.map((element, id) => {
+                            if (id === index) {
+                                element.soluong++;
+                            }
+                            return element;
+                        }))}
+
+                        giamTongTien={() => setLoad(load.map((element, id) => {
+                            if (id === index) {
+                                element.soluong--;
+                            }
+                            return element;
+                        }))}
                     />
                 })}
                 <div className='cart__payment'>
@@ -133,7 +162,7 @@ export default function Cart() {
                             <div className='cart__cost'>
                                 <p className='cart__p'>{formatNumber(tinhTongTien())}đ</p>
                                 <p className='cart__p'>{formatNumber(shipfee)}đ</p>
-                                <p className='cart__p cart__info__p--red'>{formatNumber(tinhTongTienDatHang())}đ</p>
+                                <p className='cart__p cart__info__p--red'>{formatNumber(tongsotien + shipfee)}đ</p>
                                 <div>
                                     <div className='button' onClick={handleOrderSubmit}>Đặt hàng</div>
                                     <div className='button cart--gray'>Xóa giỏ hàng</div>

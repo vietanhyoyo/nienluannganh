@@ -31,7 +31,7 @@ function AdminProductFilter(props) {
     }, [])
 
     return (
-        <div className="orderadmin-header">
+        <div className="orderadmin-header" style={{backgroundColor: '#fff'}}>
             <div className="orderadmin-title">
                 <p className="orderamin-title-icon"><i className="fa-solid fa-boxes-stacked"></i></p>
                 <h3 className="orderamin-title-text">
