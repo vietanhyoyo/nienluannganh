@@ -27,6 +27,7 @@
     width: 80%;
 }
 .person__profile__row-radio{
+    margin-left: 155px;
     justify-content: flex-start;
 }
 .person__profile__row-span{

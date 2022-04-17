@@ -1,0 +1,40 @@
+.pay_icon{
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    position: absolute;
+    top:-140px;
+    box-shadow: -5px -5px 10px rgba(60 234 87, 0.1),
+                5px 5px 10px rgba(60 234 87, 0.1);
+} 
+.pay_notify{
+    position: relative;
+    margin-top: 150px;
+    margin-left: 250px;
+    margin-right: 250px;
+    text-align: center;
+    height: 500px;
+    box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.089),
+                5px 5px 10px rgba(0, 0, 0, 0.089);
+    border-radius: 5px;
+}
+.pay_notify_detail h1{
+    padding-top: 150px;
+    color: rgb(60 234 87);
+}
+.pay_check_success{
+    color: rgb(60 234 87);
+    font-size: 10rem;
+}
+.button_back{
+    margin-top: 150px;
+    font-size: 1.5rem;
+}
+.back_cart{
+    padding-top: 20px;
+    font-size: 1.1rem;
+}
+.back_cart:hover{
+    color: rgb(60 234 87);
+
+}
