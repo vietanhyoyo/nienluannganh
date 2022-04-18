@@ -1,5 +1,5 @@
 import '../../css/person.css'
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import imgg from '../../images/logoicon.png'
 
 export default function Person() {
@@ -16,22 +16,22 @@ export default function Person() {
                         </div>
                     </div>
                     <div className='person__hr'></div>
-                    <div className='person__left__row'>
+                    <Link to='/person/profile' className='person__left__row'>
                         <div className='person__left__i'>
                             <i className='fi fi-rr-portrait'></i>
                         </div>
                         <div className='person__left__span'>
                             <span>Hồ sơ</span>
                         </div>
-                    </div>
-                    <div className='person__left__row'>
+                    </Link>
+                    <Link to='/person/history' className='person__left__row'>
                         <div className='person__left__i'>
                             <i className='fi fi-rr-comment-alt'></i>
                         </div>
                         <div className='person__left__span'>
                             <span>Lịch sử mua</span>
                         </div>
-                    </div>
+                    </Link>
                     <div className='person__left__row'>
                         <div className='person__left__i'>
                             <i className='fi fi-rr-map-marker'></i>

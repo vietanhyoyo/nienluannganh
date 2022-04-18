@@ -40,7 +40,7 @@ export default function PaypalButton(props) {
                         const order = await actions.order.capture();
                         console.log('order', order);
                         props.handlePay();
-                        alert('Đã thanh toán xong! Cám ơn quý khách!');
+                        //alert('Đã thanh toán xong! Cám ơn quý khách!');
                     }}
                     onCancel={() => {
                         alert('Đã hủy giao dịch');

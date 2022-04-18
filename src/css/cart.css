@@ -31,6 +31,7 @@
 .cart__info--image{
     display: flex;
     flex-direction: row;
+    justify-content: left;
 }
 .cart__info__p{
     color: #999;
@@ -41,11 +42,13 @@
     color: #444;
 }
 .cart__img{
-    height: 100%;
+    max-width: 180px;
+    max-height: 100%;
 }
 .cart__name--product{
     height: 100%;
     margin-left: 10px;
+    max-width: 300px;
 }
 .cart__delete{
     font-weight: 300;

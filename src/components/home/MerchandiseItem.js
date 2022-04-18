@@ -27,7 +27,6 @@ function MerchandiseItem(prop) {
                                 {formatNumber(prop.cost)}đ/{prop.donvi}
                             </span>
                         </p>}
-                    <div className='button'>Thêm vào giỏ</div>
                 </div>
             </div>
         </Link>

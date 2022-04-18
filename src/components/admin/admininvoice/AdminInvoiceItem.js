@@ -59,7 +59,6 @@ export default function AdminInvoiceItem(props) {
                 });
     }
 
-
     return (
         <div className='admin-invoice__item'>
             <div className='admin-invoice__border'></div>

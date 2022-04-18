@@ -145,7 +145,7 @@ function Product() {
                             <button className='product__name-quantity-btn' onClick={addQuantity}>+</button>
                         </div>
                         <div onClick={submitOrder} className='button login__oder'>
-                            Đặt hàng
+                            Thêm vào giỏ hàng
                         </div>
                     </div>
                     <ul className='product__infoproduct-nospeci product__col'>

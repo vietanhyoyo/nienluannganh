@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CartInfo from './CartInfo';
 import { useState, useEffect, useContext } from 'react';
 import { LoginContext } from '../../contexts/LoginContext';
+import { CartContext } from '../../contexts/CartContext';
 import axios from 'axios';
 
 const formatNumber = (num) => {
@@ -34,6 +35,9 @@ export default function Cart() {
     /**Các context */
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
+
+    /**Dữ liệu giỏ hàng trên header */
+    const cartState = useContext(CartContext);
 
     /**Tính tổng tiền của các chi tiết đặt hàng */
     const tinhTongTien = () => {
@@ -102,6 +106,15 @@ export default function Cart() {
             }).then(res => console.log(res.data))
 
     }, [sum, load, tongsotien])
+    /**Xóa giỏ hàng */
+    const handleDelete = () => {
+        axios.post('/order/xoagiohang', { _id: load[0].dathang })
+            .then(res => {
+                reRender();
+                cartState.getAPI(userid);
+                console.log(res.data);
+            })
+    }
 
     return (
         <div className='cart'>
@@ -165,7 +178,7 @@ export default function Cart() {
                                 <p className='cart__p cart__info__p--red'>{formatNumber(tongsotien + shipfee)}đ</p>
                                 <div>
                                     <div className='button' onClick={handleOrderSubmit}>Đặt hàng</div>
-                                    <div className='button cart--gray'>Xóa giỏ hàng</div>
+                                    <div className='button cart--gray' onClick={handleDelete}>Xóa giỏ hàng</div>
                                 </div>
                             </div>
                         </div>
