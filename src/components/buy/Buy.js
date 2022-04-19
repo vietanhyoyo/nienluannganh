@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { LoginContext } from '../../contexts/LoginContext';
 import { CartContext } from '../../contexts/CartContext';
 import '../../css/buy.css';
@@ -15,7 +15,6 @@ const formatNumber = (num) => {
 const PAYPAL_APP_REACT_ID = 'AaL54LXl9M2BUpwvP9MYYeD46AF4uj3NGYhBWg-q5FCzdJ4TsIlyE0KUp3auPPXf36AJQVxMjdfi4vab'
 
 export default function Buy() {
-    const [check, setcheck] = useState('');
     const idKH = useContext(LoginContext)
     const [load, setLoad] = useState({
         _id: '',
@@ -95,24 +94,20 @@ export default function Buy() {
     /**Hook để chuyển trang */
     const navigator = useNavigate();
 
-    console.log(donhang);
-
     /**Lấy dữ liệu giỏ hàng để thanh toán */
     useEffect(() => {
         axios.post('/order/laygiohangthanhtoan', { khachhang: userid })
             .then(res => setDonHang(res.data));
-    }, [])
+    }, [userid])
 
-    /**Phương thức thanh toán tới paypal */
+    /**Phương thức đặt hàng nhưng chưa thanh toán */
     const handleSubmit = () => {
         axios.post('/payment/dathang', { dathang: donhang })
             .then(res => {
-                console.log(res.data);
                 cartState.getAPI(userid);
                 navigator('/paysuccess');
             })
         load.quanhuyen = QH._id
-        load.gioitinh = check;
         axios.post('/customer/updateinfo', { load })
             .then(response => response.data)
             .then(response => {
@@ -128,7 +123,6 @@ export default function Buy() {
                 navigator('/paysuccess');
             })
     }
-    console.log(load.hoten);
 
     return (
         <div className='buy'>
@@ -216,9 +210,9 @@ export default function Buy() {
                             </PayPalScriptProvider>
                         }
                         {phuongthuc === DirectPay && <div className='buy__payment__row'>
-                            <div className='buy__payment__info'>
-                                <div className='button buy__btn buy__btn--other'>Hủy</div>
-                            </div>
+                            <Link to='/cart' className='buy__payment__info'>
+                                <div  className='button buy__btn buy__btn--other'>Hủy</div>
+                            </Link>
                             <div className='buy__payment__info'>
                                 <div className='button buy__btn' onClick={handleSubmit}>Thanh toán</div>
                             </div>

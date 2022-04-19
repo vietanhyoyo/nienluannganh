@@ -65,7 +65,6 @@ export default function Cart() {
         axios.post('/order/hienthigiohang', { khachhang: userid })
             .then(response => response.data)
             .then(response => {
-                // console.log(response)
                 setLoad(response);
             });
     }, [userid]);
@@ -85,8 +84,6 @@ export default function Cart() {
             .then(res => console.log(res.data))
     })
 
-    console.log(load);
-
     /**Nút đặt hàng */
     const handleOrderSubmit = () => {
         if (load.length === 0) alert('Chưa có sản phẩm trong giỏ hàng');
@@ -97,7 +94,6 @@ export default function Cart() {
     /**Tính tổng tiền */
     const sum = tinhTongTien();
     useEffect(() => {
-        console.log('Tính tổng tiền')
         setTongSoTien(sum);
         if (load.length > 0)
             axios.post('/order/tinhtongtiendathang', {
@@ -112,7 +108,6 @@ export default function Cart() {
             .then(res => {
                 reRender();
                 cartState.getAPI(userid);
-                console.log(res.data);
             })
     }
 
