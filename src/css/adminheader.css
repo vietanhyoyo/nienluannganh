@@ -68,10 +68,11 @@
 
 
 .AdminHeader__app--right-avatar-img{
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     border-radius: 100%;
     cursor: pointer;
+    object-fit: cover;
 }
 
 
@@ -124,4 +125,7 @@
     justify-content: left;
     padding: 5px;
     border-radius: 10px;
+}
+.AdminHeader__app--right-menu{
+    position: relative;
 }

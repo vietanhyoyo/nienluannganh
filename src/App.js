@@ -23,10 +23,11 @@ import AdminAddProduct from "./components/admin/AdminAddProduct";
 import AdminStatistical from "./components/admin/AdminStatistical";
 import Find from "./components/find/Find";
 import FindSearch from "./components/find/FindSearch";
-
 import AdminChat from "./components/admin/AdminChat";
 import ListProductAdmin from "./components/admin/ListProductAdmin"
 import AdminStaffAdd from "./components/admin/AdminStaffAdd";
+import AdminStaffInfo from "./components/admin/adminstaff/AdminStaffInfo";
+import Charjs from "./components/admin/listproductadmin/Charjs";
 
 function App() {
   return (
@@ -59,6 +60,8 @@ function App() {
               <Route path='product' element={<ListProductAdmin />} />
               <Route path='promotion' element={<AdminPromotion />} />
               <Route path='AddUser' element={<AdminStaffAdd />} />
+              <Route path='infomation' element={<AdminStaffInfo />} />
+              <Route path='charjs' element={<Charjs/>} />
             </Route>
           </Routes>
         </React.Fragment>

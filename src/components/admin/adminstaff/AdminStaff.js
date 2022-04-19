@@ -5,10 +5,18 @@ import {  useEffect, useState } from "react";
 function AdminStaff(props){
     
         const d = new Date(props.staffdate.ngaysinh)
-        const nam  =   d.getFullYear();
-        const thang  =   d.getMonth()+1;
-        const ngay  =   d.getDate();
-        const ngaysinh = ngay + '/' + thang + '/' + nam
+        function getFormattedDate(date) {
+            var year = date.getFullYear();
+          
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+          
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            
+            return day + '/' + month + '/' + year;
+        }
+        const ngaysinh = getFormattedDate(d)
         var k = '';
         if(props.staff.chucvu === 'admin'){
            k = 'Quản trị viên'

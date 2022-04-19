@@ -191,7 +191,7 @@
     height: 40px;
     border-radius:100%;
     box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
-    
+    object-fit: cover;
 }
 .StaffAdmin__manager-content-items-manager{
     display: flex;

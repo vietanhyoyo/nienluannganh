@@ -1,0 +1,108 @@
+.AdminStaffInfo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.AdminStaffInfo__form{
+    width: 900px;
+    height: 340px;
+    background-color: var(--c4);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.AdminStaffInfo__form-left{
+    width: 25%;
+    height: 100%;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 20px;
+   
+}
+.AdminStaffInfo__form-left-div{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    border-radius: 100%;
+  
+}
+
+
+.re-button-6{
+    width: 120px;
+    margin-top: 30px;
+}
+.re-button-6:hover{
+    height: 50px;
+    width: 130px;
+    color: var(--c1);   
+    background-color: var(--c4);
+}
+/* Ảnh */
+.AdminStaffInfo__form-left-div-image{
+    width: 100%;
+    height: 100%;
+    border-radius:100%;
+    
+}
+
+
+
+.AdminStaffInfo__form-right{
+    width: 65%;
+    height: 100%;   
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+   
+    padding-left: 20px;
+}
+
+.AdminStaffInfo__form-right-text{
+    margin-bottom: 10px;
+}
+
+.AdminStaffInfo__form-right-top{
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.AdminStaffInfo__form-right-bottom{
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+}
+.AdminStaffInfo__form-right-bottom-left{
+    width: 40%;
+    height: 80%;
+}
+
+.AdminStaffInfo__form-right-bottom-left-items{
+    display: flex;
+    font-size: 18px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 260px;
+    text-align:left;
+}
+.AdminStaffInfo__form-right-bottom-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.AdminStaffInfo__form-right-bottom-left-items-icon{
+    margin-right: 10px;
+}
+
+
+

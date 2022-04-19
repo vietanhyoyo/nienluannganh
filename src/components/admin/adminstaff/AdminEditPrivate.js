@@ -2,24 +2,15 @@ import axios from 'axios';
 import React, {   useEffect, useState } from 'react'
 import '../../../css/adminedit.css'
 function Adminedit(props) {
- 
-    
+
     const gender = props.staff.gioitinh;
     const d = new Date(props.staff.ngaysinh)
-    const today = new Date()
-    function getFormattedDate(date) {
-        var year = date.getFullYear();
-      
-        var month = (1 + date.getMonth()).toString();
-        month = month.length > 1 ? month : '0' + month;
-      
-        var day = date.getDate().toString();
-        day = day.length > 1 ? day : '0' + day;
-        
-        return year + '-' + month + '-' + day;
-      }
-    const ngaysinh =  getFormattedDate(d)
-    const maxday = getFormattedDate(today)
+    const nam  =   d.getFullYear();
+    const thang  =   d.getMonth()+1;
+    const ngay  =   d.getDate();
+    const ngaysinh =  nam+'-'+thang+'-'+ngay
+    var chucvu = '';
+    
     const [info,setInfo] = useState({
         _id : props.staff._id,
         hoten  : props.staff.hoten,
@@ -32,7 +23,12 @@ function Adminedit(props) {
         matkhau : props.staff.matkhau,
         email : props.staff.email
     });
-    
+    if(info.chucvu === 'admin'){
+        chucvu ='Quản trị viên'
+    }
+    if(info.chucvu ==='nhanvien'){
+        chucvu ='Nhân viên'
+    }
     // Checked mặc định của giới tính
     useEffect(()=>{  
         const nam = document.getElementById('Gender-checked-male')
@@ -91,7 +87,7 @@ function Adminedit(props) {
     var phonenumber = true;
     var email = true;
 
-    console.log(info)
+    
     // Cập nhật lại dữ liệu
     const UpdateInfo = () =>{
         if(info.hinhanh === undefined || info.hinhanh === ''){
@@ -135,11 +131,11 @@ function Adminedit(props) {
                 axios.post('/employee/suathongtinnhanvien', info)
                     //  lấy dữ liệu trả về
                     .then(response => { 
-                        if(response.data === 'updatesuccessfully'){
-                            alert('Cập nhật thành công')
-                            
+                        console.log(response.data)
+                       if(response.data === 'updatesuccessfully'){
+                            alert('Thêm thành công')
                         }else{
-                            alert('Cập nhật thất bại')
+                            alert('Thêm thất bại')
                         }
                     })
                     .catch(err => console.log(err))
@@ -179,13 +175,7 @@ function Adminedit(props) {
                                         }}/>
                                         </h3>
                                     <p className='content-top-mid-chucvu'>
-                                          <select className='Admin__staff-input' 
-                                          onChange={(e)=> setInfo({...info, chucvu : e.target.value})}
-                                          defaultValue= {info.chucvu}
-                                          >        
-                                            <option className='option-editstaff'  value="admin">Quản trị viên</option>  
-                                            <option className='option-editstaff'  value="nhanvien">Nhân viên</option>
-                                          </select>
+                                          {chucvu}
                                     </p>
                                  
                                       
@@ -228,7 +218,7 @@ function Adminedit(props) {
                                           </p>
                                           <p className='content-top-right-right-items'>
                                           <input name='date-input-staffadmin' type={'date'}  className='Admin__staff-input Admin__staff-input-date'
-                                            defaultValue={ngaysinh} max={maxday} min={'1920-01-01'}
+                                            defaultValue={ngaysinh}
                                             onChange={(e)=>{
                                             setInfo({...info, ngaysinh : e.target.value})
                                             }}
@@ -271,33 +261,19 @@ function Adminedit(props) {
                             </div>
                        
                         <div className='content-bottom'>
-                            <button className='button-6 button-6-repass'
-                            onClick={()=> {
-                                axios.post('/employee/laylaimatkhau',{
-                                   id : info._id})
-                                .then(response => {
-                                    props.rerender();
-                                    alert('Đặt mật khẩu thành công : (cuahangong7)  ')
-                                })
-                                .catch(err => console.log(err));
-                             }
-                             }
-                            >Đặt lại mật khẩu</button>
+                           
                            
                             <button className='button-6' 
                             onClick={()=> 
                             {
+                                
                                 UpdateInfo()    
                                 
                             }}
                             >Cập nhật</button>
                             <button className='button-6' onClick={()=>{
-                                props.onClick()
-                                if(props.propsrender ==='all'){
-                                    props.rerender()
-                                }else{
-                                    props.rerender1();
-                                }
+                                props.rerender()
+                               
                                 }}>Quay lại</button>
                             
                         </div>
