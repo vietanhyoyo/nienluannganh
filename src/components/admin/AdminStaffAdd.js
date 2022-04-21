@@ -16,6 +16,22 @@ function AdminStaffAdd() {
         email : ''
     })
     
+    const today = new Date();
+    const maxday = getFormattedDate(today) ;
+
+    //  Hàm chuyển đổi ngày
+     function getFormattedDate(date) {
+        var year = date.getFullYear();
+      
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+      
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        
+        return year + '-' + month + '-' + day;
+      }
+  
         var name = true;
         var address = true;
         var picture = true;
@@ -23,10 +39,8 @@ function AdminStaffAdd() {
         var password = true;
         var phonenumber = true;
         var email = true;
-        var date =true; 
-        var d = new Date();
-
-
+        // biến clear text
+    const form_clear = document.getElementsByClassName('form__input');
     function IsInvalidEmail(the_email) {
         var at = the_email.indexOf("@");
         var dot = the_email.lastIndexOf(".");
@@ -47,7 +61,7 @@ function AdminStaffAdd() {
     }
     
 
-
+    console.log(postinfo);
 
     const postInfomation = () => {
         
@@ -93,15 +107,28 @@ function AdminStaffAdd() {
                 .then(response => {
                 console.log(response.data)
                 axios.post('/employee/themnhanvien', postinfo)
-                    .then(response => { 
+                    .then(response   => { 
                         if(response.data === 'Themthanhcong'){
                             alert('Thêm thành công')
+                            for(let i = 0 ; i < form_clear.length;i++){
+                                form_clear[i].value = ""
+                            }    
+                            setImage1(undefined)
+                            setPosinfo({hoten  : '',
+                            chucvu    : postinfo.chucvu,
+                            diachi  : '',
+                            hinhanh :'',
+                            gioitinh : postinfo.gioitinh,
+                            matkhau :'',
+                            sdt:  '',
+                            ngaysinh:  '',
+                            email : ''})
                         }
                         if(response.data === 'dacoemail'){
                             alert('Email đã được sử dụng')
                         }
                         if(response.data === 'dacosdt'){
-                            alert('Số điện đa được sử dụng')
+                            alert('Số điện thoại đa được sử dụng')
                         }
                         if(response.data === 'cahaiduocsudung'){
                             alert('Số điện thoại và email đã được sử dụng')
@@ -115,16 +142,10 @@ function AdminStaffAdd() {
             else
             {
                 alert('Thêm thất bại');
-            }
-
-            
-        
-        
+            }     
     }
     
     
-   
-
     // State lưu ảnh
     const [image1,setImage1] = useState();
         // cập nhật ảnh ra màn hình và set ảnh vào để post lên
@@ -133,15 +154,15 @@ function AdminStaffAdd() {
         file.preview = URL.createObjectURL(file);
         setImage1(file); 
         setPosinfo({...postinfo,hinhanh : file.name})
-        
     }
+
     useEffect(() => {
         return () => {
             image1 && URL.revokeObjectURL(image1.preview);
         }
     }, [image1])
     
-        
+        console.log(postinfo);
     return (
     <div className='Admin__addstaff'>
             <h3 className='Admin__addstaff--title'>
@@ -165,7 +186,7 @@ function AdminStaffAdd() {
                             changefile
                             }
                             />
-                            <label htmlFor='Admin__addstaff--label' className='square_btn36'>Chọn ảnh đại diện</label>
+                            <label htmlFor='Admin__addstaff--label' className='square_btn36 form__label'>Chọn ảnh đại diện</label>
                     </div>
                     <div className='Admin__addstaff--content-right'>
                             <div className='Admin__addstaff--content-right-left'>
@@ -173,23 +194,24 @@ function AdminStaffAdd() {
                                     <input type="text" className="form__input" id="name" placeholder="Họ và tên" 
                                      onChange={(e) => {setPosinfo({...postinfo,hoten : e.target.value})}}
                                     />
-                                    <label htmlFor="name" className="form__label">Họ và tên</label>
+                                    <label htmlFor="name" className="form__label">Họ và tên không được để số</label>
                                 </div>
                                 <div className="form__group">
-                                    <input type="date" className="form__input" id="name" placeholder="Ngày sinh (dd/mm/yyyy)"  
+                                    <input type="date" className="form__input" id="name" placeholder="dd-mm-yyyy" 
+                                    min={'1922-01-01'} max={maxday}   
                                        onChange={(e) => {setPosinfo({...postinfo,ngaysinh : e.target.value})}}
                                     />
                                     <label htmlFor="name" className="form__label">Ngày sinh (mm/dd/yyyy)</label>
                                 </div>
                                 <div className="form__group">
-                                    <input type="text" className="form__input" id="name" placeholder="Số điện thoại"  
+                                    <input type="text" className="form__input" id="name" placeholder="Số điện thoại"  autocomplete="off"
                                      onChange={(e) => {setPosinfo({...postinfo,sdt : e.target.value})}}/>
-                                    <label htmlFor="name" className="form__label">Số điện thoại (10 số) [Tài khoản] </label>
+                                    <label htmlFor="name" className="form__label">Số điện thoại (10 số hoặc 11 số) [Tài khoản] </label>
                                 </div>
                                 <div className="form__group">
-                                    <input type="password" className="form__input" id="name" placeholder="Mật khẩu" 
+                                    <input type="password" className="form__input" id="name" placeholder="Mật khẩu" autocomplete="off"
                                      onChange={(e) => {setPosinfo({...postinfo,matkhau : e.target.value})}}/>
-                                    <label htmlFor="name" className="form__label">Mật khẩu</label>
+                                    <label htmlFor="name" className="form__label">Mật khẩu gồm 6 ký tự trở lên </label>
                                 </div>
                                 
                                 
@@ -240,8 +262,27 @@ function AdminStaffAdd() {
                     </div>
                  </div>
                  <div className='Admin__addstaff--content-bottom'>
-                     <button className='button-900' onClick={postInfomation}>Thêm</button>
-                     <button className='button-900'>Hủy bỏ</button>
+                     <button className='button-900' onClick={postInfomation}
+                        style={{backgroundColor: 'var(--c3)', borderColor: 'var(--c3)', color: '#fff'}}
+                     >Thêm</button>
+                     <button className='button-900'
+                     onClick={()=> {  
+                        for(let i = 0 ; i < form_clear.length;i++){
+                            form_clear[i].value = ""
+                        }
+                        setImage1(undefined)
+                            setPosinfo({hoten  : '',
+                            chucvu    : postinfo.chucvu,
+                            diachi  : '',
+                            hinhanh : undefined,
+                            gioitinh : postinfo.gioitinh,
+                            matkhau :'',
+                            sdt:  '',
+                            ngaysinh:  '',
+                            email : ''})
+                    }
+                }
+                     >Hủy bỏ</button>
                  </div>
             </div>
 

@@ -9,6 +9,7 @@ function MerchandiseItem(prop) {
         <Link to={`/product/${prop._id}`} className='merchandise__item'>
             <div className='merchandise__box'>
                 <div className='merchandise__element'>
+                    {prop.khuyenmai && <div className='merchandise__promotion'>-{prop.khuyenmai}<i>%</i></div>}
                     <div className='merchandise__img'>
                         <img src={prop.image} alt='noPhoto' />
                     </div>

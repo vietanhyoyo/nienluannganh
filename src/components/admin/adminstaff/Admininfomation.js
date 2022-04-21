@@ -8,18 +8,21 @@ function Admininfomation(props) {
     if(props.staff.chucvu === 'admin'){
         props.staff.chucvu = 'Quản trị viên'
     }
-    
+    function getFormattedDate(date) {
+        var year = date.getFullYear();
+      
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+      
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        
+        return day + '/' + month + '/' + year;
+    }
     const d = new Date(props.staff.ngaysinh)
-    const nam  =   d.getFullYear();
-    const thang  =   d.getMonth()+1;
-    const ngay  =   d.getDate();
-    const ngaysinh = ngay + '/' + thang + '/' + nam
+    const ngaysinh = getFormattedDate(d)
     const t = new Date(props.staff.createdAt)
-    const nam1  =   t.getFullYear();
-    const thang1  =   t.getMonth()+1;
-    const ngay1  =   t.getDate();
-    const ngayvao= ngay1 + '/' + thang1 + '/' + nam1
-  
+    const ngayvao= getFormattedDate(t)
  
     
 

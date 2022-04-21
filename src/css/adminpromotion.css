@@ -26,6 +26,7 @@
     border: 1px dotted #ddd;
     border-radius: 10px;
     margin: 0 30px;
+    background-color: #fff;
 }
 .admin-promotion__minitext{
     font-size: 0.8rem;
@@ -100,6 +101,7 @@
                 5px 5px 5px rgba(0, 0, 0, 0.144);
     border-radius: 10px;
     margin: 10px;
+    background-color: #fff;
 }
 .admin-promotion__item__col{
     height: 100px;

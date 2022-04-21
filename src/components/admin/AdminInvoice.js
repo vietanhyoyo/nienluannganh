@@ -40,10 +40,7 @@ export default function AdminInvoice() {
     return (
         <div className='admin-invoice'>
             <div className='admin-invoice__top'>
-                <ul className='admin-invoice__ul'>
-                    <li className='admin-invoice__li admin-invoice__li--select'>Đang chờ</li>
-                    <li className='admin-invoice__li'>Đã hủy</li>
-                </ul>
+                <div style={{padding: '10px'}}>Duyệt đơn hàng cho khách hàng của bạn</div>
             </div>
             <div className='admin-invoice__body'>
                 {donhang.map((item, index) => {

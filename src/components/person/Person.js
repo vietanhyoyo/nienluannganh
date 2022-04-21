@@ -1,18 +1,44 @@
 import '../../css/person.css'
 import { Outlet, Link } from 'react-router-dom';
-import imgg from '../../images/logoicon.png'
+import imgg from '../../images/logoicon.png';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { LoginContext } from '../../contexts/LoginContext';
+
 
 export default function Person() {
+
+    const idKH = useContext(LoginContext)
+
+    const [load, setLoad] = useState({
+        _id: '',
+        hoten: '',
+        sdt: '',
+        gioitinh: '',
+        quanhuyen: '',
+        diachi: '',
+        hinhanh: ''
+    });
+
+    useEffect(() => {
+        axios.post('/customer/infokhachhang', { id: idKH.iduser })
+            .then(response => response.data)
+            .then(response => {
+                setLoad(response);
+            });
+
+    }, [idKH.iduser]);
+
     return (
         <div className='person'>
             <div className='person__content row-app'>
                 <div className='person__left'>
                     <div className='person__left__row person__left__row--top'>
                         <div className='person__left__image'>
-                            <img src={imgg} alt='z' />
+                            <img src={load.hinhanh} alt='z' />
                         </div>
                         <div className='person__left__text'>
-                            <span>vanhyoyo</span>
+                            <span>{load.hoten}</span>
                         </div>
                     </div>
                     <div className='person__hr'></div>
