@@ -63,11 +63,7 @@ function App() {
               <Route path='promotion' element={<AdminPromotion />} />
               <Route path='AddUser' element={<AdminStaffAdd />} />
               <Route path='infomation' element={<AdminStaffInfo />} />
-<<<<<<< HEAD
-              <Route path='charjs' element={<Charjs/>}/>
-=======
               <Route path='charjs' element={<Charjs />} />
->>>>>>> ae25945e5790a8a10c7f4eb4e72dbcd2e9b0b084
             </Route>
           </Routes>
         </React.Fragment>

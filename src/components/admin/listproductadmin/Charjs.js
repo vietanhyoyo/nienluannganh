@@ -38,7 +38,7 @@ function Charjs(props) {
   var tinhtientrongthang10 =0
   var tinhtientrongthang11 =0
   var tinhtientrongthang12 =0
-
+  const today = new Date();
   const a = props.doanhthu
   
   
@@ -110,7 +110,7 @@ function Charjs(props) {
       },
       title: {
         display: true,
-        text: 'Biểu đồ doanh thu cửa hàng theo tháng',
+        text: 'BIỂU ĐỒ DOANH THU TỪNG THÁNG TRONG NĂM '  + today.getFullYear(  ),
       },
     },
   };
@@ -126,7 +126,7 @@ function Charjs(props) {
       {
         label: 'Doanh thu',
         data: DoanhThu.map(c=>c),
-        borderColor: '#64d275',
+        borderColor: 'rgb(139, 219, 139)',
         backgroundColor: 'white',
       },
     ],

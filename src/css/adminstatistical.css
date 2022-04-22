@@ -371,9 +371,32 @@
 }
 
 .select-adminchart{
-  height: 30px;
+  height: 20px;
   width: 130px;
   position: relative;
   left: 620px;
   top: 20px;
+}
+
+.div-chart2{
+  display: flex;
+  width: 105px;
+  height: auto;
+  padding :2px;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.div-chart2-select{
+  width: 50px;
+  height: 20px;
+
+}
+
+.choose-day-adminstatistical{
+  border: none;
+}
+
+.div-button8{
+  margin-left: 20px;
 }

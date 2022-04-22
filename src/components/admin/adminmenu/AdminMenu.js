@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import '../../../css/adminmenu.css'
-import AdminMenuData, {Theul,TheUl2} from './AdminMenuData.js'
+import  {Theul,TheUl2} from './AdminMenuData.js'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
