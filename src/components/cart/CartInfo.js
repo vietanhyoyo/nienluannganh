@@ -50,7 +50,6 @@ function CartInfo(props) {
             props.giamTongTien();
         }
     }
-    console.log('Render');
     return (
         <div className='cart__row cart__row--boder'>
             <div className='cart__info cart__info--big cart__info--image' >

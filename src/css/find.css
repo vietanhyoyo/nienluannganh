@@ -1,5 +1,5 @@
 .find__parent{
-    height: 600px;
+    min-height: 600px;
 }
 .find{
     padding: 16px;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { LoginContext } from '../../contexts/LoginContext';
 import { CartContext } from '../../contexts/CartContext';
 import '../../css/buy.css';
@@ -40,7 +40,7 @@ export default function Buy() {
             .then(response => {
                 setTP(response);
             });
-    }, []);
+    }, [idKH.iduser, QH, load]);
     useEffect(() => {
         axios.post('/customer/infokhachhang', { id: idKH.iduser })
             .then(response => response.data)
@@ -49,7 +49,6 @@ export default function Buy() {
                 if (response.quanhuyen !== undefined) {
                     setQH(response.quanhuyen)
                 }
-                console.log(response)
             });
 
     }, [idKH.iduser]);
@@ -84,36 +83,57 @@ export default function Buy() {
     /**Hook để chuyển trang */
     const navigator = useNavigate();
 
-    console.log(donhang);
-
     /**Lấy dữ liệu giỏ hàng để thanh toán */
     useEffect(() => {
         axios.post('/order/laygiohangthanhtoan', { khachhang: userid })
             .then(res => setDonHang(res.data));
-    }, [])
+    }, [userid])
 
-    /**Phương thức thanh toán tới paypal */
+    /**Phương thức đặt hàng nhưng chưa thanh toán */
     const handleSubmit = () => {
-        axios.post('/payment/dathang', { dathang: donhang })
-            .then(res => {
-                console.log(res.data);
-                cartState.getAPI(userid);
-                navigator('/paysuccess');
-            })
-        load.quanhuyen = QH._id
-        axios.post('/customer/updateinfo', { load })
-            .then(response => response.data)
+        if (load.diachi.length < 10) {
+            alert('Chưa có địa chỉ, địa chỉ chư phù hợp');
+        } else if (load.hoten.length < 10) {
+            alert('Hãy nhập họ tên đầy đủ của bạn');
+        }
+        else {
+            axios.post('/payment/dathang', { dathang: donhang })
+                .then(res => {
+                    cartState.getAPI(userid);
+                    navigator('/paysuccess');
+                })
+            load.quanhuyen = QH._id
+            axios.post('/customer/updateinfo', { load })
+                .then(response => response.data)
+                .then(response => {
+                    alert('Cập nhật thành công')
+                })
+        }
+
     }
     /**Phương thức thanh toán tới paypal */
     const handlePay = () => {
-        axios.post('/payment/thanhtoan', { dathang: donhang })
-            .then(res => {
-                console.log(res.data);
-                cartState.getAPI(userid);
-                navigator('/paysuccess');
-            })
+        if (load.diachi.length < 10) {
+            alert('Chưa có địa chỉ, địa chỉ chư phù hợp');
+        } else if (load.hoten.length < 10) {
+            alert('Hãy nhập họ tên đầy đủ của bạn');
+        }
+        else {
+            axios.post('/payment/thanhtoan', { dathang: donhang })
+                .then(res => {
+                    console.log(res.data);
+                    cartState.getAPI(userid);
+                    navigator('/paysuccess');
+                })
+            load.quanhuyen = QH._id
+            axios.post('/customer/updateinfo', { load })
+                .then(response => response.data)
+                .then(response => {
+                    alert('Cập nhật thành công')
+                })
+        }
+
     }
-    console.log(load.hoten);
 
     return (
         <div className='buy'>
@@ -201,9 +221,9 @@ export default function Buy() {
                             </PayPalScriptProvider>
                         }
                         {phuongthuc === DirectPay && <div className='buy__payment__row'>
-                            <div className='buy__payment__info'>
+                            <Link to='/cart' className='buy__payment__info'>
                                 <div className='button buy__btn buy__btn--other'>Hủy</div>
-                            </div>
+                            </Link>
                             <div className='buy__payment__info'>
                                 <div className='button buy__btn' onClick={handleSubmit}>Thanh toán</div>
                             </div>

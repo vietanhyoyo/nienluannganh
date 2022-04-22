@@ -134,7 +134,7 @@ function Product() {
                         <div className='product__name-type'>
                             <span>Đơn vị:</span>
                             {load.sanphamcungloai.map((ele, index) =>
-                                <ProductUnit key={index} idProduct={ele} />
+                                <ProductUnit key={index} idProduct={ele} donvitinh={load.donvitinh}/>
                             )}
                         </div>
                         <div className='product__name-quantity'>

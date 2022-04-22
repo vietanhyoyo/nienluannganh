@@ -34,10 +34,24 @@
     height: 280px;
 }
 .merchandise__element{
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.merchandise__promotion{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px;
+    background-color: var(--c3);
+    border-bottom-right-radius: 10px;
+}
+.merchandise__promotion i{
+    font-size: 10px;
 }
 .merchandise__img{
     margin: auto;

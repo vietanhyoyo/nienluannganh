@@ -17,8 +17,6 @@ function OrderAdmin() {
         loaisanpham: ''
     })
 
-    console.log(filter);
-
     /**Sản phẩm đang được chọn */
     const [idProductSelect, setIDProductSelect] = useState('');
 
