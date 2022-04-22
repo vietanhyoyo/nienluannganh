@@ -38,7 +38,6 @@ function AdminAddProduct() {
     const handleSubmit = (e) => {
         /**Ngăn hành vi mặc định */
         e.preventDefault();
-
         /**Ép kiểu th   ành formData */
         let formData = new FormData();
         for (let i = 0; i < file.length; i++) {

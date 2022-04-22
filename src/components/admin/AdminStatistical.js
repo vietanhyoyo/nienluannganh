@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/adminstatistical.css";
 import Charjs from "./listproductadmin/Charjs";
+import Chart2 from "./listproductadmin/Chart2";
 const formatNumber = (num) => {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 };
@@ -37,35 +38,28 @@ export default function AdminStatistical() {
     },
   ]);
   // Doanh thu hôm nay phần tử cuối của mảng.
-
-  const lasitem_statistical = statistical[statistical.length - 1];
-  const lasitem_statistical1 = statistical[statistical.length - 2];
-  const doanhthu =
-    ((lasitem_statistical.tien - lasitem_statistical1.tien) /
-      lasitem_statistical1.tien) *
-    100;
-  const sanphambanduoc =
-    ((lasitem_statistical.sosanphamdaban -
-      lasitem_statistical1.sosanphamdaban) /
-      lasitem_statistical1.sosanphamdaban) *
-    100;
+  
+  let lasitem_statistical = statistical[statistical.length - 1];
+  let lasitem_statistical1 = statistical[statistical.length - 2];
+ 
+ 
   const today = new Date();
-  const d = new Date(lasitem_statistical.ngay);
+  const homnay = getFormattedDate(today);
+  
   function getFormattedDate(date) {
     var year = date.getFullYear();
     var month = (1 + date.getMonth()).toString();
     month = month.length > 1 ? month : "0" + month;
     var day = date.getDate().toString();
     day = day.length > 1 ? day : "0" + day;
-    return day + "/" + month + "/" + year;
+    return year + "-" + month + "-" + day;
   }
-  let ngaysinh = "";
-  if (d < today) {
-    ngaysinh = getFormattedDate(today);
-  } else {
-    ngaysinh = getFormattedDate(d);
-  }
+  
+ 
+  
 
+  const ngaysinhmacdinh = getFormattedDate(today)
+  
   // Tổng số sản phẩm đang bán
   const [typeproduct, setTypeproduct] = useState([{}]);
   // Tổng số loại sán phẩm
@@ -84,8 +78,8 @@ export default function AdminStatistical() {
   } else {
     thangdaudan = product[0];
   }
+  
 
- 
   // Sản phẩm
   const a = () =>
     axios
@@ -122,7 +116,7 @@ export default function AdminStatistical() {
     daban: 0,
   });
   const [indexproduct, setIndexproduct] = useState(0);
- 
+
   if (indexproduct < 0) {
     setIndexproduct(9);
   }
@@ -130,7 +124,28 @@ export default function AdminStatistical() {
     setIndexproduct(0);
   }
 
- 
+  const [chart, setChart] = useState(1);
+
+  const [chooseday, setChooseday] = useState(ngaysinhmacdinh);
+  
+   
+  for(let i=0;i<statistical.length;i++){
+    const date = new Date(statistical[i].ngay)
+    const a = getFormattedDate(date)
+    if(a === chooseday){
+      lasitem_statistical = statistical[i];
+      lasitem_statistical1 = statistical[i-1]
+    }
+  }
+  const doanhthu =
+  ((lasitem_statistical.tien - lasitem_statistical1.tien) /
+    lasitem_statistical1.tien) *
+  100;
+  const sanphambanduoc =
+  ((lasitem_statistical.sosanphamdaban -
+    lasitem_statistical1.sosanphamdaban) /
+    lasitem_statistical1.sosanphamdaban) *
+  100;
   return (
     <div className="AdminStatistical__app">
       {/* Div thống kê và  các nút chức năng */}
@@ -151,7 +166,18 @@ export default function AdminStatistical() {
         <div className="AdminStatistical__app--title-use">
           <p className="AdminStatistical__app--title-use-icon"></p>
 
-          <div className="button-80">Hôm nay : {ngaysinh}</div>
+          <div className="button-80">
+             <input
+              type="date"
+              defaultValue={ngaysinhmacdinh}
+              className="choose-day-adminstatistical"
+              max={homnay}
+              min={"2022-01-01"}
+              onChange={(e) => {
+                setChooseday(e.target.value);
+              }}
+            />
+          </div>
         </div>
       </div>
       {/* Div tổng content */}
@@ -285,7 +311,16 @@ export default function AdminStatistical() {
             {/* CHART */}
             <div className="AdminStatistical__app--content-chart-items-content">
               <div className="AdminStatistical__app--content-chart-items-content-item">
-                <Charjs doanhthu={statistical} />
+                <select 
+                  className="select-adminchart"
+                  onChange={(e) => {
+                    setChart(Number(e.target.value));
+                  }}
+                >
+                  <option value={2}> Năm </option>
+                  <option value={1} selected> Tháng </option>
+                </select>
+                {chart === 1 ?<Chart2 />:<Charjs doanhthu={statistical} />  }
               </div>
             </div>
           </div>
@@ -347,8 +382,6 @@ export default function AdminStatistical() {
             </div>
           </div>
         </div>
-
-                      
       </div>
     </div>
   );

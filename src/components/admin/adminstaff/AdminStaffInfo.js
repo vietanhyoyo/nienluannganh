@@ -41,33 +41,27 @@ function AdminStaffInfo() {
   }
   // Ngày sinh
   const d = new Date(infostaff.ngaysinh)
-  const nam = d.getFullYear();
-  const thang = d.getMonth() + 1;
-  const ngay = d.getDate();
-  var ngaysinh = '';
-  if (ngay < 10 && thang < 10) {
-    ngaysinh = '0' + ngay + '-' + '0' + thang + '-' + nam
+  function getFormattedDate(date) {
+    var year = date.getFullYear();
+  
+    var month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : '0' + month;
+  
+    var day = date.getDate().toString();
+    day = day.length > 1 ? day : '0' + day;
+    
+    return day + '/' + month + '/' + year;
   }
-  if (ngay < 10 && thang > 10) {
-    ngaysinh = '0' + ngay + '-' + thang + '-' + nam
-  }
-  if (ngay > 10 && thang < 10) {
-    ngaysinh = ngay + '-' + '0' + thang + '-' + nam
-  }
+ 
+  let ngaysinh = getFormattedDate(d);
+  
 
 
   // Ngày vào công ty
   const d1 = new Date(infostaff.createdAt)
-  const nam1 = d1.getFullYear();
-  const thang1 = d1.getMonth() + 1;
-  const ngay1 = d1.getDate();
-  var ngaysinh1 = '';
-  if (thang1 < 10) {
-    ngaysinh1 = ngay1 + '-' + '0' + thang1 + '-' + nam1
-  } else {
-    ngaysinh1 = ngay1 + '-' + +thang1 + '-' + nam1
-  }
 
+  var ngaysinh1 = getFormattedDate(d1);
+  
   const [mount, setMount] = useState(false);
 
   return (

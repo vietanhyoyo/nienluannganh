@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../css/adminstaffadd.css'
-import StaffAdmin from './StaffAdmin'
 import axios from 'axios'
 function AdminStaffAdd() {
     

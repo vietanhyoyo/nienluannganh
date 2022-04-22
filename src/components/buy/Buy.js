@@ -62,7 +62,6 @@ export default function Buy() {
             setLoad(prev => ({ ...prev, diachi: '' }))
         }
     }, [load, TP, QH])
-
     const [donhang, setDonHang] = useState({
         _id: '',
         tongtien: 0

@@ -48,10 +48,7 @@ export default function AdminHeader() {
         {/* Div bên phải */}
         <div className='AdminHeader__app--right'>
 
-                
-                <div className='AdminHeader__app--right-items AdminHeader__app--right-bell'>
-                   <i className="fa-solid fa-bell"></i>
-                </div>
+            
         
                 <div className='AdminHeader__app--right-items AdminHeader__app--right-avatar'>
                    {infostaff.hinhanh !==undefined ? 
