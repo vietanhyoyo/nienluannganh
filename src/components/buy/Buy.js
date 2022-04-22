@@ -54,7 +54,7 @@ export default function Buy() {
     }, [idKH.iduser]);
 
     useEffect(() => {
-        if (TP.length > 0 && load.quanhuyen !== undefined && QH._id !== '')
+        if (TP.length > 1 && load.quanhuyen !== undefined && QH._id !== '')
             setSelectTP(TP.indexOf(TP.filter(element => {
                 return element._id === QH.tinhtp
             })[0]))
@@ -100,15 +100,16 @@ export default function Buy() {
         else {
             axios.post('/payment/dathang', { dathang: donhang })
                 .then(res => {
+                    load.quanhuyen = QH._id
+                    axios.post('/customer/updateinfo', { id: load._id, load: load })
+                        .then(response => response.data)
+                        .then(response => {
+                            alert('Cập nhật thành công')
+                        })
                     cartState.getAPI(userid);
                     navigator('/paysuccess');
                 })
-            load.quanhuyen = QH._id
-            axios.post('/customer/updateinfo', { load })
-                .then(response => response.data)
-                .then(response => {
-                    alert('Cập nhật thành công')
-                })
+
         }
 
     }

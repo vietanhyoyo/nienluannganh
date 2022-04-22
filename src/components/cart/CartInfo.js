@@ -38,6 +38,17 @@ function CartInfo(props) {
             sanpham: props.idSanPham,
             soluong: props.soluong
         })
+        return (() => {
+            if (chitietdathang !== {}) {
+                axios.post('/order/capnhatsoluongchitietdathang',
+                    {
+                        _id: props.id,
+                        sl: chitietdathang.soluong,
+                        gia: Number(chitietdathang.soluong * props.gia)
+                    })
+                    .then(res => console.log(res.data))
+            }
+        })
     }, [props])
     /**Tăng số lượng */
     const handleIncrease = () => {

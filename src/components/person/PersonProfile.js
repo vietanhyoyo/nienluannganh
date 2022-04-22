@@ -65,7 +65,7 @@ export default function PersonProfile() {
     const handleSubmit = () => {
         load.quanhuyen = QH._id
         load.gioitinh = check;
-        axios.post('/customer/updateinfo', { load })
+        axios.post('/customer/updateinfo', { id: load._id, load: load })
             .then(response => response.data)
             .then(response => {
                 alert('Cập nhật thành công')

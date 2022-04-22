@@ -114,7 +114,7 @@ function Login() {
                         <div className='login__box'>
                             <label className='login__label'>Mật khẩu</label>
                             <br />
-                            <input className='login__input'
+                            <input className='login__input' type='password'
                                 onChange={e => setFormInfo({ ...formInfo, password: e.target.value })}
                                 onFocus={handleCheckPW}
                             />
@@ -122,7 +122,7 @@ function Login() {
                         <div className='login__box'>
                             <label className='login__label'>Xác nhận lại mật khẩu</label>
                             <br />
-                            <input className='login__input'
+                            <input className='login__input' type='password'
                                 onChange={e => setFormInfo({ ...formInfo, repassword: e.target.value })}
                                 onBlur={handleCheckRePW}
                             />

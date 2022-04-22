@@ -84,9 +84,6 @@ function Product() {
 
     const submitOrder = () => {
         const giatri = quantity * load.giasanpham.giaban;
-        console.log(quantity)
-        console.log(load.giasanpham.giaban)
-        console.log(giatri);
         if (userid !== null)
             axios.post('/order/themchitietdathang', { khachhang: userid, soluong: quantity, idSP: id, gia: giatri })
                 .then(response => response.data)

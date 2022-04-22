@@ -23,7 +23,7 @@ export default function AdminPromotionListItem(props) {
             </div>
             <div className='admin-promotion-list-item__col admin-promotion-list-item__col--button'>
                 <div className='admin-promotion-list-item__button'>
-                    <i className='fi fi-rr-trash' onClick={handleRemove}></i>
+                    <i className='fa-solid fa-trash' onClick={handleRemove}></i>
                 </div>
             </div>
         </div>

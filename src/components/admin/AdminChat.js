@@ -59,7 +59,7 @@ function AdminChat() {
             <div className='adminchat__body'>
                 <div className='adminchat__left'>
                     <div className='adminchat__search'>
-                        <input type='text' placeholder='Tìm tên khách hàng' />
+                        {/* <input type='text' placeholder='Tìm tên khách hàng' /> */}
                         <div className='adminchat__border'></div>
                         <div>
                             {khachhang.map((ele, index) => {

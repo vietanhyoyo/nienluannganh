@@ -1,12 +1,40 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useContext } from 'react';
+import { LoginContext } from '../../contexts/LoginContext';
+import { CartContext } from '../../contexts/CartContext';
 
+const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
 function MerchandiseItem(prop) {
-    const formatNumber = (num) => {
-        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+
+
+    /*Dữ liệu đăng nhập */
+    const loginState = useContext(LoginContext);
+    const userid = loginState.iduser;
+    /**Dữ liệu giỏ hàng trên header */
+    const cartState = useContext(CartContext);
+    const navigator = useNavigate();
+    const handleShowProduct = value => {
+        navigator(`/product/${value}`);
+    }
+    const addCart = e => {
+        e.stopPropagation();
+        const giatri = prop.salecost ? prop.salecost : prop.cost;
+        console.log(giatri)
+        if (userid !== null)
+            axios.post('/order/themchitietdathang', { khachhang: userid, soluong: 1, idSP: prop._id, gia: giatri })
+                .then(response => response.data)
+                .then(response => {
+                    cartState.getAPI(userid);
+                    alert('Đã thêm vào giở hàng')
+                });
+        else alert('Bạn vui lòng đăng nhập!');
     }
 
     return (
-        <Link to={`/product/${prop._id}`} className='merchandise__item'>
+        <div onClick={() => handleShowProduct(prop._id)} className='merchandise__item'>
             <div className='merchandise__box'>
                 <div className='merchandise__element'>
                     {prop.khuyenmai && <div className='merchandise__promotion'>-{prop.khuyenmai}<i>%</i></div>}
@@ -28,9 +56,12 @@ function MerchandiseItem(prop) {
                                 {formatNumber(prop.cost)}đ/{prop.donvi}
                             </span>
                         </p>}
+                    <div className='merchandise__add-cart'>
+                        <i className='fa-solid fa-cart-arrow-down ' onClick={e => addCart(e)}></i>
+                    </div>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }
 

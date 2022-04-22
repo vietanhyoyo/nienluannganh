@@ -42,7 +42,7 @@ function Chat() {
             .then(response => {
                 setNameUser(response.hoten);
             });
-            /**Lấy dữ liệu tin nhắn khách hàng */
+        /**Lấy dữ liệu tin nhắn khách hàng */
         if (iduser !== null)
             axios.post('/message/laytinnhankhachhang', { _id: iduser })
                 .then(res => res.data)
@@ -106,42 +106,45 @@ function Chat() {
     /**Lăng form chat xuống mỗi khi có tin nhắn */
     useEffect(() => {
         const element = document.getElementById('chat-show');
-        element.scrollTop = element.scrollHeight;
+        if (element !== null)
+            element.scrollTop = element.scrollHeight;
     }, [tinnhan]);
     return (
-        <div className='chat' id={nameUser}>
-            <div className='chat__turn-on' ref={turnon} onClick={handleToggle}>
-                <i className='fa-solid fa-comment chat__icon'></i>
-                <span style={{ marginLeft: '10px' }}>Chat</span>
-            </div>
-            <div className='chat__form chat--hidden' ref={form}>
-                <div className='chat__hearder'>
-                    <p>CHAT</p>
-                    <i className='fa-solid fa-square-xmark chat__icon--close' onClick={handleToggle}></i>
+        <>{role === null &&
+            <div className='chat' id={nameUser}>
+                <div className='chat__turn-on' ref={turnon} onClick={handleToggle}>
+                    <i className='fa-solid fa-comment chat__icon'></i>
+                    <span style={{ marginLeft: '10px' }}>Chat</span>
                 </div>
-                <div className='chat__show' id='chat-show'>
-                    {tinnhan.map((ele, index) => {
-                        if (ele.nguoigui !== undefined && ele.nguoigui === iduser)
-                            return <div className='chat__message chat__message--right' key={index}>
-                                <p className='chat__username'>bạn</p>
-                                <p className='chat__messagetext'>{ele.noidung}</p>
-                            </div>
+                <div className='chat__form chat--hidden' ref={form}>
+                    <div className='chat__hearder'>
+                        <p>CHAT</p>
+                        <i className='fa-solid fa-square-xmark chat__icon--close' onClick={handleToggle}></i>
+                    </div>
+                    <div className='chat__show' id='chat-show'>
+                        {tinnhan.map((ele, index) => {
+                            if (ele.nguoigui !== undefined && ele.nguoigui === iduser)
+                                return <div className='chat__message chat__message--right' key={index}>
+                                    <p className='chat__username'>bạn</p>
+                                    <p className='chat__messagetext'>{ele.noidung}</p>
+                                </div>
 
-                        else if (ele.nguoinhan !== undefined && ele.nguoinhan === iduser)
-                            return <div className='chat__message chat__message--left' key={index}>
-                                <p className='chat__username'>shop</p>
-                                <p className='chat__messagetext'>{ele.noidung}</p>
-                            </div>
-                        else return < div key={index} ></div>
-                    })}
+                            else if (ele.nguoinhan !== undefined && ele.nguoinhan === iduser)
+                                return <div className='chat__message chat__message--left' key={index}>
+                                    <p className='chat__username'>shop</p>
+                                    <p className='chat__messagetext'>{ele.noidung}</p>
+                                </div>
+                            else return < div key={index} ></div>
+                        })}
+                    </div>
+                    <div className='chat__write' onKeyPress={e => handleEnter(e)}>
+                        <input type='text' className='chat__input input-text'
+                            onChange={e => setInputText(e.target.value)} value={inputText} />
+                        <div className='button chat__button' onClick={handleSendMessage}>Gửi</div>
+                    </div>
                 </div>
-                <div className='chat__write' onKeyPress={e => handleEnter(e)}>
-                    <input type='text' className='chat__input input-text'
-                        onChange={e => setInputText(e.target.value)} value={inputText} />
-                    <div className='button chat__button' onClick={handleSendMessage}>Gửi</div>
-                </div>
-            </div>
-        </div>
+            </div>}
+        </>
     );
 
 }

@@ -34,11 +34,11 @@ function AdminControllProductTypeItemLi({ data, renderAPI }) {
             </div>
             <div className='admin-controll-product-type__col'>
                 <i
-                    className='fi fi-rr-trash admin-controll-product-type__icon admin-controll-product-type__icon--red'
+                    className='fa-solid fa-trash admin-controll-product-type__icon admin-controll-product-type__icon--red'
                     onClick={handleDelete}
                 ></i>
                 <i
-                    className='fi fi-rr-pencil admin-controll-product-type__icon'
+                    className='fa-solid fa-pen admin-controll-product-type__icon'
                     onClick={handleEdit}
                 ></i>
             </div>

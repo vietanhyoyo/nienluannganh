@@ -236,7 +236,6 @@ function AdminAddProduct() {
                     </div>
 
                 </form>
-                <button className="snip1582 addtype-product">THÊM LOẠI SẢN PHẨM</button>
 
             </div>
 

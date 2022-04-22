@@ -69,6 +69,7 @@ function AdminProductEdit(props) {
             axios.post('/products/suasanpham', { product: product })
                 .then(response => response.data)
                 .then(response => {
+                    props.reRender();
                     alert('Đã cập nhật sản phẩm!');
                 });
         }
@@ -83,6 +84,7 @@ function AdminProductEdit(props) {
                     axios.post('/products/suasanpham', { product: product })
                         .then(response => response.data)
                         .then(response => {
+                            props.reRender();
                             alert('Đã cập nhật sản phẩm!');
                         });
                 })
