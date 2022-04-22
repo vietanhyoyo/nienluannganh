@@ -370,3 +370,10 @@
   width: 100%;
 }
 
+.select-adminchart{
+  height: 30px;
+  width: 130px;
+  position: relative;
+  left: 620px;
+  top: 20px;
+}

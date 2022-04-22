@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/adminstatistical.css";
 import Charjs from "./listproductadmin/Charjs";
 const formatNumber = (num) => {
@@ -130,7 +130,8 @@ export default function AdminStatistical() {
     setIndexproduct(0);
   }
 
- 
+        const [chart,setChart] = useState(1);
+  console.log(chart)
   return (
     <div className="AdminStatistical__app">
       {/* Div thống kê và  các nút chức năng */}
@@ -285,7 +286,16 @@ export default function AdminStatistical() {
             {/* CHART */}
             <div className="AdminStatistical__app--content-chart-items-content">
               <div className="AdminStatistical__app--content-chart-items-content-item">
-                <Charjs doanhthu={statistical} />
+                  <select className="select-adminchart"
+                    onChange={(e)=> {
+                      setChart(Number(e.target.value))
+
+                    }}
+                  > 
+                      <option value={1}> Năm </option>
+                      <option value={2}> Tháng </option>
+                  </select>
+               { chart === 1 ?  <Charjs doanhthu={statistical} /> : <p>Doanh thu ngày</p> }
               </div>
             </div>
           </div>
