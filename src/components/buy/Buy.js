@@ -15,7 +15,6 @@ const formatNumber = (num) => {
 const PAYPAL_APP_REACT_ID = 'AaL54LXl9M2BUpwvP9MYYeD46AF4uj3NGYhBWg-q5FCzdJ4TsIlyE0KUp3auPPXf36AJQVxMjdfi4vab'
 
 export default function Buy() {
-    const [check, setcheck] = useState('');
     const idKH = useContext(LoginContext)
     const [load, setLoad] = useState({
         _id: '',
@@ -64,16 +63,6 @@ export default function Buy() {
             setLoad(prev => ({ ...prev, diachi: '' }))
         }
     }, [load, TP, QH])
-    // const handleSubmit = () => {
-    //     load.quanhuyen = QH._id
-    //     load.gioitinh = check;
-    //     axios.post('/customer/updateinfo', { load })
-    //         .then(response => response.data)
-    //         .then(response => {
-    //             alert('Cập nhật thành công')
-    //         })
-    // }
-    //
     const [donhang, setDonHang] = useState({
         _id: '',
         tongtien: 0
@@ -112,12 +101,8 @@ export default function Buy() {
                 navigator('/paysuccess');
             })
         load.quanhuyen = QH._id
-        load.gioitinh = check;
         axios.post('/customer/updateinfo', { load })
             .then(response => response.data)
-            .then(response => {
-                alert('Cập nhật thành công')
-            })
     }
     /**Phương thức thanh toán tới paypal */
     const handlePay = () => {

@@ -27,6 +27,7 @@ import FindSearch from "./components/find/FindSearch";
 import AdminChat from "./components/admin/AdminChat";
 import ListProductAdmin from "./components/admin/ListProductAdmin"
 import AdminStaffAdd from "./components/admin/AdminStaffAdd";
+import Chart2 from "./components/admin/listproductadmin/Chart2";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
               <Route path='product' element={<ListProductAdmin />} />
               <Route path='promotion' element={<AdminPromotion />} />
               <Route path='AddUser' element={<AdminStaffAdd />} />
+              <Route path='chart2' element={<Chart2 />} />
             </Route>
           </Routes>
         </React.Fragment>

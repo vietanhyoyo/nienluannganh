@@ -39,12 +39,6 @@ function AdminAddProduct() {
         /**Ngăn hành vi mặc định */
         e.preventDefault();
         /**Xóa ô trắng */
-        document.getElementById('name-inputext').value = '';
-        document.getElementById('file-inputfile').value = '';
-        document.getElementById('admin__product-textare').value = '';
-        document.getElementById('amount-inputext').value = '';
-        document.getElementById('unit-inputext').value = '';
-        document.getElementById('price-inputext').value = '';
         /**Ép kiểu th   ành formData */
         let formData = new FormData();
         for (let i = 0; i < file.length; i++) {
@@ -52,13 +46,19 @@ function AdminAddProduct() {
         }
         /**Gửi API */
         axios.post('/products/themsanphamhinhanh', formData)
-            .then(response => {
-                console.log(response.data)
-                axios.post('/products/themsanpham', { product })
-                    .then(response => { 
-                        console.log(response.data);
-                        alert('Đã thêm sản phẩm!')
-                    })
+        .then(response => {
+            console.log(response.data)
+            axios.post('/products/themsanpham', { product })
+            .then(response => { 
+                console.log(response.data);
+                alert('Đã thêm sản phẩm!')
+                document.getElementById('name-inputext').value = '';
+                document.getElementById('file-inputfile').value = '';
+                document.getElementById('admin__product-textare').value = '';
+                document.getElementById('amount-inputext').value = '';
+                document.getElementById('unit-inputext').value = '';
+                document.getElementById('price-inputext').value = '';
+            })
                     .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
