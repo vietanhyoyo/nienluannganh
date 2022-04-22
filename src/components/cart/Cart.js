@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CartInfo from './CartInfo';
 import { useState, useEffect, useContext } from 'react';
 import { LoginContext } from '../../contexts/LoginContext';
+import { CartContext } from '../../contexts/CartContext';
 import axios from 'axios';
 
 const formatNumber = (num) => {
@@ -23,7 +24,10 @@ export default function Cart() {
             donvitinh: ''
         },
         soluong: 0,
+        giasanpham: 0
     }]);
+    /**Tổng số tiền */
+    const [tongsotien, setTongSoTien] = useState(0);
 
     /**Phí vận chuyển */
     const shipfee = 10000;
@@ -31,14 +35,9 @@ export default function Cart() {
     /**Các context */
     const loginState = useContext(LoginContext);
     const userid = loginState.iduser;
-    /**Ham goi api load lai gio hang */
-    const reRender = function () {
-        axios.post('/order/hienthigiohang', { khachhang: userid })
-            .then(response => response.data)
-            .then(response => {
-                setLoad(response);
-            });
-    }
+
+    /**Dữ liệu giỏ hàng trên header */
+    const cartState = useContext(CartContext);
 
     /**Tính tổng tiền của các chi tiết đặt hàng */
     const tinhTongTien = () => {
@@ -46,15 +45,19 @@ export default function Cart() {
         else {
             let sum = 0;
             for (let i = 0; i < load.length; i++) {
-                sum += load[i].soluong * load[i].sanpham.gianiemyet;
+                sum += load[i].soluong * load[i].giasanpham;
             }
             return sum;
         }
     }
-    /**Tính tổng tiền của giỏ hàng bao gồm phí ship */
-    const tinhTongTienDatHang = () => {
-        const sum = tinhTongTien() + shipfee;
-        return sum;
+
+    /**Ham goi api load lai gio hang */
+    const reRender = function () {
+        axios.post('/order/hienthigiohang', { khachhang: userid })
+            .then(response => response.data)
+            .then(response => {
+                setLoad(response);
+            });
     }
 
     /**Lấy dữ liệu */
@@ -68,12 +71,13 @@ export default function Cart() {
 
     /**Cập nhật tổng tiền lên server */
     useEffect(() => {
-        if (load.length > 0)
+        if (load.length > 0) {
             axios.post('/order/tinhtongtiendathang', {
                 id: load[0].dathang,
                 tongtien: tinhTongTien() + shipfee
-            })
-                .then(res => console.log(res.data))
+            }).then(res => console.log(res.data))
+        }
+
         else axios.post('/order/tinhtongtiendathang', {
             khachhang: userid
         })
@@ -87,6 +91,26 @@ export default function Cart() {
             navigate('/buy');
         }
     }
+    /**Tính tổng tiền */
+    const sum = tinhTongTien();
+    useEffect(() => {
+        setTongSoTien(sum);
+        if (load.length > 0)
+            axios.post('/order/tinhtongtiendathang', {
+                id: load[0].dathang,
+                tongtien: tongsotien + shipfee
+            }).then(res => console.log(res.data))
+
+    }, [sum, load, tongsotien])
+    /**Xóa giỏ hàng */
+    const handleDelete = () => {
+        axios.post('/order/xoagiohang', { _id: load[0].dathang })
+            .then(res => {
+                reRender();
+                cartState.getAPI(userid);
+            })
+    }
+
     return (
         <div className='cart'>
             <div className='cart__body row-app'>
@@ -114,8 +138,21 @@ export default function Cart() {
                         hinhanh={ele.sanpham.hinhanh[0]}
                         tensanpham={ele.sanpham.tensanpham}
                         soluong={ele.soluong}
-                        gia={ele.sanpham.gianiemyet}
+                        gia={ele.giasanpham}
                         donvitinh={ele.sanpham.donvitinh}
+                        tangTongTien={() => setLoad(load.map((element, id) => {
+                            if (id === index) {
+                                element.soluong++;
+                            }
+                            return element;
+                        }))}
+
+                        giamTongTien={() => setLoad(load.map((element, id) => {
+                            if (id === index) {
+                                element.soluong--;
+                            }
+                            return element;
+                        }))}
                     />
                 })}
                 <div className='cart__payment'>
@@ -133,10 +170,10 @@ export default function Cart() {
                             <div className='cart__cost'>
                                 <p className='cart__p'>{formatNumber(tinhTongTien())}đ</p>
                                 <p className='cart__p'>{formatNumber(shipfee)}đ</p>
-                                <p className='cart__p cart__info__p--red'>{formatNumber(tinhTongTienDatHang())}đ</p>
+                                <p className='cart__p cart__info__p--red'>{formatNumber(tongsotien + shipfee)}đ</p>
                                 <div>
                                     <div className='button' onClick={handleOrderSubmit}>Đặt hàng</div>
-                                    <div className='button cart--gray'>Xóa giỏ hàng</div>
+                                    <div className='button cart--gray' onClick={handleDelete}>Xóa giỏ hàng</div>
                                 </div>
                             </div>
                         </div>

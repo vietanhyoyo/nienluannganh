@@ -35,6 +35,7 @@ function MerchandiseBox(props) {
                 cost={products[i].gianiemyet}
                 salecost={products[i].giasanpham.giaban}
                 donvi={products[i].donvitinh}
+                khuyenmai={products[i].giasanpham.khuyenmai !== null && products[i].giasanpham.khuyenmai.phantram}
             />);
         }
         return listProduct;
@@ -50,7 +51,7 @@ function MerchandiseBox(props) {
     }, [props.idloaisanpham])
 
     return (
-        <>
+        <>{products.length > 0 && <>
             <div className='merchandise__topic'>
                 <div className='merchandise__emphasize'></div>
                 <div className='merchandise__topic--span'>
@@ -59,7 +60,7 @@ function MerchandiseBox(props) {
             </div>
             <div className='merchandise__row'>
                 {showProduct()}
-            </div>
+            </div> </>}
         </>
     );
 }

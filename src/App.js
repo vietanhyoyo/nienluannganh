@@ -28,6 +28,7 @@ import ListProductAdmin from "./components/admin/ListProductAdmin"
 import AdminStaffAdd from "./components/admin/AdminStaffAdd";
 import AdminStaffInfo from "./components/admin/adminstaff/AdminStaffInfo";
 import Charjs from "./components/admin/listproductadmin/Charjs";
+import FindPromotion from "./components/find/FindPromotion";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
               <Route path='login' element={<Login />} />
               <Route path='find/:id' element={<Find />} />
               <Route path='findsearch/:id' element={<FindSearch />} />
+              <Route path='findpromotion' element={<FindPromotion />} />
               <Route path='person' element={<Person />} >
                 <Route path='profile' element={<PersonProfile />} />
                 <Route path='history' element={<PersonHistory />} />
@@ -61,7 +63,11 @@ function App() {
               <Route path='promotion' element={<AdminPromotion />} />
               <Route path='AddUser' element={<AdminStaffAdd />} />
               <Route path='infomation' element={<AdminStaffInfo />} />
+<<<<<<< HEAD
               <Route path='charjs' element={<Charjs/>}/>
+=======
+              <Route path='charjs' element={<Charjs />} />
+>>>>>>> ae25945e5790a8a10c7f4eb4e72dbcd2e9b0b084
             </Route>
           </Routes>
         </React.Fragment>

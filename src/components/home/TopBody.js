@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import '../../css/topbody.css'
 
-function TopBody(){
-    return(
+function TopBody() {
+    return (
         <div className='topbody'>
             <div className='topbody__content row-app'>
                 <div className='topbody__first'>
-                    <div>Khuyến mãi</div>
+                    <Link to='/findpromotion' >Khuyến mãi</Link>
                     <div>Hỗ trợ kỹ thuật</div>
                 </div>
             </div>

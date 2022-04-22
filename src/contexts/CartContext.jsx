@@ -6,7 +6,6 @@ const CartContext = createContext()
 function CartProvider({ children }) {
 
     const [list, setList] = useState([]);
-    console.log('cart: ',list)
 
     const getAPI = id =>
         axios.post('/order/hienthigiohang', { khachhang: id })

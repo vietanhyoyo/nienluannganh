@@ -1,23 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function AdminInvoiceProduct(prop){
-    const [product] = useState(prop.product);
-    return(
-        <div className='admin-invoice__row admin-invoice__row--top' key={prop.index}>
-                <div className='admin-invoice__box'>
-                    <div className='admin-invoice__img'>
-                        <img src={product.image} alt='noPhoto' />
-                    </div>
-                    <div>
-                        <p className='admin-invoice__name'>{product.name}</p>
-                        <p className='admin-invoice__quantity'>SL: 
-                        <span> {product.amount} </span> 
-                        <span> {product.unit} </span></p>
-                    </div>
+const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
+
+export default function AdminInvoiceProduct(prop) {
+    const [product,setProduct] = useState({
+        id: '',
+        tensanpham: '',
+        loaihang: '',
+        hinhanh: [''],
+        gianiemyet: 0,
+        soluong: 0,
+        donvitinh: '',
+        loaisanpham: {
+            _id: '',
+            tenloaisanpham: ''
+        }
+    });
+
+    useEffect(() => {
+        setProduct(prop.product);
+    },[prop])
+
+    return (
+        <div className='admin-invoice__row admin-invoice__row--top'>
+            <div className='admin-invoice__box'>
+                <div className='admin-invoice__img'>
+                    <img src={product.hinhanh[0]} alt='noPhoto' />
                 </div>
-                <div className='admin-invoice__box admin-invoice__box--right'>
-                    <p className='admin-invoice__cost'>{product.cost}đ</p>
+                <div>
+                    <p className='admin-invoice__name'>{product.tensanpham}</p>
+                    <p className='admin-invoice__quantity'>SL:
+                        <span> {prop.soluong} </span>
+                        <span> {product.donvitinh} </span></p>
                 </div>
             </div>
+            <div className='admin-invoice__box admin-invoice__box--right'>
+                <p className='admin-invoice__cost'>{formatNumber(Number(prop.gia))}đ</p>
+            </div>
+        </div>
     );
 }

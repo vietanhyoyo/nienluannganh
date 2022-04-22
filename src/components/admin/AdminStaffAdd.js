@@ -127,7 +127,7 @@ function AdminStaffAdd() {
                             alert('Email đã được sử dụng')
                         }
                         if(response.data === 'dacosdt'){
-                            alert('Số điện đa được sử dụng')
+                            alert('Số điện thoại đa được sử dụng')
                         }
                         if(response.data === 'cahaiduocsudung'){
                             alert('Số điện thoại và email đã được sử dụng')
@@ -203,12 +203,12 @@ function AdminStaffAdd() {
                                     <label htmlFor="name" className="form__label">Ngày sinh (mm/dd/yyyy)</label>
                                 </div>
                                 <div className="form__group">
-                                    <input type="text" className="form__input" id="name" placeholder="Số điện thoại"  
+                                    <input type="text" className="form__input" id="name" placeholder="Số điện thoại"  autocomplete="off"
                                      onChange={(e) => {setPosinfo({...postinfo,sdt : e.target.value})}}/>
                                     <label htmlFor="name" className="form__label">Số điện thoại (10 số hoặc 11 số) [Tài khoản] </label>
                                 </div>
                                 <div className="form__group">
-                                    <input type="password" className="form__input" id="name" placeholder="Mật khẩu" 
+                                    <input type="password" className="form__input" id="name" placeholder="Mật khẩu" autocomplete="off"
                                      onChange={(e) => {setPosinfo({...postinfo,matkhau : e.target.value})}}/>
                                     <label htmlFor="name" className="form__label">Mật khẩu gồm 6 ký tự trở lên </label>
                                 </div>
@@ -261,7 +261,9 @@ function AdminStaffAdd() {
                     </div>
                  </div>
                  <div className='Admin__addstaff--content-bottom'>
-                     <button className='button-900' onClick={postInfomation}>Thêm</button>
+                     <button className='button-900' onClick={postInfomation}
+                        style={{backgroundColor: 'var(--c3)', borderColor: 'var(--c3)', color: '#fff'}}
+                     >Thêm</button>
                      <button className='button-900'
                      onClick={()=> {  
                         for(let i = 0 ; i < form_clear.length;i++){

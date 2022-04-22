@@ -19,7 +19,7 @@ export default function AdminPromotionList(prop) {
             <div className='admin-promotion-list__form'>
                 <div className='admin-promotion-list__header'>
                     <div className='admin-promotion-list__name'>
-                        <span>Khuyến mãi 8/3</span>
+                        <span>Sửa đổi khuyến mãi</span>
                     </div>
                     <div className='admin-promotion-list__close'>
                         <i className='fi fi-rr-cross-circle' onClick={prop.onToggle}></i>

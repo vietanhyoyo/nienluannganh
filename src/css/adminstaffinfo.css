@@ -29,7 +29,9 @@
 .AdminStaffInfo__form-left-div{
     width: 200px;
     height: 200px;
-    background-color: black;
+    background-position: center;
+    background-size: cover;
+    border: 1px dotted #999;
     border-radius: 100%;
   
 }

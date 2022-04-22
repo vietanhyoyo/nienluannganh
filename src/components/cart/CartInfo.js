@@ -21,7 +21,7 @@ function CartInfo(props) {
         sanpham: props.idSanPham,
         soluong: props.soluong
     })
-
+    /**Xóa sản phẩm */
     const deleteSP = () => {
         axios.post('/order/xoachitietdathang', { id: props.id })
             .then(response => response.data)
@@ -30,6 +30,7 @@ function CartInfo(props) {
                 cartState.getAPI(userid);
             });
     }
+    /**Lấy giữ liệu chi tiết đặt hàng */
     useEffect(() => {
         setChiTietDatHang({
             _id: props.id,
@@ -38,14 +39,27 @@ function CartInfo(props) {
             soluong: props.soluong
         })
     }, [props])
+    /**Tăng số lượng */
+    const handleIncrease = () => {
+        setChiTietDatHang(prev => ({ ...prev, soluong: chitietdathang.soluong++ }))
+        props.tangTongTien();
+    }
+    const handleDecrease = () => {
+        if (chitietdathang.soluong > 1) {
+            setChiTietDatHang(prev => ({ ...prev, soluong: chitietdathang.soluong-- }))
+            props.giamTongTien();
+        }
+    }
     return (
         <div className='cart__row cart__row--boder'>
             <div className='cart__info cart__info--big cart__info--image' >
-                <img
-                    className='cart__img'
-                    src={props.hinhanh}
-                    alt='product'
-                />
+                <div style={{ width: '150px', height: '100%' }}>
+                    <img
+                        className='cart__img'
+                        src={props.hinhanh}
+                        alt='product'
+                    />
+                </div>
                 <div className='cart__name--product'>
                     <p style={{ color: '#444' }}>{props.tensanpham}</p>
                     <p className='cart__delete' onClick={deleteSP}>Xóa</p>
@@ -53,22 +67,26 @@ function CartInfo(props) {
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <span>{formatNumber(props.gia)}</span>
+                    <span>{formatNumber(Number(props.gia))}</span>
                     <span>đ/{props.donvitinh}</span>
                 </div>
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <div className='cart__adjustbutton'><i className='fa-solid fa-plus'></i></div>
+                    <div className='cart__adjustbutton'>
+                        <i className='fa-solid fa-minus' onClick={handleDecrease}></i>
+                    </div>
                     <input type='text'
                         value={chitietdathang.soluong.toString()}
                         onChange={e => setChiTietDatHang(prev => ({ ...prev, soluong: Number(e.target.value) }))} />
-                    <div className='cart__adjustbutton'><i className='fa-solid fa-minus'></i></div>
+                    <div className='cart__adjustbutton'>
+                        <i className='fa-solid fa-plus' onClick={handleIncrease}></i>
+                    </div>
                 </div>
             </div>
             <div className='cart__info cart__info--small' >
                 <div className='cart__info__content'>
-                    <span>{formatNumber(props.gia * chitietdathang.soluong)}</span><span>đ</span>
+                    <span>{formatNumber(Number(props.gia * chitietdathang.soluong))}</span><span>đ</span>
                 </div>
             </div>
         </div>

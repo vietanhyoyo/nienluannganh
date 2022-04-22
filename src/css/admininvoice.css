@@ -2,10 +2,18 @@
     padding-top: 24px;
     width: 100%; 
     padding-left: 70px;
-    padding-right: 70px;
+}
+.admin-invoice__body{
+    padding-right: 40px;
+}
+.admin-invoice__item{
+    background-color: #fff;
 }
 .admin-invoice__top{
+    background-color: #fff;
     width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 0px;
 }
 .admin-invoice__ul{
     display: flex;
@@ -120,4 +128,8 @@
 }
 .admin-invoice__button--gray{
     background-color: var(--c2);
+}
+.admin-invoice__client{
+    font-size: 14px;
+    color: #999;
 }

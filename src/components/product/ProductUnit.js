@@ -21,7 +21,8 @@ function ProductUnit(props) {
             .then(res => setProduct(res.data))
     }, [props.idProduct])
 
-    return (<div className='product__name-type-btn' onClick={handleURL}>
+    return (<div className='product__name-type-btn' onClick={handleURL}
+        style={props.donvitinh === product.donvitinh ? {borderColor: 'var(--c3)'} : {}}>
         <p>{product.donvitinh}</p>
     </div>)
 }

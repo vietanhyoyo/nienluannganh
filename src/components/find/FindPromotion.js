@@ -1,14 +1,9 @@
 import { useState, useEffect } from 'react';
 import MerchandiseItem from '../home/MerchandiseItem';
-import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import '../../css/find.css'
 
-function FindSearch() {
-
-    /*Lấy tham số trên url bằng useParams */
-    const { id } = useParams();
-    console.log(id);
+function FindPromotion() {
 
     const [list, setList] = useState([{
         _id: 'null',
@@ -26,16 +21,12 @@ function FindSearch() {
         }
     }]);
     useEffect(function () {
-        axios.post('/products/timtensanpham', { id: id })
+        axios.get('/products/timsanphamkhuyenmai')
             .then(response => response.data)
             .then(response => {
                 setList(response);
-                console.log(response);
             })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }, [id]);
+    }, []);
 
     const showProduct = () => {
         const listProduct = [];
@@ -59,7 +50,7 @@ function FindSearch() {
     return (
         <div className='find__parent'>
             <div className='find'>
-                <div className='row-app'><p>Tìm thấy {list.length} kết quả tìm kiếm liên quan '{id}'</p></div>
+                <div className='row-app'><p>Các sản phẩm đang khuyến mãi!</p></div>
             </div>
             <div className='merchandise' >
                 <div className='merchandise__content row-app'>
@@ -78,4 +69,4 @@ function FindSearch() {
     );
 }
 
-export default FindSearch;
+export default FindPromotion;
