@@ -63,7 +63,7 @@ function App() {
               <Route path='promotion' element={<AdminPromotion />} />
               <Route path='AddUser' element={<AdminStaffAdd />} />
               <Route path='infomation' element={<AdminStaffInfo />} />
-              <Route path='charjs' element={<Charjs />} />
+              <Route path='charjs' element={<Charjs/>}/>
             </Route>
           </Routes>
         </React.Fragment>

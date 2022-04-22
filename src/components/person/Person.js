@@ -1,6 +1,5 @@
 import '../../css/person.css'
 import { Outlet, Link } from 'react-router-dom';
-import imgg from '../../images/logoicon.png';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { LoginContext } from '../../contexts/LoginContext';

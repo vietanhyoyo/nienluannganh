@@ -196,6 +196,7 @@
   height: 80%;
   display: flex;
   align-items: center;
+   background-color: #039719;
 }
 
 /* Div chart */
@@ -368,3 +369,4 @@
   height: 100%;
   width: 100%;
 }
+

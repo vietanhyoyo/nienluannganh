@@ -30,9 +30,7 @@ function FindPromotion() {
 
     const showProduct = () => {
         const listProduct = [];
-        let n = list.length - 1;
-        if (n >= 6) n = 6;
-        for (let i = 0; i <= n; i++) {
+        for (let i = 0; i < list.length; i++) {
             listProduct.push(<MerchandiseItem
                 key={i}
                 _id={list[i]._id}

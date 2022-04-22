@@ -32,7 +32,7 @@ export default function AdminMenu() {
   useEffect(()=>{
     GetStaffbyId();
   },[])
-  console.log(infostaff);
+
   return (
     <div className='Adminmenu__app'>
       {/* menu */}
