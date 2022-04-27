@@ -140,7 +140,7 @@ function AdminProductEdit(props) {
                                         </select>
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='admin__product-amount'>Số lượng</label>
-                                            <input type='text' id='amount-inputext'
+                                            <input type='number' id='amount-inputext'
                                                 className='adminproductedit__input'
                                                 name='admin__product-amount'
                                                 value={product.soluong}
@@ -156,7 +156,7 @@ function AdminProductEdit(props) {
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='price-inputext'>Giá</label>
                                             <input
-                                                type='text' id='price-inputext'
+                                                type='number' id='price-inputext'
                                                 className='adminproductedit__input'
                                                 name='admin__input--price-product'
                                                 value={product.gianiemyet}

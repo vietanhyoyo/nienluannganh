@@ -38,30 +38,55 @@ function AdminAddProduct() {
     const handleSubmit = (e) => {
         /**Ngăn hành vi mặc định */
         e.preventDefault();
+        if(file === null) {
+            alert('Thiếu hình ảnh!');
+            return;
+        }
         /**Ép kiểu th   ành formData */
         let formData = new FormData();
         for (let i = 0; i < file.length; i++) {
             formData.append(`fileImage`, file[i]);
         }
+        /**Kiểm tra */
+        if(product.tensanpham.length < 10){
+            alert('Tên sản phẩm không hợp lệ!');
+            return;
+        }
+        if(product.gianiemyet <= 0){
+            alert('Thiếu giá niêm yết!');
+            return;
+        }
+        if(product.donvitinh.length < 2){
+            alert('Thiếu đơn vị tính!');
+            return;
+        }
+        if(product.soluong < 0){
+            alert('Số lượng không hợp lệ!');
+            return;
+        }
         /**Gửi API */
-        axios.post('/products/themsanphamhinhanh', formData)
-            .then(response => {
-                console.log(response.data)
-                axios.post('/products/themsanpham', { product })
-                    .then(response => {
-                        console.log(response.data);
-                        alert('Đã thêm sản phẩm!');
-                        /**Xóa ô trắng */
-                        document.getElementById('name-inputext').value = '';
-                        document.getElementById('file-inputfile').value = '';
-                        document.getElementById('admin__product-textare').value = '';
-                        document.getElementById('amount-inputext').value = '';
-                        document.getElementById('unit-inputext').value = '';
-                        document.getElementById('price-inputext').value = '';
-                    })
-                    .catch(err => console.log(err))
-            })
-            .catch(err => console.log(err));
+        if (product.tensanpham !== '' && product.hinhanh !== [] && product.donvitinh !== '' && product.gianiemyet > 0) {
+            axios.post('/products/themsanphamhinhanh', formData)
+                .then(response => {
+                    console.log(response.data)
+                    axios.post('/products/themsanpham', { product })
+                        .then(response => {
+                            console.log(response.data);
+                            alert('Đã thêm sản phẩm!');
+                            /**Xóa ô trắng */
+                            document.getElementById('name-inputext').value = '';
+                            document.getElementById('file-inputfile').value = '';
+                            document.getElementById('admin__product-textare').value = '';
+                            document.getElementById('amount-inputext').value = '';
+                            document.getElementById('unit-inputext').value = '';
+                            document.getElementById('price-inputext').value = '';
+                        })
+                        .catch(err => console.log(err))
+                })
+                .catch(err => console.log(err));
+        }
+        else alert('Có trường nhập vào không hợp lệ!');
+
     }
 
     return (
@@ -199,7 +224,7 @@ function AdminAddProduct() {
                         <div className='admin__form-addproduct admin__form-addproduct--group'>
                             <div className='admin__addproduct-divinputtext'>
                                 <label htmlFor='admin__product-amount'>Số lượng</label>
-                                <input type='text' id='amount-inputext'
+                                <input type='number' id='amount-inputext'
                                     className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
                                     name='admin__product-amount'
                                     onChange={e => setProduct({ ...product, soluong: Number(e.target.value) })} />
@@ -214,7 +239,7 @@ function AdminAddProduct() {
                             <div className='admin__addproduct-divinputtext'>
                                 <label htmlFor='price-inputext'>Giá</label>
                                 <input
-                                    type='text' id='price-inputext'
+                                    type='number' id='price-inputext'
                                     className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
                                     name='admin__input--price-product'
                                     onChange={e => setProduct({ ...product, gianiemyet: Number(e.target.value) })}

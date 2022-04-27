@@ -27,6 +27,27 @@ function AdminProductAddType(props) {
     /**Update san pham */
     const handleUpdate = e => {
         e.preventDefault();
+        /**Kiểm tra */
+        if(file === null) {
+            alert('Thiếu hình ảnh!');
+            return;
+        }
+        if(product.tensanpham.length < 10){
+            alert('Tên sản phẩm không hợp lệ!');
+            return;
+        }
+        if(product.gianiemyet <= 0){
+            alert('Thiếu giá niêm yết!');
+            return;
+        }
+        if(product.donvitinh.length < 2){
+            alert('Thiếu đơn vị tính!');
+            return;
+        }
+        if(product.soluong < 0){
+            alert('Số lượng không hợp lệ!');
+            return;
+        }
         if (file === null) {
             console.log('them san pham')
             axios.post('/products/themsanphamcungloai', { product, idProduct })
@@ -84,7 +105,7 @@ function AdminProductAddType(props) {
                                     <div className='admin__form-addproduct admin__form-addproduct--group'>
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='admin__product-amount'>Số lượng</label>
-                                            <input type='text' id='amount-inputext'
+                                            <input type='number' id='amount-inputext'
                                                 className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
                                                 name='admin__product-amount'
                                                 value={product.soluong}
@@ -100,7 +121,7 @@ function AdminProductAddType(props) {
                                         <div className='admin__addproduct-divinputtext'>
                                             <label htmlFor='price-inputext'>Giá</label>
                                             <input
-                                                type='text' id='price-inputext'
+                                                type='number' id='price-inputext'
                                                 className='admin__addproduct-inputtext admin__addproduct-inputtext--short'
                                                 name='admin__input--price-product'
                                                 value={product.gianiemyet}
