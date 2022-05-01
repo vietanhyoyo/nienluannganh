@@ -2,7 +2,6 @@ import ProductStar from './ProductStar';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
-
 function ProductEvaluate(props) {
     /**Luu danh gia */
     const [danhgia, setDanhGia] = useState([{
