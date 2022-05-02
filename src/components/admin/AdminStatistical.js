@@ -42,7 +42,7 @@ export default function AdminStatistical() {
   let lasitem_statistical = statistical[statistical.length - 1];
   let lasitem_statistical1 = statistical[statistical.length - 2];
  
- 
+  
   const today = new Date();
   const homnay = getFormattedDate(today);
   
