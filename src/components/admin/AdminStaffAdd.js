@@ -89,7 +89,7 @@ function AdminStaffAdd() {
         }
         
         if(postinfo.sdt === '' || 
-        (postinfo.sdt.length < 10 || postinfo.sdt.length >11) || /[a-z]/.test(postinfo.sdt)=== true )
+        (postinfo.sdt.length < 10 || postinfo.sdt.length >11) || /[^0-9]/.test(postinfo.sdt) === true)
         {
             alert('Số điện thoại không được rỗng và theo định dạng số với độ dài(10 số hoặc 11 số)')
             phonenumber=false
