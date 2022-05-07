@@ -119,7 +119,7 @@ function Chart2() {
       {
         label: "Doanh thu",
         data: mangdoanhthutheongay.map((c) => c.tien),
-        borderColor: "rgb(139, 219, 139)",
+        borderColor: "rgb(10, 161, 221)",
         backgroundColor: "white",
       },
     ],

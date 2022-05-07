@@ -1,5 +1,5 @@
 import '../../css/login.css';
-import LogoLG from '../../images/logotext.png';
+import LogoLG from '../../images/Shop-247.png';
 import { useState, useContext } from 'react';
 import { LoginContext } from '../../contexts/LoginContext';
 import axios from 'axios';

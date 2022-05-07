@@ -17,7 +17,7 @@
 .login__img{
     height: 100%;
     width: 100%;
-    background-image: url('../images/Wellcome.png');
+    background-image: url('../images/logonbanner.png');
     background-size: cover;
     background-position: center;
 }

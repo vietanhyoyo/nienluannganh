@@ -37,7 +37,7 @@ export default function AdminMenu() {
     <div className='Adminmenu__app'>
       {/* menu */}
   <Link to='/'>   <div className='Adminmenu__app--logo'>
-        <img src='../../../images/logotext.png' alt='logo' className='Adminmenu__app--logo-img' />
+        <img src='../../../images/Shop-247.png' alt='logo' className='Adminmenu__app--logo-img' />
       </div>
     </Link> 
       {/* content */}

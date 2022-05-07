@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, useContext } from 'react';
 import { LoginContext } from '../contexts/LoginContext';
 import HeaderAvatar from './HeaderAvatar';
 import MenuItemList from './MenuItemList';
-import logoima from '../images/logotext.png'
+import logoima from '../images/Shop-247.png'
 import axios from 'axios';
 import CartIcon from './CartIcon';
 

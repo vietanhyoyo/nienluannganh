@@ -2,7 +2,7 @@
     /* color */
     --c1: #2e3026;
     --c2: #869aa6;
-    --c3: #64d275;
+    --c3: #0AA1DD;
     --c4: #fdfcfb;
     --c5: #f64129;
     --c6: #FFD369;
@@ -63,7 +63,7 @@
 .orderadmin-search-item:hover{
     border-bottom: 2px solid var(--c3);
  
-    color: #64d275;
+    color: var(--c3);
 }
 .orderadmin-search-item:active{
     border-bottom: 2px solid var(--c1);

@@ -1,6 +1,6 @@
-import bannerImage from '../../images/banner1.png'
-import bannerImage2 from '../../images/bannn2.png'
-import bannerImage3 from '../../images/banner3.png'
+import bannerImage from '../../images/b1.png'
+import bannerImage2 from '../../images/b2.png'
+import bannerImage3 from '../../images/b3.png'
 import '../../css/banner.css'
 import { useState, useRef, useEffect } from 'react'
 

@@ -88,8 +88,8 @@
 }
 
 .StaffAdmin__filter-items:hover{
-    border-bottom: 2px solid rgb(3, 192, 3);
-    color: rgb(3, 175, 3);
+    border-bottom: 2px solid var(--c3);
+    color: var(--c3);
 }
 
 .StaffAdmin__manager{
@@ -240,14 +240,14 @@
     align-items: center;
     padding-left: 5px;
     padding-right: 5px;
-    color:  #64d275;
+    color:  var(--c3);
     border-radius: 5px;
     border: none;
    width: 50%;
     cursor: pointer;
 }
 .StaffAdmin__manager-content-items-icon:hover{
-    background-color:  #64d275;
+    background-color:  var(--c3);
     color:var(--c4) ;
 }
 
@@ -272,7 +272,7 @@
 
 .StaffAdmin__manager-content-items-icon:active{
     background-color: #2e3026;
-    color: #64d275;
+    color: var(--c3);
 }
 .StaffAdmin__manager-content-items-icon-right:active{
     background-color: var(--c4);
@@ -284,6 +284,6 @@
 }
 
 .StaffAdmin__filter-items-css{
-    border-bottom: 2px solid rgb(3, 192, 3);
-    color: rgb(3, 175, 3);
+    border-bottom: 2px solid var(--c3);
+    color: var(--c3);
 }

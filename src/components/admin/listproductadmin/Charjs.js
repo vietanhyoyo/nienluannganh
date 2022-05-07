@@ -126,7 +126,7 @@ function Charjs(props) {
       {
         label: 'Doanh thu',
         data: DoanhThu.map(c=>c),
-        borderColor: 'rgb(139, 219, 139)',
+        borderColor: 'rgb(10, 161, 221)',
         backgroundColor: 'white',
       },
     ],

@@ -1,5 +1,5 @@
 import '../../css/login.css';
-import LogoLG from '../../images/logotext.png';
+import LogoLG from '../../images/Shop-247.png';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 

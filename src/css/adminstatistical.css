@@ -177,7 +177,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #039719;
+  color: var(--c3);
   font-weight: 700;
 }
 .AdminStatistical__app--content-table-items-content{
@@ -196,7 +196,7 @@
   height: 80%;
   display: flex;
   align-items: center;
-   background-color: #039719;
+   background-color: var(--c3);
 }
 
 /* Div chart */
