@@ -82,7 +82,7 @@ export default function Cart() {
             khachhang: userid
         })
             .then(res => console.log(res.data))
-    })
+    },[tongsotien])
 
     /**Nút đặt hàng */
     const handleOrderSubmit = () => {
@@ -95,12 +95,6 @@ export default function Cart() {
     const sum = tinhTongTien();
     useEffect(() => {
         setTongSoTien(sum);
-        if (load.length > 0)
-            axios.post('/order/tinhtongtiendathang', {
-                id: load[0].dathang,
-                tongtien: tongsotien + shipfee
-            }).then(res => console.log(res.data))
-
     }, [sum, load, tongsotien])
     /**Xóa giỏ hàng */
     const handleDelete = () => {
