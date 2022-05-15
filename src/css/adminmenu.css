@@ -69,7 +69,7 @@
 }
 /* Hover icon manage icon */
 .Adminmenu__app--content-title-content:hover{
-    background-color: var(--background-color-hover);
+    background-color: var(--c3);
 }
 .Adminmenu__app--content-title-left{
     width: 20px;
@@ -91,7 +91,7 @@
   
 }
 .Adminmenu__app--content-title-items:hover{
-  background-color: var(--background-color-hover);  
+  background-color: var(--c3);  
 }
 .Adminmenu__app--content-title-items-content{
     width: 100%;
